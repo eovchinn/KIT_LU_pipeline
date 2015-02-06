@@ -1,0 +1,38 @@
+; objects
+
+(B (name cup1)(=>(^(o#cup CUP1 :0.4)(= x CUP1 :0.4))(o#cup e x)))
+(B (name cup2)(=>(^(o#cup CUP2 :0.4)(= x CUP2 :0.4))(o#cup e x)))
+
+(B (name glass1)(=>(^(o#glass GLASS1 :0.4)(= x GLASS1 :0.4))(o#glass e x)))
+(B (name glass2)(=>(^(o#glass GLASS2 :0.4)(= x GLASS2 :0.4))(o#glass e x)))
+
+(B (name fork1)(=>(^(o#fork FORK1 :0.4)(= x FORK1 :0.4))(o#fork e x)))
+(B (name fork2)(=>(^(o#fork FORK2 :0.4)(= x FORK2 :0.4))(o#fork e x)))
+
+(B (name knife1)(=>(^(o#knife KNIFE1 :0.4)(= x KNIFE1 :0.4))(o#knife e x)))
+(B (name knife2)(=>(^(o#knife KNIFE2 :0.4)(= x KNIFE2 :0.4))(o#knife e x)))
+
+(B (name spoon1)(=>(^(o#spoon SPOON1 :0.4)(= x SPOON1 :0.4))(o#spoon e x)))
+(B (name spoon2)(=>(^(o#spoon SPOON2 :0.4)(= x SPOON2 :0.4))(o#spoon e x)))
+
+(B (name plate1)(=>(^(o#plate PLATE1 :0.4)(= x PLATE1 :0.4))(o#plate e x)))
+(B (name plate2)(=>(^(o#plate PLATE2 :0.4)(= x PLATE2 :0.4))(o#plate e x)))
+
+(B (name bowl1)(=>(^(o#bowl BOWL1 :0.4)(= x BOWL1 :0.4))(o#bowl e x)))
+(B (name bowl2)(=>(^(o#bowl BOWL2 :0.4)(= x BOWL2 :0.4))(o#bowl e x)))
+
+(B (name napkin1)(=>(^(o#napkin NAPKIN1 :0.4)(= x NAPKIN1 :0.4))(o#napkin e x)))
+(B (name napkin2)(=>(^(o#napkin NAPKIN2 :0.4)(= x NAPKIN2 :0.4))(o#napkin e x)))
+
+(B (name saucer1)(=>(^(o#saucer BOWL1 :0.4)(= x SAUCER1 :0.4))(o#saucer e x)))
+(B (name saucer2)(=>(^(o#saucer BOWL2 :0.4)(= x SAUCER2 :0.4))(o#saucer e x)))
+
+(B (name table1)(=>(^(o#table TABLE1 :0.4)(= x TABLE1 :0.4))(o#table e x)))
+
+(B (name shelf1)(=>(^(o#shelf SHELF1 :0.4)(= x SHELF1 :0.4))(o#shelf e x)))
+
+(B (name cutboard1)(=>(^(o#cutboard CUTBOARD1 :0.4)(= x CUTBOARD1 :0.4))(o#cutboard e x)))
+
+(B (name leftn)(=>(^(l#location LEFT :0.4)(= x LEFT :0.4))(l#left e x)))
+
+(B (name rightn)(=>(^(l#location RIGHT :0.4)(= x RIGHT :0.4))(l#right-n e x)))

@@ -1,0 +1,42 @@
+Set the table!
+{"actions": "", "goal": "(forallK(?q1 : placesetting)(existsK(?xx0 : fork, ?xx1 : knife, ?xx2 : plate) K(objAt(?xx0, table_ps) & objAt(?xx1, table_ps) & objAt(?xx2, table_ps) )))", "SOW": ""}
+
+Set the table for three people!
+{"actions": "", "goal": "(existsK(?xx31 : fork, ?xx32 : fork, ?xx33 : fork, ?xx41 : knife, ?xx42 : knife, ?xx43 : knife, ?xx51 : plate, ?xx52 : plate, ?xx53 : plate) K(objAt(?xx31, table_ps1) & objAt(?xx32, table_ps2) & objAt(?xx33, table_ps3) & objAt(?xx41, table_ps1) & objAt(?xx42, table_ps2) & objAt(?xx43, table_ps3) & objAt(?xx51, table_ps1) & objAt(?xx52, table_ps2) & objAt(?xx53, table_ps3) ))", "SOW": ""}
+
+Help me to move the table!
+{"actions": "", "goal": "(existsK(?x3 : table) K(objAt(?x3, table_dining_location) ))", "SOW": ""}
+
+Stop!
+{"actions": "(K(stop() ))", "goal": "", "SOW": ""}
+
+Wipe the table!
+{"actions": "", "goal": "(existsK(?x2 : table) K(clean(?x2) ))", "SOW": ""}
+
+Put the table runner on the table!
+{"actions": "", "goal": "(existsK(?x2 : table_runner, ?x3 : table) K(objOn(?x2, ?x3) ))", "SOW": ""}
+
+Help me to arrange the chairs!
+{"actions": "", "goal": "(existsK(?x3 : chair) K(objAt(?x3, table_seating_place1) ))", "SOW": ""}
+
+Help me to arrange three chairs!
+{"actions": "", "goal": "(existsK(?x31 : chair, ?x32 : chair, ?x33 : chair) K(objAt(?x31, table_seating_place1) & objAt(?x32, table_seating_place2) & objAt(?x33, table_seating_place3) ))", "SOW": ""}
+
+Put the cups on the table!
+{"actions": "", "goal": "(existsK(?x2 : cup, ?x3 : table) K(objOn(?x2, ?x3) ))", "SOW": ""}
+
+Put the cups and plates on the table!
+{"actions": "", "goal": "(existsK(?x4 : plate, ?x5 : table, ?x3 : cup) K(objOn(?x4, ?x5) & objOn(?x3, ?x5) ))", "SOW": ""}
+
+Put three cups on the table!
+{"actions": "", "goal": "(existsK(?x11 : cup, ?x12 : cup, ?x13 : cup, ?x2 : table) K(objOn(?x11, ?x21) & objOn(?x12, ?x22) & objOn(?x13, ?x23) ))", "SOW": ""}
+
+Put the salad on the table!
+{"actions": "", "goal": "(existsK(?x2 : salad, ?x3 : table) K(objOn(?x2, ?x3) ))", "SOW": ""}
+
+Bring me the juice from the fridge!
+{"actions": "", "goal": "(existsK(?e1 : juice, ?xx0 : hand) K(inHand(?e1, ?xx0) & handOf(?xx0, human) ))", "SOW": "(existsK(?e1 : juice, ?x3 : fridge) K(objIn(?e1, ?x3) ))"}
+
+Give me two eggs from the fridge!
+{"actions": "", "goal": "(existsK(?x21 : egg, ?x22 : egg, ?xx6 : hand) K(inHand(?x21, ?xx61) & inHand(?x22, ?xx62) & handOf(?xx6, human) ))", "SOW": "(existsK(?x21 : egg, ?x22 : egg, ?x4 : fridge) K(objIn(?x2, ?x4) ))"}
+

@@ -1,0 +1,75 @@
+Put the cup down.
+{"SOA": [], "jointActionRequests": [], "humanActions": [], "helpRequests": [], "actionRequests": [["putdown", [["R"], null, null, [["cup", []]]]]], "humanHelp": [], "plans": []}
+
+Please wipe the table with a sponge.
+{"SOA": [], "jointActionRequests": [], "humanActions": [], "helpRequests": [], "actionRequests": [["wipe", [["R"], null, [["table", []]], [["sponge", []]]]]], "humanHelp": [], "plans": []}
+
+Grasp the cup with your left hand.
+{"SOA": [], "jointActionRequests": [], "humanActions": [], "helpRequests": [], "actionRequests": [["grasp", [["R"], ["LEFT"], null, [["cup", []]]]]], "humanHelp": [], "plans": []}
+
+
+{"SOA": [], "jointActionRequests": [], "humanActions": [], "helpRequests": [], "actionRequests": [], "humanHelp": [], "plans": []}
+
+Help me to mix butter and flour with a mixer.
+{"SOA": [], "jointActionRequests": [], "humanActions": [], "helpRequests": [["action", ["R"], ["mix", [["H"], null, [["mixer", []]], null, [["butter", []]], [["flour", []]], null]], ["H"]]], "actionRequests": [], "humanHelp": [], "plans": []}
+
+Help me by pouring the butter.
+{"SOA": [], "jointActionRequests": [], "humanActions": [], "helpRequests": [["action", ["R"], ["pour", [["R"], null, [["butter", []]], null, null]], null]], "actionRequests": [], "humanHelp": [], "plans": []}
+
+I need help in pouring the butter.
+{"SOA": [], "jointActionRequests": [], "humanActions": [], "helpRequests": [["action", null, ["pour", [["H"], null, [["butter", []]], null, null]], ["H"]]], "actionRequests": [], "humanHelp": [], "plans": []}
+
+I need to wipe the table.
+{"SOA": [], "jointActionRequests": [], "humanActions": [], "helpRequests": [], "actionRequests": [], "humanHelp": [], "plans": [["action", ["H"], ["wipe", [["H"], null, [["table", []]], null]]]]}
+
+
+{"SOA": [], "jointActionRequests": [], "humanActions": [], "helpRequests": [], "actionRequests": [], "humanHelp": [], "plans": []}
+
+I will grasp the cup and you will grasp another cup.
+{"SOA": [], "jointActionRequests": [], "humanActions": [], "helpRequests": [], "actionRequests": [], "humanHelp": [], "plans": [["action", ["H"], ["grasp", [["H"], null, null, [["cup", []]]]]], ["action", ["H"], ["grasp", [["R"], null, null, [["cup", []]]]]]]}
+
+I'm planning to wipe the table. Can you help me?
+{"SOA": [], "jointActionRequests": [], "humanActions": [], "helpRequests": [["NA", ["R"], null, null]], "actionRequests": [], "humanHelp": [], "plans": [["action", ["H"], ["wipe", [["H"], null, [["table", []]], null]]]]}
+
+I want you to grasp the cup on the table.
+{"SOA": [["on", null, [["table", []]]]], "jointActionRequests": [], "humanActions": [], "helpRequests": [], "actionRequests": [["grasp", [["R"], null, null, [["cup", []]]]]], "humanHelp": [], "plans": []}
+
+I want the table to be wiped.
+{"SOA": [["wipe", [null, null, [["table", []]], null]]], "jointActionRequests": [], "humanActions": [], "helpRequests": [], "actionRequests": [], "humanHelp": [], "plans": []}
+
+My plan is that you grasp the cup and I wipe the table.
+{"SOA": [], "jointActionRequests": [], "humanActions": [["wipe", [["H"], null, [["table", []]], null]]], "helpRequests": [], "actionRequests": [], "humanHelp": [], "plans": [["action", ["H"], ["grasp", [["R"], null, null, [["cup", []]]]]]]}
+
+My plan is to wipe the table.
+{"SOA": [], "jointActionRequests": [], "humanActions": [], "helpRequests": [], "actionRequests": [], "humanHelp": [], "plans": [["action", ["H"], ["wipe", [null, null, [["table", []]], null]]]]}
+
+I plan to help you to wipe the table.
+{"SOA": [], "jointActionRequests": [], "humanActions": [], "helpRequests": [], "actionRequests": [], "humanHelp": [], "plans": [["help", ["H"], ["action", ["H"], ["wipe", [["R"], null, [["table", []]], null]], ["R"]]]]}
+
+I want you to help me to wipe the table.
+{"SOA": [], "jointActionRequests": [], "humanActions": [], "helpRequests": [["action", ["R"], ["wipe", [["H"], null, [["table", []]], null]], ["H"]]], "actionRequests": [], "humanHelp": [], "plans": []}
+
+
+{"SOA": [], "jointActionRequests": [], "humanActions": [], "helpRequests": [], "actionRequests": [], "humanHelp": [], "plans": []}
+
+Let us wipe the table together.
+{"SOA": [], "jointActionRequests": [["wipe", [["HR"], null, [["table", []]], null]]], "humanActions": [], "helpRequests": [], "actionRequests": [], "humanHelp": [], "plans": []}
+
+We will wipe the table.
+{"SOA": [], "jointActionRequests": [["wipe", [["HR"], null, [["table", []]], null]]], "humanActions": [], "helpRequests": [], "actionRequests": [], "humanHelp": [], "plans": []}
+
+
+{"SOA": [], "jointActionRequests": [], "humanActions": [], "helpRequests": [], "actionRequests": [], "humanHelp": [], "plans": []}
+
+The cup is on the table.
+{"SOA": [["on", [["cup", []]], [["table", []]]]], "jointActionRequests": [], "humanActions": [], "helpRequests": [], "actionRequests": [], "humanHelp": [], "plans": []}
+
+The table is clean.
+{"SOA": [["clean", [["table", []]]]], "jointActionRequests": [], "humanActions": [], "helpRequests": [], "actionRequests": [], "humanHelp": [], "plans": []}
+
+I'm wiping the table.
+{"SOA": [], "jointActionRequests": [], "humanActions": [["wipe", [["H"], null, [["table", []]], null]]], "helpRequests": [], "actionRequests": [], "humanHelp": [], "plans": []}
+
+The cup is in your hand.
+{"SOA": [["inHand", [["cup", []]], null]], "jointActionRequests": [], "humanActions": [], "helpRequests": [], "actionRequests": [], "humanHelp": [], "plans": []}
+
