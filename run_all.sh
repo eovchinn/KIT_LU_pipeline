@@ -3,7 +3,7 @@
 # usage:
 # $ ./run_all.sh <input string>
 
-SCRIPTS_DIR=/home/katya/Projects/KITdialog
+SCRIPTS_DIR=/home/katya/Projects/KIT_LU_pipeline
 LEX_KB=$SCRIPTS_DIR/KBs/lexicalKB.txt
 
 if [ $# -eq 0 ]; then
