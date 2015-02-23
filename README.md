@@ -11,6 +11,7 @@ Language understanding pipeline for KIT.
 =======
 
 **Installation:**
+
 a) Export env variables:
 * export KIT_LU_DIR
 * export BOXER_DIR
