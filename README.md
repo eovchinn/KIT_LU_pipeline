@@ -1,7 +1,7 @@
 # KIT_LU_pipeline
 Language understanding pipeline for KIT.
 
-Requirements:
+**Requirements:**
 * Python
 * SWI-Prolog
 * [Boxer](http://svn.ask.it.usyd.edu.au/trac/candc/wiki/boxer) ([subversion](http://svn.ask.it.usyd.edu.au/trac/candc/wiki/Subversion), [SOAP server](http://svn.ask.it.usyd.edu.au/trac/candc/wiki/InstallSOAP))
