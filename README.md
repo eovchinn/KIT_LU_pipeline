@@ -8,10 +8,10 @@ Requirements:
 * [Gurobi](http://www.gurobi.com/)
 * [Henry](https://github.com/naoya-i/henry-n700) or [Phillip](https://github.com/kazeto/phillip) abductive reasoning engine
 
-Installation:
-<<<<<<< HEAD
+=======
 
-* export env variables:
+Installation:
+1. Export env variables:
 - export KIT_LU_DIR
 - export BOXER_DIR
 - export HENRY_DIR
@@ -19,16 +19,15 @@ Installation:
 - export GUROBI_HOME
 - export GRB_LICENSE_FILE
 
-* export paths and libs
+2. Export paths and libs
 - export PATH=$PATH:$HOME/bin:$GUROBI_HOME/bin
 - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GUROBI_HOME/lib
 - export LIBRARY_PATH=$LIBRARY_PATH:$GUROBI_HOME/lib
 - export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$GUROBI_HOME/include
+
 =======
-* Set the correct paths in the run_*.sh files
 
 Running:
 * start server by running `./run_Boxer_server.sh`
 * process test sentences by running `./process_test_sentences.sh`
 * process input text by running `./run_all.sh "INPUT TEXT"`
->>>>>>> 5e309dfc4127389653aee5ebb5aafe832de5dad4
