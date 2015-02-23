@@ -77,7 +77,10 @@ class PKSGenerator(object):
 				for i in range(1,repeats[args[-1]]+1):
 					rargs = []
 					for a in args[:-1]:
-						rargs.append(a+str(i))
+						if (a in objects) and ((a in repeats) or (objects[a][1][-1] in repeats)):
+								rargs.append(objects[a][0].upper()+str(i))
+						else:
+							rargs.append(a)
 					full_states_actions.append((name,rargs))
 			else:
 				full_states_actions.append((name,args[:-1]))
@@ -89,17 +92,11 @@ class PKSGenerator(object):
 					done_vars.append(a)
 					if a in objects:
 						repeat=0
-						if a in repeats:
-							repeat = repeats[a]
-						elif objects[a][1][-1] in repeats:
-							repeat = repeats[objects[a][1][-1]]
-
-						if repeat==0:
-							rel_objs.append((objects[a][0],a))
+						if (a in repeats) or (objects[a][1][-1] in repeats):
+							continue
 						else:
-							for i in range(1,repeat+1):
-								rel_objs.append((objects[a][0],a+str(i)))	
-
+							rel_objs.append((objects[a][0],a))
+						
 		return (full_states_actions,rel_objs)
 
 	def generate_commands(self,objects,states_actions):	
