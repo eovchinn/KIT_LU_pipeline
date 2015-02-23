@@ -10,7 +10,7 @@ Language understanding pipeline for KIT.
 
 =======
 
-Installation:
+**Installation:**
 a) Export env variables:
 * export KIT_LU_DIR
 * export BOXER_DIR
@@ -27,7 +27,7 @@ b) Export paths and libs:
 
 =======
 
-Running:
+**Running:**
 * start server by running `./run_Boxer_server.sh`
 * process test sentences by running `./process_test_sentences.sh`
 * process input text by running `./run_all.sh "INPUT TEXT"`
