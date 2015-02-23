@@ -152,6 +152,7 @@ class BoxerReader(object):
 		# Pattern for parsing: id(sentence_id,..) 
 		text_id_pattern = re.compile('id\((.+),.+\)')
 
+		text_id = ''
 		for line in ifile:
 			# Ignore commented strings		
 			if line.startswith('%'): continue

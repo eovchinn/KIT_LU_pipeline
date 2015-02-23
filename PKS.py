@@ -25,34 +25,32 @@ class PKSGenerator(object):
 
 		if len(output_str)>1: output_str = "(existsK" + output_str[:-2] + ") "
 
-		output_str += "K("
-
 		for (name,args) in states_actions:
-			output_str += name+"("
+			if name.startswith("n#"): 
+				name = name[2:]
+				output_str +=  "!"
+			output_str += "K("+name+"("
 			for arg in args:
 				if arg=="H": output_str += "human, "
+				elif arg in quantifiers: output_str += quantifiers[arg]+", "
 				elif arg.isupper(): output_str += arg.lower()+", "
 				elif arg.startswith('_'): output_str += "?xx"+arg[1:]+", "
 				else: output_str += "?"+arg+", "
 
 			if len(args)>0: output_str = output_str[:-2]
-			output_str+=") & "
+			output_str+=")) & "
 
-		output_str = output_str[:-2] + "))" 
+		output_str = output_str[:-3] + ")" 
 
 		# add quantification if available
 		if len(quantifiers)>0:
 			qstr = ""
-			qind = 1
-			for (name,args) in quantifiers:
-				qstr+="("+name+"("
-				for a in args:
-					qstr+="?q"+str(qind)+" : "+a.lower()+", "
-				qstr = qstr[:-2]+")"
+			qstr+="(forallK("
+			for a in quantifiers:
+				qstr+=quantifiers[a]+" : "+a.lower()+", "
+			qstr = qstr[:-2]+")"
 			
-			output_str = qstr + output_str
-			for i in range(0,len(quantifiers)):
-				output_str+=")"
+			output_str = qstr + output_str + ")"
 
 		return output_str
 
@@ -102,7 +100,41 @@ class PKSGenerator(object):
 							for i in range(1,repeat+1):
 								rel_objs.append((objects[a][0],a+str(i)))	
 
-		return (full_states_actions,rel_objs)	
+		return (full_states_actions,rel_objs)
+
+	def generate_commands(self,objects,states_actions):	
+		commands = ''
+
+		for (name,args) in states_actions:
+			command = name
+			argind = 0
+			for a in args:
+				argind+=1
+				if a=="H": command+=",human"
+				elif a=="R": command+=",robot"
+				elif a.isupper(): command+=","+a.lower()
+				else:
+					# find corresponding objects
+					if a in objects:
+						command+=","+objects[a][0]
+					# there is no related object
+					else:
+						if name=="grasp":
+							if argind==1: command+=",robot"
+							elif argind==2: command+=",hand"
+							elif argind==3: command+=",location"
+							elif argind==4: command+=",object"
+						elif name=="putdown":
+							if argind==1: command+=",robot"
+							elif argind==2: command+=",hand"
+							elif argind==3: command+=",location"
+							elif argind==4: command+=",object"
+						elif name=="move":
+							if argind==1: command+=",robot"
+							elif argind==2: command+=",location"
+							elif argind==3: command+=",location"
+			commands+=command+';'
+		return commands[:-1]
 
 	def generatePKS(self, Hypo):
 		data = {}
@@ -117,7 +149,8 @@ class PKSGenerator(object):
 		world_objects=[]
 		command_objects=[]
 
-		quantifiers=[]
+		quantifiers={}
+		qcount = 0
 
 		for h in Hypo:
 			goals = []
@@ -135,13 +168,14 @@ class PKSGenerator(object):
 					repeats[args[0]] = int(args[1])
 				elif name.startswith('o#'):
 					objects[args[0]] = (name[2:],args)
-				elif name.startswith('w#'):
+				elif name.startswith('s#'):
 					world.append((name[2:],args))
 				elif name.startswith('c#'):
 					commands.append((name[2:],args))
 				elif name.startswith('q#'):
-					quantifiers.append((name[2:],args))
-
+					qcount += 1
+					quantifiers[args[0]] = "?q"+str(qcount)
+					#quantifiers.append((name[2:],(args[0],"?q"+str(qcount)))
 
 			(fgls,gobjs) = self.multuply_link_preds_objs(objects,goals,repeats)
 			full_goals+=list(fgls)
@@ -151,11 +185,9 @@ class PKSGenerator(object):
 			full_world+=list(fwls)
 			world_objects+=list(wobjs)
 
-			(fcds,cobjs) = self.multuply_link_preds_objs(objects,commands,repeats)
-			full_commands+=list(fcds)
-			command_objects+=list(cobjs)
+			commands = self.generate_commands(objects,commands)
 
 		data["goal"] = self.printPKS(goal_objects,full_goals,quantifiers)
 		data["SOW"] = self.printPKS(world_objects,full_world,[])
-		data["actions"] = self.printPKS(command_objects,full_commands,[])
+		data["actions"] = commands
 		return data

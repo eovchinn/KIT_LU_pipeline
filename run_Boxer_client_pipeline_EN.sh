@@ -7,7 +7,6 @@
 # or
 # $ ./run_client_pipeline_EN.sh
 
-BOXER_DIR=/home/katya/Software/candc
 TOKENIZER_BIN=$BOXER_DIR/bin/tokkie
 CANDC_CLIENT_BIN=$BOXER_DIR/bin/soap_client
 BOXER_BIN=$BOXER_DIR/bin/boxer

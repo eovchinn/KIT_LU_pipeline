@@ -5,7 +5,7 @@
 # or
 # $ ./run_graphics.sh
 
-PROOFGRAPH=/home/katya/Software/henry-n700/tools/proofgraph.py
+PROOFGRAPH=$HENRY_DIR/tools/proofgraph.py
 
 if [ -z "$1" ]; then
 	GRAPH_OPT="--graph 1"	

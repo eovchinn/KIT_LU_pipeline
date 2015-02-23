@@ -5,10 +5,8 @@
 # or
 # $ ./run_Henry.sh
 
-HENRY_BIN=/home/katya/Software/henry-n700/bin/henry
-BOXER2HENRY=/home/katya/Projects/ADP-pipeline/pipelines/English/Boxer2Henry.py
-
-HENRY_MODEL=/home/katya/Software/henry-n700/models/h93.py
+HENRY_BIN=$HENRY_DIR/bin/henry
+HENRY_MODEL=$HENRY_DIR/models/h93.py
 HENRY_OPT="-m infer -e $HENRY_MODEL -d 3 -t 4 -O proofgraph,statistics -T 60"
 #HENRY_OPT="-m infer -e $HENRY_MODEL -d 3 -t 4 -T 60"
 

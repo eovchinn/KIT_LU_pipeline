@@ -1,7 +1,6 @@
 Set the table!
 Set the table for three people!
 Help me to move the table!
-Stop!
 Wipe the table!
 Put the table runner on the table!
 Help me to arrange the chairs!
@@ -12,3 +11,18 @@ Put three cups on the table!
 Put the salad on the table!
 Bring me the juice from the fridge!
 Give me two eggs from the fridge!
+The fridge is open.
+The dishwasher is closed.
+Open the fridge.
+Close the dishwasher.
+Please clean the table.
+The table is clean.
+The table is dirty.
+Stop!
+Grasp the cup!
+Grasp the cup with the left hand!
+Move to the table!
+Move from the fridge to the table!
+Put the cup on the table!
+Put the cup down!
+Put the cup down and move to the table!
