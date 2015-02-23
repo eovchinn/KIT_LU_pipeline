@@ -5,7 +5,7 @@ Language understanding pipeline for KIT.
 * Python
 * SWI-Prolog
 * [Boxer](http://svn.ask.it.usyd.edu.au/trac/candc/wiki/boxer) ([subversion](http://svn.ask.it.usyd.edu.au/trac/candc/wiki/Subversion), [SOAP server](http://svn.ask.it.usyd.edu.au/trac/candc/wiki/InstallSOAP))
-* [Gurobi](http://www.gurobi.com/)
+* [Gurobi Optimizer](http://www.gurobi.com/) (with Free Academic License)
 * [Henry](https://github.com/naoya-i/henry-n700) or [Phillip](https://github.com/kazeto/phillip) abductive reasoning engine
 
 =======
