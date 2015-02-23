@@ -14,10 +14,10 @@ Put the table runner on the table!
 {"actions": "", "goal": "(existsK(?x2 : table_runner, ?x3 : table) K(on(?x2, ?x3)))", "SOW": ""}
 
 Help me to arrange the chairs!
-{"actions": "", "goal": "(existsK(?x3 : chair) K(at(?x3, table_seating_place1)))", "SOW": ""}
+{"actions": "", "goal": "(forallK(?q1 : table_seating_place)(existsK(?x3 : chair) K(at(?x3, ?q1))))", "SOW": ""}
 
 Help me to arrange three chairs!
-{"actions": "", "goal": "(K(at(chair1, table_seating_place)) & K(at(chair2, table_seating_place)) & K(at(chair3, table_seating_place)))", "SOW": ""}
+{"actions": "", "goal": "(K(at(chair1, table_seating_place1)) & K(at(chair2, table_seating_place2)) & K(at(chair3, table_seating_place3)))", "SOW": ""}
 
 Put the cups on the table!
 {"actions": "", "goal": "(existsK(?x2 : cup, ?x3 : table) K(on(?x2, ?x3)))", "SOW": ""}
@@ -35,7 +35,7 @@ Bring me the juice from the fridge!
 {"actions": "", "goal": "(existsK(?e1 : juice, ?xx0 : hand) K(inHand(?e1, ?xx0)) & K(handOf(?xx0, human)))", "SOW": "(existsK(?e1 : juice, ?x3 : fridge) K(in(?e1, ?x3)))"}
 
 Give me two eggs from the fridge!
-{"actions": "", "goal": "(existsK(?xx6 : hand) K(inHand(egg1, ?xx6)) & K(inHand(egg2, ?xx6)) & K(handOf(?xx6, human)))", "SOW": "(existsK(?x4 : fridge) K(in(?x2, ?x4)))"}
+{"actions": "", "goal": "(existsK(?xx4 : hand) K(inHand(egg1, ?xx4)) & K(inHand(egg2, ?xx4)) & K(handOf(?xx4, human)))", "SOW": "(existsK(?x4 : fridge) K(in(?x2, ?x4)))"}
 
 The fridge is open.
 {"actions": "", "goal": "", "SOW": "(K(open(fridge_door)))"}
@@ -56,7 +56,7 @@ The table is clean.
 {"actions": "", "goal": "", "SOW": "(existsK(?x1 : table) K(clean(?x1)))"}
 
 The table is dirty.
-{"actions": "", "goal": "", "SOW": "(existsK(?x1 : table) !K(clean(?x1)))"}
+{"actions": "", "goal": "", "SOW": "(existsK(?x2 : table) !K(clean(?x2)))"}
 
 Stop!
 {"actions": "stop", "goal": "", "SOW": ""}
