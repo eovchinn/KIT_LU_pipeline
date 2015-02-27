@@ -13,7 +13,7 @@ class PKSGenerator(object):
 
 		self.data = self.generatePKS(Hypo)
 
-	def printPKS(self,objects,states_actions,quantifiers):
+	def printPKS(self,objects,states_actions,quantifiers,inequalities):
 		
 		if len(states_actions)==0: return ""
 
@@ -40,6 +40,18 @@ class PKSGenerator(object):
 			if len(args)>0: output_str = output_str[:-2]
 			output_str+=")) & "
 
+		# Generate inequalities
+		ineqstr = ""
+		for ineq in inequalities:
+			for i in range(0,len(ineq)):
+				if ineq[i].startswith('_'): a1 = "xx"+ineq[i][1:]
+				else: a1 = ineq[i]
+				for j in range(i+1,len(ineq)):
+					if ineq[j].startswith('_'): a2 = "xx"+ineq[j][1:]
+					else: a2 = ineq[j]
+					ineqstr += "K(?"+a1+" != ?"+a2+") & "
+		output_str += ineqstr
+
 		output_str = output_str[:-3] + ")" 
 
 		# add quantification if available
@@ -58,6 +70,7 @@ class PKSGenerator(object):
 		done_vars = []
 		full_states_actions=[]
 		rel_objs=[]
+		inequalities = []
 
 		# treat lists: multiply predicates having lists as args
 		for i in xrange(len(states_actions) - 1, -1, -1):
@@ -78,7 +91,7 @@ class PKSGenerator(object):
 					rargs = []
 					for a in args[:-1]:
 						if (a in objects) and ((a in repeats) or (objects[a][1][-1] in repeats)):
-								rargs.append(objects[a][0].upper()+str(i))
+								rargs.append(a+str(i))
 						else:
 							rargs.append(a)
 					full_states_actions.append((name,rargs))
@@ -93,11 +106,17 @@ class PKSGenerator(object):
 					if a in objects:
 						repeat=0
 						if (a in repeats) or (objects[a][1][-1] in repeats):
-							continue
+							if a in repeats: repeat = repeats[a]
+							else: repeat = repeats[objects[a][1][-1]]
+							ineqset = []
+							for i in range(1,repeat+1):
+								rel_objs.append((objects[a][0],a+str(i)))
+								ineqset.append(a+str(i))
+							inequalities.append(ineqset)
 						else:
 							rel_objs.append((objects[a][0],a))
 						
-		return (full_states_actions,rel_objs)
+		return (full_states_actions,rel_objs,inequalities)
 
 	def generate_commands(self,objects,states_actions):	
 		commands = ''
@@ -172,19 +191,18 @@ class PKSGenerator(object):
 				elif name.startswith('q#'):
 					qcount += 1
 					quantifiers[args[0]] = "?q"+str(qcount)
-					#quantifiers.append((name[2:],(args[0],"?q"+str(qcount)))
 
-			(fgls,gobjs) = self.multuply_link_preds_objs(objects,goals,repeats)
+			(fgls,gobjs,gineq) = self.multuply_link_preds_objs(objects,goals,repeats)
 			full_goals+=list(fgls)
 			goal_objects+=list(gobjs)
 
-			(fwls,wobjs) = self.multuply_link_preds_objs(objects,world,repeats)
+			(fwls,wobjs,wineq) = self.multuply_link_preds_objs(objects,world,repeats)
 			full_world+=list(fwls)
 			world_objects+=list(wobjs)
 
 			commands = self.generate_commands(objects,commands)
 
-		data["goal"] = self.printPKS(goal_objects,full_goals,quantifiers)
-		data["SOW"] = self.printPKS(world_objects,full_world,[])
+		data["goal"] = self.printPKS(goal_objects,full_goals,quantifiers,gineq)
+		data["SOW"] = self.printPKS(world_objects,full_world,[],wineq)
 		data["actions"] = commands
 		return data
