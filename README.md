@@ -26,6 +26,8 @@ b) Export paths and libs:
 * export LIBRARY_PATH=$LIBRARY_PATH:$GUROBI_HOME/lib
 * export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$GUROBI_HOME/include
 
+c) For KIT servers, copy Makefile into BOXER_DIR and run `make`
+
 =======
 
 **Running:**
