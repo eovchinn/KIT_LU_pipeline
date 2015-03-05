@@ -1,84 +1,90 @@
 Set the table!
-{"actions": "", "goal": "(forallK(?q1 : placesetting)(existsK(?xx0 : fork, ?xx1 : knife, ?xx2 : plate) K(at(?xx0, ?q1)) & K(at(?xx1, ?q1)) & K(at(?xx2, ?q1))))", "SOW": ""}
+[] {"actions": "", "goal": "(forallK(?q1 : placesetting)(existsK(?xx0 : fork, ?xx1 : knife, ?xx2 : plate) K(at(?xx0, ?q1)) & K(at(?xx1, ?q1)) & K(at(?xx2, ?q1))))", "SOW": ""}
 
 Set the table for three people!
-{"actions": "", "goal": "(existsK(?xx01 : fork, ?xx02 : fork, ?xx03 : fork, ?xx11 : placesetting, ?xx12 : placesetting, ?xx13 : placesetting, ?xx21 : knife, ?xx22 : knife, ?xx23 : knife, ?xx31 : plate, ?xx32 : plate, ?xx33 : plate) K(at(?xx01, ?xx11)) & K(at(?xx02, ?xx12)) & K(at(?xx03, ?xx13)) & K(at(?xx21, ?xx11)) & K(at(?xx22, ?xx12)) & K(at(?xx23, ?xx13)) & K(at(?xx31, ?xx11)) & K(at(?xx32, ?xx12)) & K(at(?xx33, ?xx13)) & K(?xx01 != ?xx02) & K(?xx01 != ?xx03) & K(?xx02 != ?xx03) & K(?xx11 != ?xx12) & K(?xx11 != ?xx13) & K(?xx12 != ?xx13) & K(?xx21 != ?xx22) & K(?xx21 != ?xx23) & K(?xx22 != ?xx23) & K(?xx31 != ?xx32) & K(?xx31 != ?xx33) & K(?xx32 != ?xx33))", "SOW": ""}
+[] {"actions": "", "goal": "(existsK(?xx01 : fork, ?xx02 : fork, ?xx03 : fork, ?xx11 : placesetting, ?xx12 : placesetting, ?xx13 : placesetting, ?xx21 : knife, ?xx22 : knife, ?xx23 : knife, ?xx31 : plate, ?xx32 : plate, ?xx33 : plate) K(at(?xx01, ?xx11)) & K(at(?xx02, ?xx12)) & K(at(?xx03, ?xx13)) & K(at(?xx21, ?xx11)) & K(at(?xx22, ?xx12)) & K(at(?xx23, ?xx13)) & K(at(?xx31, ?xx11)) & K(at(?xx32, ?xx12)) & K(at(?xx33, ?xx13)) & K(?xx01 != ?xx02) & K(?xx01 != ?xx03) & K(?xx02 != ?xx03) & K(?xx11 != ?xx12) & K(?xx11 != ?xx13) & K(?xx12 != ?xx13) & K(?xx21 != ?xx22) & K(?xx21 != ?xx23) & K(?xx22 != ?xx23) & K(?xx31 != ?xx32) & K(?xx31 != ?xx33) & K(?xx32 != ?xx33))", "SOW": ""}
 
 Help me to move the table!
-{"actions": "", "goal": "(existsK(?x3 : table) K(at(?x3, table_dining_location)))", "SOW": ""}
+[] {"actions": "", "goal": "(existsK(?x3 : table) K(at(?x3, table_dining_location)))", "SOW": ""}
 
 Wipe the table!
-{"actions": "", "goal": "(existsK(?x2 : table) K(clean(?x2)))", "SOW": ""}
+[] {"actions": "", "goal": "(existsK(?x2 : table) K(clean(?x2)))", "SOW": ""}
 
 Put the table runner on the table!
-{"actions": "", "goal": "(existsK(?x2 : table_runner, ?x3 : table) K(on(?x2, ?x3)))", "SOW": ""}
+[] {"actions": "", "goal": "(existsK(?x2 : table_runner, ?x3 : table) K(on(?x2, ?x3)))", "SOW": ""}
 
 Help me to arrange the chairs!
-{"actions": "", "goal": "(forallK(?q1 : table_seating_place)(existsK(?x3 : chair) K(at(?x3, ?q1))))", "SOW": ""}
+[] {"actions": "", "goal": "(forallK(?q1 : table_seating_place)(existsK(?x3 : chair) K(at(?x3, ?q1))))", "SOW": ""}
 
 Help me to arrange three chairs!
-{"actions": "", "goal": "(existsK(?x31 : chair, ?x32 : chair, ?x33 : chair, ?xx01 : table_seating_place, ?xx02 : table_seating_place, ?xx03 : table_seating_place) K(at(?x31, ?xx01)) & K(at(?x32, ?xx02)) & K(at(?x33, ?xx03)) & K(?x31 != ?x32) & K(?x31 != ?x33) & K(?x32 != ?x33) & K(?xx01 != ?xx02) & K(?xx01 != ?xx03) & K(?xx02 != ?xx03))", "SOW": ""}
+[] {"actions": "", "goal": "(existsK(?x3 : chair, ?xx01 : table_seating_place, ?xx02 : table_seating_place, ?xx03 : table_seating_place) K(at(?x3, ?xx01)) & K(at(?x3, ?xx02)) & K(at(?x3, ?xx03)) & K(?xx01 != ?xx02) & K(?xx01 != ?xx03) & K(?xx02 != ?xx03))", "SOW": ""}
 
 Put the cups on the table!
-{"actions": "", "goal": "(existsK(?x2 : cup, ?x3 : table) K(on(?x2, ?x3)))", "SOW": ""}
+[] {"actions": "", "goal": "(existsK(?x2 : cup, ?x3 : table) K(on(?x2, ?x3)))", "SOW": ""}
 
 Put the cups and plates on the table!
-{"actions": "", "goal": "(existsK(?x3 : cup, ?x5 : table, ?x4 : plate) K(on(?x3, ?x5)) & K(on(?x4, ?x5)))", "SOW": ""}
+[] {"actions": "", "goal": "(existsK(?x3 : cup, ?x5 : table, ?x4 : plate) K(on(?x3, ?x5)) & K(on(?x4, ?x5)))", "SOW": ""}
 
 Put three cups on the table!
-{"actions": "", "goal": "(existsK(?x11 : cup, ?x12 : cup, ?x13 : cup, ?x2 : table) K(on(?x11, ?x2)) & K(on(?x12, ?x2)) & K(on(?x13, ?x2)) & K(?x11 != ?x12) & K(?x11 != ?x13) & K(?x12 != ?x13))", "SOW": ""}
+[] {"actions": "", "goal": "(existsK(?x11 : cup, ?x12 : cup, ?x13 : cup, ?x2 : table) K(on(?x11, ?x2)) & K(on(?x12, ?x2)) & K(on(?x13, ?x2)) & K(?x11 != ?x12) & K(?x11 != ?x13) & K(?x12 != ?x13))", "SOW": ""}
 
 Put the salad on the table!
-{"actions": "", "goal": "(existsK(?x2 : salad, ?x3 : table) K(on(?x2, ?x3)))", "SOW": ""}
+[] {"actions": "", "goal": "(existsK(?x2 : salad, ?x3 : table) K(on(?x2, ?x3)))", "SOW": ""}
 
 Bring me the juice from the fridge!
-{"actions": "", "goal": "(existsK(?e1 : juice, ?xx0 : hand) K(inHand(?e1, ?xx0)) & K(handOf(?xx0, human)))", "SOW": "(existsK(?e1 : juice, ?x3 : fridge) K(in(?e1, ?x3)))"}
+[] {"actions": "", "goal": "(existsK(?x2 : juice, ?xx0 : hand) K(inHand(?x2, ?xx0)) & K(handOf(?xx0, human)))", "SOW": "loc,in,juice,fridge"}
 
 Give me two eggs from the fridge!
-{"actions": "", "goal": "(existsK(?x21 : egg, ?x22 : egg, ?xx4 : hand) K(inHand(?x21, ?xx4)) & K(inHand(?x22, ?xx4)) & K(handOf(?xx4, human)) & K(?x21 != ?x22))", "SOW": "(existsK(?x21 : egg, ?x22 : egg, ?x4 : fridge) K(in(?x2, ?x4)) & K(?x21 != ?x22))"}
-
-The fridge is open.
-{"actions": "", "goal": "", "SOW": "(K(open(fridge_door)))"}
-
-The dishwasher is closed.
-{"actions": "", "goal": "(K(closed(diswasher_door)))", "SOW": ""}
+[] {"actions": "", "goal": "(existsK(?x21 : egg, ?x22 : egg, ?xx4 : hand) K(inHand(?x21, ?xx4)) & K(inHand(?x22, ?xx4)) & K(handOf(?xx4, human)) & K(?x21 != ?x22))", "SOW": "loc,in,egg,fridge"}
 
 Open the fridge.
-{"actions": "", "goal": "(K(open(fridge_door)))", "SOW": ""}
+[] {"actions": "", "goal": "(K(open(fridge_door)))", "SOW": ""}
 
 Close the dishwasher.
-{"actions": "", "goal": "(K(closed(diswasher_door)))", "SOW": ""}
+[] {"actions": "", "goal": "(!K(open(diswasher_door)))", "SOW": ""}
 
 Please clean the table.
-{"actions": "", "goal": "(existsK(?x2 : table) K(clean(?x2)))", "SOW": ""}
+[] {"actions": "", "goal": "(existsK(?x2 : table) K(clean(?x2)))", "SOW": ""}
+
+The fridge is open.
+[] {"actions": "", "goal": "", "SOW": "state,open,fridge_door"}
+
+The dishwasher is closed.
+[] {"actions": "", "goal": "(!K(open(diswasher_door)))", "SOW": ""}
 
 The table is clean.
-{"actions": "", "goal": "", "SOW": "(existsK(?x1 : table) K(clean(?x1)))"}
+[] {"actions": "", "goal": "", "SOW": "state,clean,table"}
 
 The table is dirty.
-{"actions": "", "goal": "", "SOW": "(existsK(?x2 : table) !K(clean(?x2)))"}
+[] {"actions": "", "goal": "", "SOW": "state,!clean,table"}
+
+The cup is on the table.
+[] {"actions": "", "goal": "", "SOW": "loc,on,cup,table"}
+
+The cup is not on the table.
+['e5'] {"actions": "", "goal": "", "SOW": "loc,!on,cup,table"}
 
 Stop!
-{"actions": "stop", "goal": "", "SOW": ""}
+[] {"actions": "stop", "goal": "", "SOW": ""}
 
 Grasp the cup!
-{"actions": "grasp,robot,hand,location,cup", "goal": "", "SOW": ""}
+[] {"actions": "grasp,robot,hand,location,cup", "goal": "", "SOW": ""}
 
 Grasp the cup with the left hand!
-{"actions": "grasp,robot,left,location,cup", "goal": "", "SOW": ""}
+[] {"actions": "grasp,robot,left,location,cup", "goal": "", "SOW": ""}
 
 Move to the table!
-{"actions": "move,robot,location,table", "goal": "", "SOW": ""}
+[] {"actions": "move,robot,location,table", "goal": "", "SOW": ""}
 
 Move from the fridge to the table!
-{"actions": "move,robot,fridge,table", "goal": "", "SOW": ""}
+[] {"actions": "move,robot,fridge,table", "goal": "", "SOW": ""}
 
 Put the cup on the table!
-{"actions": "", "goal": "(existsK(?x2 : cup, ?x3 : table) K(on(?x2, ?x3)))", "SOW": ""}
+[] {"actions": "", "goal": "(existsK(?x2 : cup, ?x3 : table) K(on(?x2, ?x3)))", "SOW": ""}
 
 Put the cup down!
-{"actions": "putdown,robot,hand,location,cup", "goal": "", "SOW": ""}
+[] {"actions": "putdown,robot,hand,location,cup", "goal": "", "SOW": ""}
 
 Put the cup down and move to the table!
-{"actions": "putdown,robot,hand,location,cup;move,robot,location,table", "goal": "", "SOW": ""}
+[] {"actions": "putdown,robot,hand,location,cup;move,robot,location,table", "goal": "", "SOW": ""}
 

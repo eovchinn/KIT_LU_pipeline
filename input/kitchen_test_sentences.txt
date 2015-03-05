@@ -11,13 +11,15 @@ Put three cups on the table!
 Put the salad on the table!
 Bring me the juice from the fridge!
 Give me two eggs from the fridge!
-The fridge is open.
-The dishwasher is closed.
 Open the fridge.
 Close the dishwasher.
 Please clean the table.
+The fridge is open.
+The dishwasher is closed.
 The table is clean.
 The table is dirty.
+The cup is on the table.
+The cup is not on the table.
 Stop!
 Grasp the cup!
 Grasp the cup with the left hand!
