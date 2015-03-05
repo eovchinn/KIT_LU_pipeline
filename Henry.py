@@ -23,8 +23,8 @@ class HenryWriter(object):
 					Ostr+=" %s" % a
 				Ostr+=" :1)"
 
-				# add propositions for the inequality constraints for verbs, preps and props without postfix
-				if not ((prop[0].endswith('-n'))|(prop[0].endswith('-a')|(prop[0].endswith('-r')))):
+				# add propositions for the inequality constraints for verbs, adverbs, preps and props without postfix
+				if not (prop[0].endswith('-n')|prop[0].endswith('-a')):
 					if (not prop[0] in name2ind): name2ind[prop[0]] = []
 					name2ind[prop[0]].append(prop[1][0])
 

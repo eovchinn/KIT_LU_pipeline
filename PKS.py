@@ -66,13 +66,7 @@ class PKSGenerator(object):
 
 		return output_str
 
-	def multuply_link_preds_objs(self,objects,states_actions,repeats):
-		done_vars = []
-		full_states_actions=[]
-		rel_objs=[]
-		inequalities = []
-
-		# treat lists: multiply predicates having lists as args
+	def multiply_preds_with_lists(self,objects,states_actions):
 		for i in xrange(len(states_actions) - 1, -1, -1):
 			(name, args) = states_actions[i]
 			for j in range(0,len(args)):
@@ -83,6 +77,16 @@ class PKSGenerator(object):
 						gargs=list(args)
 						gargs[j]=la
 						states_actions.append((name,gargs))
+		return states_actions
+
+	def multuply_link_preds_objs(self,objects,states_actions,repeats):
+		done_vars = []
+		full_states_actions=[]
+		rel_objs=[]
+		inequalities = []
+
+		# treat lists: multiply predicates having lists as args
+		states_actions = self.multiply_preds_with_lists(objects,states_actions)
 
 		for (name,args) in states_actions:
 			# multiply preds if needed
@@ -117,6 +121,40 @@ class PKSGenerator(object):
 							rel_objs.append((objects[a][0],a))
 						
 		return (full_states_actions,rel_objs,inequalities)
+
+	def generate_SOW(self,objects,locations,states,negations):	
+		locations = self.multiply_preds_with_lists(objects,locations)
+		states = self.multiply_preds_with_lists(objects,states)
+
+		result = ""
+
+		for (name,args) in states:
+			if name.startswith("n#"):
+				name = "!"+name[2:]
+			elif args[0] in negations:
+				name = "!" + name
+
+			result += "state,"+name
+			for a in args[1:-1]:
+				if a.isupper(): result += ","+a.lower()
+				elif a in objects:
+					result += ","+objects[a][0]
+			result += ";"
+
+		for (name,args) in locations:
+			if name.startswith("n#"):
+				name = "!"+name[2:]
+			elif args[0] in negations:
+				name = "!" + name
+
+			result += "loc,"+name
+			for a in args[1:-1]:
+				if a.isupper(): result += ","+a.lower()
+				elif a in objects:
+					result += ","+objects[a][0]
+			result += ";"
+
+		return result[:-1]
 
 	def generate_commands(self,objects,states_actions):	
 		commands = ''
@@ -171,9 +209,12 @@ class PKSGenerator(object):
 		for h in Hypo:
 			goals = []
 			world = []
+			locations = []
+			states = []
 			commands = []
 			repeats = {}
 			objects = {}
+			negations = []
 
 			for (name,args) in Hypo[h]:
 				# goals
@@ -182,27 +223,40 @@ class PKSGenerator(object):
 				# repeats
 				elif name.startswith('r#'):
 					repeats[args[0]] = int(args[1])
+				# nouns
+				elif name.endswith('-n'):
+					objects[args[1]] = (name[:-2],[args[1],""])
+				# objects added via inference
 				elif name.startswith('o#'):
 					objects[args[0]] = (name[2:],args)
+				# locations
+				elif name.startswith('l#'):
+					locations.append((name[2:],args))
+				# states
 				elif name.startswith('s#'):
-					world.append((name[2:],args))
+					states.append((name[2:],args))
+				# commands
 				elif name.startswith('c#'):
 					commands.append((name[2:],args))
+				# quantifiers
 				elif name.startswith('q#'):
 					qcount += 1
 					quantifiers[args[0]] = "?q"+str(qcount)
+				# negations
+				elif name == "not":
+					negations.append(args[1])
+
+			print negations
 
 			(fgls,gobjs,gineq) = self.multuply_link_preds_objs(objects,goals,repeats)
 			full_goals+=list(fgls)
 			goal_objects+=list(gobjs)
 
-			(fwls,wobjs,wineq) = self.multuply_link_preds_objs(objects,world,repeats)
-			full_world+=list(fwls)
-			world_objects+=list(wobjs)
+			sow = self.generate_SOW(objects,locations,states,negations)
 
 			commands = self.generate_commands(objects,commands)
 
 		data["goal"] = self.printPKS(goal_objects,full_goals,quantifiers,gineq)
-		data["SOW"] = self.printPKS(world_objects,full_world,[],wineq)
+		data["SOW"] = sow
 		data["actions"] = commands
 		return data
