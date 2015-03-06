@@ -246,8 +246,6 @@ class PKSGenerator(object):
 				elif name == "not":
 					negations.append(args[1])
 
-			print negations
-
 			(fgls,gobjs,gineq) = self.multuply_link_preds_objs(objects,goals,repeats)
 			full_goals+=list(fgls)
 			goal_objects+=list(gobjs)
