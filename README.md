@@ -15,17 +15,17 @@ Language understanding pipeline for KIT.
 a) Export env variables:
 * export KIT_LU_DIR
 * export BOXER_DIR
+* export BOXER_SOAP_SERVER (for example, `export BOXER_SOAP_SERVER=localhost:9000`)
 * export HENRY_DIR
 * export PHILLIP_DIR
 * export GUROBI_HOME
 * export GRB_LICENSE_FILE
-* export BOXER_SOAP_SERVER (e.g., `export BOXER_SOAP_SERVER=localhost:9000`)
 
 b) Export paths and libs:
-* export PATH=$PATH:$HOME/bin:$GUROBI_HOME/bin
-* export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GUROBI_HOME/lib
-* export LIBRARY_PATH=$LIBRARY_PATH:$GUROBI_HOME/lib
-* export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$GUROBI_HOME/include
+* `export PATH=$PATH:$HOME/bin:$GUROBI_HOME/bin`
+* `export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GUROBI_HOME/lib`
+* `export LIBRARY_PATH=$LIBRARY_PATH:$GUROBI_HOME/lib`
+* `export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$GUROBI_HOME/include`
 
 c) For KIT servers, copy Makefile into BOXER_DIR and run `make`
 
