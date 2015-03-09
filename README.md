@@ -19,6 +19,7 @@ a) Export env variables:
 * export PHILLIP_DIR
 * export GUROBI_HOME
 * export GRB_LICENSE_FILE
+* export BOXER_SOAP_SERVER (e.g., `export BOXER_SOAP_SERVER=localhost:9000`)
 
 b) Export paths and libs:
 * export PATH=$PATH:$HOME/bin:$GUROBI_HOME/bin
