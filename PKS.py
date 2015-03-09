@@ -32,6 +32,7 @@ class PKSGenerator(object):
 			output_str += "K("+name+"("
 			for arg in args:
 				if arg=="H": output_str += "human, "
+				elif arg=="R": output_str += "robot, "
 				elif arg in quantifiers: output_str += quantifiers[arg]+", "
 				elif arg.isupper(): output_str += arg.lower()+", "
 				elif arg.startswith('_'): output_str += "?xx"+arg[1:]+", "
