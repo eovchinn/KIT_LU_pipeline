@@ -7,6 +7,11 @@
 import json
 import re
 
+# English intransitive verb list 
+intrans_verbs = {
+	"move-v": 1
+}
+
 class HenryWriter(object):
 	def __init__(self, texts):
 		self.Hobs= self.createHenryOutput(texts)
@@ -18,15 +23,22 @@ class HenryWriter(object):
 			name2ind = {}
 			Ostr+="(O (name %s)(^" % text.id
 			for prop in text.props:
-				Ostr+=" (%s" % prop[0]
-				for a in prop[1]:
+				p_name = prop[0]
+				args = prop[1]
+
+				# fix intrans verbs: if they sec arg is uninstantiated -> remove it
+				if ((p_name in intrans_verbs) & (len(args)>2)):
+					if args[2].startswith("u"): args = args[:-2]
+
+				Ostr+=" (%s" % p_name
+				for a in args:
 					Ostr+=" %s" % a
 				Ostr+=" :1)"
 
 				# add propositions for the inequality constraints for verbs, adverbs, preps and props without postfix
-				if not (prop[0].endswith('-n')|prop[0].endswith('-a')):
-					if (not prop[0] in name2ind): name2ind[prop[0]] = []
-					name2ind[prop[0]].append(prop[1][0])
+				if not (p_name.endswith('-n')|p_name.endswith('-a')):
+					if (not p_name in name2ind): name2ind[p_name] = []
+					name2ind[p_name].append(args[0])
 
 			# add inequality constraints
 			for n in name2ind.keys():
@@ -89,8 +101,10 @@ class HenryReader(object):
 					p_name = PROPmatchObj.group(1)
 					if PROPmatchObj.group(3): args = PROPmatchObj.group(3).split(',')
 					else: args = []
+
 					if (p_name == '='): equals.append(args)
 					elif (p_name != '!='): props.append((p_name,args))
+
 				else: print 'Strange prop: ' + p
 			else: print 'Strange prop: ' + p
 

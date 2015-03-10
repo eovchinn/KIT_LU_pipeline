@@ -108,7 +108,13 @@ prepositions = {
 	"with": 1,
 	"within": 1,
 	"without": 1,
-	"worth": 1}
+	"worth": 1
+}
+
+# English intransitive verb list 
+intrans_verbs = {
+	"move-v": 1
+}
 
 # Check if a predicate is a preposition
 def check_prep(pred):
