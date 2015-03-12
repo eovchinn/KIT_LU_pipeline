@@ -111,11 +111,6 @@ prepositions = {
 	"worth": 1
 }
 
-# English intransitive verb list 
-intrans_verbs = {
-	"move-v": 1
-}
-
 # Check if a predicate is a preposition
 def check_prep(pred):
 	if pred in prepositions: 
@@ -208,6 +203,9 @@ class BoxerReader(object):
 							text.joint_vars.append(prop_args[1])
 							h_r = True
 						elif ((len(prop_ids)==0) & (prop_name == 'thing')):
+							text.robot_vars.append(prop_args[1])
+							h_r = True
+						elif prop_name == 'armar-n':
 							text.robot_vars.append(prop_args[1])
 							h_r = True
 

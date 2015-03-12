@@ -1,5 +1,8 @@
-Armar, please set the table!
-Set the table for two people!
+Armar, please help me to carry the table to the dining location.
+Armar, please set the table for two people!
+Armar, please move a chair to the table.
+Please arrange one chair.
+Set the table.
 Help me to move the table!
 Wipe the table!
 Put the table runner on the table!

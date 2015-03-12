@@ -19,6 +19,7 @@
 ;(B (name shelf-n)(=>(o#shelf x :0.9)(shelf-n e x)))
 ;(B (name cutboard-n)(=>(o#cutboard x :0.9)(cutboard-n e x)))
 (B (name tablerunner-n)(=>(o#table_runner x :0.9)(^(of-p e1 x x1)(runner-n e2 x)(table-n e3 x1))))
+(B (name dining_location-n)(=>(o#table_dining_location x :0.9)(^(of-p e1 x x1)(location-n e2 x)(dining-n e3 x1))))
 
 ;(B (name juice-n)(=>(o#juice x :0.9)(juice-n e x)))
 ;(B (name salad-n)(=>(o#salad x :0.9)(salad-n e x)))
@@ -103,8 +104,8 @@
 (B (name putdown)(=>(c#putdown agent hand loc obj :0.9)(^(put-v e0 agent obj u)(down-r e1 e0))))
 ;(B (name puton)(=>(c#putdown agent hand loc obj :0.9)(^(put-v e0 agent obj u)(on-p e1 e0 loc))))
 
-;(B (name movefrom)(=>(c#move agent loc1 loc2 :0.45)(^(move-v e0 agent u1 u2)(from-p e1 e0 loc1))))
-;(B (name moveto)(=>(c#move agent loc1 loc2 :0.45)(^(move-v e0 agent u1 u2)(to-p e1 e0 loc2))))
+(B (name moverobot)(=>(c#move agent loc1 loc2 :0.45)(^(move-v e1 R)(to-p e2 e1 loc))))
+
 
 
 ; plan
@@ -173,15 +174,17 @@
 ; move things to locations
 
 (B (name moveto)(=>(g#objectAt obj loc u1 :0.9)(^(move-v e1 agent obj u)(to-p e2 e1 loc))))
-(B (name movetpN)(=>(^(g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0))(^(move-v e1 agent obj u)(to-p e2 e1 loc)(card e3 obj n))))
+(B (name movetoN)(=>(^(g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0))(^(move-v e1 agent obj u)(to-p e2 e1 loc)(card e3 obj n))))
+
+(B (name carryto)(=>(g#objectAt obj loc u1 :0.9)(^(carry-v e1 agent obj u)(to-p e2 e1 loc))))
+(B (name carrytoN)(=>(^(g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0))(^(carry-v e1 agent obj u)(to-p e2 e1 loc)(card e3 obj n))))
 
 ; fix wrong argument binding
 (B (name moveto)(=>(g#objectAt obj t u1 :0.9)(^(move-v e1 agent obj u)(to-p e2 e1 t)(table-n e3 t))))
-(B (name movetpN)(=>(^(g#objectAt obj t e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0))(^(move-v e1 agent obj u)(to-p e2 e1 t)(card e3 obj n)(table-n e4 t))))
+(B (name movetoN)(=>(^(g#objectAt obj t e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0))(^(move-v e1 agent obj u)(to-p e2 e1 t)(card e3 obj n)(table-n e4 t))))
 
-(B (name movetable)(=>(g#objectAt t TABLE_DINING_LOCATION u0 :0.9)(^(move-v e1 agent t u1)(table-n e2 t))))
-
-(B (name moverobot)(=>(g#agentAt R loc u0 :0.8)(^(move-v e1 R)(to-p e2 e1 loc))))
+(B (name movetable)(=>(^(g#objectAt t tdl u0 :0.8)(o#table_dining_location tdl :0.1))(^(move-v e1 agent t u1)(table-n e2 t))))
+(B (name carrytable)(=>(^(g#objectAt t tdl u0 :0.8)(o#table_dining_location tdl :0.1))(^(carry-v e1 agent t u1)(table-n e2 t))))
 
 ; arrange chairs
 (B (name giveN)(=>(^(g#objectAt c ts e0 :0.1)(o#placesetting ts e0 :0.0)(r# e0 n :0.0)(r# c n :0.0))(^(arrange-v e0 agent c u)(chair-n e1 c)(card e2 c n))))
