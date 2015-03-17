@@ -57,9 +57,8 @@
 ; body parts
 
 ;(B (name hand-n)(=>(o#hand x :0.9)(hand-n e x)))
-
-(B (name left-hand)(=>(^(o#hand LEFT u :0.2)(= LEFT x :0.2))(^(hand-n e1 x)(left-a e2 x))))
-(B (name right-hand)(=>(^(o#hand RIGHT u :0.2)(= RIGHT x :0.2))(^(hand-n e1 x)(right-a e2 x))))
+(B (name left-hand)(=>(^(hand-n e1 LEFT :0.2))(^(hand-n e1 x)(left-a e2 x))))
+(B (name right-hand)(=>(^(hand-n e1 RIGHT :0.2)(= RIGHT x :0.2))(^(hand-n e1 x)(right-a e2 x))))
 
 
 ; features
@@ -101,19 +100,19 @@
 
 ; direct commands
 
-(B (name stopv)(=>(c#stop x :0.9)(stop-v e0 x y u)))
-(B (name stopn)(=>(c#stop x :0.9)(stop-n e0 u)))
+(B (name stopv)(=>(a#stop x :0.9)(stop-v e0 x y u)))
+(B (name stopn)(=>(a#stop R :0.9)(stop-n e0 u)))
 
-(B (name graspwith)(=>(c#grasp agent hand loc obj :0.45)(^(grasp-v e0 agent obj u)(with-p e1 e0 hand))))
-(B (name graspfrom)(=>(c#grasp agent hand loc obj :0.45)(^(grasp-v e0 agent obj u)(from-p e1 e0 loc))))
-(B (name grasp)(=>(c#grasp agent hand loc obj :0.9)(grasp-v e0 agent obj u)))
+(B (name graspwith)(=>(a#grasp agent hand loc obj :0.4)(^(grasp-v e0 agent obj u)(with-p e1 e0 hand)(hand-n e2 hand))))
+(B (name graspfrom)(=>(a#grasp agent hand loc obj :0.4)(^(grasp-v e0 agent obj u)(from-p e1 e0 loc))))
+(B (name grasp)(=>(a#grasp agent hand loc obj :0.9)(grasp-v e0 agent obj u)))
 
-(B (name putdown)(=>(c#putdown agent hand loc obj :0.9)(^(put-v e0 agent obj u)(down-r e1 e0))))
-;(B (name puton)(=>(c#putdown agent hand loc obj :0.9)(^(put-v e0 agent obj u)(on-p e1 e0 loc))))
+(B (name puton)(=>(a#putdown agent hand loc obj :0.3)(^(put-v e0 agent obj u)(down-r e1 e0)(on-p e2 e0 loc))))
+(B (name puton)(=>(a#putdown agent hand loc obj :0.3)(^(put-v e0 agent obj u)(down-r e1 e0)(with-p e2 e0 hand)(hand-n e3 hand))))
+(B (name putdown)(=>(a#putdown agent hand loc obj :0.9)(^(put-v e0 agent obj u)(down-r e1 e0))))
 
-(B (name moverobot)(=>(c#move agent loc1 loc2 :0.45)(^(move-v e1 R)(to-p e2 e1 loc))))
-
-
+(B (name moverobot)(=>(a#move agent loc1 loc2 :0.45)(^(move-v e1 agent)(to-p e2 e1 loc2))))
+(B (name moverobot)(=>(a#move agent loc1 loc2 :0.45)(^(move-v e1 agent)(from-p e2 e1 loc1))))
 
 ; plan
 
@@ -173,8 +172,8 @@
 (B (name bringfrom)(=>(^(a#give e1 agent obj req :0.45)(l#in e1 obj loc e0 :0.45))(^(bring-v e0 agent obj req)(from-p e1 e0 loc))))
 (B (name givefrom)(=>(^(a#give e1 agent obj req :0.45)(l#in e1 obj loc e0 :0.45))(^(give-v e0 agent obj req)(from-p e1 e0 loc))))
 
-(B (name giveN)(=>(^(g#inHand obj hand e0 :0.3)(o#hand hand u :0.0)(g#handOf hand req u :0.3)(r# e0 n :0.0)(r# obj n :0.0))(^(a#give e0 agent obj req)(card e1 obj n))))
-(B (name give)(=>(^(g#inHand obj hand e0 :0.3)(o#hand hand u :0.3)(g#handOf hand req u :0.3))(a#give e0 agent obj req)))
+(B (name giveN)(=>(^(g#inHand obj hand e0 :0.3)(hand-n e1 hand :0.0)(g#handOf hand req u :0.3)(r# e0 n :0.0)(r# obj n :0.0))(^(a#give e0 agent obj req)(card e1 obj n))))
+(B (name give)(=>(^(g#inHand obj hand e0 :0.3)(hand-n e1 hand :0.3)(g#handOf hand req u :0.3))(a#give e0 agent obj req)))
 
 ;(B (name givefrom)(=>(l#in e1 obj loc e0 :0.9)(^(a#give e0 agent obj req)(from-p e1 e0 loc))))
 

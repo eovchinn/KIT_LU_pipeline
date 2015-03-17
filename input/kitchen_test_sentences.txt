@@ -35,3 +35,6 @@ Move to the table!
 Put the cup on the table!
 Put the cup down!
 Put the cup down and move to the table!
+I'm grasping the cup from the table with my right hand.
+I'm putting the cup down on the table with my left hand.
+I'm moving from the fridge to the table.

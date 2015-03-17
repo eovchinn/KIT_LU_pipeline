@@ -65,14 +65,16 @@ class HenryReader(object):
 				if e[0].isupper():
 					rv = e
 					break
-				elif (not e.startswith('_')):
+				# 'e' is here to fix the wrong parse, when prep phrases are attached to nouns
+				elif (not e.startswith('_'))&(not e.startswith('e')):
 					rv = e
 					vflag = True
 				elif (not vflag):
 					rv = e 
 			
 			for e in el:
-				if e != rv:
+				# 'e' is here to fix the wrong parse, when prep phrases are attached to nouns
+				if (e != rv)&(not e.startswith('e')):
 					eqS[e]=rv
 
 		return eqS

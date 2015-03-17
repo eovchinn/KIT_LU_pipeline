@@ -228,6 +228,7 @@ class PKSGenerator(object):
 			locations = []
 			states = []
 			commands = []
+			human_actions = []
 			repeats = {}
 			objects = {}
 			negations = []
@@ -252,8 +253,9 @@ class PKSGenerator(object):
 				elif name.startswith('s#'):
 					states.append((name[2:],args))
 				# commands
-				elif name.startswith('c#'):
-					commands.append((name[2:],args))
+				elif name.startswith('a#'):
+					if args[0]=="R":	commands.append((name[2:],args))
+					elif args[0]=="H": human_actions.append((name[2:],args))
 				# quantifiers
 				elif name.startswith('q#'):
 					qcount += 1
@@ -275,8 +277,12 @@ class PKSGenerator(object):
 			sow = self.generate_SOW(objects,locations,states,negations)
 
 			commands = self.generate_commands(objects,commands)
+			human_actions = self.generate_commands(objects,human_actions)
+
 
 		data["goal"] = goal
 		data["SOW"] = sow
-		data["actions"] = commands
+		data["commands"] = commands
+		data["human_actions"] = human_actions
+
 		return data
