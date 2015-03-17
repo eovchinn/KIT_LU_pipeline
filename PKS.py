@@ -13,6 +13,13 @@ class PKSGenerator(object):
 
 		self.data = self.generatePKS(Hypo)
 
+	def printPKS_separate(self,goal_array,quantifiers):
+		all_goals = ""
+		for (fgls,gobjs,gineq) in goal_array:
+			all_goals += self.printPKS(gobjs,fgls,quantifiers,gineq)+";"
+		return all_goals[:-1]
+
+
 	def printPKS(self,objects,states_actions,quantifiers,inequalities):
 		
 		if len(states_actions)==0: return ""
@@ -32,7 +39,7 @@ class PKSGenerator(object):
 			output_str += "K("+name+"("
 			for arg in args:
 				if arg=="H": output_str += "human, "
-				elif arg=="R": output_str += "robot, "
+				elif arg=="R": output_str += "agent, "
 				elif arg in quantifiers: output_str += quantifiers[arg]+", "
 				elif arg.isupper(): output_str += arg.lower()+", "
 				elif arg.startswith('_'): output_str += "?xx"+arg[1:]+", "
@@ -67,6 +74,7 @@ class PKSGenerator(object):
 
 		return output_str
 
+
 	def multiply_preds_with_lists(self,objects,states_actions):
 		for i in xrange(len(states_actions) - 1, -1, -1):
 			(name, args) = states_actions[i]
@@ -79,6 +87,13 @@ class PKSGenerator(object):
 						gargs[j]=la
 						states_actions.append((name,gargs))
 		return states_actions
+
+	def separate_multuply_link_preds_objs(self,objects,states_actions,repeats):
+		result = []
+		for sa in states_actions:
+			result.append(self.multuply_link_preds_objs(objects,[sa],repeats))
+		return result
+
 
 	def multuply_link_preds_objs(self,objects,states_actions,repeats):
 		done_vars = []
@@ -166,7 +181,7 @@ class PKSGenerator(object):
 			for a in args:
 				argind+=1
 				if a=="H": command+=",human"
-				elif a=="R": command+=",robot"
+				elif a=="R": command+=",agent"
 				elif a.isupper(): command+=","+a.lower()
 				else:
 					# find corresponding objects
@@ -175,17 +190,17 @@ class PKSGenerator(object):
 					# there is no related object
 					else:
 						if name=="grasp":
-							if argind==1: command+=",robot"
+							if argind==1: command+=",agent"
 							elif argind==2: command+=",hand"
 							elif argind==3: command+=",location"
 							elif argind==4: command+=",object"
 						elif name=="putdown":
-							if argind==1: command+=",robot"
+							if argind==1: command+=",agent"
 							elif argind==2: command+=",hand"
 							elif argind==3: command+=",location"
 							elif argind==4: command+=",object"
 						elif name=="move":
-							if argind==1: command+=",robot"
+							if argind==1: command+=",agent"
 							elif argind==2: command+=",location"
 							elif argind==3: command+=",location"
 			commands+=command+';'
@@ -247,15 +262,21 @@ class PKSGenerator(object):
 				elif name == "not":
 					negations.append(args[1])
 
-			(fgls,gobjs,gineq) = self.multuply_link_preds_objs(objects,goals,repeats)
-			full_goals+=list(fgls)
-			goal_objects+=list(gobjs)
+			# Correct generation of the goal
+			#(fgls,gobjs,gineq) = self.multuply_link_preds_objs(objects,goals,repeats)
+			#full_goals+=list(fgls)
+			#goal_objects+=list(gobjs)
+			#goal = self.printPKS(goal_objects,full_goals,quantifiers,gineq)
+			goal = self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers)
+
+			# separate goals for fixing long planning
+
 
 			sow = self.generate_SOW(objects,locations,states,negations)
 
 			commands = self.generate_commands(objects,commands)
 
-		data["goal"] = self.printPKS(goal_objects,full_goals,quantifiers,gineq)
+		data["goal"] = goal
 		data["SOW"] = sow
 		data["actions"] = commands
 		return data

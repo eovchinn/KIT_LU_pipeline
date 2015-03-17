@@ -4,6 +4,13 @@
 
 (B (name 2els)(=> (o#list l0 el1 el2 :0.45)(^(subset_of e1 el1 l0)(subset_of e2 el2 l0))))
 
+; people
+
+(B (name people-n)(=>(o#person x :0.9)(people-n e x)))
+(B (name person-n)(=>(o#person x :0.9)(person-n e x)))
+(B (name individual-n)(=>(o#person x :0.9)(individual-n e x)))
+(B (name human-n)(=>(o#person x :0.9)(human-n e x)))
+
 ; objects
 
 ;(B (name cup-n)(=>(o#cup x :0.9)(cup-n e x)))
@@ -147,7 +154,7 @@
 
 ; set the table
 
-(B (name settableforXpeople2)(=>(^(o#fork f e0 :0.0)(g#objectAt f ps e0 :0.0)(o#knife k e0 :0.0)(g#objectAt k ps e0 :0.0)(o#plate p e0 :0.0)(g#objectAt p ps e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent t u)(table-n e1 t)(for-p e2 t per)(people-n e3 per)(card e4 per n))))
+(B (name settableforXpeople2)(=>(^(o#plate p e0 :0.0)(g#objectAt p ps e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#placesetting ps e0 :0.0)(o#fork f e0 :0.0)(g#objectAt f ps e0 :0.0)(o#knife k e0 :0.0)(g#objectAt k ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent t u)(table-n e1 t)(for-p e2 t per)(o#person per)(card e4 per n))))
 
 (B (name settableFORALL)(=>(^(q#forallK PLACESETTING :0.0)(o#fork f e0 :0.0)(g#objectAt f PLACESETTING e0 :0.0)(o#knife k e0 :0.0)(g#objectAt k PLACESETTING e0 :0.0)(o#plate p e0 :0.0)(g#objectAt p PLACESETTING e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c PLACESETTING e0 :0.0))(^(set-v e0 agent t u)(table-n e1 t))))
 
