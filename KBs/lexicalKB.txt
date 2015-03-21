@@ -157,9 +157,9 @@
 
 ; set the table
 
-(B (name settableforXpeople2)(=>(^(o#plate p e0 :0.0)(g#objectAt p ps e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#placesetting ps e0 :0.0)(o#fork f e0 :0.0)(g#objectAt f ps e0 :0.0)(o#knife k e0 :0.0)(g#objectAt k ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 R t u)(table-n e1 t)(for-p e2 t per)(o#person per)(card e4 per n)(!= R H))))
+(B (name settableforXpeople2)(=>(^(o#plate p e0 :0.0)(g#objectAt p ps e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#placesetting ps e0 :0.0)(o#fork f e0 :0.0)(g#objectAt f ps e0 :0.0)(o#knife k e0 :0.0)(g#objectAt k ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent t u)(table-n e1 t)(for-p e2 t per)(o#person per)(card e4 per n))))
 
-(B (name settableFORALL)(=>(^(q#forallK PLACESETTING :0.0)(o#fork f e0 :0.0)(g#objectAt f PLACESETTING e0 :0.0)(o#knife k e0 :0.0)(g#objectAt k PLACESETTING e0 :0.0)(o#plate p e0 :0.0)(g#objectAt p PLACESETTING e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c PLACESETTING e0 :0.0))(^(set-v e0 R t u)(table-n e1 t)(!= R H))))
+(B (name settableFORALL)(=>(^(q#forallK PLACESETTING :0.0)(o#fork f e0 :0.0)(g#objectAt f PLACESETTING e0 :0.0)(o#knife k e0 :0.0)(g#objectAt k PLACESETTING e0 :0.0)(o#plate p e0 :0.0)(g#objectAt p PLACESETTING e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c PLACESETTING e0 :0.0))(^(set-v e0 agent t u)(table-n e1 t))))
 
 ; put things on something
 (B (name puton)(=>(g#objectAt obj loc u :0.9)(^(put-v e0 R obj u)(on-p e1 e0 loc)(!= R H))))
@@ -181,8 +181,8 @@
 
 ; move things to locations
 
-(B (name moveto)(=>(g#objectAt obj loc u1 :0.45)(^(move-v e1 R obj u)(to-p e2 e1 loc)(!= R H))))
-(B (name movetoN)(=>(^(g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0))(^(move-v e1 R obj u)(to-p e2 e1 loc)(card e3 obj n)(!= R H))))
+(B (name moveto)(=>(g#objectAt obj loc u1 :0.45)(^(move-v e1 agent obj u)(to-p e2 e1 loc))))
+(B (name movetoN)(=>(^(g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0))(^(move-v e1 agent obj u)(to-p e2 e1 loc)(card e3 obj n))))
 
 (B (name carryto)(=>(g#objectAt obj loc u1 :0.45)(^(carry-v e1 agent obj u)(to-p e2 e1 loc))))
 (B (name carrytoN)(=>(^(g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0))(^(carry-v e1 agent obj u)(to-p e2 e1 loc)(card e3 obj n))))
