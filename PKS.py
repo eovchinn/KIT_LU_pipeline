@@ -181,7 +181,7 @@ class PKSGenerator(object):
 			for a in args:
 				argind+=1
 				if a=="H": command+=",human"
-				elif a=="R": command+=",robot"
+				elif a=="R": command+=",agent"
 				elif a.isupper(): command+=","+a.lower()
 				else:
 					# find corresponding objects
@@ -190,17 +190,17 @@ class PKSGenerator(object):
 					# there is no related object
 					else:
 						if name=="grasp":
-							if argind==1: command+=",robot"
+							if argind==1: command+=",agent"
 							elif argind==2: command+=",hand"
 							elif argind==3: command+=",location"
 							elif argind==4: command+=",object"
 						elif name=="putdown":
-							if argind==1: command+=",robot"
+							if argind==1: command+=",agent"
 							elif argind==2: command+=",hand"
 							elif argind==3: command+=",location"
 							elif argind==4: command+=",object"
 						elif name=="move":
-							if argind==1: command+=",robot"
+							if argind==1: command+=",agent"
 							elif argind==2: command+=",location"
 							elif argind==3: command+=",location"
 			commands+=command+';'
