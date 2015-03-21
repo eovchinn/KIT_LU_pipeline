@@ -57,8 +57,8 @@
 ; body parts
 
 ;(B (name hand-n)(=>(o#hand x :0.9)(hand-n e x)))
-(B (name left-hand)(=>(^(hand-n e1 LEFT :0.2))(^(hand-n e1 x)(left-a e2 x))))
-(B (name right-hand)(=>(^(hand-n e1 RIGHT :0.2)(= RIGHT x :0.2))(^(hand-n e1 x)(right-a e2 x))))
+(B (name left-hand)(=>(hand-n e1 LEFTHAND :0.9)(^(hand-n e1 x)(left-a e2 x))))
+(B (name right-hand)(=>(hand-n e1 RIGHTHAND :0.9)(^(hand-n e1 x)(right-a e2 x))))
 
 
 ; features
