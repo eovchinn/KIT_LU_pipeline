@@ -15,7 +15,7 @@ Language understanding pipeline for KIT.
 a) Run the following commands in terminal:
 - `git clone https://github.com/eovchinn/KIT_LU_pipeline`
 - `cd KIT_LU_pipeline`
-- `./deploy_all.sh`
+- `source ./deploy_all.sh`
 
 b) Obtain Gurobi license key
 - Go to [http://www.gurobi.com/](http://www.gurobi.com/)
