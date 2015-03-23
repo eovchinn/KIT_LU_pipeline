@@ -24,6 +24,8 @@ b) Obtain Gurobi license key
 - Accept license conditions and push REQUEST LICENSE
 - run `grbgetkey LICENSE_KEY` (shown on the Gurobi web page) in terminal, make sure that you store the key under KIT_LU_pipelin/gurobi/gurobi.lic
 
+c) Add to your .bashrc: `source PATH_TO_KIT_LU_pipeline/lupipeline.setenv.sh`
+
 =======
 
 **Installation (general):**
