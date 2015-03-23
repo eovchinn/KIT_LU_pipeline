@@ -13,9 +13,9 @@ Language understanding pipeline for KIT.
 **Installation for KIT lap PCs:**
 
 a) Run the following commands in terminal:
-`git clone https://github.com/eovchinn/KIT_LU_pipeline`
-`cd KIT_LU_pipeline`
-`./deploy_all.sh`
+- `git clone https://github.com/eovchinn/KIT_LU_pipeline`
+- `cd KIT_LU_pipeline`
+- `./deploy_all.sh`
 
 b) Obtain Gurobi licence key
 - Go to (http://www.gurobi.com/)(http://www.gurobi.com/)
@@ -23,6 +23,8 @@ b) Obtain Gurobi licence key
 - Go to DOWNLOADS->LINCENCES->UNIVERSITY LICENSE
 - Accept licence conditions and push REQUEST LICENSE
 - run `grbgetkey LICENSE_KEY` in terminal, make sure that you store the key under KIT_LU_pipelin/gurobi/gurobi.lic
+
+=======
 
 **Installation (general):**
 
