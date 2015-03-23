@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo installing BOXER ...
 
 boxer_username=e.ovchinnikova@gmail.com
