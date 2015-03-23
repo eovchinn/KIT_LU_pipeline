@@ -17,11 +17,11 @@ a) Run the following commands in terminal:
 - `cd KIT_LU_pipeline`
 - `./deploy_all.sh`
 
-b) Obtain Gurobi licence key
+b) Obtain Gurobi license key
 - Go to [http://www.gurobi.com/](http://www.gurobi.com/)
 - Login or register your account and login
-- Go to DOWNLOADS->LINCENCES->UNIVERSITY LICENSE
-- Accept licence conditions and push REQUEST LICENSE
+- Go to DOWNLOADS->LICENSES->UNIVERSITY LICENSE
+- Accept license conditions and push REQUEST LICENSE
 - run `grbgetkey LICENSE_KEY` (shown on the Gurobi web page) in terminal, make sure that you store the key under KIT_LU_pipelin/gurobi/gurobi.lic
 
 =======
