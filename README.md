@@ -28,7 +28,7 @@ c) Add to your .bashrc:
 - `KIT_LU_DIR=PATH_TO_KIT_LU_pipeline`
 - `source PATH_TO_KIT_LU_pipeline/lupipeline.setenv.sh`
 
-d) If you use SSH, make sure that your .bash_profile starts .bashrc, otherwise env variables won't be exportet. It can be done by adding the following lines to .bash_profile:
+If you use SSH, make sure that your .bash_profile starts .bashrc, otherwise env variables won't be exportet. It can be done by adding the following lines to .bash_profile:
 ```
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
@@ -56,7 +56,7 @@ b) Export paths and libs:
 
 =======
 
-**Running:**
+**Running standalone:**
 * start server by running `./run_Boxer_server.sh`
 * process test sentences by running `./process_test_sentences.sh`
 * process input text by running `./run_all.sh "INPUT TEXT"`
