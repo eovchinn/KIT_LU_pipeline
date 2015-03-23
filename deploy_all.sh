@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export KIT_LU_DIR=${PWD}
-source ./lupipeline.setenv.sh
+source ${PWD}/lupipeline.setenv.sh
 
 read -p "Are you ok with adding LU pipeline env variables to your .bashrc? [yn]" answer
 if [[ $answer = y ]] ; then
