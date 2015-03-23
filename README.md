@@ -10,7 +10,21 @@ Language understanding pipeline for KIT.
 
 =======
 
-**Installation:**
+**Installation for KIT lap PCs:**
+
+a) Run the following commands in terminal:
+`git clone https://github.com/eovchinn/KIT_LU_pipeline`
+`cd KIT_LU_pipeline`
+`./deploy_all.sh`
+
+b) Obtain Gurobi licence key
+- Go to (http://www.gurobi.com/)(http://www.gurobi.com/)
+- Login using login/password `kit.user@inbox.com/lupipeline` or register your own account
+- Go to DOWNLOADS->LINCENCES->UNIVERSITY LICENSE
+- Accept licence conditions and push REQUEST LICENSE
+- run `grbgetkey LICENSE_KEY` in terminal, make sure that you store the key under KIT_LU_pipelin/gurobi/gurobi.lic
+
+**Installation (general):**
 
 a) Export env variables:
 * export KIT_LU_DIR
@@ -26,9 +40,6 @@ b) Export paths and libs:
 * `export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GUROBI_HOME/lib`
 * `export LIBRARY_PATH=$LIBRARY_PATH:$GUROBI_HOME/lib`
 * `export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$GUROBI_HOME/include`
-
-c) For KIT servers, copy Makefile into BOXER_DIR and run `make`
-
 =======
 
 **Running:**
