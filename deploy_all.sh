@@ -9,5 +9,4 @@ if [[ $answer = y ]] ; then
   echo "source ./lupipeline.setenv.sh" >> ~/.bashrc
 fi
 
-cd boxer
-./installation/install_boxer.sh
+source ./boxer/installation/install_boxer.sh
