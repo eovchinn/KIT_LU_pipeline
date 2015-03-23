@@ -25,7 +25,7 @@ b) Obtain Gurobi license key
 - run `grbgetkey LICENSE_KEY` (shown on the Gurobi web page) in terminal, make sure that you store the key (gurobi.lic) in KIT_LU_pipeline/gurobi/
 
 c) Add to your .bashrc: 
-- `export KIT_LU_DIR=PATH_TO_KIT_LU_pipeline`
+- `KIT_LU_DIR=PATH_TO_KIT_LU_pipeline`
 - `source PATH_TO_KIT_LU_pipeline/lupipeline.setenv.sh`
 
 d) If you use SSH, make sure that your .bash_profile starts .bashrc, otherwise env variables won't be exportet. It can be done by adding the following lines to .bash_profile:
