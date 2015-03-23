@@ -19,7 +19,7 @@ a) Run the following commands in terminal:
 
 b) Obtain Gurobi licence key
 - Go to [http://www.gurobi.com/](http://www.gurobi.com/)
-- Login using login/password `kit.user@inbox.com/lupipeline` or register your own account
+- Login or register your account and login
 - Go to DOWNLOADS->LINCENCES->UNIVERSITY LICENSE
 - Accept licence conditions and push REQUEST LICENSE
 - run `grbgetkey LICENSE_KEY` (shown on the Gurobi web page) in terminal, make sure that you store the key under KIT_LU_pipelin/gurobi/gurobi.lic
