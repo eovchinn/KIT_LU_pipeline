@@ -4,7 +4,7 @@
 # $ ./run_server_test.sh
 
 CANDC_CLIENT_BIN=$BOXER_DIR/bin/soap_client
-CANDC_CLIENT_OPT="--url localhost:9000"
+CANDC_CLIENT_OPT="--url $BOXER_SOAP_SERVER"
 
 check_str() {
 	read s
