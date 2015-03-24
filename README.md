@@ -24,8 +24,7 @@ b) Obtain Gurobi license key
 - Accept license conditions and push REQUEST LICENSE
 - run `grbgetkey LICENSE_KEY` (shown on the Gurobi web page) in terminal, make sure that you store the key (gurobi.lic) in KIT_LU_pipeline/gurobi/
 
-c) Add to your .bashrc: 
-- `KIT_LU_DIR=PATH_TO_KIT_LU_pipeline`
+c) Add to your .bashrc (if you didn't allow the installation script to do it for you): 
 - `source PATH_TO_KIT_LU_pipeline/lupipeline.setenv.sh`
 
 If you use SSH, make sure that your .bash_profile starts .bashrc, otherwise env variables won't be exportet. It can be done by adding the following lines to .bash_profile:
@@ -57,6 +56,17 @@ b) Export paths and libs:
 =======
 
 **Running standalone:**
-* start server by running `./run_Boxer_server.sh`
-* process test sentences by running `./process_test_sentences.sh`
-* process input text by running `./run_all.sh "INPUT TEXT"`
+a) start server 
+
+`./run_Boxer_server.sh`
+
+b) process text
+ `./process_test_sentences.sh`
+ 
+ or 
+ 
+ `./run_all.sh "INPUT TEXT"`
+ 
+c) stop server
+
+ `./kill_Boxer_server.sh`
