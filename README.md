@@ -56,11 +56,13 @@ b) Export paths and libs:
 =======
 
 **Running standalone:**
+
 a) start server 
 
 `./run_Boxer_server.sh`
 
 b) process text
+
  `./process_test_sentences.sh`
  
  or 
