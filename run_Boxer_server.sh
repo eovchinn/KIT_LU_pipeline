@@ -3,7 +3,20 @@
 # usage:
 # $ ./run_Boxer_server.sh
 
-CANDC_SERVER_BIN=$BOXER_DIR/bin/soap_server
-CANDC_SERVER_OPT="--models $BOXER_DIR/models/boxer --server $BOXER_SOAP_SERVER --candc-printer boxer"
+TEST_BOXER_SERVER=`./run_server_test.sh`
 
-$CANDC_SERVER_BIN $CANDC_SERVER_OPT > /dev/stdout
+if [[ $TEST_BOXER_SERVER == 0* ]];
+then 
+	TEST_PORT=`netstat -an |grep 9000 |grep LISTE`
+
+	if [ -z "$TEST_PORT" ]; then
+		CANDC_SERVER_BIN=$BOXER_DIR/bin/soap_server
+		CANDC_SERVER_OPT="--models $BOXER_DIR/models/boxer --server $BOXER_SOAP_SERVER --candc-printer boxer"
+		$CANDC_SERVER_BIN $CANDC_SERVER_OPT > /dev/stdout
+	else echo "Port $BOXER_SOAP_SERVER is occupied";
+	fi
+
+else echo "Boxer server is already running on $BOXER_SOAP_SERVER";
+fi
+
+
