@@ -8,8 +8,8 @@ echo "export KIT_LU_DIR=${PWD}" >> lupipeline.setenv.sh
 export BOXER_DIR=$KIT_LU_DIR/boxer
 echo "export BOXER_DIR=$KIT_LU_DIR/boxer" >> lupipeline.setenv.sh
 
-export BOXER_SOAP_SERVER=localhost:9000
-echo "export BOXER_SOAP_SERVER=localhost:9000" >> lupipeline.setenv.sh
+export BOXER_SOAP_SERVER=localhost:38900
+echo "export BOXER_SOAP_SERVER=localhost:38900" >> lupipeline.setenv.sh
 
 export HENRY_DIR=/usr/share/henry
 echo "export HENRY_DIR=/usr/share/henry" >> lupipeline.setenv.sh
