@@ -5,9 +5,11 @@
 
 TEST_BOXER_SERVER=`./run_server_test.sh`
 
-if [[ $TEST_BOXER_SERVER == 0* ]];
+if [[ $TEST_BOXER_SERVER == 1* ]];
 then 
-	TEST_PORT=`netstat -an |grep 9000 |grep LISTE`
+	echo "Boxer server is already running on $BOXER_SOAP_SERVER";
+else 
+	TEST_PORT=`netstat -an |grep $BOXER_SOAP_SERVER |grep LISTEN`
 
 	if [ -z "$TEST_PORT" ]; then
 		CANDC_SERVER_BIN=$BOXER_DIR/bin/soap_server
@@ -15,8 +17,6 @@ then
 		$CANDC_SERVER_BIN $CANDC_SERVER_OPT > /dev/stdout
 	else echo "Port $BOXER_SOAP_SERVER is occupied";
 	fi
-
-else echo "Boxer server is already running on $BOXER_SOAP_SERVER";
 fi
 
 
