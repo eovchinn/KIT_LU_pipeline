@@ -126,7 +126,7 @@
 ; fix wrong parse
 ;(B (name graspwithfix)(=>(a#grasp agent hand loc obj :0.2)(^(grasp e0 agent obj u)(with-p e1 u1 hand)(hand-n e2 hand)(!= e0 u1))))
 
-(B (name graspwithfix)(=>(a#grasp agent hand loc obj :0.2)(^(grasp e0 agent obj u)(with-p e1 e0 hand)(hand-n e2 hand)(!= e0 u1))))
+(B (name graspwithfix)(=>(a#grasp agent hand loc obj :0.2)(^(grasp e0 agent obj u)(with-p e1 u1 hand)(hand-n e2 hand)(!= e0 u1))))
 
 (B (name graspfromfix)(=>(a#grasp agent hand loc obj :0.2)(^(grasp e0 agent obj u)(from-p e1 e0 loc)(!= e0 u1))))
 

@@ -44,7 +44,7 @@ Put the juice on the table!
 {"human_actions": "", "commands": "", "goal": "(existsK(?x2 : juice, ?x3 : table) K(objectAt(?x2, ?x3)))", "SOW": ""}
 
 Bring me the juice from the fridge!
-{"human_actions": "give,agent,juice,human", "commands": "", "goal": "(existsK(?x2 : juice, ?xx5 : hand) K(inHand(?x2, ?xx5)));(existsK(?xx5 : hand) K(handOf(?xx5, human)))", "SOW": ""}
+{"human_actions": "give,agent,juice,HUMAN", "commands": "", "goal": "(existsK(?x2 : juice, ?xx5 : hand) K(inHand(?x2, ?xx5)));(existsK(?xx5 : hand) K(handOf(?xx5, human)))", "SOW": ""}
 
 The juice is in the fridge.
 {"human_actions": "", "commands": "", "goal": "", "SOW": "loc,objectIn,juice,fridge"}
@@ -53,7 +53,7 @@ Put the juice on the table!
 {"human_actions": "", "commands": "", "goal": "(existsK(?x2 : juice, ?x3 : table) K(objectAt(?x2, ?x3)))", "SOW": ""}
 
 Give me two eggs from the fridge!
-{"human_actions": "give,agent,egg,human", "commands": "", "goal": "(existsK(?x21 : egg, ?x22 : egg, ?xx8 : hand) K(inHand(?x21, ?xx8)) & K(inHand(?x22, ?xx8)) & K(?x21 != ?x22));(existsK(?xx8 : hand) K(handOf(?xx8, human)))", "SOW": "loc,in,egg,fridge"}
+{"human_actions": "give,agent,egg,HUMAN", "commands": "", "goal": "(existsK(?x21 : egg, ?x22 : egg, ?xx8 : hand) K(inHand(?x21, ?xx8)) & K(inHand(?x22, ?xx8)) & K(?x21 != ?x22));(existsK(?xx8 : hand) K(handOf(?xx8, human)))", "SOW": "loc,in,egg,fridge"}
 
 Open the fridge.
 {"human_actions": "", "commands": "", "goal": "(existsK(?x2 : fridge) K(open(?x2)))", "SOW": ""}
@@ -95,7 +95,7 @@ Grasp the cup!
 {"human_actions": "", "commands": "grasp,agent,hand,location,cup", "goal": "", "SOW": ""}
 
 Grasp the cup with the left hand!
-{"human_actions": "", "commands": "grasp,agent,LEFTHAND,location,cup", "goal": "", "SOW": ""}
+
 
 Move to the table!
 {"human_actions": "", "commands": "move,agent,location,table", "goal": "", "SOW": ""}
@@ -110,11 +110,11 @@ Put the cup down and move to the table!
 {"human_actions": "", "commands": "move,agent,location,table", "goal": "", "SOW": ""}
 
 I'm grasping the red cup from the first table with my right hand.
-{"human_actions": "grasp,human,hand,TABLE1,CUP1", "commands": "", "goal": "", "SOW": ""}
+{"human_actions": "grasp,HUMAN,RIGHTHAND,TABLE1,CUP1", "commands": "", "goal": "", "SOW": ""}
 
 I'm putting the first cup down on the first table with my left hand.
-{"human_actions": "putdown,human,LEFTHAND,TABLE1,CUP1", "commands": "", "goal": "", "SOW": ""}
+{"human_actions": "putdown,HUMAN,LEFTHAND,TABLE1,CUP1", "commands": "", "goal": "", "SOW": ""}
 
 I'm moving from the fridge to the first table.
-{"human_actions": "move,human,fridge,TABLE1", "commands": "", "goal": "", "SOW": ""}
+{"human_actions": "move,HUMAN,fridge,TABLE1", "commands": "", "goal": "", "SOW": ""}
 
