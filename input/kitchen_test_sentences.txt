@@ -1,6 +1,6 @@
 Armar, please help me to carry the table to the dining location.
 Armar, please set the table for two people!
-Armar, please move a chair to the table.
+Armar, please arrange one chair.
 Please arrange one chair.
 Set the table.
 Help me to move the table!
@@ -35,6 +35,6 @@ Move to the table!
 Put the cup on the table!
 Put the cup down!
 Put the cup down and move to the table!
-I'm grasping the cup from the table with my right hand.
-I'm putting the cup down on the table with my left hand.
-I'm moving to the table.
+I'm grasping the red cup from the first table with my right hand.
+I'm putting the first cup down on the first table with my left hand.
+I'm moving from the fridge to the first table.

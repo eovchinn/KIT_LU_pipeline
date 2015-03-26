@@ -172,38 +172,44 @@ class PKSGenerator(object):
 
 		return result[:-1]
 
-	def generate_commands(self,objects,states_actions):	
+	def generate_commands(self,objects,states_actions,mode):	
 		commands = ''
 
 		for (name,args) in states_actions:
 			command = name
 			argind = 0
+			#if mode == "h": command+="("
+			#else: command+=","
+			command+=","
+
 			for a in args:
 				argind+=1
-				if a=="H": command+=",human"
-				elif a=="R": command+=",agent"
-				elif a.isupper(): command+=","+a.lower()
+				if a=="H": command+="human,"
+				elif a=="R": command+="agent,"
+				elif a[0].isupper(): command+=a+","
 				else:
 					# find corresponding objects
 					if a in objects:
-						command+=","+objects[a][0]
+						command+=objects[a][0]+","
 					# there is no related object
 					else:
 						if name=="grasp":
-							if argind==1: command+=",agent"
-							elif argind==2: command+=",hand"
-							elif argind==3: command+=",location"
-							elif argind==4: command+=",object"
+							if argind==1: command+="agent,"
+							elif argind==2: command+="hand,"
+							elif argind==3: command+="location,"
+							elif argind==4: command+="object,"
 						elif name=="putdown":
-							if argind==1: command+=",agent"
-							elif argind==2: command+=",hand"
-							elif argind==3: command+=",location"
-							elif argind==4: command+=",object"
+							if argind==1: command+="agent,"
+							elif argind==2: command+="hand,"
+							elif argind==3: command+="location,"
+							elif argind==4: command+="object,"
 						elif name=="move":
-							if argind==1: command+=",agent"
-							elif argind==2: command+=",location"
-							elif argind==3: command+=",location"
-			commands+=command+';'
+							if argind==1: command+="agent,"
+							elif argind==2: command+="location,"
+							elif argind==3: command+="location,"
+			#if mode == "h": commands=command[:-1]+"),"
+			#else: commands=command[:-1]+";"
+			commands=command[:-1]+";"
 		return commands[:-1]
 
 	def generatePKS(self, Hypo):
@@ -255,7 +261,7 @@ class PKSGenerator(object):
 				# commands
 				elif name.startswith('a#'):
 					if args[0]=="R":	commands.append((name[2:],args))
-					elif args[0]=="H": human_actions.append((name[2:],args))
+					else: human_actions.append((name[2:],args))
 				# quantifiers
 				elif name.startswith('q#'):
 					qcount += 1
@@ -276,8 +282,8 @@ class PKSGenerator(object):
 
 			sow = self.generate_SOW(objects,locations,states,negations)
 
-			commands = self.generate_commands(objects,commands)
-			human_actions = self.generate_commands(objects,human_actions)
+			commands = self.generate_commands(objects,commands,"r")
+			human_actions = self.generate_commands(objects,human_actions,"h")
 
 
 		data["goal"] = goal

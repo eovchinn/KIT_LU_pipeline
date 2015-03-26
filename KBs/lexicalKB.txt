@@ -34,6 +34,15 @@
 
 ;(B (name fridge-n)(=>(o#fridge x :0.9)(fridge-n e x)))
 
+; instances
+
+(B (name redcup)(=>(cup-n e2 CUP1 :0.9)(^(red-a e1 x)(cup-n e2 x))))
+(B (name greencup)(=>(cup-n e2 CUP2 :0.9)(^(green-a e1 x)(cup-n e2 x))))
+
+(B (name firstcup)(=>(cup-n e2 CUP1 :0.9)(^(first-a e1 x)(cup-n e2 x))))
+
+(B (name firsttable)(=>(table-n e2 TABLE1 :0.9)(^(first-a e1 x)(table-n e2 x))))
+
 ; ingridients
 
 ;(B (name flour-n)(=>(o#flour x :0.9)(flour-n e x)))
@@ -98,25 +107,44 @@
 ;(B (name wipewith)(=>(a#wipe e0 agent hand obj instr :0.45)(^(wipe-v e0 agent obj u)(with-p e1 e0 instr))))
 ;(B (name wipe)(=>(a#wipe e0 agent hand obj instr :0.9)(wipe-v e0 agent obj u)))
 
-; direct commands
+; DIRECT COMMANDS
+
+; STOP
 
 (B (name stopv)(=>(a#stop x :0.9)(stop-v e0 x y u)))
 (B (name stopn)(=>(a#stop R :0.9)(stop-n e0 u)))
 
+; GRASP
+
 (B (name graspv)(=>(grasp e0 agent obj u :0.9)(grasp-v e0 agent obj u)))
 (B (name graspv)(=>(grasp e0 agent obj u :0.9)(take-v e0 agent obj u)))
 
-
-(B (name graspwith)(=>(a#grasp agent hand loc obj :0.4)(^(grasp e0 agent obj u)(with-p e1 e0 hand)(hand-n e2 hand))))
-(B (name graspfrom)(=>(a#grasp agent hand loc obj :0.4)(^(grasp e0 agent obj u)(from-p e1 e0 loc))))
+(B (name graspwith)(=>(a#grasp agent hand loc obj :0.1)(^(grasp e0 agent obj u)(with-p e1 e0 hand)(hand-n e2 hand))))
+(B (name graspfrom)(=>(a#grasp agent hand loc obj :0.1)(^(grasp e0 agent obj u)(from-p e1 e0 loc))))
 (B (name grasp)(=>(a#grasp agent hand loc obj :0.9)(grasp e0 agent obj u)))
 
-(B (name puton)(=>(a#putdown agent hand loc obj :0.3)(^(put-v e0 agent obj u)(down-r e1 e0)(on-p e2 e0 loc))))
-(B (name puton)(=>(a#putdown agent hand loc obj :0.3)(^(put-v e0 agent obj u)(down-r e1 e0)(with-p e2 e0 hand)(hand-n e3 hand))))
-(B (name putdown)(=>(a#putdown agent hand loc obj :0.9)(^(put-v e0 agent obj u)(down-r e1 e0))))
+; fix wrong parse
+;(B (name graspwithfix)(=>(a#grasp agent hand loc obj :0.2)(^(grasp e0 agent obj u)(with-p e1 u1 hand)(hand-n e2 hand)(!= e0 u1))))
 
-(B (name moverobot)(=>(a#move agent loc1 loc2 :0.45)(^(move-v e1 agent)(to-p e2 e1 loc2))))
-(B (name moverobot)(=>(a#move agent loc1 loc2 :0.45)(^(move-v e1 agent)(from-p e2 e1 loc1))))
+(B (name graspwithfix)(=>(a#grasp agent hand loc obj :0.2)(^(grasp e0 agent obj u)(with-p e1 e0 hand)(hand-n e2 hand)(!= e0 u1))))
+
+(B (name graspfromfix)(=>(a#grasp agent hand loc obj :0.2)(^(grasp e0 agent obj u)(from-p e1 e0 loc)(!= e0 u1))))
+
+; PUT DOWN
+
+(B (name putdown)(=>(a#putdown agent hand loc obj :0.1)(^(put-v e0 agent obj u)(down-r e1 e0)(on-p e2 e0 loc))))
+(B (name putdown)(=>(a#putdown agent hand loc obj :0.1)(^(put-v e0 agent obj u)(down-r e1 e0)(with-p e2 e0 hand)(hand-n e3 hand))))
+(B (name putdown)(=>(a#putdown agent hand loc obj :0.3)(^(put-v e0 agent obj u)(down-r e1 e0))))
+
+; fix wrong parse
+
+(B (name putdownfix)(=>(a#putdown agent hand loc obj :0.2)(^(put-v e0 agent obj u)(down-r e1 e0)(on-p e2 u loc)(!= e0 u))))
+(B (name putdownfix)(=>(a#putdown agent hand loc obj :0.2)(^(put-v e0 agent obj u)(down-r e1 e0)(with-p e2 u hand)(hand-n e3 hand)(!= e0 u))))
+
+; MOVE
+
+(B (name moverobotto)(=>(a#move agent loc1 loc2 :0.45)(^(move-v e1 agent)(to-p e2 e1 loc2))))
+(B (name moverobotfrom)(=>(a#move agent loc1 loc2 :0.45)(^(move-v e1 agent)(from-p e2 e1 loc1))))
 
 ; plan
 
