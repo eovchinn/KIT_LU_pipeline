@@ -36,12 +36,13 @@
 
 ; instances
 
-(B (name redcup)(=>(cup-n e2 CUP1 :0.9)(^(red-a e1 x)(cup-n e2 x))))
-(B (name greencup)(=>(cup-n e2 CUP2 :0.9)(^(green-a e1 x)(cup-n e2 x))))
+(B (name redcup)(=>(cup-n e2 WM_objectInstances_cupred_34 :0.9)(^(red-a e1 x)(cup-n e2 x))))
+(B (name greencup)(=>(cup-n e2 WM_objectInstances_cupgreen_26 :0.9)(^(green-a e1 x)(cup-n e2 x))))
+(B (name greencup)(=>(cup-n e2 WM_objectInstances_cupblue_35 :0.9)(^(blue-a e1 x)(cup-n e2 x))))
 
-(B (name firstcup)(=>(cup-n e2 CUP1 :0.9)(^(first-a e1 x)(cup-n e2 x))))
+;(B (name firstcup)(=>(cup-n e2 CUP1 :0.9)(^(first-a e1 x)(cup-n e2 x))))
 
-(B (name firsttable)(=>(table-n e2 TABLE1 :0.9)(^(first-a e1 x)(table-n e2 x))))
+;(B (name firsttable)(=>(table-n e2 TABLE1 :0.9)(^(first-a e1 x)(table-n e2 x))))
 
 ; ingridients
 

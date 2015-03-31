@@ -27,7 +27,8 @@ class PKSGenerator(object):
 		output_str = "("
 
 		for (name,arg) in objects:
-			if arg.startswith('_'): arg = "xx"+arg[1:]
+			if arg[0].isupper(): continue
+			elif arg.startswith('_'): arg = "xx"+arg[1:]
 			output_str += "?"+arg+" : "+name+", "
 
 		if len(output_str)>1: output_str = "(existsK" + output_str[:-2] + ") "
@@ -41,7 +42,7 @@ class PKSGenerator(object):
 				if arg=="H": output_str += "human, "
 				elif arg=="R": output_str += "agent, "
 				elif arg in quantifiers: output_str += quantifiers[arg]+", "
-				elif arg.isupper(): output_str += arg.lower()+", "
+				elif arg[0].isupper():	output_str += arg+", "
 				elif arg.startswith('_'): output_str += "?xx"+arg[1:]+", "
 				else: output_str += "?"+arg+", "
 
@@ -152,7 +153,7 @@ class PKSGenerator(object):
 
 			result += "state,"+name
 			for a in args[1:-1]:
-				if a.isupper(): result += ","+a.lower()
+				if a[0].isupper(): result += ","+a
 				elif a in objects:
 					result += ","+objects[a][0]
 			result += ";"
@@ -165,7 +166,7 @@ class PKSGenerator(object):
 
 			result += "loc,"+name
 			for a in args[1:-1]:
-				if a.isupper(): result += ","+a.lower()
+				if a[0].isupper(): result += ","+a
 				elif a in objects:
 					result += ","+objects[a][0]
 			result += ";"
@@ -261,7 +262,7 @@ class PKSGenerator(object):
 				# commands
 				elif name.startswith('a#'):
 					if args[0]=="R":	commands.append((name[2:],args))
-					else: human_actions.append((name[2:],args))
+					elif args[0]=="H": human_actions.append((name[2:],args))
 				# quantifiers
 				elif name.startswith('q#'):
 					qcount += 1
