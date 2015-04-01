@@ -146,12 +146,14 @@ class PKSGenerator(object):
 		result = ""
 
 		for (name,args) in states:
+			neg = False
 			if name.startswith("n#"):
-				name = "!"+name[2:]
+				name = name[2:]
+				neg = True
 			elif args[0] in negations:
-				name = "!" + name
+				neg = True
 
-			result += "state,"+name
+			result += "state,"+str(not neg)+","+name
 			for a in args[1:-1]:
 				if a[0].isupper(): result += ","+a
 				elif a in objects:
@@ -159,12 +161,14 @@ class PKSGenerator(object):
 			result += ";"
 
 		for (name,args) in locations:
+			neg = False
 			if name.startswith("n#"):
-				name = "!"+name[2:]
+				name = name[2:]
+				neg = True
 			elif args[0] in negations:
-				name = "!" + name
+				neg = True
 
-			result += "loc,"+name
+			result += "loc,"+str(not neg)+","+name
 			for a in args[1:-1]:
 				if a[0].isupper(): result += ","+a
 				elif a in objects:
@@ -210,7 +214,7 @@ class PKSGenerator(object):
 							elif argind==3: command+="location,"
 			#if mode == "h": commands=command[:-1]+"),"
 			#else: commands=command[:-1]+";"
-			commands=command[:-1]+";"
+			commands+=command[:-1]+";"
 		return commands[:-1]
 
 	def generatePKS(self, Hypo):
@@ -261,7 +265,7 @@ class PKSGenerator(object):
 					states.append((name[2:],args))
 				# commands
 				elif name.startswith('a#'):
-					if args[0]=="R":	commands.append((name[2:],args))
+					if args[0]=="R": commands.append((name[2:],args))
 					elif args[0]=="H": human_actions.append((name[2:],args))
 				# quantifiers
 				elif name.startswith('q#'):
@@ -270,6 +274,7 @@ class PKSGenerator(object):
 				# negations
 				elif name == "not":
 					negations.append(args[1])
+
 
 			# Correct generation of the goal
 			#(fgls,gobjs,gineq) = self.multuply_link_preds_objs(objects,goals,repeats)

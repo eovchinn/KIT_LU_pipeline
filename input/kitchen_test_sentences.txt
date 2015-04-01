@@ -1,5 +1,5 @@
 Armar, please help me to carry the table to the dining location.
-Armar, please set the table for two people!
+Armar, please help me to set the table for two people!
 Armar, please arrange one chair.
 Please arrange one chair.
 Set the table.
@@ -8,7 +8,6 @@ Wipe the table!
 Put the table runner on the table!
 Help me to arrange the chairs!
 Help me to arrange three chairs!
-Please arrange one chair!
 Put the cups on the table!
 Put the cups and plates on the table!
 Put three cups on the table!
@@ -35,6 +34,6 @@ Move to the table!
 Put the cup on the table!
 Put the cup down!
 Put the cup down and move to the table!
-I'm grasping the red cup from the first table with my right hand.
-I'm putting the first cup down on the first table with my left hand.
-I'm moving from the fridge to the first table.
+I'm grasping the red cup from the first place setting with my right hand.
+I'm putting the green cup down on the second place setting with my left hand.
+I'm moving from the fridge to the table.

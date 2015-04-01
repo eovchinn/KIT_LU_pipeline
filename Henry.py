@@ -40,8 +40,9 @@ class HenryWriter(object):
 					Ostr+=" %s" % a
 				Ostr+=" :1)"
 
-				# add propositions for the inequality constraints for verbs, adverbs, preps and props without postfix
-				#if not (p_name.endswith('-n') or p_name.endswith('-a')):
+				# add propositions for the inequality constraints for predicates with the same name: 
+				# verbs, adverbs, preps and props without postfix
+				# if not (p_name.endswith('-n') or p_name.endswith('-a')):
 				if (not p_name in name2ind): name2ind[p_name] = []
 				name2ind[p_name].append(args[0])
 
@@ -90,7 +91,7 @@ class HenryReader(object):
 		for el in equals:
 			vflag = False
 			rv = ""
-			for e in el:
+			for e in equals[el]:
 				if e[0].isupper():
 					rv = e
 					break
@@ -101,7 +102,7 @@ class HenryReader(object):
 				elif (not vflag):
 					rv = e 
 			
-			for e in el:
+			for e in equals[el]:
 				# 'e' is here to fix the wrong parse, when prep phrases are attached to nouns
 				if (e != rv)&(not e.startswith('e')):
 					eqS[e]=rv
@@ -123,7 +124,7 @@ class HenryReader(object):
 
 	def parseHypotheses(self,line):
 		props = []
-		equals = []
+		equals = {}
 		prop_args_pattern = re.compile('([^\[\(]+)(\((.+)\))?')
 		for p in line.split(' ^ '):
 			PROPmatchObj = prop_args_pattern.match(p)
@@ -134,7 +135,9 @@ class HenryReader(object):
 					else: args = []
 
 					if (p_name == '='): 
-						equals.append(args)
+						for a in args:
+							if not a in equals.keys(): equals[a] = []
+							equals[a] += args
 					elif (p_name != '!='): props.append((p_name,args))
 
 				else: print 'Strange prop: ' + p

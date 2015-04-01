@@ -6,10 +6,10 @@
 
 ; people
 
-(B (name people-n)(=>(o#person x :0.9)(people-n e x)))
-(B (name person-n)(=>(o#person x :0.9)(person-n e x)))
-(B (name individual-n)(=>(o#person x :0.9)(individual-n e x)))
-(B (name human-n)(=>(o#person x :0.9)(human-n e x)))
+(B (name people-n)(=>(o#person x z :0.9)(people-n e x)))
+(B (name person-n)(=>(o#person x  z :0.9)(person-n e x)))
+(B (name individual-n)(=>(o#person x z :0.9)(individual-n e x)))
+(B (name human-n)(=>(o#person x z :0.9)(human-n e x)))
 
 ; objects
 
@@ -25,8 +25,19 @@
 ;(B (name table-n)(=>(o#table x :0.9)(table-n e x)))
 ;(B (name shelf-n)(=>(o#shelf x :0.9)(shelf-n e x)))
 ;(B (name cutboard-n)(=>(o#cutboard x :0.9)(cutboard-n e x)))
+
 (B (name tablerunner-n)(=>(o#table_runner x :0.9)(^(of-p e1 x x1)(runner-n e2 x)(table-n e3 x1))))
 (B (name dining_location-n)(=>(o#tabledropofflocation x :0.9)(^(of-p e1 x x1)(location-n e2 x)(dining-n e3 x1))))
+
+(B (name placesetting-n)(=>(placesetting-n e2 x :0.2)(^(of-p e1 x x1)(setting-n e2 x)(place-n e3 x1))))
+(B (name tablesetting-n)(=>(placesetting-n e2 x :0.2)(^(of-p e1 x x1)(setting-n e2 x)(table-n e3 x1))))
+
+; fix wrong parse
+(B (name placesettingfix)(=>(placesetting-n e2 x :0.9)(^(setting-n e2 x)(place-n e3 x1))))
+(B (name tablesettingfix)(=>(placesetting-n e2 x :0.9)(^(setting-n e2 x)(table-n e3 x1))))
+(B (name placesettingfix)(=>(placesetting-n e0 x :0.9)(^(set-v e1 x u1 u2)(place-n e2 x))))
+(B (name tablesettingfix)(=>(placesetting-n e0 x :0.9)(^(set-v e1 x u1 u2)(table-n e2 x))))
+
 
 ;(B (name juice-n)(=>(o#juice x :0.9)(juice-n e x)))
 ;(B (name salad-n)(=>(o#salad x :0.9)(salad-n e x)))
@@ -40,9 +51,11 @@
 (B (name greencup)(=>(cup-n e2 WM_objectInstances_cupgreen_26 :0.9)(^(green-a e1 x)(cup-n e2 x))))
 (B (name greencup)(=>(cup-n e2 WM_objectInstances_cupblue_35 :0.9)(^(blue-a e1 x)(cup-n e2 x))))
 
-;(B (name firstcup)(=>(cup-n e2 CUP1 :0.9)(^(first-a e1 x)(cup-n e2 x))))
 
-;(B (name firsttable)(=>(table-n e2 TABLE1 :0.9)(^(first-a e1 x)(table-n e2 x))))
+
+; unification of placesettings does not work. strage...
+(B (name firstplacesetting)(=>(^(placesetting-n e2 PLACESETTING1 :0.9)(= PLACESETTING1 x :0.0))(^(first-a e1 x)(placesetting-n e2 x))))
+(B (name secondplacesetting)(=>(^(placesetting-n e2 PLACESETTING2 :0.9)(= PLACESETTING2 x :0.0))(^(second-a e1 x)(placesetting-n e2 x))))
 
 ; ingridients
 
@@ -126,8 +139,8 @@
 
 ; fix wrong parse
 
-;(B (name graspwithfix)(=>(a#grasp agent hand loc obj :0.2)(^(grasp e0 agent obj u)(with-p e1 u1 hand)(hand-n e2 hand))))
-;(B (name graspfromfix)(=>(a#grasp agent hand loc obj :0.2)(^(grasp e0 agent obj u)(from-p e1 e0 loc))))
+(B (name graspwithfix)(=>(a#grasp agent hand loc obj :0.2)(^(grasp e0 agent obj u)(with-p e1 u1 hand)(hand-n e2 hand))))
+(B (name graspfromfix)(=>(a#grasp agent hand loc obj :0.2)(^(grasp e0 agent obj u)(from-p e1 u1 loc))))
 
 ; PUT DOWN
 
@@ -184,7 +197,9 @@
 
 ; set the table
 
-(B (name settableforXpeople2)(=>(^(o#plate p e0 :0.0)(g#objectAt p ps e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent t u)(table-n e1 t)(for-p e2 t per)(o#person per)(card e4 per n))))
+(B (name settableforXpeople1)(=>(^(o#plate p e0 :0.0)(g#objectAt p ps e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent t u)(table-n e1 t)(for-p e2 e0 per)(o#person per z)(card e4 per n))))
+
+(B (name settableforXpeople2)(=>(^(o#plate p e0 :0.0)(g#objectAt p ps e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent t u)(table-n e1 t)(for-p e2 t per)(o#person per z)(card e4 per n))))
 
 (B (name settableFORALL)(=>(^(q#forallK PLACESETTING :0.0)(o#plate p e0 :0.0)(g#objectAt p PLACESETTING e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c PLACESETTING e0 :0.0))(^(set-v e0 agent t u)(table-n e1 t))))
 
@@ -254,4 +269,4 @@
 
 (B (name cleana)(=>(s#clean e0 x u :0.9)(clean-a e0 x)))
 (B (name dirtya)(=>(s#n#clean e0 x u :0.9)(dirty-a e0 x)))
-(B (name dirtyn)(=>(s#n#clean e0 y u :0.9)(^(dirty-n e0 x)(equal e1 x y))))
+(B (name dirtyn)(=>(s#n#clean e0 y u :0.9)(^(dirty-n e0 y)(equal e1 x y))))
