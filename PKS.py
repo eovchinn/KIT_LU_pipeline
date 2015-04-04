@@ -248,6 +248,8 @@ class PKSGenerator(object):
 		quantifiers={}
 		qcount = 0
 
+		recplan = False
+
 		for h in Hypo:
 			goals = []
 			world = []
@@ -293,6 +295,8 @@ class PKSGenerator(object):
 				# location objects
 				elif name == "loc":
 					loc_objs.append(args[0])
+				elif name == "RP":
+					recplan = True
 
 			objects = self.assign_prefixes(objects,loc_objs)
 
@@ -316,5 +320,6 @@ class PKSGenerator(object):
 		data["SOW"] = sow
 		data["commands"] = commands
 		data["human_actions"] = human_actions
+		data["recognize_plan"] = str(recplan)
 
 		return data

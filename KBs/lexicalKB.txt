@@ -114,6 +114,10 @@
 (B (name moverobotto)(=>(^(a#move agent loc1 loc2 :0.45)(loc loc2 :0.0))(^(move-v e0 agent)(to-p e1 e0 loc2))))
 (B (name moverobotfrom)(=>(^(a#move agent loc1 loc2 :0.45)(loc loc2 :0.0))(^(move-v e0 agent)(from-p e1 e0 loc1))))
 
+; recognize plan
+
+(B (name recognizeplan)(=>(RP e0 :0.9)(^(recognize-v e0 agent plan u)(plan-n e1 plan))))
+
 ; plan
 
 ;(B (name wantv)(=>(p#plan e0 agent int :0.9)(want-v e0 agent int u)))
