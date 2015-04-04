@@ -177,6 +177,21 @@ class PKSGenerator(object):
 
 		return result[:-1]
 
+	def assign_prefixes(self,objects,loc_objs):
+		real_objects = {}
+
+		for a in objects:
+			(name,args) = objects[a]
+			if not ((name == "list")|(name.startswith("loc_"))):
+				if a in loc_objs:
+					real_objects[a] = ("loc_"+name,args)
+				else: 
+					real_objects[a] = ("obj_"+name,args)
+			else:
+				real_objects[a] = (name,args)
+
+		return real_objects
+
 	def generate_commands(self,objects,states_actions,mode):	
 		commands = ''
 
@@ -237,6 +252,7 @@ class PKSGenerator(object):
 			goals = []
 			world = []
 			locations = []
+			loc_objs = []
 			states = []
 			commands = []
 			human_actions = []
@@ -274,7 +290,11 @@ class PKSGenerator(object):
 				# negations
 				elif name == "not":
 					negations.append(args[1])
+				# location objects
+				elif name == "loc":
+					loc_objs.append(args[0])
 
+			objects = self.assign_prefixes(objects,loc_objs)
 
 			# Correct generation of the goal
 			#(fgls,gobjs,gineq) = self.multuply_link_preds_objs(objects,goals,repeats)

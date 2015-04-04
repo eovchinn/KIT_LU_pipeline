@@ -1,3 +1,7 @@
+;;;;;;;;;
+;OBJECTS;
+;;;;;;;;;
+
 ; subsets
 
 (B (name 3els)(=> (o#list l0 el1 el2 el3 :0.2)(^(subset_of e1 el1 l0)(subset_of e2 l1 l0)(subset_of e3 el2 l1)(subset_of e4 el3 l1))))
@@ -6,108 +10,58 @@
 
 ; people
 
-(B (name people-n)(=>(o#person x z :0.9)(people-n e x)))
-(B (name person-n)(=>(o#person x  z :0.9)(person-n e x)))
-(B (name individual-n)(=>(o#person x z :0.9)(individual-n e x)))
-(B (name human-n)(=>(o#person x z :0.9)(human-n e x)))
+(B (name people-n)(=>(o#person x u :0.9)(people-n e x)))
+(B (name person-n)(=>(o#person x  u :0.9)(person-n e x)))
+(B (name individual-n)(=>(o#person x u :0.9)(individual-n e x)))
+(B (name human-n)(=>(o#person x u :0.9)(human-n e x)))
 
 ; objects
 
-;(B (name cup-n)(=>(o#cup x :0.9)(cup-n e x)))
-;(B (name glass-n)(=>(o#glass x :0.9)(glass-n e x)))
-;(B (name fork-n)(=>(o#fork x :0.9)(fork-n e x)))
-;(B (name knife-n)(=>(o#knife x :0.9)(knife-n e x)))
-;(B (name spoon-n)(=>(o#spoon x :0.9)(spoon-n e x)))
-;(B (name plate-n)(=>(o#plate x :0.9)(plate-n e x)))
-;(B (name bowl-n)(=>(o#bowl x :0.9)(bowl-n e x)))
-;(B (name napkin-n)(=>(o#napkin x :0.9)(napkin-n e x)))
-;(B (name saucer-n)(=>(o#saucer x :0.9)(saucer-n e x)))
-;(B (name table-n)(=>(o#table x :0.9)(table-n e x)))
-;(B (name shelf-n)(=>(o#shelf x :0.9)(shelf-n e x)))
-;(B (name cutboard-n)(=>(o#cutboard x :0.9)(cutboard-n e x)))
+;(B (name bottle-n)(=>(o#obj_bottle x u :0.9)(bottle-n e x)))
+;(B (name chair-n)(=>(o#obj_chair x u :0.9)(chair-n e x)))
+;(B (name container-n)(=>(o#obj_container x u :0.9)(container-n e x)))
+;(B (name cup-n)(=>(o#obj_cup x u :0.9)(cup-n e x)))
+;(B (name dishwasher-n)(=>(o#obj_dishwasher x u :0.9)(dishwasher-n e x)))
+;(B (name fridge-n)(=>(o#obj_fridge x u :0.9)(fridge-n e x)))
+;(B (name hand-n)(=>(o#obj_hand x u :0.9)(hand-n e x)))
+;(B (name plate-n)(=>(o#obj_plate x u :0.9)(plate-n e x)))
+;(B (name sink-n)(=>(o#obj_sink x u :0.9)(sink-n e x)))
+;(B (name sponge-n)(=>(o#obj_sponge x u :0.9)(sponge-n e x)))
+;(B (name juice-n)(=>(o#obj_orangejuice x u :0.9)(juice-n e x)))
 
-(B (name tablerunner-n)(=>(o#table_runner x :0.9)(^(of-p e1 x x1)(runner-n e2 x)(table-n e3 x1))))
-(B (name dining_location-n)(=>(o#tabledropofflocation x :0.9)(^(of-p e1 x x1)(location-n e2 x)(dining-n e3 x1))))
+(B (name coffeefilter-n)(=>(o#coffeefilters x u :0.3)(^(of-p e1 x x1)(filter-n e2 x)(coffee-n e3 x1))))
 
-(B (name placesetting-n)(=>(placesetting-n e2 x :0.2)(^(of-p e1 x x1)(setting-n e2 x)(place-n e3 x1))))
-(B (name tablesetting-n)(=>(placesetting-n e2 x :0.2)(^(of-p e1 x x1)(setting-n e2 x)(table-n e3 x1))))
+(B (name redcup)(=>(o#cupred x u :0.45)(^(red-a e1 x)(cup-n e2 x))))
+(B (name greencup)(=>(o#cupgreen x u :0.45)(^(green-a e1 x)(cup-n e2 x))))
+(B (name bluecup)(=>(o#cupblue x u :0.45)(^(blue-a e1 x)(cup-n e2 x))))
+
+(B (name left-hand)(=>(o#lefthand x u :0.45)(^(hand-n e1 x)(left-a e2 x))))
+(B (name right-hand)(=>(o#righthand x u :0.45)(^(hand-n e1 x)(right-a e2 x))))
+
+(B (name dining_location-n)(=>(o#tabledropofflocation x u :0.9)(^(of-p e1 x x1)(location-n e2 x)(dining-n e3 x1))))
+
+(B (name placesetting-n)(=>(o#placesetting x u :0.2)(^(of-p e1 x x1)(setting-n e2 x)(place-n e3 x1))))
+(B (name tablesetting-n)(=>(o#placesetting-n x u :0.2)(^(of-p e1 x x1)(setting-n e2 x)(table-n e3 x1))))
 
 ; fix wrong parse
-(B (name placesettingfix)(=>(placesetting-n e2 x :0.9)(^(setting-n e2 x)(place-n e3 x1))))
-(B (name tablesettingfix)(=>(placesetting-n e2 x :0.9)(^(setting-n e2 x)(table-n e3 x1))))
-(B (name placesettingfix)(=>(placesetting-n e0 x :0.9)(^(set-v e1 x u1 u2)(place-n e2 x))))
-(B (name tablesettingfix)(=>(placesetting-n e0 x :0.9)(^(set-v e1 x u1 u2)(table-n e2 x))))
+(B (name placesettingfix)(=>(o#placesetting x u :0.9)(^(setting-n e2 x)(place-n e3 x1))))
+(B (name tablesettingfix)(=>(o#placesetting x u :0.9)(^(setting-n e2 x)(table-n e3 x1))))
+(B (name placesettingfix)(=>(o#placesetting x u :0.9)(^(set-v e1 x u1 u2)(place-n e2 x))))
+(B (name tablesettingfix)(=>(o#placesetting x u :0.9)(^(set-v e1 x u1 u2)(table-n e2 x))))
+
+;;;;;;;;;;;
+;LOCATIONS;
+;;;;;;;;;;;
+
+(B (name in-p)(=>(^(l#objectIn e1 e0 l u :0.8)(loc l :0.1))(in-p e1 e0 l)))
+(B (name at-p)(=>(^(l#objectAt e1 e0 l u :0.8)(loc l :0.1))(at-p e1 e0 l)))
+(B (name on-p)(=>(^(l#objectOn e1 e0 l u :0.8)(loc l :0.1))(on-p e1 e0 l)))
+
+(B (name from-p)(=>(loc l :0.9)(from-p e1 e0 l)))
+(B (name to-p)(=>(loc l :0.9)(to-p e1 e0 l)))
 
 
-;(B (name juice-n)(=>(o#juice x :0.9)(juice-n e x)))
-;(B (name salad-n)(=>(o#salad x :0.9)(salad-n e x)))
-;(B (name egg-n)(=>(o#egg x :0.9)(egg-n e x)))
-
-;(B (name fridge-n)(=>(o#fridge x :0.9)(fridge-n e x)))
-
-; instances
-
-(B (name redcup)(=>(cup-n e2 WM_objectInstances_cupred_34 :0.9)(^(red-a e1 x)(cup-n e2 x))))
-(B (name greencup)(=>(cup-n e2 WM_objectInstances_cupgreen_26 :0.9)(^(green-a e1 x)(cup-n e2 x))))
-(B (name greencup)(=>(cup-n e2 WM_objectInstances_cupblue_35 :0.9)(^(blue-a e1 x)(cup-n e2 x))))
-
-
-
-; unification of placesettings does not work. strage...
-(B (name firstplacesetting)(=>(^(placesetting-n e2 PLACESETTING1 :0.9)(= PLACESETTING1 x :0.0))(^(first-a e1 x)(placesetting-n e2 x))))
-(B (name secondplacesetting)(=>(^(placesetting-n e2 PLACESETTING2 :0.9)(= PLACESETTING2 x :0.0))(^(second-a e1 x)(placesetting-n e2 x))))
-
-; ingridients
-
-;(B (name flour-n)(=>(o#flour x :0.9)(flour-n e x)))
-;(B (name sugar-n)(=>(o#sugar x :0.9)(sugar-n e x)))
-;(B (name butter-n)(=>(o#butter x :0.9)(butter-n e x)))
-;(B (name whisk-n)(=>(o#whisk x :0.9)(whisk-n e x)))
-
-(B (name ingredient-n)(=>(o#ingredient x :0.9)(ingredient-n e x)))
-
-; tools
-
-;(B (name sponge-n)(=>(o#sponge x :0.9)(sponge-n e x)))
-;(B (name mixer-n)(=>(o#mixer x :0.9)(mixer-n e x)))
-
-; container
-
-;(B (name container-n)(=>(o#container x :0.9)(container-n e x)))
-;(B (name fridge-n)(=>(o#fridge x :0.9)(fridge-n e x)))
-
-
-; body parts
-
-;(B (name hand-n)(=>(o#hand x :0.9)(hand-n e x)))
-(B (name left-hand)(=>(hand-n e1 LEFTHAND :0.9)(^(hand-n e1 x)(left-a e2 x))))
-(B (name right-hand)(=>(hand-n e1 RIGHTHAND :0.9)(^(hand-n e1 x)(right-a e2 x))))
-
-
-; features
-
-;(B (name graspable-a)(=>(s#graspable e1 x :0.9)(graspable-a e1 x)))
-
-;(B (name handEmpty)(=>(s#handEmpty e1 x :0.9)(^(empty-a e1 x)(hand-n e2 x))))
-
-; location
-
-;(B (name location-n)(=>(l#location x :0.9)(location-n e x)))
-
-;(B (name inHand)(=>(s#inHand e1 x hand :0.8)(^(in-p e1 x hand)(hand-n e2 hand))))
-
-;(B (name robotAt)(=>(s#robotAt e1 x :0.8)(at-p e1 R x)))
-
-
-; (B (name from-p)(=>(^(from e1 e0 l :0.45)(l#source d :0.45))(from-p e1 e0 s)))
-; (B (name outof-p)(=>(^(out-of e1 e0 l :0.45)(l#source d :0.45))(^ (out-p e1 e0) (of-p e2 e0 s))))
-; (B (name to-p)(=>(^(to e0 d :0.45)(l#destination d :0.45))(to-p e1 e0 d)))
-
-(B (name in-p)(=>(l#objectIn e1 e0 l u :0.9)(in-p e1 e0 l)))
-(B (name at-p)(=>(l#objectAt e1 e0 l u :0.9)(at-p e1 e0 l)))
-(B (name on-p)(=>(l#objectOn e1 e0 l u :0.9)(on-p e1 e0 l)))
-
-; actions
+; ACTIONS (COMMENTED OUT)
 
 ;(B (name pourfrom)(=>(a#pour e0 agent hand ingrid cont1 cont2 :0.45)(^(pour-v e0 agent ingrid u)(from-p e2 e0 cont1))))
 ;(B (name pourinto)(=>(a#pour e0 agent hand ingrid cont1 cont2 :0.45)(^(pour-v e0 agent ingrid u)(into-p e2 e0 cont2))))
@@ -121,7 +75,9 @@
 ;(B (name wipewith)(=>(a#wipe e0 agent hand obj instr :0.45)(^(wipe-v e0 agent obj u)(with-p e1 e0 instr))))
 ;(B (name wipe)(=>(a#wipe e0 agent hand obj instr :0.9)(wipe-v e0 agent obj u)))
 
-; DIRECT COMMANDS
+;;;;;;;;;;;;;;;;;;
+; DIRECT COMMANDS;
+;;;;;;;;;;;;;;;;;;
 
 ; STOP
 
@@ -134,29 +90,29 @@
 (B (name graspv)(=>(grasp e0 agent obj u :0.9)(take-v e0 agent obj u)))
 
 (B (name graspwith)(=>(a#grasp agent hand loc obj :0.1)(^(grasp e0 agent obj u)(with-p e1 e0 hand)(hand-n e2 hand)(!= e0 obj)(!= e0 loc))))
-(B (name graspfrom)(=>(a#grasp agent hand loc obj :0.1)(^(grasp e0 agent obj u)(from-p e1 e0 loc)(!= e0 obj)(!= e0 loc))))
+(B (name graspfrom)(=>(^(a#grasp agent hand loc obj :0.1)(loc loc :0.0))(^(grasp e0 agent obj u)(from-p e1 e0 loc)(!= e0 obj)(!= e0 loc))))
 (B (name grasp)(=>(a#grasp agent hand loc obj :0.9)(grasp e0 agent obj u)))
 
 ; fix wrong parse
 
 (B (name graspwithfix)(=>(a#grasp agent hand loc obj :0.2)(^(grasp e0 agent obj u)(with-p e1 u1 hand)(hand-n e2 hand))))
-(B (name graspfromfix)(=>(a#grasp agent hand loc obj :0.2)(^(grasp e0 agent obj u)(from-p e1 u1 loc))))
+(B (name graspfromfix)(=>(^(a#grasp agent hand loc obj :0.2)(loc loc :0.0))(^(grasp e0 agent obj u)(from-p e1 u1 loc))))
 
 ; PUT DOWN
 
-(B (name putdownon)(=>(a#putdown agent hand loc obj :0.1)(^(put-v e0 agent obj u)(down-r e1 e0)(on-p e2 e0 loc)(!= e0 obj)(!= e0 loc))))
+(B (name putdownon)(=>(^(a#putdown agent hand loc obj :0.1)(loc loc :0.0))(^(put-v e0 agent obj u)(down-r e1 e0)(on-p e2 e0 loc)(!= e0 obj)(!= e0 loc))))
 (B (name putdownwith)(=>(a#putdown agent hand loc obj :0.1)(^(put-v e0 agent obj u)(down-r e1 e0)(with-p e2 e0 hand)(hand-n e3 hand)(!= e0 obj)(!= e0 loc))))
 (B (name putdown)(=>(a#putdown agent hand loc obj :0.3)(^(put-v e0 agent obj u)(down-r e1 e0))))
 
 ; fix wrong parse
 
-(B (name putdownfix)(=>(a#putdown agent hand loc obj :0.2)(^(put-v e0 agent obj u)(down-r e1 e0)(on-p e2 u loc)(!= e0 u))))
-(B (name putdownfix)(=>(a#putdown agent hand loc obj :0.2)(^(put-v e0 agent obj u)(down-r e1 e0)(with-p e2 u hand)(hand-n e3 hand)(!= e0 u))))
+(B (name putdownonfix)(=>(^(a#putdown agent hand loc obj :0.2)(loc loc :0.0))(^(put-v e0 agent obj u)(down-r e1 e0)(on-p e2 u loc)(!= e0 u))))
+(B (name putdownwithfix)(=>(a#putdown agent hand loc obj :0.2)(^(put-v e0 agent obj u)(down-r e1 e0)(with-p e2 u hand)(hand-n e3 hand)(!= e0 u))))
 
 ; MOVE
 
-(B (name moverobotto)(=>(a#move agent loc1 loc2 :0.45)(^(move-v e0 agent)(to-p e1 e0 loc2))))
-(B (name moverobotfrom)(=>(a#move agent loc1 loc2 :0.45)(^(move-v e0 agent)(from-p e1 e0 loc1))))
+(B (name moverobotto)(=>(^(a#move agent loc1 loc2 :0.45)(loc loc2 :0.0))(^(move-v e0 agent)(to-p e1 e0 loc2))))
+(B (name moverobotfrom)(=>(^(a#move agent loc1 loc2 :0.45)(loc loc2 :0.0))(^(move-v e0 agent)(from-p e1 e0 loc1))))
 
 ; plan
 
@@ -197,26 +153,30 @@
 
 ; set the table
 
-(B (name settableforXpeople1)(=>(^(o#plate p e0 :0.0)(g#objectAt p ps e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent t u)(table-n e1 t)(for-p e2 e0 per)(o#person per z)(card e4 per n))))
+(B (name settableforXpeople1)(=>(^(o#plate p e0 :0.0)(g#objectAt p ps e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#loc_placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent t u)(table-n e1 t)(for-p e2 e0 per)(o#person per z)(card e4 per n))))
 
-(B (name settableforXpeople2)(=>(^(o#plate p e0 :0.0)(g#objectAt p ps e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent t u)(table-n e1 t)(for-p e2 t per)(o#person per z)(card e4 per n))))
+(B (name settableforXpeople2)(=>(^(o#plate p e0 :0.0)(g#objectAt p ps e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#loc_placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent t u)(table-n e1 t)(for-p e2 t per)(o#person per z)(card e4 per n))))
 
-(B (name settableFORALL)(=>(^(q#forallK PLACESETTING :0.0)(o#plate p e0 :0.0)(g#objectAt p PLACESETTING e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c PLACESETTING e0 :0.0))(^(set-v e0 agent t u)(table-n e1 t))))
+(B (name settableFORALL)(=>(^(q#forallK LOC_PLACESETTING :0.0)(o#plate p e0 :0.0)(g#objectAt p LOC_PLACESETTING e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c LOC_PLACESETTING e0 :0.0))(^(set-v e0 agent t u)(table-n e1 t))))
 
 ; put things on something
-(B (name puton)(=>(g#objectAt obj loc u :0.9)(^(put-v e0 R obj u)(on-p e1 e0 loc)(!= R H))))
-(B (name putonN)(=>((g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0))(^(put-v e1 R obj u)(on-p e2 e0 loc)(card e3 obj n)(!= R H))))
+(B (name puton)(=>(^(g#objectAt obj loc u :0.9)(loc loc :0.0))(^(put-v e0 R obj u)(on-p e1 e0 loc)(!= R H))))
+(B (name putonN)(=>((g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(put-v e1 R obj u)(on-p e2 e0 loc)(card e3 obj n)(!= R H))))
 
 ; fix wrong parse
-(B (name puton2)(=>(g#objectAt obj loc u :0.9)(^(put-a e0 obj)(on-p e1 e0 loc))))
-(B (name putonN2)(=>(^(g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0))(^(put-a e1 obj)(on-p e2 e0 loc)(card e3 obj n))))
+(B (name puton2)(=>(^(g#objectAt obj loc u :0.9)(loc loc :0.0))(^(put-a e0 obj)(on-p e1 e0 loc))))
+(B (name putonN2)(=>(^(g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(put-a e1 obj)(on-p e2 e0 loc)(card e3 obj n))))
 
 ; bring things
 (B (name bringv)(=>(a#give e1 agent obj req :0.9)(bring-v e1 agent obj req)))
 (B (name givev)(=>(a#give e1 agent obj req :0.9)(give-v e1 agent obj req)))
 
-(B (name bringfrom)(=>(^(a#give e1 agent obj req :0.45)(l#in e1 obj loc e0 :0.45))(^(bring-v e0 agent obj req)(from-p e1 e0 loc))))
-(B (name givefrom)(=>(^(a#give e1 agent obj req :0.45)(l#in e1 obj loc e0 :0.45))(^(give-v e0 agent obj req)(from-p e1 e0 loc))))
+(B (name bringfrom)(=>(^(a#give e1 agent obj req :0.2)(l#objectAt e1 obj loc e0 :0.2)(loc loc :0.0))(^(bring-v e0 agent obj req)(from-p e1 e0 loc))))
+(B (name givefrom)(=>(^(a#give e1 agent obj req :0.2)(l#objectAt e1 obj loc e0 :0.2)(loc loc :0.0))(^(give-v e0 agent obj req)(from-p e1 e0 loc))))
+
+; fixing the parse
+(B (name bringfrom)(=>(^(a#give e1 agent obj req :0.2)(l#objectAt e1 obj loc e0 :0.2)(loc loc :0.0))(^(bring-v e0 agent obj req)(from-p e1 obj loc))))
+(B (name givefrom)(=>(^(a#give e1 agent obj req :0.2)(l#objectAt e1 obj loc e0 :0.2)(loc loc :0.0))(^(give-v e0 agent obj req)(from-p e1 obj loc))))
 
 (B (name giveN)(=>(^(g#inHand obj hand e0 :0.3)(hand-n e1 hand :0.0)(g#handOf hand req u :0.3)(r# e0 n :0.0)(r# obj n :0.0))(^(a#give e0 R obj req)(card e1 obj n)(!= R H))))
 (B (name give)(=>(^(g#inHand obj hand e0 :0.3)(hand-n e1 hand :0.3)(g#handOf hand req u :0.3))(^(a#give e0 R obj req)(!= R H))))
@@ -227,26 +187,26 @@
 (B (name carryv)(=>(move e1 agent obj u)(carry-v e1 agent obj u)))
 
 ; move chair to table
-(B (name moveto)(=>(^(g#objectAt c cdl u1 :0.1)(o#chairdropofflocation cdl u :0.1))(^(move e1 agent c u)(chair-n e2 c)(to-p e3 e1 loc)(table-n e4 t))))
-(B (name movetoN)(=>(^(g#objectAt c cdl e1 :0.01)(o#chairdropofflocation cdl e1 :0.01)(r# e1 n :0.0))(^(move e1 agent c u)(chair-n e2 c)(to-p e3 e1 loc)(table-n e4 t)(card e5 obj n))))
+(B (name moveto)(=>(^(g#objectAt c cdl u1 :0.1)(o#loc_chairdropofflocation cdl u :0.1))(^(move e1 agent c u)(chair-n e2 c)(to-p e3 e1 loc)(table-n e4 t))))
+(B (name movetoN)(=>(^(g#objectAt c cdl e1 :0.01)(o#loc_chairdropofflocation cdl e1 :0.01)(r# e1 n :0.0))(^(move e1 agent c u)(chair-n e2 c)(to-p e3 e1 loc)(table-n e4 t)(card e5 obj n))))
 
 (B (name moveto)(=>(g#objectAt obj loc u1 :0.45)(^(move e1 agent obj u)(to-p e2 e1 loc))))
-(B (name movetoN)(=>(^(g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0))(^(move e1 agent obj u)(to-p e2 e1 loc)(card e3 obj n))))
+(B (name movetoN)(=>(^(g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(move e1 agent obj u)(to-p e2 e1 loc)(card e3 obj n))))
 
 ; fix wrong argument binding for move obj to table
-(B (name movetotable)(=>(g#objectAt obj t u1 :0.45)(^(move-v e1 agent obj u)(to-p e2 e1 t)(table-n e3 t)(!= obj t))))
-(B (name moveNtotable)(=>(^(g#objectAt obj t e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0))(^(move e1 agent obj u)(to-p e2 e1 t)(card e3 obj n)(table-n e4 t)(!= obj t))))
+(B (name movetotable)(=>(^(g#objectAt obj t u1 :0.45)(loc t :0.0))(^(move-v e1 agent obj u)(to-p e2 e1 t)(table-n e3 t)(!= obj t))))
+(B (name moveNtotable)(=>(^(g#objectAt obj t e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0)(loc t :0.0))(^(move e1 agent obj u)(to-p e2 e1 t)(card e3 obj n)(table-n e4 t)(!= obj t))))
 
-(B (name movetable)(=>(^(g#objectAt t tdl u0 :0.49)(o#tabledropofflocation tdl :0.1))(^(move e1 agent t u1)(table-n e2 t))))
+(B (name movetable)(=>(^(g#objectAt t tdl u0 :0.49)(o#loc_tabledropofflocation tdl :0.1))(^(move e1 agent t u1)(table-n e2 t))))
 
 ; fix wrong argument binding for move table to loc
-(B (name movetableto)(=>(g#objectAt t loc u1 :0.1)(^(move e1 agent t u1)(table-n e2 t)(to-p e2 e1 loc)(!= loc t))))
+(B (name movetableto)(=>(^(g#objectAt t loc u1 :0.1)(loc loc :0.0))(^(move e1 agent t u1)(table-n e2 t)(to-p e2 e1 loc)(!= loc t))))
 
 ; arrange chairs
-(B (name arrangechair)(=>(^(g#objectAt c ts u :0.2)(o#chairdropofflocation ts u :0.0))(^(arrange-v e0 agent c u)(chair-n e1 c))))
-(B (name arrangeNchairs)(=>(^(g#objectAt c ts e0 :0.1)(o#chairdropofflocation ts e0 :0.0)(r# e0 n :0.0)(r# c n :0.0))(^(arrange-v e0 agent c u)(chair-n e1 c)(card e2 c n))))
+(B (name arrangechair)(=>(^(g#objectAt c ts u :0.2)(o#loc_chairdropofflocation ts u :0.0))(^(arrange-v e0 agent c u)(chair-n e1 c))))
+(B (name arrangeNchairs)(=>(^(g#objectAt c ts e0 :0.1)(o#loc_chairdropofflocation ts e0 :0.0)(r# e0 n :0.0)(r# c n :0.0))(^(arrange-v e0 agent c u)(chair-n e1 c)(card e2 c n))))
 
-(B (name give)(=>(^(q#forallK CHAIRDROPOFFLOCATION :0.0)(g#objectAt c CHAIRDROPOFFLOCATION e0 :0.9))(^(arrange-v e0 agent c u)(chair-n e1 c))))
+(B (name give)(=>(^(q#forallK LOC_CHAIRDROPOFFLOCATION :0.0)(g#objectAt c LOC_CHAIRDROPOFFLOCATION e0 :0.9))(^(arrange-v e0 agent c u)(chair-n e1 c))))
 
 ; wipe the table
 

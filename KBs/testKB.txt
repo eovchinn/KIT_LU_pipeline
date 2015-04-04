@@ -1,3 +1,0 @@
-(B (name push) (=>(push e2 x y :0.9)(move-vb e1 x y u)))
-
-(B (name push) (=>(^(push e2 x y :0.45)(destination e2 l :0.45))(^(move-vb e1 x y u)(to-in e2 e1 l))))
