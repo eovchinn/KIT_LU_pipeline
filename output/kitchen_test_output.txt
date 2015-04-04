@@ -89,22 +89,22 @@ Stop!
 {"human_actions": "", "commands": "stop,agent", "goal": "", "SOW": ""}
 
 Grasp the cup!
-{"human_actions": "", "commands": "grasp,agent,hand,location,obj_cup", "goal": "", "SOW": ""}
+{"human_actions": "", "commands": "grasp,agent,obj_hand,loc_location,obj_cup", "goal": "", "SOW": ""}
 
 Grasp the cup with the left hand!
-{"human_actions": "", "commands": "grasp,agent,obj_lefthand,location,obj_cup", "goal": "", "SOW": ""}
+{"human_actions": "", "commands": "grasp,agent,obj_lefthand,loc_location,obj_cup", "goal": "", "SOW": ""}
 
 Move to the table!
-{"human_actions": "", "commands": "move,agent,location,loc_table", "goal": "", "SOW": ""}
+{"human_actions": "", "commands": "move,agent,loc_location,loc_table", "goal": "", "SOW": ""}
 
 Put the cup on the table!
 {"human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_cup, ?x3 : loc_table) K(objectAt(?x2, ?x3)))", "SOW": ""}
 
 Put the cup down!
-{"human_actions": "", "commands": "putdown,agent,hand,location,obj_cup", "goal": "", "SOW": ""}
+{"human_actions": "", "commands": "putdown,agent,obj_hand,loc_location,obj_cup", "goal": "", "SOW": ""}
 
 Put the cup down and move to the table!
-{"human_actions": "", "commands": "putdown,agent,hand,location,obj_cup;move,agent,location,loc_table", "goal": "", "SOW": ""}
+{"human_actions": "", "commands": "putdown,agent,obj_hand,loc_location,obj_cup;move,agent,loc_location,loc_table", "goal": "", "SOW": ""}
 
 I'm grasping the red cup from the first place setting with my right hand.
 {"human_actions": "grasp,HUMAN,obj_righthand,loc_placesetting,obj_cupred", "commands": "", "goal": "", "SOW": ""}

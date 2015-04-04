@@ -214,19 +214,19 @@ class PKSGenerator(object):
 					# there is no related object
 					else:
 						if name=="grasp":
-							if argind==1: command+="agent,"
-							elif argind==2: command+="hand,"
-							elif argind==3: command+="location,"
-							elif argind==4: command+="object,"
+							if argind==1: command+="obj_agent,"
+							elif argind==2: command+="obj_hand,"
+							elif argind==3: command+="loc_location,"
+							elif argind==4: command+="obj_object,"
 						elif name=="putdown":
-							if argind==1: command+="agent,"
-							elif argind==2: command+="hand,"
-							elif argind==3: command+="location,"
-							elif argind==4: command+="object,"
+							if argind==1: command+="obj_agent,"
+							elif argind==2: command+="obj_hand,"
+							elif argind==3: command+="loc_location,"
+							elif argind==4: command+="obj_object,"
 						elif name=="move":
-							if argind==1: command+="agent,"
-							elif argind==2: command+="location,"
-							elif argind==3: command+="location,"
+							if argind==1: command+="obj_agent,"
+							elif argind==2: command+="loc_location,"
+							elif argind==3: command+="loc_location,"
 			#if mode == "h": commands=command[:-1]+"),"
 			#else: commands=command[:-1]+";"
 			commands+=command[:-1]+";"
