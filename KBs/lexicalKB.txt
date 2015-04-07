@@ -38,6 +38,10 @@
 (B (name orangejuice-n)(=>(o#orangejuice x u :0.3)(^(of-p e1 x x1)(juice-n e2 x)(orange-n e3 x1))))
 (B (name orangejuice-n)(=>(o#multivitaminjuice x u :0.3)(^(of-p e1 x x1)(juice-n e2 x)(multivitamin-n e3 x1))))
 
+(B (name redplate)(=>(o#redplate x u :0.45)(^(red-a e1 x)(plate-n e2 x))))
+(B (name greenplate)(=>(o#greenplatex u :0.45)(^(green-a e1 x)(plate-n e2 x))))
+(B (name blueplate)(=>(o#blueplate x u :0.45)(^(blue-a e1 x)(plate-n e2 x))))
+
 (B (name redcup)(=>(o#cupred x u :0.45)(^(red-a e1 x)(cup-n e2 x))))
 (B (name greencup)(=>(o#cupgreen x u :0.45)(^(green-a e1 x)(cup-n e2 x))))
 (B (name bluecup)(=>(o#cupblue x u :0.45)(^(blue-a e1 x)(cup-n e2 x))))
