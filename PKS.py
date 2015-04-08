@@ -204,7 +204,7 @@ class PKSGenerator(object):
 
 			for a in args:
 				argind+=1
-				if a=="H": command+="HUMAN,"
+				if a=="H": command+="human,"
 				elif a=="R": command+="agent,"
 				elif a[0].isupper(): command+=a+","
 				else:

@@ -1,6 +1,6 @@
-Armar, please help me to carry the table to the dining location.
-Armar, please help me to set the table for two people!
-Armar, please arrange one chair.
+Armar please help me to carry the table to the dining location.
+Armar please help me to set the table for two people!
+Armar please arrange one chair.
 Please arrange one chair.
 Set the table.
 Help me to move the table!
@@ -31,9 +31,9 @@ Stop!
 Grasp the cup!
 Grasp the cup with the left hand!
 Move to the table!
-Put the cup on the table!
+Put the vitalis cereal on the table!
 Put the cup down!
 Put the cup down and move to the table!
-I'm grasping the red cup from the first place setting with my right hand.
-I'm putting the green cup down on the second place setting with my left hand.
+I'm grasping the green cup from the table with my right hand.
+I'm putting the red plate down on the table with my left hand.
 I'm moving from the fridge to the table.
