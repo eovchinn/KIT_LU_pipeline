@@ -19,49 +19,59 @@ class PKSGenerator(object):
 			all_goals += self.printPKS(gobjs,fgls,quantifiers,gineq)+";"
 		return all_goals[:-1]
 
-
 	def printPKS(self,objects,states_actions,quantifiers,inequalities):
-		
 		if len(states_actions)==0: return ""
 
-		output_str = "("
-
-		for (name,arg) in objects:
-			if arg[0].isupper(): continue
-			elif arg.startswith('_'): arg = "xx"+arg[1:]
-			output_str += "?"+arg+" : "+name+", "
-
-		if len(output_str)>1: output_str = "(existsK" + output_str[:-2] + ") "
+		output_str = ""
+		exist_counter = 0
 
 		for (name,args) in states_actions:
+			pred_str = ""
+			obj_str = ""
+			linked_arg = ""
+
 			if name.startswith("n#"): 
 				name = name[2:]
-				output_str +=  "!"
-			output_str += "K("+name+"("
+				pred_str +=  "!"
+			pred_str += "K("+name+"("
 			for arg in args:
-				if arg=="H": output_str += "human, "
-				elif arg=="R": output_str += "agent, "
-				elif arg in quantifiers: output_str += quantifiers[arg]+", "
-				elif arg[0].isupper():	output_str += arg+", "
-				elif arg.startswith('_'): output_str += "?xx"+arg[1:]+", "
-				else: output_str += "?"+arg+", "
+				if arg=="H": pred_str += "human, "
+				elif arg=="R": pred_str += "agent, "
+				elif arg in quantifiers: pred_str += quantifiers[arg]+", "
+				elif arg[0].isupper():	pred_str += arg+", "
+				elif arg.startswith('_'): 
+					pred_str += "?xx"+arg[1:]+", "
+					linked_arg = "?xx"+arg[1:]
+				else: 
+					pred_str += "?"+arg+", "
+					linked_arg = "?"+arg
 
-			if len(args)>0: output_str = output_str[:-2]
-			output_str+=")) & "
+				if len(linked_arg)>0:
+					for (name,oarg) in objects:
+						if oarg == arg:
+							obj_str += linked_arg + " : " + name + ", "
+			pred_str = pred_str[:-2] + ")"
+
+			if len(obj_str)>0:
+				exist_counter += 1
+				output_str += "(existsK(" + obj_str[:-2] + ") " + pred_str + ") & "
 
 		# Generate inequalities
 		ineqstr = ""
 		for ineq in inequalities:
 			for i in range(0,len(ineq)):
-				if ineq[i].startswith('_'): a1 = "xx"+ineq[i][1:]
+				if ineq[i].startswith('_'): a1 = "?xx"+ineq[i][1:]
 				else: a1 = ineq[i]
 				for j in range(i+1,len(ineq)):
-					if ineq[j].startswith('_'): a2 = "xx"+ineq[j][1:]
+					if ineq[j].startswith('_'): a2 = "?xx"+ineq[j][1:]
 					else: a2 = ineq[j]
-					ineqstr += "K(?"+a1+" != ?"+a2+") & "
+					ineqstr += "K("+a1+" != "+a2+") & "	
 		output_str += ineqstr
 
-		output_str = output_str[:-3] + ")" 
+		output_str = output_str[:-3]
+
+		for i in range(0,exist_counter):
+			output_str += ")"
 
 		# add quantification if available
 		if len(quantifiers)>0:
@@ -305,9 +315,9 @@ class PKSGenerator(object):
 			#full_goals+=list(fgls)
 			#goal_objects+=list(gobjs)
 			#goal = self.printPKS(goal_objects,full_goals,quantifiers,gineq)
-			goal = self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers)
 
 			# separate goals for fixing long planning
+			goal = self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers)
 
 
 			sow = self.generate_SOW(objects,locations,states,negations)

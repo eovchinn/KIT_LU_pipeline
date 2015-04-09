@@ -201,6 +201,10 @@
 (B (name movev)(=>(move e1 agent obj u)(move-v e1 agent obj u)))
 (B (name carryv)(=>(move e1 agent obj u)(carry-v e1 agent obj u)))
 
+; fix wrong parse
+(B (name carryn)(=>(move c agent c u)(carry-n e1 c)))
+
+
 ; move chair to table
 (B (name moveto)(=>(^(g#objectAt c cdl u1 :0.1)(o#loc_chairdropofflocation cdl u :0.1))(^(move e1 agent c u)(chair-n e2 c)(to-p e3 e1 loc)(table-n e4 t))))
 (B (name movetoN)(=>(^(g#objectAt c cdl e1 :0.01)(o#loc_chairdropofflocation cdl e1 :0.01)(r# e1 n :0.0))(^(move e1 agent c u)(chair-n e2 c)(to-p e3 e1 loc)(table-n e4 t)(card e5 obj n))))
