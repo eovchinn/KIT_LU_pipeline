@@ -35,6 +35,8 @@
 (B (name cornycerealbars-n)(=>(o#cornycerealbars x u :0.3)(^(of-p e1 x x1)(bar-n e2 x)(cereal-n e3 x1))))
 (B (name cornycereal-n)(=>(o#cornycerealbars x u :0.3)(^(of-p e1 x x1)(cereal-n e2 x)(corny-n e3 x1))))
 
+(B (name cereal-n)(=>(o#vitaliscereal x u :0.9)(cereal-n e2 x)))
+
 (B (name orangejuice-n)(=>(o#orangejuice x u :0.3)(^(of-p e1 x x1)(juice-n e2 x)(orange-n e3 x1))))
 (B (name orangejuice-n)(=>(o#multivitaminjuice x u :0.3)(^(of-p e1 x x1)(juice-n e2 x)(multivitamin-n e3 x1))))
 
