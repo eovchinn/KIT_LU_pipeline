@@ -35,10 +35,11 @@
 (B (name cornycerealbars-n)(=>(o#cornycerealbars x u :0.3)(^(of-p e1 x x1)(bar-n e2 x)(cereal-n e3 x1))))
 (B (name cornycereal-n)(=>(o#cornycerealbars x u :0.3)(^(of-p e1 x x1)(cereal-n e2 x)(corny-n e3 x1))))
 
-(B (name cereal-n)(=>(o#vitaliscereal x u :0.9)(cereal-n e2 x)))
-
 (B (name orangejuice-n)(=>(o#orangejuice x u :0.3)(^(of-p e1 x x1)(juice-n e2 x)(orange-n e3 x1))))
-(B (name orangejuice-n)(=>(o#multivitaminjuice x u :0.3)(^(of-p e1 x x1)(juice-n e2 x)(multivitamin-n e3 x1))))
+
+(B (name multivitaminjuice-n)(=>(o#multivitaminjuice x u :0.4)(^(juice-n e1 x)(multivitamin-a e2 x))))
+(B (name multi-vitaminjuice-n)(=>(o#multivitaminjuice x u :0.4)(^(juice-n e1 x)(multi-vitamin-a e2 x))))
+(B (name multi-vitaminjuice-n2)(=>(o#multivitaminjuice x u :0.2)(^(juice-n e1 x)(multi-a e2 x)(vitamin-n e3 x1)(of-p e4 x x1))))
 
 (B (name redplate)(=>(o#redplate x u :0.45)(^(red-a e1 x)(plate-n e2 x))))
 (B (name greenplate)(=>(o#greenplatex u :0.45)(^(green-a e1 x)(plate-n e2 x))))
@@ -183,6 +184,8 @@
 ; fix wrong parse
 (B (name puton2)(=>(^(g#objectAt obj loc u :0.9)(loc loc :0.0))(^(put-a e0 obj)(on-p e1 e0 loc))))
 (B (name putonN2)(=>(^(g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(put-a e1 obj)(on-p e2 e0 loc)(card e3 obj n))))
+(B (name puton3)(=>(^(g#objectAt obj loc u :0.9)(loc loc :0.0))(^(put-v e0 agent obj u)(on-p e1 obj loc))))
+(B (name putonN)(=>((g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(put-v e1 R obj u)(on-p e2 obj loc)(card e3 obj n))))
 
 ; bring things
 (B (name bringv)(=>(a#give e1 agent obj req :0.9)(bring-v e1 agent obj req)))

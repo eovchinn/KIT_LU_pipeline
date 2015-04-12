@@ -50,7 +50,7 @@ Put the juice on the table!
 {"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_juice, ?x3 : loc_table) K(objectAt(?x2, ?x3)))", "SOW": ""}
 
 Give me two eggs from the fridge!
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x21 : obj_egg, ?xx11 : obj_hand) K(inHand(?x21, ?xx11)) & (existsK(?x22 : obj_egg, ?xx11 : obj_hand) K(inHand(?x22, ?xx11)) & K(x21 != x22)));(existsK(?xx11 : obj_hand) K(handOf(?xx11, human)))", "SOW": "loc,True,objectAt,obj_egg,loc_fridge"}
+{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x21 : obj_egg, ?xx8 : obj_hand) K(inHand(?x21, ?xx8)) & (existsK(?x22 : obj_egg, ?xx8 : obj_hand) K(inHand(?x22, ?xx8)) & K(x21 != x22)));(existsK(?xx8 : obj_hand) K(handOf(?xx8, human)))", "SOW": "loc,True,objectAt,obj_egg,loc_fridge"}
 
 Open the fridge.
 {"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_fridge) K(open(?x2)))", "SOW": ""}
@@ -99,6 +99,15 @@ Move to the table!
 
 Put the vitalis cereal on the table!
 {"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_vitaliscereal, ?x4 : loc_table) K(objectAt(?x2, ?x4)))", "SOW": ""}
+
+Put the orange juice on the table!
+{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_orangejuice, ?x4 : loc_table) K(objectAt(?x2, ?x4)))", "SOW": ""}
+
+Put the multi vitamin juice on the table!
+{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_multivitaminjuice, ?x4 : loc_table) K(objectAt(?x2, ?x4)))", "SOW": ""}
+
+Put the milk on the table!
+{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_milk, ?x3 : loc_table) K(objectAt(?x2, ?x3)))", "SOW": ""}
 
 Put the cup down!
 {"recognize_plan": "False", "human_actions": "", "commands": "putdown,agent,obj_hand,location,obj_cup", "goal": "", "SOW": ""}
