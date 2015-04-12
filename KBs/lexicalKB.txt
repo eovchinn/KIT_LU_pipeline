@@ -45,9 +45,9 @@
 (B (name greenplate)(=>(o#greenplatex u :0.45)(^(green-a e1 x)(plate-n e2 x))))
 (B (name blueplate)(=>(o#blueplate x u :0.45)(^(blue-a e1 x)(plate-n e2 x))))
 
-(B (name redcup)(=>(o#cupred x u :0.45)(^(red-a e1 x)(cup-n e2 x))))
-(B (name greencup)(=>(o#cupgreen x u :0.45)(^(green-a e1 x)(cup-n e2 x))))
-(B (name bluecup)(=>(o#cupblue x u :0.45)(^(blue-a e1 x)(cup-n e2 x))))
+(B (name redcup)(=>(o#redcup x u :0.45)(^(red-a e1 x)(cup-n e2 x))))
+(B (name greencup)(=>(o#greencup x u :0.45)(^(green-a e1 x)(cup-n e2 x))))
+(B (name bluecup)(=>(o#bluecup x u :0.45)(^(blue-a e1 x)(cup-n e2 x))))
 
 (B (name left-hand)(=>(o#lefthand x u :0.45)(^(hand-n e1 x)(left-a e2 x))))
 (B (name right-hand)(=>(o#righthand x u :0.45)(^(hand-n e1 x)(right-a e2 x))))
