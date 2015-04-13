@@ -7,7 +7,7 @@
 
 HENRY_BIN=$HENRY_DIR/bin/henry
 HENRY_MODEL=$HENRY_DIR/models/h93.py
-HENRY_OPT="-m infer -e $HENRY_MODEL -d 5 -t 4 -O proofgraph,statistics -T 60"
+HENRY_OPT="-m infer -e $HENRY_MODEL -d 3 -t 4 -O proofgraph,statistics -T 60"
 #HENRY_OPT="-m infer -e $HENRY_MODEL -d 3 -t 4 -T 60"
 
 if [ -f "$1" ]; then
