@@ -15,11 +15,13 @@ class PKSGenerator(object):
 
 	def printPKS_separate(self,goal_array,quantifiers):
 		all_goals = ""
-		for (fgls,gobjs,gineq) in goal_array:
-			all_goals += self.printPKS(gobjs,fgls,quantifiers,gineq)+";"
+		for goal_struc in goal_array:
+			all_goals += self.printPKS(goal_struc,quantifiers)+";"
 		return all_goals[:-1]
 
-	def printPKS(self,objects,states_actions,quantifiers,inequalities):
+	def printPKS(self,goal_struc,quantifiers):
+		(states_actions,objects,inequalities) = goal_struc
+
 		if len(states_actions)==0: return ""
 
 		output_str = ""
@@ -146,7 +148,8 @@ class PKSGenerator(object):
 							inequalities.append(ineqset)
 						else:
 							rel_objs.append((objects[a][0],a))
-						
+
+			
 		return (full_states_actions,rel_objs,inequalities)
 
 	def generate_SOW(self,objects,locations,states,negations):	
@@ -244,11 +247,11 @@ class PKSGenerator(object):
 
 	def generatePKS(self, Hypo):
 
-		print Hypo
-
 		data = {}
-		data["SOW"] = ""
-		data["goal"] = ""
+		goals_pks = ""
+		sows_pks = ""
+		commands_pks = ""
+		human_actions_pks = ""
 
 		full_goals=[]
 		full_world=[]
@@ -281,7 +284,7 @@ class PKSGenerator(object):
 					goals.append((name[2:],args))
 				# repeats
 				elif name.startswith('r#'):
-					repeats[args[0]] = int(args[1])
+					if (int(args[1]))>1: repeats[args[0]] = int(args[1])
 				# nouns
 				elif name.endswith('-n'):
 					objects[args[1]] = (name[:-2],[args[1],""])
@@ -314,25 +317,21 @@ class PKSGenerator(object):
 			objects = self.assign_prefixes(objects,loc_objs)
 
 			# Correct generation of the goal
-			#(fgls,gobjs,gineq) = self.multuply_link_preds_objs(objects,goals,repeats)
-			#full_goals+=list(fgls)
-			#goal_objects+=list(gobjs)
-			#goal = self.printPKS(goal_objects,full_goals,quantifiers,gineq)
+			#goals_pks += self.printPKS(self.multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
+
 
 			# separate goals for fixing long planning
-			goal = self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers)
+			goals_pks += self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
+
+			sows_pks += self.generate_SOW(objects,locations,states,negations) + ";"
+			commands_pks += self.generate_commands(objects,commands,"r") + ";"
+			human_actions_pks += self.generate_commands(objects,human_actions,"h") + ";"
 
 
-			sow = self.generate_SOW(objects,locations,states,negations)
-
-			commands = self.generate_commands(objects,commands,"r")
-			human_actions = self.generate_commands(objects,human_actions,"h")
-
-
-		data["goal"] = goal
-		data["SOW"] = sow
-		data["commands"] = commands
-		data["human_actions"] = human_actions
+		data["goal"] = goals_pks[:-1]
+		data["SOW"] = sows_pks[:-1]
+		data["commands"] = commands_pks[:-1]
+		data["human_actions"] = human_actions_pks[:-1]
 		data["recognize_plan"] = str(recplan)
 
 		return data
