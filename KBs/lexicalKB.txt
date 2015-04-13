@@ -231,9 +231,12 @@
 (B (name arrangeNchairs)(=>(^(g#objectAt c ts e0 :0.1)(o#loc_chairdropofflocation ts e0 :0.01)(r# e0 n :0.01)(r# c n :0.01))(^(arrange-v e0 agent c u)(chair-n e1 c)(card e2 c n))))
 
 ; fix wrong parse
-(B (name arrangechairfix)(=>(^(g#objectAt c ts u :0.2)(o#loc_chairdropofflocation ts u :0.01))(^(arrange-n e0 c)(chair-n e1 c))))
-(B (name arrangechairfix)(=>(^(g#objectAt c ts u :0.2)(o#loc_chairdropofflocation ts u :0.01))(^(arrange-n e0 a)(of-p e2 c a)(chair-n e1 c))))
-(B (name arrangeNchairsfix)(=>(^(g#objectAt c ts e0 :0.1)(o#loc_chairdropofflocation ts e0 :0.01)(r# e0 n :0.01)(r# c n :0.01))(^(arrange-n e0 c)(chair-n e1 c)(card e2 c n))))
+(B (name arrangechairfix1)(=>(^(g#objectAt c ts u :0.2)(o#loc_chairdropofflocation ts u :0.01))(^(arrange-n e0 c)(chair-n e1 c))))
+(B (name arrangechairfix2)(=>(^(g#objectAt c ts u :0.2)(o#loc_chairdropofflocation ts u :0.01))(^(arrange-n e0 a)(of-p e2 c a)(chair-n e1 c))))
+(B (name arrangeNchairsfix3)(=>(^(g#objectAt c ts e0 :0.1)(o#loc_chairdropofflocation ts e0 :0.01)(r# e0 n :0.01)(r# c n :0.01))(^(arrange-n e0 c)(chair-n e1 c)(card e2 c n))))
+
+(B (name arrangechairfix4)(=>(^(g#objectAt c ts u :0.4)(o#loc_chairdropofflocation ts u :0.01))(^(arrange-v e0 agent u1 u2)(chair-n e1 c))))
+(B (name arrangeNchairsfix)(=>(^(g#objectAt c ts e0 :0.1)(o#loc_chairdropofflocation ts e0 :0.01)(r# e0 n :0.01)(r# c n :0.01))(^(arrange-v e0 agent u1 u2)(chair-n e1 c)(card e2 c n))))
 
 ;(B (name arrangechairs)(=>(^(q#forallK LOC_CHAIRDROPOFFLOCATION :0.01)(g#objectAt c LOC_CHAIRDROPOFFLOCATION e0 :0.9))(^(arrange-v e0 agent c u)(chair-n e1 c))))
 
