@@ -49,8 +49,8 @@
 (B (name greencup)(=>(o#greencup x u :0.45)(^(green-a e1 x)(cup-n e2 x))))
 (B (name bluecup)(=>(o#bluecup x u :0.45)(^(blue-a e1 x)(cup-n e2 x))))
 
-(B (name left-hand)(=>(o#lefthand x u :0.45)(^(hand-n e1 x)(left-a e2 x))))
-(B (name right-hand)(=>(o#righthand x u :0.45)(^(hand-n e1 x)(right-a e2 x))))
+(B (name left-hand)(=>(o#handleft3a x u :0.45)(^(hand-n e1 x)(left-a e2 x))))
+(B (name right-hand)(=>(o#handright3a x u :0.45)(^(hand-n e1 x)(right-a e2 x))))
 
 (B (name dining_location-n)(=>(o#tabledropofflocation x u :0.9)(^(of-p e1 x x1)(location-n e2 x)(dining-n e3 x1))))
 

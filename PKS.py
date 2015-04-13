@@ -243,6 +243,9 @@ class PKSGenerator(object):
 		return commands[:-1]
 
 	def generatePKS(self, Hypo):
+
+		print Hypo
+
 		data = {}
 		data["SOW"] = ""
 		data["goal"] = ""
