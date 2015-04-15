@@ -232,12 +232,12 @@ class PKSGenerator(object):
 							if argind==1: command+="agent,"
 							elif argind==2: command+="obj_hand,"
 							elif argind==3: command+="location,"
-							elif argind==4: command+="obj_object,"
+							elif argind==4: command+="obj_all,"
 						elif name=="putdown":
 							if argind==1: command+="agent,"
 							elif argind==2: command+="obj_hand,"
 							elif argind==3: command+="location,"
-							elif argind==4: command+="obj_object,"
+							elif argind==4: command+="obj_all,"
 						elif name=="move":
 							if argind==1: command+="agent,"
 							elif argind==2: command+="location,"

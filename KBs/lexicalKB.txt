@@ -63,11 +63,11 @@
 (B (name placesettingfix)(=>(o#placesetting x u :0.9)(^(set-v e1 x u1 u2)(place-n e2 x))))
 (B (name tablesettingfix)(=>(o#placesetting x u :0.9)(^(set-v e1 x u1 u2)(table-n e2 x))))
 
-(B (name firstfork)(=>(fork-n e FORK1 :0.9)(^(first-a e1 x)(fork-n e x))))
-(B (name secondfork)(=>(fork-n e FORK2 :0.9)(^(second-a e1 x)(fork-n e x))))
+(B (name firstfork)(=>(fork-n e OBJ_FORK1 :0.9)(^(first-a e1 x)(fork-n e x))))
+(B (name secondfork)(=>(fork-n e OBJ_FORK2 :0.9)(^(second-a e1 x)(fork-n e x))))
 
-(B (name firstknife)(=>(knife-n e KNIFE1 :0.9)(^(first-a e1 x)(knife-n e x))))
-(B (name secondknife)(=>(knife-n e KNIFE2 :0.9)(^(second-a e1 x)(knife-n e x))))
+(B (name firstknife)(=>(knife-n e OBJ_KNIFE1 :0.9)(^(first-a e1 x)(knife-n e x))))
+(B (name secondknife)(=>(knife-n e OBJ_KNIFE2 :0.9)(^(second-a e1 x)(knife-n e x))))
 
 ;;;;;;;;;;;
 ;LOCATIONS;
@@ -91,17 +91,17 @@
 
 ; GRASP
 
-(B (name graspv)(=>(grasp e0 agent obj u :0.9)(grasp-v e0 agent u obj)))
-(B (name graspv)(=>(grasp e0 agent obj u :0.9)(take-v e0 agent u obj)))
+(B (name graspv)(=>(grasp e0 agent obj :0.9)(grasp-v e0 agent u obj)))
+(B (name graspv)(=>(grasp e0 agent obj :0.9)(take-v e0 agent u obj)))
 
-(B (name graspwith)(=>(a#grasp agent hand loc obj :0.1)(^(grasp e0 agent u obj)(with-p e1 e0 hand)(hand-n e2 hand)(!= e0 obj)(!= e0 loc))))
-(B (name graspfrom)(=>(^(a#grasp agent hand loc obj :0.1)(loc loc :0.0))(^(grasp e0 agent u obj)(from-p e1 e0 loc)(!= e0 obj)(!= e0 loc))))
-(B (name grasp)(=>(a#grasp agent hand loc obj :0.9)(grasp e0 agent u obj)))
+(B (name graspwith)(=>(a#grasp agent hand loc obj :0.1)(^(grasp e0 agent obj)(with-p e1 e0 hand)(hand-n e2 hand)(!= e0 obj)(!= e0 loc))))
+(B (name graspfrom)(=>(^(a#grasp agent hand loc obj :0.1)(loc loc :0.0))(^(grasp e0 agent obj)(from-p e1 e0 loc)(!= e0 obj)(!= e0 loc))))
+(B (name grasp)(=>(a#grasp agent hand loc obj :0.9)(grasp e0 agent obj)))
 
 ; fix wrong parse
 
-(B (name graspwithfix)(=>(a#grasp agent hand loc obj :0.2)(^(grasp e0 agent u obj)(with-p e1 u1 hand)(hand-n e2 hand))))
-(B (name graspfromfix)(=>(^(a#grasp agent hand loc obj :0.2)(loc loc :0.0))(^(grasp e0 agent u obj)(from-p e1 u1 loc))))
+(B (name graspwithfix)(=>(a#grasp agent hand loc obj :0.2)(^(grasp e0 agent obj)(with-p e1 u1 hand)(hand-n e2 hand))))
+(B (name graspfromfix)(=>(^(a#grasp agent hand loc obj :0.2)(loc loc :0.0))(^(grasp e0 agent obj)(from-p e1 u1 loc))))
 
 ; PUT DOWN
 
