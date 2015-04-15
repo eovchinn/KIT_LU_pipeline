@@ -11,10 +11,8 @@ Help me to arrange three chairs!
 Put the cups on the table!
 Put the cups and plates on the table!
 Put three cups on the table!
-Put the juice on the table!
 Bring me the juice from the fridge!
 The juice is in the fridge. 
-Put the juice on the table!
 Give me two eggs from the fridge!
 Open the fridge.
 Close the dishwasher.
@@ -40,4 +38,8 @@ Put the cup down and move to the table!
 I'm grasping the green cup from the table with my right hand.
 I'm putting the red plate down on the table with my left hand.
 I'm moving from the fridge to the table.
-Recognize my plan
+I'm putting the first fork on the table.
+I'm putting the second fork on the table.
+I'm putting the first knife on the table.
+I'm putting the second knife on the table.
+Recognize my plan.

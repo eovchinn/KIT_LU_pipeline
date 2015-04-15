@@ -26,6 +26,7 @@ class PKSGenerator(object):
 
 		output_str = ""
 		exist_counter = 0
+		done_vars = []
 
 		for (name,args) in states_actions:
 			pred_str = ""
@@ -48,10 +49,11 @@ class PKSGenerator(object):
 					pred_str += "?"+arg+", "
 					linked_arg = "?"+arg
 
-				if len(linked_arg)>0:
+				if len(linked_arg)>0 and (arg not in done_vars):
 					for (name,oarg) in objects:
 						if oarg == arg:
 							obj_str += linked_arg + " : " + name + ", "
+					done_vars.append(arg)
 			pred_str = pred_str[:-2] + ")"
 
 			if len(obj_str)>0:
@@ -219,7 +221,7 @@ class PKSGenerator(object):
 				argind+=1
 				if a=="H": command+="human,"
 				elif a=="R": command+="agent,"
-				elif a[0].isupper(): command+=a+","
+				elif a[0].isupper(): command+=a.lower()+","
 				else:
 					# find corresponding objects
 					if a in objects:
@@ -317,11 +319,11 @@ class PKSGenerator(object):
 			objects = self.assign_prefixes(objects,loc_objs)
 
 			# Correct generation of the goal
-			#goals_pks += self.printPKS(self.multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
+			goals_pks += self.printPKS(self.multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
 
 
 			# separate goals for fixing long planning
-			goals_pks += self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
+			#goals_pks += self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
 
 			sows_pks += self.generate_SOW(objects,locations,states,negations) + ";"
 			commands_pks += self.generate_commands(objects,commands,"r") + ";"

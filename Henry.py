@@ -33,7 +33,7 @@ class HenryWriter(object):
 
 				# fix intrans verbs: if they sec arg is uninstantiated -> remove it
 				if ((p_name in intrans_verbs) & (len(args)>2)):
-					if args[2].startswith("u"): args = args[:-2]
+					if args[3].startswith("u"): args = args[:-2]
 
 				Ostr+=" (%s" % p_name
 				for a in args:
