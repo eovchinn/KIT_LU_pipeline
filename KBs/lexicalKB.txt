@@ -63,11 +63,11 @@
 (B (name placesettingfix)(=>(o#placesetting x u :0.9)(^(set-v e1 x u1 u2)(place-n e2 x))))
 (B (name tablesettingfix)(=>(o#placesetting x u :0.9)(^(set-v e1 x u1 u2)(table-n e2 x))))
 
-(B (name firstfork)(=>(fork-n e OBJ_FORK1 :0.9)(^(first-a e1 x)(fork-n e x))))
-(B (name secondfork)(=>(fork-n e OBJ_FORK2 :0.9)(^(second-a e1 x)(fork-n e x))))
+(B (name firstfork)(=>(fork-n e FORK1 :0.9)(^(first-a e1 x)(fork-n e x))))
+(B (name secondfork)(=>(fork-n e FORK2 :0.9)(^(second-a e1 x)(fork-n e x))))
 
-(B (name firstknife)(=>(knife-n e OBJ_KNIFE1 :0.9)(^(first-a e1 x)(knife-n e x))))
-(B (name secondknife)(=>(knife-n e OBJ_KNIFE2 :0.9)(^(second-a e1 x)(knife-n e x))))
+(B (name firstknife)(=>(knife-n e KNIFE1 :0.9)(^(first-a e1 x)(knife-n e x))))
+(B (name secondknife)(=>(knife-n e KNIFE2 :0.9)(^(second-a e1 x)(knife-n e x))))
 
 ;;;;;;;;;;;
 ;LOCATIONS;
