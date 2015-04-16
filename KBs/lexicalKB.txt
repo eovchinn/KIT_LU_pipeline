@@ -180,12 +180,12 @@
 (B (name putonNR)(=>((g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(put-v e1 R u obj)(on-p e2 obj loc)(card e3 obj n)(!= R H))))
 
 ; put things on something: HUMAN
-(B (name putonH)(=>(^(a#grasp H hand loc obj :0.9)(a#putdown H hand loc obj :0.0)(hand-n ee hand :0.0)(loc loc :0.0))(^(put-v e0 H u obj)(on-p e1 e0 loc)(!= R H))))
-(B (name putonNH)(=>((a#grasp H hand loc obj :0.0)(a#putdown H hand loc obj :0.ß)(hand-n ee hand :0.0)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(put-v e1 H u obj)(on-p e2 e0 loc)(card e3 obj n)(!= R H))))
+(B (name putonH)(=>(^(a#grasp H hand loc1 obj :0.9)(a#putdown H hand loc obj :0.0)(hand-n ee hand :0.0)(loc loc :0.0))(^(put-v e0 H u obj)(on-p e1 e0 loc)(!= R H))))
+(B (name putonNH)(=>((a#grasp H hand loc1 obj :0.0)(a#putdown H hand loc obj :0.ß)(hand-n ee hand :0.0)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(put-v e1 H u obj)(on-p e2 e0 loc)(card e3 obj n)(!= R H))))
 
 ; fix wrong parse
-(B (name puton3H)(=>(^(a#grasp H hand loc obj :0.9)(a#putdown H hand loc obj :0.0)(hand-n ee hand :0.0)(loc loc :0.0))(^(put-v e0 H u obj)(on-p e1 obj loc)(!= R H))))
-(B (name putonNH)(=>((a#grasp H hand loc obj :0.9)(a#putdown H hand loc obj :0.0)(hand-n ee hand :0.0)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(put-v e1 H u obj)(on-p e2 obj loc)(card e3 obj n)(!= R H))))
+(B (name puton3H)(=>(^(a#grasp H hand loc1 obj :0.9)(a#putdown H hand loc obj :0.0)(hand-n ee hand :0.0)(loc loc :0.0))(^(put-v e0 H u obj)(on-p e1 obj loc)(!= R H))))
+(B (name putonNH)(=>((a#grasp H hand loc1 obj :0.9)(a#putdown H hand loc obj :0.0)(hand-n ee hand :0.0)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(put-v e1 H u obj)(on-p e2 obj loc)(card e3 obj n)(!= R H))))
 
 ; bring things
 (B (name bringv)(=>(a#give e1 agent obj req :0.9)(bring-v e1 agent req obj)))
