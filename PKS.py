@@ -319,11 +319,11 @@ class PKSGenerator(object):
 			objects = self.assign_prefixes(objects,loc_objs)
 
 			# Correct generation of the goal
-			goals_pks += self.printPKS(self.multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
+			#goals_pks += self.printPKS(self.multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
 
 
 			# separate goals for fixing long planning
-			#goals_pks += self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
+			goals_pks += self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
 
 			sows_pks += self.generate_SOW(objects,locations,states,negations) + ";"
 			commands_pks += self.generate_commands(objects,commands,"r") + ";"
