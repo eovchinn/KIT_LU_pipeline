@@ -208,42 +208,44 @@ class PKSGenerator(object):
 		return real_objects
 
 	def generate_commands(self,objects,states_actions,mode):	
-		commands = ''
+		commands = ""
 
 		for (name,args) in states_actions:
-			command = name
+			arg_str = ""
+			app = ""
+
 			argind = 0
-			#if mode == "h": command+="("
-			#else: command+=","
-			command+=","
 
 			for a in args:
 				argind+=1
-				if a=="H": command+="human,"
-				elif a=="R": command+="agent,"
-				elif a[0].isupper(): command+=a.lower()+","
+				if a=="H": arg_str+="human,"
+				elif a=="R": arg_str+="agent,"
+				elif a[0].isupper(): 
+					arg_str+=a.lower()+","
+					if argind == 4 and mode == "h" and ((name == "grasp") or (name == "putdown")): 
+							app = a[0] + a[1:].lower()
 				else:
 					# find corresponding objects
 					if a in objects:
-						command+=objects[a][0]+","
+						arg_str+=objects[a][0]+","
 					# there is no related object
 					else:
 						if name=="grasp":
-							if argind==1: command+="agent,"
-							elif argind==2: command+="obj_hand,"
-							elif argind==3: command+="location,"
-							elif argind==4: command+="obj_all,"
+							if argind==1: arg_str+="agent,"
+							elif argind==2: arg_str+="obj_hand,"
+							elif argind==3: arg_str+="location,"
+							elif argind==4: arg_str+="obj_all,"
 						elif name=="putdown":
-							if argind==1: command+="agent,"
-							elif argind==2: command+="obj_hand,"
-							elif argind==3: command+="location,"
-							elif argind==4: command+="obj_all,"
+							if argind==1: arg_str+="agent,"
+							elif argind==2: arg_str+="obj_hand,"
+							elif argind==3: arg_str+="location,"
+							elif argind==4: arg_str+="obj_all,"
 						elif name=="move":
-							if argind==1: command+="agent,"
-							elif argind==2: command+="location,"
-							elif argind==3: command+="location,"
-			#if mode == "h": commands=command[:-1]+"),"
-			#else: commands=command[:-1]+";"
+							if argind==1: arg_str+="agent,"
+							elif argind==2: arg_str+="location,"
+							elif argind==3: arg_str+="location,"
+
+			command = name + app + "," + arg_str
 			commands+=command[:-1]+";"
 		return commands[:-1]
 
@@ -320,7 +322,6 @@ class PKSGenerator(object):
 
 			# Correct generation of the goal
 			#goals_pks += self.printPKS(self.multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
-
 
 			# separate goals for fixing long planning
 			goals_pks += self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
