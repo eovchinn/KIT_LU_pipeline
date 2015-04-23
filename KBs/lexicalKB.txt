@@ -145,16 +145,12 @@
 
 ; help
 
-; fixing wrong parse
-;(B (name helpv)(=>(h#help e0 R action H :0.8)(help-v e0 R H action)))
-;(B (name helpby)(=>(h#help e0 helper action H :0.4)(^(help-v e0 helper H action)(by-p e1 e0 action))))
-
 ;(B (name helpv)(=>(h#help e0 helper action requester :0.9)(help-v e0 helper action requester)))
 ;(B (name helpby)(=>(h#help e0 helper action requester :0.45)(^(help-v e0 helper action requester)(by-p e1 e0 action))))
 
 ;(B (name needhelp1)(=>(h#help e0 helper action requester :0.3)(^(need-v e0 requester h u)(help-n e1 h)(for-p e2 e0 action))))
 ;(B (name needhelp2)(=>(h#help e0 helper action requester :0.3)(^(need-v e0 requester h u)(help-n e1 h)(in-p e2 e0 action))))
-;(B (name needhelp3)(=>(h#help e0 helper action requester :0.45)(^(need-v e0 requester h u)(help-n e1 h))))
+(B (name needhelp3)(=>(h#help e0 helper action requester :0.45)(^(need-v e0 requester h u)(help-n e1 h))))
 
 ;;;;;;;;;;;;;;;
 ;;GOAL AXIOMS;;
@@ -162,11 +158,17 @@
 
 ; set the table
 
-(B (name settableforXpeople1)(=>(^(o#plate p e0 :0.0)(g#objectAt p ps e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#loc_placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent u t)(table-n e1 t)(for-p e2 e0 per)(o#person per z)(card e4 per n))))
+;(B (name settableforXpeople1)(=>(^(o#plate p e0 :0.0)(g#objectAt p ps e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#loc_placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent u t)(table-n e1 t)(for-p e2 e0 per)(o#person per z)(card e4 per n))))
 
-(B (name settableforXpeople2)(=>(^(o#plate p e0 :0.0)(g#objectAt p ps e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#loc_placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent u t)(table-n e1 t)(for-p e2 t per)(o#person per z)(card e4 per n))))
+;(B (name settableforXpeople2)(=>(^(o#plate p e0 :0.0)(g#objectAt p ps e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#loc_placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent u t)(table-n e1 t)(for-p e2 t per)(o#person per z)(card e4 per n))))
 
-(B (name settableFORALL)(=>(^(q#forallK LOC_PLACESETTING :0.0)(o#plate p e0 :0.0)(g#objectAt p LOC_PLACESETTING e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c LOC_PLACESETTING e0 :0.0))(^(set-v e0 agent u t)(table-n e1 t))))
+;(B (name settableFORALL)(=>(^(q#forallK LOC_PLACESETTING :0.0)(o#plate p e0 :0.0)(g#objectAt p LOC_PLACESETTING e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c LOC_PLACESETTING e0 :0.0))(^(set-v e0 agent u t)(table-n e1 t))))
+
+(B (name settableforXpeople1)(=>(^(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#loc_placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent u t)(table-n e1 t)(for-p e2 e0 per)(o#person per z)(card e4 per n))))
+
+(B (name settableforXpeople2)(=>(^(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#loc_placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent u t)(table-n e1 t)(for-p e2 t per)(o#person per z)(card e4 per n))))
+
+(B (name settableFORALL)(=>(^(q#forallK LOC_PLACESETTING :0.0)(o#cup c e0 :0.0)(g#objectAt c LOC_PLACESETTING e0 :0.0))(^(set-v e0 agent u t)(table-n e1 t))))
 
 ; put things on something: ROBOT
 (B (name putonR)(=>(^(g#objectAt obj loc u :0.9)(loc loc :0.0))(^(put-v e0 R u obj)(on-p e1 e0 loc)(!= R H))))
