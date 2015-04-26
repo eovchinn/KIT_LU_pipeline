@@ -3,7 +3,7 @@
 # usage:
 # $ ./run_Boxer_server.sh
 
-TEST_BOXER_SERVER=`./run_server_test.sh`
+TEST_BOXER_SERVER=`$KIT_LU_DIR/run_server_test.sh`
 
 if [[ $TEST_BOXER_SERVER == 1* ]];
 then 
