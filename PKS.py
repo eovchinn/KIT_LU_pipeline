@@ -220,6 +220,7 @@ class PKSGenerator(object):
 				argind+=1
 				if a=="H": arg_str+="human,"
 				elif a=="R": arg_str+="agent,"
+				elif a.isdigit(): arg_str+=a+","
 				elif a[0].isupper(): 
 					arg_str+=a.lower()+","
 					if argind == 4 and mode == "h" and ((name == "grasp") or (name == "putdown")): 
@@ -244,6 +245,16 @@ class PKSGenerator(object):
 							if argind==1: arg_str+="agent,"
 							elif argind==2: arg_str+="location,"
 							elif argind==3: arg_str+="location,"
+						elif name=="moveRelative":
+							if argind==1: arg_str+="agent,"
+							elif argind==2: arg_str+="1,"
+							elif argind==3: arg_str+="direction,"
+						elif name=="relaxArms":
+							if argind==1: arg_str+="agent,"
+							elif argind==2: arg_str+="arm,"
+						elif name=="moveArmsToHomePosition":
+							if argind==1: arg_str+="agent,"
+							elif argind==2: arg_str+="obj_arm,"
 
 			command = name + app + "," + arg_str
 			commands+=command[:-1]+";"

@@ -43,3 +43,17 @@ I'm putting the second fork on the table.
 I'm putting the first knife on the table.
 I'm putting the second knife on the table.
 Recognize my plan.
+Move to the left.
+Move to the right.
+Move forwards.
+Move backwards.
+Move one step to the left.
+Move two steps to the right.
+Move one step forwards.
+Move three steps backwards.
+Relax the left arm.
+Relax the right arm.
+Relax both arms.
+Move the left arm to the home position. 
+Move the right arm to the home position. 
+Armar please move your both arms to the home position.

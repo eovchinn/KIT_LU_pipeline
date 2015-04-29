@@ -52,6 +52,14 @@
 (B (name left-hand)(=>(o#lefthand x u :0.45)(^(hand-n e1 x)(left-a e2 x))))
 (B (name right-hand)(=>(o#righthand x u :0.45)(^(hand-n e1 x)(right-a e2 x))))
 
+(B (name left-arm)(=>(o#leftarm x u :0.45)(^(arm-n e1 x)(left-a e2 x))))
+(B (name right-arm)(=>(o#rightarm x u :0.45)(^(arm-n e1 x)(right-a e2 x))))
+(B (name left-arm2)(=>(o#leftarm x u :0.2)(^(arm-n e1 x)(left-n e2 y)(of-p e3 x y))))
+(B (name right-arm2)(=>(o#rightarm x u :0.2)(^(arm-n e1 x)(right-n e2 y)(of-p e3 x y))))
+
+(B (name both-arms)(=>(o#botharms x u :0.45)(^(arm-n e1 x)(both e2 x))))
+
+
 (B (name dining_location-n)(=>(o#tabledropofflocation x u :0.9)(^(of-p e1 x x1)(location-n e2 x)(dining-n e3 x1))))
 
 (B (name placesetting-n)(=>(o#placesetting x u :0.2)(^(of-p e1 x x1)(setting-n e2 x)(place-n e3 x1))))
@@ -68,6 +76,19 @@
 
 (B (name firstknife)(=>(knife-n e KNIFE1 :0.9)(^(first-a e1 x)(knife-n e x))))
 (B (name secondknife)(=>(knife-n e KNIFE2 :0.9)(^(second-a e1 x)(knife-n e x))))
+
+; directions
+
+(B (name toleft)(=>(^(direc x :0.9)(o#left x u :0.0)(loc x :0.0))(left-n e2 x)))
+(B (name toright)(=>(^(direc x :0.9)(o#right x u :0.0)(loc x :0.0))(right-n e2 x)))
+(B (name backwardsn)(=>(^(direc x :0.9)(o#backwards x u :0.0)(loc x :0.0))(backward-n e2 x)))
+(B (name forwardsn)(=>(^(direc x :0.9)(o#forwards x u :0.0)(loc x :0.0))(forward-n e2 x)))
+
+(B (name backwardsr)(=>(^(direc x :0.9)(o#backwards x u :0.0)(loc x :0.0))(backwards-r e2 x)))
+(B (name forwardsr)(=>(^(direc x :0.9)(o#forwards x u :0.0)(loc x :0.0))(forwards-r e2 x)))
+
+(B (name backwardsr2)(=>(^(direc x :0.9)(o#backwards x u :0.0)(loc x :0.0))(backward-r e2 x)))
+(B (name forwardsr2)(=>(^(direc x :0.9)(o#forwards x u :0.0)(loc x :0.0))(forward-r e2 x)))
 
 ;;;;;;;;;;;
 ;LOCATIONS;
@@ -118,6 +139,33 @@
 
 (B (name moverobotto)(=>(^(a#move agent loc1 loc2 :0.45)(loc loc2 :0.0))(^(move-v e0 agent)(to-p e1 e0 loc2))))
 (B (name moverobotfrom)(=>(^(a#move agent loc1 loc2 :0.45)(loc loc2 :0.0))(^(move-v e0 agent)(from-p e1 e0 loc1))))
+
+; MOVE TO DIRECTION
+
+(B (name moverobottodir)(=>(a#moveRelative agent u dir :0.1)(^(move-v e0 agent)(to-p e1 e0 dir)(direc dir))))
+(B (name moverobotdir)(=>(a#moveRelative R u dir :0.4)(^(move-n e0 dir)(direc dir))))
+
+(B (name moverobotsteptodir)(=>(a#moveRelative agent n dir :0.1)(^(move-v e0 agent u s)(step-n e1 s)(card e2 s n)(to-p e2 s dir)(direc dir))))
+(B (name moverobotsteptodir2)(=>(a#moveRelative agent n dir :0.1)(^(move-v e0 agent u s)(step-n e1 s)(card e2 s n)(to-p e2 e1 dir)(direc dir))))
+(B (name moverobotsteptodir2)(=>(a#moveRelative R n dir :0.1)(^(move-n e0 m)(step-n e1 s)(card e2 s n)(to-p e1 s dir)(direc dir))))
+(B (name moverobotstepdirn)(=>(a#moveRelative R n dir :0.1)(^(move-n e0 m)(step-n e1 s)(card e2 s n)(direc dir))))
+
+(B (name moverobotstepindir)(=>(a#moveRelative agent n dir :0.1)(^(move-v e0 agent u s)(step-n e1 s)(card e2 s n)(in-p e2 s dir)(direc dir))))
+(B (name moverobotstepindir2)(=>(a#moveRelative agent n dir :0.1)(^(move-v e0 agent u s)(step-n e1 s)(card e2 s n)(in-p e2 e1 dir)(direc dir))))
+
+(B (name moverobotstepdirv)(=>(a#moveRelative agent n e0 :0.2)(^(move-v e0 agent u s)(step-n e1 s)(card e2 s n)(direc e0))))
+
+; MOVE ARMS TO HOME POSITION
+
+(B (name movearmstohomepos)(=>(a#moveArmsToHomePosition agent arm :0.1)(^(move-v e0 agent u arm)(arm-n e2 arm)(to-p e3 e0 x)(home-n e4 y)(position-n e5 x)(of-p e6 x y))))
+
+(B (name movearmstohomepos)(=>(a#moveArmsToHomePosition R arm :0.1)(^(move-n u e0)(arm-n e2 arm)(to-p e3 e0 x)(home-n e4 y)(position-n e5 x)(of-p e6 x y))))
+
+; RELAX ARMS
+
+(B (name relaxarmn)(=>(a#relaxArms R x :0.4)(^(relax-n e0 r)(arm-n e1 x))))
+(B (name relaxarmv)(=>(a#relaxArms agent x :0.4)(^(relax-v e0 agent u x)(arm-n e1 x))))
+
 
 ; recognize plan
 
@@ -217,7 +265,7 @@
 (B (name movetoN)(=>(^(g#objectAt c cdl e1 :0.0)(o#loc_chairdropofflocation cdl e1 :0.0)(r# e1 n :0.0))(^(move e1 agent c)(chair-n e2 c)(to-p e3 e1 loc)(table-n e4 t)(card e5 obj n))))
 
 (B (name moveto)(=>(g#objectAt obj loc u1 :0.45)(^(move e1 agent obj)(to-p e2 e1 loc))))
-(B (name movetoN)(=>(^(g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(move e1 agent obj)(to-p e2 e1 loc)(card e3 obj n))))
+(B (name movetoN)(=>(^(g#objectAt obj loc e0 :0.3)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(move e1 agent obj)(to-p e2 e1 loc)(card e3 obj n))))
 
 ; fix wrong argument binding for move obj to table
 (B (name movetotable)(=>(^(g#objectAt obj t u1 :0.45)(loc t :0.0))(^(move-v e1 agent u obj)(to-p e2 e1 t)(table-n e3 t)(!= obj t))))
