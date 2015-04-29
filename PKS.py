@@ -247,6 +247,7 @@ class PKSGenerator(object):
 
 			command = name + app + "," + arg_str
 			commands+=command[:-1]+";"
+
 		return commands[:-1]
 
 	def generatePKS(self, Hypo):
@@ -324,11 +325,17 @@ class PKSGenerator(object):
 			#goals_pks += self.printPKS(self.multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
 
 			# separate goals for fixing long planning
-			goals_pks += self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
+			goal_pks = self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers)
+			if len(goal_pks)>0:	goals_pks += goal_pks + ";"
 
-			sows_pks += self.generate_SOW(objects,locations,states,negations) + ";"
-			commands_pks += self.generate_commands(objects,commands,"r") + ";"
-			human_actions_pks += self.generate_commands(objects,human_actions,"h") + ";"
+			sow_pks = self.generate_SOW(objects,locations,states,negations)
+			if len(sow_pks)>0: sows_pks += sow_pks + ";"
+
+			command_pks = self.generate_commands(objects,commands,"r")
+			if len(command_pks)>0: commands_pks += command_pks + ";"
+
+			human_action_pks = self.generate_commands(objects,human_actions,"h")
+			if len(human_action_pks)>0: human_actions_pks += human_action_pks + ";"
 
 
 		data["goal"] = goals_pks[:-1]
