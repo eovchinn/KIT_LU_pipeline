@@ -23,9 +23,10 @@ b) Obtain Gurobi license key
 
 3) Install Henry:
 
-`git clone https://github.com/naoya-i/henry-n700`
-
-`make`
+```
+git clone https://github.com/naoya-i/henry-n700
+make
+```
 
 4) Install KIT_LU_pipeline
 
