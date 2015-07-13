@@ -14,6 +14,8 @@ class PKSGenerator(object):
 		self.data = self.generatePKS(Hypo)
 
 	def printPKS_separate(self,goal_array,quantifiers):
+		if len(goal_array) == 0: return ("",[])
+
 		all_goals = ""
 		all_goal_objects = []
 		for goal_struc in goal_array:
@@ -277,6 +279,7 @@ class PKSGenerator(object):
 		sows_pks = ""
 		commands_pks = ""
 		human_actions_pks = ""
+		all_goal_objects = []
 
 		full_goals=[]
 		full_world=[]
@@ -342,13 +345,13 @@ class PKSGenerator(object):
 			objects = self.assign_prefixes(objects,loc_objs)
 
 			# Correct generation of the goal
-			#goal_objects = []
 			#(goal_pks,goal_objects) += self.printPKS(self.multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
+			# all_goal_objects.append(goal_objects)
 
 			# separate goals for fixing long planning
-			goal_objects = []
 			(goal_pks,goal_objects) = self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers)
 			if len(goal_pks)>0:	goals_pks += goal_pks + ";"
+			all_goal_objects+=goal_objects
 
 			sow_pks = self.generate_SOW(objects,locations,states,negations)
 			if len(sow_pks)>0: sows_pks += sow_pks + ";"
@@ -365,7 +368,7 @@ class PKSGenerator(object):
 		data["commands"] = commands_pks[:-1]
 		data["human_actions"] = human_actions_pks[:-1]
 		data["recognize_plan"] = str(recplan)
-		data["goal_objects"] = goal_objects
+		data["goal_objects"] = all_goal_objects
 
 
 		return data
