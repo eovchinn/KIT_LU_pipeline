@@ -15,9 +15,13 @@ class PKSGenerator(object):
 
 	def printPKS_separate(self,goal_array,quantifiers):
 		all_goals = ""
+		all_goal_objects = []
 		for goal_struc in goal_array:
-			all_goals += self.printPKS(goal_struc,quantifiers)+";"
-		return all_goals[:-1]
+			(goal_pks,goal_objects) = self.printPKS(goal_struc,quantifiers)
+			all_goals += goal_pks +";"
+			for go in goal_objects: 
+				if not go in all_goal_objects: all_goal_objects.append(go)
+		return (all_goals[:-1],all_goal_objects)
 
 	def printPKS(self,goal_struc,quantifiers):
 		(states_actions,objects,inequalities) = goal_struc
@@ -27,6 +31,7 @@ class PKSGenerator(object):
 		output_str = ""
 		exist_counter = 0
 		done_vars = []
+		goal_objects = []
 
 		for (name,args) in states_actions:
 			pred_str = ""
@@ -53,6 +58,7 @@ class PKSGenerator(object):
 					for (name,oarg) in objects:
 						if oarg == arg:
 							obj_str += linked_arg + " : " + name + ", "
+							goal_objects.append(name)
 					done_vars.append(arg)
 			pred_str = pred_str[:-2] + ")"
 
@@ -82,12 +88,13 @@ class PKSGenerator(object):
 			qstr = ""
 			qstr+="(forallK("
 			for a in quantifiers:
+				goal_objects.append(a.lower())
 				qstr+=quantifiers[a]+" : "+a.lower()+", "
 			qstr = qstr[:-2]+")"
 			
 			output_str = qstr + output_str + ")"
 
-		return output_str
+		return (output_str,goal_objects)
 
 
 	def multiply_preds_with_lists(self,objects,states_actions):
@@ -209,6 +216,8 @@ class PKSGenerator(object):
 
 	def generate_commands(self,objects,states_actions,mode):	
 		commands = ""
+		states_actions = self.multiply_preds_with_lists(objects,states_actions)
+
 
 		for (name,args) in states_actions:
 			arg_str = ""
@@ -333,10 +342,12 @@ class PKSGenerator(object):
 			objects = self.assign_prefixes(objects,loc_objs)
 
 			# Correct generation of the goal
-			#goals_pks += self.printPKS(self.multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
+			#goal_objects = []
+			#(goal_pks,goal_objects) += self.printPKS(self.multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
 
 			# separate goals for fixing long planning
-			goal_pks = self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers)
+			goal_objects = []
+			(goal_pks,goal_objects) = self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers)
 			if len(goal_pks)>0:	goals_pks += goal_pks + ";"
 
 			sow_pks = self.generate_SOW(objects,locations,states,negations)
@@ -354,5 +365,7 @@ class PKSGenerator(object):
 		data["commands"] = commands_pks[:-1]
 		data["human_actions"] = human_actions_pks[:-1]
 		data["recognize_plan"] = str(recplan)
+		data["goal_objects"] = goal_objects
+
 
 		return data
