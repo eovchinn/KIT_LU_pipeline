@@ -41,7 +41,7 @@ fi
 a) Export env variables:
 * export KIT_LU_DIR
 * export BOXER_DIR
-* export BOXER_SOAP_SERVER (for example, `export BOXER_SOAP_SERVER=localhost:9000`)
+* export BOXER_SOAP_SERVER (for example, `export BOXER_SOAP_SERVER=localhost:38900`)
 * export HENRY_DIR
 * export PHILLIP_DIR
 * export GUROBI_HOME
