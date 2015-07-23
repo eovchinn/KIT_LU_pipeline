@@ -1,177 +1,222 @@
 Armar please help me to carry the table to the dining location.
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x3 : obj_table, ?x4 : loc_tabledropofflocation) K(objectAt(?x3, ?x4)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x3 : obj_table, ?x4 : loc_tabledropofflocation) K(objectAt(?x3, ?x4)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_table", "loc_tabledropofflocation"]}
 
 Armar please help me to set the table for two people!
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?xx31 : obj_cup, ?xx41 : loc_placesetting) K(objectAt(?xx31, ?xx41)) & (existsK(?xx32 : obj_cup, ?xx42 : loc_placesetting) K(objectAt(?xx32, ?xx42)) & K(?xx31 != ?xx32) & K(?xx41 != ?xx42)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?xx11 : obj_cup, ?xx21 : loc_placesetting) K(objectAt(?xx11, ?xx21)) & (existsK(?xx12 : obj_cup, ?xx22 : loc_placesetting) K(objectAt(?xx12, ?xx22)) & K(?xx11 != ?xx12) & K(?xx21 != ?xx22)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_cup", "loc_placesetting"]}
 
 Armar please arrange one chair.
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_chair, ?xx1 : loc_chairdropofflocation) K(objectAt(?x2, ?xx1)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x2 : obj_chair, ?xx4 : loc_chairdropofflocation) K(objectAt(?x2, ?xx4)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_chair", "loc_chairdropofflocation"]}
 
 Please arrange one chair.
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_chair, ?xx0 : loc_chairdropofflocation) K(objectAt(?x2, ?xx0)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x2 : obj_chair, ?xx4 : loc_chairdropofflocation) K(objectAt(?x2, ?xx4)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_chair", "loc_chairdropofflocation"]}
 
 Set the table.
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(forallK(?q1 : loc_placesetting)(existsK(?xx1 : obj_cup) K(objectAt(?xx1, ?q1))))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(forallK(?q1 : loc_placesetting)(existsK(?xx1 : obj_cup) K(objectAt(?xx1, ?q1))))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_cup", "loc_placesetting"]}
 
 Help me to move the table!
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x3 : obj_table, ?xx0 : loc_tabledropofflocation) K(objectAt(?x3, ?xx0)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x3 : obj_table, ?xx0 : loc_tabledropofflocation) K(objectAt(?x3, ?xx0)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_table", "loc_tabledropofflocation"]}
 
 Wipe the table!
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_table) K(clean(?x2)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x2 : obj_table) K(clean(?x2)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_table"]}
 
 Put the coffee filter on the table!
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_coffeefilters, ?x4 : loc_table) K(objectAt(?x2, ?x4)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x2 : obj_coffeefilters, ?x4 : loc_table) K(objectAt(?x2, ?x4)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_coffeefilters", "loc_table"]}
 
 Help me to arrange the chairs!
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x3 : obj_chair, ?xx0 : loc_chairdropofflocation) K(objectAt(?x3, ?xx0)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x3 : obj_chair, ?xx0 : loc_chairdropofflocation) K(objectAt(?x3, ?xx0)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_chair", "loc_chairdropofflocation"]}
 
 Help me to arrange three chairs!
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x31 : obj_chair, ?xx01 : loc_chairdropofflocation) K(objectAt(?x31, ?xx01)) & (existsK(?x32 : obj_chair, ?xx02 : loc_chairdropofflocation) K(objectAt(?x32, ?xx02)) & (existsK(?x33 : obj_chair, ?xx03 : loc_chairdropofflocation) K(objectAt(?x33, ?xx03)) & K(x31 != x32) & K(x31 != x33) & K(x32 != x33) & K(?xx01 != ?xx02) & K(?xx01 != ?xx03) & K(?xx02 != ?xx03))))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x31 : obj_chair, ?xx11 : loc_chairdropofflocation) K(objectAt(?x31, ?xx11)) & (existsK(?x32 : obj_chair, ?xx12 : loc_chairdropofflocation) K(objectAt(?x32, ?xx12)) & (existsK(?x33 : obj_chair, ?xx13 : loc_chairdropofflocation) K(objectAt(?x33, ?xx13)) & K(x31 != x32) & K(x31 != x33) & K(x32 != x33) & K(?xx11 != ?xx12) & K(?xx11 != ?xx13) & K(?xx12 != ?xx13))))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_chair", "loc_chairdropofflocation"]}
 
 Put the cups on the table!
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_cup, ?x3 : loc_table) K(objectAt(?x2, ?x3)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x2 : obj_cup, ?x3 : loc_table) K(objectAt(?x2, ?x3)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_cup", "loc_table"]}
 
 Put the cups and plates on the table!
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x4 : obj_plate, ?x5 : loc_table) K(objectAt(?x4, ?x5)) & (existsK(?x3 : obj_cup) K(objectAt(?x3, ?x5))))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x3 : obj_cup, ?x5 : loc_table) K(objectAt(?x3, ?x5)) & (existsK(?x4 : obj_plate) K(objectAt(?x4, ?x5))))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_cup", "loc_table", "obj_plate"]}
 
 Put three cups on the table!
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x11 : obj_cup, ?x2 : loc_table) K(objectAt(?x11, ?x2)) & (existsK(?x12 : obj_cup) K(objectAt(?x12, ?x2)) & (existsK(?x13 : obj_cup) K(objectAt(?x13, ?x2)) & K(x11 != x12) & K(x11 != x13) & K(x12 != x13))))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x11 : obj_cup, ?x2 : loc_table) K(objectAt(?x11, ?x2)) & (existsK(?x12 : obj_cup) K(objectAt(?x12, ?x2)) & (existsK(?x13 : obj_cup) K(objectAt(?x13, ?x2)) & K(x11 != x12) & K(x11 != x13) & K(x12 != x13))))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_cup", "loc_table"]}
 
 Bring me the juice from the fridge!
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_juice, ?xx5 : obj_hand) K(inHand(?x2, ?xx5)));(existsK(?xx5 : obj_hand) K(handOf(?xx5, human)))", "SOW": "loc,True,objectAt,obj_juice,loc_fridge"}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x2 : obj_juice, ?xx9 : obj_hand) K(inHand(?x2, ?xx9)))", "(existsK(?xx9 : obj_hand) K(handOf(?xx9, human)))"], "feedback": [], "SOW": [{"args": ["obj_juice", "loc_fridge"], "type": "loc", "name": "objectAt", "sign": true}], "human_actions": [], "goal_types": ["obj_juice", "obj_hand"]}
 
 The juice is in the fridge.
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "", "SOW": "loc,True,objectIn,obj_juice,loc_fridge"}
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [{"args": ["obj_juice", "loc_fridge"], "type": "loc", "name": "objectIn", "sign": true}], "human_actions": [], "goal_types": []}
 
 Give me two eggs from the fridge!
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x21 : obj_egg, ?xx8 : obj_hand) K(inHand(?x21, ?xx8)) & (existsK(?x22 : obj_egg) K(inHand(?x22, ?xx8)) & K(x21 != x22)));(existsK(?xx8 : obj_hand) K(handOf(?xx8, human)))", "SOW": "loc,True,objectAt,obj_egg,loc_fridge"}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x21 : obj_egg, ?xx14 : obj_hand) K(inHand(?x21, ?xx14)) & (existsK(?x22 : obj_egg) K(inHand(?x22, ?xx14)) & K(x21 != x22)))", "(existsK(?xx14 : obj_hand) K(handOf(?xx14, human)))"], "feedback": [], "SOW": [{"args": ["obj_egg", "loc_fridge"], "type": "loc", "name": "objectAt", "sign": true}], "human_actions": [], "goal_types": ["obj_egg", "obj_hand"]}
 
 Open the fridge.
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_fridge) K(open(?x2)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x2 : obj_fridge) K(open(?x2)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_fridge"]}
 
 Close the dishwasher.
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_dishwasher) !K(open(?x2)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x2 : obj_dishwasher) !K(open(?x2)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_dishwasher"]}
 
 Please clean the table.
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_table) K(clean(?x2)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x2 : obj_table) K(clean(?x2)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_table"]}
 
 Move three chairs to the table.
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_chair, ?xx41 : loc_chairdropofflocation) K(objectAt(?x2, ?xx41)) & (existsK(?xx42 : loc_chairdropofflocation) K(objectAt(?x2, ?xx42)) & (existsK(?xx43 : loc_chairdropofflocation) K(objectAt(?x2, ?xx43)) & K(?xx41 != ?xx42) & K(?xx41 != ?xx43) & K(?xx42 != ?xx43))))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x2 : obj_chair, ?xx11 : loc_chairdropofflocation) K(objectAt(?x2, ?xx11)) & (existsK(?xx12 : loc_chairdropofflocation) K(objectAt(?x2, ?xx12)) & (existsK(?xx13 : loc_chairdropofflocation) K(objectAt(?x2, ?xx13)) & K(?xx11 != ?xx12) & K(?xx11 != ?xx13) & K(?xx12 != ?xx13))))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_chair", "loc_chairdropofflocation"]}
 
 Move a chair to the table.
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_chair, ?xx1 : loc_chairdropofflocation) K(objectAt(?x2, ?xx1)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x2 : obj_chair, ?xx1 : loc_chairdropofflocation) K(objectAt(?x2, ?xx1)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_chair", "loc_chairdropofflocation"]}
 
 The fridge is open.
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "", "SOW": "state,True,open,obj_fridge"}
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [{"args": ["obj_fridge"], "type": "state", "name": "open", "sign": true}], "human_actions": [], "goal_types": []}
 
 The dishwasher is closed.
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x1 : obj_dishwasher) !K(open(?x1)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x1 : obj_dishwasher) !K(open(?x1)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_dishwasher"]}
 
 The table is clean.
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "", "SOW": "state,True,clean,obj_table"}
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [{"args": ["obj_table"], "type": "state", "name": "clean", "sign": true}], "human_actions": [], "goal_types": []}
 
 The table is dirty.
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "", "SOW": "state,False,clean,obj_dirty"}
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [{"args": ["obj_table"], "type": "state", "name": "clean", "sign": false}], "human_actions": [], "goal_types": []}
 
 The cup is on the table.
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "", "SOW": "loc,True,objectOn,obj_cup,loc_table"}
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [{"args": ["obj_cup", "loc_table"], "type": "loc", "name": "objectOn", "sign": true}], "human_actions": [], "goal_types": []}
 
 The cup is not on the table.
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "", "SOW": "loc,False,objectOn,obj_cup,loc_table"}
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [{"args": ["obj_cup", "loc_table"], "type": "loc", "name": "objectOn", "sign": false}], "human_actions": [], "goal_types": []}
 
 Stop!
-{"recognize_plan": "False", "human_actions": "", "commands": "stop,agent", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent"], "name": "stop"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Grasp the cup!
-{"recognize_plan": "False", "human_actions": "", "commands": "grasp,agent,obj_hand,location,obj_cup", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "obj_hand", "location", "obj_cup"], "name": "grasp"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Grasp the cup with the left hand!
-{"recognize_plan": "False", "human_actions": "", "commands": "grasp,agent,obj_lefthand,location,obj_cup", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "obj_lefthand", "location", "obj_cup"], "name": "grasp"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Move to the table!
-{"recognize_plan": "False", "human_actions": "", "commands": "move,agent,location,loc_table", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "location", "loc_table"], "name": "move"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Put the vitalis cereal on the table!
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_vitaliscereal, ?x4 : loc_table) K(objectAt(?x2, ?x4)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x2 : obj_vitaliscereal, ?x4 : loc_table) K(objectAt(?x2, ?x4)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_vitaliscereal", "loc_table"]}
 
 Put the orange juice on the table!
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_orangejuice, ?x4 : loc_table) K(objectAt(?x2, ?x4)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x2 : obj_orangejuice, ?x4 : loc_table) K(objectAt(?x2, ?x4)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_orangejuice", "loc_table"]}
 
 Put the multi vitamin juice on the table!
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_multivitaminjuice, ?x4 : loc_table) K(objectAt(?x2, ?x4)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x2 : obj_multivitaminjuice, ?x4 : loc_table) K(objectAt(?x2, ?x4)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_multivitaminjuice", "loc_table"]}
 
 Put the milk on the table!
-{"recognize_plan": "False", "human_actions": "", "commands": "", "goal": "(existsK(?x2 : obj_milk, ?x3 : loc_table) K(objectAt(?x2, ?x3)))", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": ["(existsK(?x2 : obj_milk, ?x3 : loc_table) K(objectAt(?x2, ?x3)))"], "feedback": [], "SOW": [], "human_actions": [], "goal_types": ["obj_milk", "loc_table"]}
 
 Put the cup down!
-{"recognize_plan": "False", "human_actions": "", "commands": "putdown,agent,obj_hand,location,obj_cup", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "obj_hand", "location", "obj_cup"], "name": "putdown"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Put the cup down and move to the table!
-{"recognize_plan": "False", "human_actions": "", "commands": "putdown,agent,obj_hand,location,obj_cup;move,agent,location,loc_table", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "obj_hand", "location", "obj_cup"], "name": "putdown"}, {"args": ["agent", "location", "loc_table"], "name": "move"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 I'm grasping the green cup from the table with my right hand.
-{"recognize_plan": "False", "human_actions": "grasp,human,obj_righthand,loc_table,obj_greencup", "commands": "", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [], "human_actions": [{"args": ["human", "obj_righthand", "loc_table", "obj_greencup"], "name": "grasp"}], "goal_types": []}
 
 I'm putting the red plate down on the table with my left hand.
-{"recognize_plan": "False", "human_actions": "putdown,human,obj_lefthand,loc_table,obj_redplate", "commands": "", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [], "human_actions": [{"args": ["human", "obj_lefthand", "loc_table", "obj_redplate"], "name": "putdown"}], "goal_types": []}
 
 I'm moving from the fridge to the table.
-{"recognize_plan": "False", "human_actions": "move,human,obj_fridge,loc_table", "commands": "", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [], "human_actions": [{"args": ["human", "obj_fridge", "loc_table"], "name": "move"}], "goal_types": []}
 
 I'm putting the first fork on the table.
-{"recognize_plan": "False", "human_actions": "graspFork1,human,obj_hand,location,fork1;putdownFork1,human,obj_hand,loc_table,fork1", "commands": "", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [], "human_actions": [{"args": ["human", "obj_hand", "location", "fork1"], "name": "graspFork1"}, {"args": ["human", "obj_hand", "loc_table", "fork1"], "name": "putdownFork1"}], "goal_types": []}
 
 I'm putting the second fork on the table.
-{"recognize_plan": "False", "human_actions": "graspFork2,human,obj_hand,location,fork2;putdownFork2,human,obj_hand,loc_table,fork2", "commands": "", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [], "human_actions": [{"args": ["human", "obj_hand", "location", "fork2"], "name": "graspFork2"}, {"args": ["human", "obj_hand", "loc_table", "fork2"], "name": "putdownFork2"}], "goal_types": []}
 
 I'm putting the first knife on the table.
-{"recognize_plan": "False", "human_actions": "graspKnife1,human,obj_hand,location,knife1;putdownKnife1,human,obj_hand,loc_table,knife1", "commands": "", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [], "human_actions": [{"args": ["human", "obj_hand", "location", "knife1"], "name": "graspKnife1"}, {"args": ["human", "obj_hand", "loc_table", "knife1"], "name": "putdownKnife1"}], "goal_types": []}
 
 I'm putting the second knife on the table.
-{"recognize_plan": "False", "human_actions": "graspKnife2,human,obj_hand,location,knife2;putdownKnife2,human,obj_hand,loc_table,knife2", "commands": "", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [], "human_actions": [{"args": ["human", "obj_hand", "location", "knife2"], "name": "graspKnife2"}, {"args": ["human", "obj_hand", "loc_table", "knife2"], "name": "putdownKnife2"}], "goal_types": []}
 
 Recognize my plan.
-{"recognize_plan": "True", "human_actions": "", "commands": "", "goal": "", "SOW": ""}
+{"recognize_plan": true, "commands": [], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Move to the left.
-{"recognize_plan": "False", "human_actions": "", "commands": "moveRelative,agent,1,loc_left", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "1", "loc_left"], "name": "moveRelative"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Move to the right.
-{"recognize_plan": "False", "human_actions": "", "commands": "moveRelative,agent,1,loc_right", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "1", "loc_right"], "name": "moveRelative"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Move forwards.
-{"recognize_plan": "False", "human_actions": "", "commands": "moveRelative,agent,1,loc_forwards", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "1", "loc_forwards"], "name": "moveRelative"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Move backwards.
-{"recognize_plan": "False", "human_actions": "", "commands": "moveRelative,agent,1,loc_backwards", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "1", "loc_backwards"], "name": "moveRelative"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Move one step to the left.
-{"recognize_plan": "False", "human_actions": "", "commands": "moveRelative,agent,1,loc_left", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "1", "loc_left"], "name": "moveRelative"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Move two steps to the right.
-{"recognize_plan": "False", "human_actions": "", "commands": "moveRelative,agent,2,loc_right", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "2", "loc_right"], "name": "moveRelative"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Move one step forwards.
-{"recognize_plan": "False", "human_actions": "", "commands": "moveRelative,agent,1,loc_forwards", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "1", "loc_forwards"], "name": "moveRelative"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Move three steps backwards.
-{"recognize_plan": "False", "human_actions": "", "commands": "moveRelative,agent,3,loc_backwards", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "3", "loc_backwards"], "name": "moveRelative"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Relax the left arm.
-{"recognize_plan": "False", "human_actions": "", "commands": "relaxArms,agent,obj_leftarm", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "obj_leftarm"], "name": "relaxArms"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Relax the right arm.
-{"recognize_plan": "False", "human_actions": "", "commands": "relaxArms,agent,obj_rightarm", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "obj_rightarm"], "name": "relaxArms"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Relax both arms.
-{"recognize_plan": "False", "human_actions": "", "commands": "relaxArms,agent,obj_arm", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "obj_arm"], "name": "relaxArms"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Move the left arm to the home position.
-{"recognize_plan": "False", "human_actions": "", "commands": "moveArmsToHomePosition,agent,obj_leftarm", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "obj_leftarm"], "name": "moveArmsToHomePosition"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Move the right arm to the home position.
-{"recognize_plan": "False", "human_actions": "", "commands": "moveArmsToHomePosition,agent,obj_rightarm", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "obj_rightarm"], "name": "moveArmsToHomePosition"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
 
 Armar please move your both arms to the home position.
-{"recognize_plan": "False", "human_actions": "", "commands": "moveArmsToHomePosition,agent,obj_botharms", "goal": "", "SOW": ""}
+{"recognize_plan": false, "commands": [{"args": ["agent", "obj_botharms"], "name": "moveArmsToHomePosition"}], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
+
+I agree
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": ["agree", true], "SOW": [], "human_actions": [], "goal_types": []}
+
+Yes
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
+
+Yes please
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
+
+Fine
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": ["agree", true], "SOW": [], "human_actions": [], "goal_types": []}
+
+Ok
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": ["agree", true], "SOW": [], "human_actions": [], "goal_types": []}
+
+Great
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
+
+Perfect
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
+
+It's ok
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": ["agree", true], "SOW": [], "human_actions": [], "goal_types": []}
+
+I'm fine with it
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": ["agree", true], "SOW": [], "human_actions": [], "goal_types": []}
+
+It's fine
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": ["agree", true], "SOW": [], "human_actions": [], "goal_types": []}
+
+No
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": ["agree", false], "SOW": [], "human_actions": [], "goal_types": []}
+
+I don't agree
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": ["agree", false], "SOW": [], "human_actions": [], "goal_types": []}
+
+Please don't
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": [], "SOW": [], "human_actions": [], "goal_types": []}
+
+I don't know
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": ["know", false], "SOW": [], "human_actions": [], "goal_types": []}
+
+I have no idea
+{"recognize_plan": false, "commands": [], "goal": [], "feedback": ["know", false], "SOW": [], "human_actions": [], "goal_types": []}
 

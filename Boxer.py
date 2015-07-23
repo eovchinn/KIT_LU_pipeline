@@ -162,7 +162,7 @@ class BoxerReader(object):
 				TIDmatchObj = text_id_pattern.match(line)
 				if TIDmatchObj:
 					text_id = TIDmatchObj.group(1)
-					text = Text(text_id) 
+					text = Text(text_id)
 				#else: print 'Strange sent id: ' + line
 			# Ignore lemmatized word list
 			elif line[0].isdigit(): 
@@ -170,9 +170,9 @@ class BoxerReader(object):
 				els = line.split()
 				if(len(els)==5): 
 					if(els[3] in ['I','my','mine']): 
-						text.human_ids.append(els[0])
-					elif(els[3] in ['you','your', 'yours']): text.robot_ids.append(els[0])
-					elif(els[3] in ['we','our']): text.joint_ids.append(els[0])
+						text.human_ids.append(int(els[0]))
+					elif(els[3] in ['you','your', 'yours']): text.robot_ids.append(int(els[0]))
+					elif(els[3] in ['we','our']): text.joint_ids.append(int(els[0]))
 				else: print 'Strange word line: ' + line
 
 			# Parse propositions
@@ -184,8 +184,8 @@ class BoxerReader(object):
 					PROPmatchObj = id_prop_args_pattern.match(prop)
 
 					if PROPmatchObj:
-						if (PROPmatchObj.group(1)): prop_ids = PROPmatchObj.group(1).split(',')
-						else: prop_ids = []
+						if (PROPmatchObj.group(1)): prop_ids = [int(s) for s in PROPmatchObj.group(1).split(',')]
+						else: prop_ids = [1000]
 						prop_name = PROPmatchObj.group(2)
 						prop_args = PROPmatchObj.group(4).split(',')
 
@@ -202,7 +202,7 @@ class BoxerReader(object):
 						elif (set(prop_ids) & set(text.joint_ids)):
 							text.joint_vars.append(prop_args[1])
 							h_r = True
-						elif ((len(prop_ids)==0) & (prop_name == 'thing')):
+						elif prop_name == 'thing' and prop_ids == [1000]:
 							text.robot_vars.append(prop_args[1])
 							h_r = True
 						elif prop_name == 'armar-n':
@@ -214,14 +214,17 @@ class BoxerReader(object):
 							if not (prop_name.endswith('-v')|prop_name.endswith('-n')|prop_name.endswith('-a')|prop_name.endswith('-p')|prop_name.endswith('-r')):
 								prop_name = check_prep(prop_name)
 
-							prop_s = (prop_name, prop_args)
+							prop_s = (prop_name, prop_args,min(prop_ids))
 							text.props.append(prop_s)
 
 					else: print 'Strange prop: ' + prop
 
+				# sort props according its id
+				text.props.sort(key=lambda x: x[2])
+
 				# replace vars with constants H and R
 				for i in range(len(text.props)):
-					(name,args) = text.props[i]
+					(name,args,pid) = text.props[i]
 					rargs = []
 					for a in args:
 						if a in text.human_vars:

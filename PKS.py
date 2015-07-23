@@ -5,7 +5,8 @@
 #   * Katya Ovchinnikova <e.ovchinnikova@gmail.com> (2014)
 
 import json
-import pprint
+from collections import defaultdict
+#import pprint
 
 class PKSGenerator(object):
 	def __init__(self, Hypo):
@@ -16,14 +17,14 @@ class PKSGenerator(object):
 	def printPKS_separate(self,goal_array,quantifiers):
 		if len(goal_array) == 0: return ("",[])
 
-		all_goals = ""
-		all_goal_objects = []
+		all_goals = []
+		all_goal_types = []
 		for goal_struc in goal_array:
-			(goal_pks,goal_objects) = self.printPKS(goal_struc,quantifiers)
-			all_goals += goal_pks +";"
-			for go in goal_objects: 
-				if not go in all_goal_objects: all_goal_objects.append(go)
-		return (all_goals[:-1],all_goal_objects)
+			(goal_pks,goal_types) = self.printPKS(goal_struc,quantifiers)
+			all_goals.append(goal_pks)
+			for gt in goal_types: 
+				if not gt in all_goal_types: all_goal_types.append(gt)
+		return (all_goals,all_goal_types)
 
 	def printPKS(self,goal_struc,quantifiers):
 		(states_actions,objects,inequalities) = goal_struc
@@ -33,7 +34,7 @@ class PKSGenerator(object):
 		output_str = ""
 		exist_counter = 0
 		done_vars = []
-		goal_objects = []
+		goal_types = []
 
 		for (name,args) in states_actions:
 			pred_str = ""
@@ -60,7 +61,7 @@ class PKSGenerator(object):
 					for (name,oarg) in objects:
 						if oarg == arg:
 							obj_str += linked_arg + " : " + name + ", "
-							goal_objects.append(name)
+							goal_types.append(name)
 					done_vars.append(arg)
 			pred_str = pred_str[:-2] + ")"
 
@@ -90,13 +91,13 @@ class PKSGenerator(object):
 			qstr = ""
 			qstr+="(forallK("
 			for a in quantifiers:
-				goal_objects.append(a.lower())
+				goal_types.append(a.lower())
 				qstr+=quantifiers[a]+" : "+a.lower()+", "
 			qstr = qstr[:-2]+")"
 			
 			output_str = qstr + output_str + ")"
 
-		return (output_str,goal_objects)
+		return (output_str,goal_types)
 
 
 	def multiply_preds_with_lists(self,objects,states_actions):
@@ -167,9 +168,11 @@ class PKSGenerator(object):
 		locations = self.multiply_preds_with_lists(objects,locations)
 		states = self.multiply_preds_with_lists(objects,states)
 
-		result = ""
+		result = []
 
 		for (name,args) in states:
+			state_struc = {}
+
 			neg = False
 			if name.startswith("n#"):
 				name = name[2:]
@@ -177,14 +180,22 @@ class PKSGenerator(object):
 			elif args[0] in negations:
 				neg = True
 
-			result += "state,"+str(not neg)+","+name
+			state_struc["type"] = "state"
+			state_struc["name"] = name
+			state_struc["sign"] = not neg
+
+			sargs = []
 			for a in args[1:-1]:
 				if a[0].isupper(): result += ","+a
 				elif a in objects:
-					result += ","+objects[a][0]
-			result += ";"
+					sargs.append(objects[a][0])
+			state_struc["args"] = sargs
+
+			result.append(state_struc)
 
 		for (name,args) in locations:
+			loc_struc = {}
+
 			neg = False
 			if name.startswith("n#"):
 				name = name[2:]
@@ -192,14 +203,20 @@ class PKSGenerator(object):
 			elif args[0] in negations:
 				neg = True
 
-			result += "loc,"+str(not neg)+","+name
+			loc_struc["type"] = "loc"
+			loc_struc["name"] = name
+			loc_struc["sign"] = not neg
+
+			largs = []
 			for a in args[1:-1]:
 				if a[0].isupper(): result += ","+a
 				elif a in objects:
-					result += ","+objects[a][0]
-			result += ";"
+					largs.append(objects[a][0])
+			loc_struc["args"] = largs
 
-		return result[:-1]
+			result.append(loc_struc)
+
+		return result
 
 	def assign_prefixes(self,objects,loc_objs):
 		real_objects = {}
@@ -217,75 +234,78 @@ class PKSGenerator(object):
 		return real_objects
 
 	def generate_commands(self,objects,states_actions,mode):	
-		commands = ""
+		commands = []
 		states_actions = self.multiply_preds_with_lists(objects,states_actions)
 
 
 		for (name,args) in states_actions:
-			arg_str = ""
+			command = {}
+			cargs = []
 			app = ""
 
 			argind = 0
 
 			for a in args:
 				argind+=1
-				if a=="H": arg_str+="human,"
-				elif a=="R": arg_str+="agent,"
-				elif a.isdigit(): arg_str+=a+","
+				if a=="H": cargs.append("human")
+				elif a=="R": cargs.append("agent")
+				elif a.isdigit(): cargs.append(a)
 				elif a[0].isupper(): 
-					arg_str+=a.lower()+","
+					cargs.append(a.lower())
 					if argind == 4 and mode == "h" and ((name == "grasp") or (name == "putdown")): 
 							app = a[0] + a[1:].lower()
 				else:
 					# find corresponding objects
 					if a in objects:
-						arg_str+=objects[a][0]+","
+						cargs.append(objects[a][0])
 					# there is no related object
 					else:
 						if name=="grasp":
-							if argind==1: arg_str+="agent,"
-							elif argind==2: arg_str+="obj_hand,"
-							elif argind==3: arg_str+="location,"
-							elif argind==4: arg_str+="obj_all,"
+							if argind==1: cargs.append("agent")
+							elif argind==2: cargs.append("obj_hand")
+							elif argind==3: cargs.append("location")
+							elif argind==4: cargs.append("obj_all")
 						elif name=="putdown":
-							if argind==1: arg_str+="agent,"
-							elif argind==2: arg_str+="obj_hand,"
-							elif argind==3: arg_str+="location,"
-							elif argind==4: arg_str+="obj_all,"
+							if argind==1: cargs.append("agent")
+							elif argind==2: cargs.append("obj_hand")
+							elif argind==3: cargs.append("location")
+							elif argind==4: cargs.append("obj_all")
 						elif name=="move":
-							if argind==1: arg_str+="agent,"
-							elif argind==2: arg_str+="location,"
-							elif argind==3: arg_str+="location,"
+							if argind==1: cargs.append("agent")
+							elif argind==2: cargs.append("location")
+							elif argind==3: cargs.append("location")
 						elif name=="moveRelative":
-							if argind==1: arg_str+="agent,"
-							elif argind==2: arg_str+="1,"
-							elif argind==3: arg_str+="direction,"
+							if argind==1: cargs.append("agent")
+							elif argind==2: cargs.append("1")
+							elif argind==3: cargs.append("direction")
 						elif name=="relaxArms":
-							if argind==1: arg_str+="agent,"
-							elif argind==2: arg_str+="arm,"
+							if argind==1: cargs.append("agent")
+							elif argind==2: cargs.append("obj_arm")
 						elif name=="moveArmsToHomePosition":
-							if argind==1: arg_str+="agent,"
-							elif argind==2: arg_str+="obj_arm,"
+							if argind==1: cargs.append("agent")
+							elif argind==2: cargs.append("obj_arm")
 
-			command = name + app + "," + arg_str
-			commands+=command[:-1]+";"
+			command["name"] = name + app 
+			command["args"] = cargs
+			commands.append(command)
 
-		return commands[:-1]
+		return commands
 
 	def generatePKS(self, Hypo):
 
-		data = {}
-		goals_pks = ""
-		sows_pks = ""
-		commands_pks = ""
-		human_actions_pks = ""
-		all_goal_objects = []
+		data = defaultdict(dict)
+
+		goals_pks = []
+		sows_pks = []
+		commands_pks = []
+		human_actions_pks = []
+		all_goal_types = []
 
 		full_goals=[]
 		full_world=[]
 		full_commands=[]
 
-		goal_objects=[]
+		goal_types=[]
 		world_objects=[]
 		command_objects=[]
 
@@ -293,6 +313,7 @@ class PKSGenerator(object):
 		qcount = 0
 
 		recplan = False
+		feedback = []
 
 		for h in Hypo:
 			goals = []
@@ -341,34 +362,41 @@ class PKSGenerator(object):
 					loc_objs.append(args[0])
 				elif name == "RP":
 					recplan = True
+				elif name.startswith('f#'):
+					feedback = (name[2:],args[0])
 
 			objects = self.assign_prefixes(objects,loc_objs)
 
 			# Correct generation of the goal
-			#(goal_pks,goal_objects) += self.printPKS(self.multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
-			# all_goal_objects.append(goal_objects)
+			#(goal_pks,goal_types) += self.printPKS(self.multuply_link_preds_objs(objects,goals,repeats),quantifiers) + ";"
+			# all_goal_types.append(goal_types)
 
 			# separate goals for fixing long planning
-			(goal_pks,goal_objects) = self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers)
-			if len(goal_pks)>0:	goals_pks += goal_pks + ";"
-			all_goal_objects+=goal_objects
+			(goal_pks,goal_types) = self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers)
+			if len(goal_pks)>0:	goals_pks += goal_pks
+			all_goal_types+=goal_types
 
 			sow_pks = self.generate_SOW(objects,locations,states,negations)
-			if len(sow_pks)>0: sows_pks += sow_pks + ";"
+			if len(sow_pks)>0: sows_pks += sow_pks
 
 			command_pks = self.generate_commands(objects,commands,"r")
-			if len(command_pks)>0: commands_pks += command_pks + ";"
+			if len(command_pks)>0: commands_pks += command_pks
 
 			human_action_pks = self.generate_commands(objects,human_actions,"h")
-			if len(human_action_pks)>0: human_actions_pks += human_action_pks + ";"
+			if len(human_action_pks)>0: human_actions_pks += human_action_pks
 
 
-		data["goal"] = goals_pks[:-1]
-		data["SOW"] = sows_pks[:-1]
-		data["commands"] = commands_pks[:-1]
-		data["human_actions"] = human_actions_pks[:-1]
-		data["recognize_plan"] = str(recplan)
-		data["goal_objects"] = all_goal_objects
+		data["goals"] = goals_pks
+		data["SOW"] = sows_pks
+		data["commands"] = commands_pks
+		data["human_actions"] = human_actions_pks
+		data["recognize_plan"] = recplan
+		data["goal_types"] = all_goal_types
 
+		if len(feedback)>0:
+			if feedback[1] in negations: data["feedback"] = (feedback[0],False)
+			else: data["feedback"] = (feedback[0],True)
+		else:
+			data["feedback"] = []
 
 		return data

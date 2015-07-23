@@ -126,14 +126,14 @@
 
 ; PUT DOWN
 
-(B (name putdownon)(=>(^(a#putdown agent hand loc obj :0.1)(loc loc :0.0))(^(put-v e0 agent u obj)(down-r e1 e0)(on-p e2 e0 loc)(!= e0 obj)(!= e0 loc))))
-(B (name putdownwith)(=>(a#putdown agent hand loc obj :0.1)(^(put-v e0 agent u obj)(down-r e1 e0)(with-p e2 e0 hand)(hand-n e3 hand)(!= e0 obj)(!= e0 loc))))
-(B (name putdown)(=>(a#putdown agent hand loc obj :0.3)(^(put-v e0 agent u obj)(down-r e1 e0))))
+(B (name putdownon)(=>(^(a#putdown agent hand loc obj :0.1)(loc loc :0.0))(^(a#put e0 agent u obj)(down-r e1 e0)(on-p e2 e0 loc)(!= e0 obj)(!= e0 loc))))
+(B (name putdownwith)(=>(a#putdown agent hand loc obj :0.1)(^(a#put e0 agent u obj)(down-r e1 e0)(with-p e2 e0 hand)(hand-n e3 hand)(!= e0 obj)(!= e0 loc))))
+(B (name putdown)(=>(a#putdown agent hand loc obj :0.3)(^(a#put e0 agent u obj)(down-r e1 e0))))
 
 ; fix wrong parse
 
-(B (name putdownonfix)(=>(^(a#putdown agent hand loc obj :0.2)(loc loc :0.0))(^(put-v e0 agent u obj)(down-r e1 e0)(on-p e2 u loc)(!= e0 u))))
-(B (name putdownwithfix)(=>(a#putdown agent hand loc obj :0.2)(^(put-v e0 agent u obj)(down-r e1 e0)(with-p e2 u hand)(hand-n e3 hand)(!= e0 u))))
+(B (name putdownonfix)(=>(^(a#putdown agent hand loc obj :0.2)(loc loc :0.0))(^(a#put e0 agent u obj)(down-r e1 e0)(on-p e2 u loc)(!= e0 u))))
+(B (name putdownwithfix)(=>(a#putdown agent hand loc obj :0.2)(^(a#put e0 agent u obj)(down-r e1 e0)(with-p e2 u hand)(hand-n e3 hand)(!= e0 u))))
 
 ; MOVE
 
@@ -206,36 +206,35 @@
 
 ; set the table
 
-;(B (name settableforXpeople1)(=>(^(o#plate p e0 :0.0)(g#objectAt p ps e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#loc_placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent u t)(table-n e1 t)(for-p e2 e0 per)(o#person per z)(card e4 per n))))
+(B (name settableforXpeople1)(=>(^(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#loc_placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent u t)(table-n e1 t)(for-p e2 e0 per)(card e4 per n))))
 
-;(B (name settableforXpeople2)(=>(^(o#plate p e0 :0.0)(g#objectAt p ps e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#loc_placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent u t)(table-n e1 t)(for-p e2 t per)(o#person per z)(card e4 per n))))
-
-;(B (name settableFORALL)(=>(^(q#forallK LOC_PLACESETTING :0.0)(o#plate p e0 :0.0)(g#objectAt p LOC_PLACESETTING e0 :0.0)(o#cup c e0 :0.0)(g#objectAt c LOC_PLACESETTING e0 :0.0))(^(set-v e0 agent u t)(table-n e1 t))))
-
-(B (name settableforXpeople1)(=>(^(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#loc_placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent u t)(table-n e1 t)(for-p e2 e0 per)(o#person per z)(card e4 per n))))
-
-(B (name settableforXpeople2)(=>(^(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#loc_placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent u t)(table-n e1 t)(for-p e2 t per)(o#person per z)(card e4 per n))))
+(B (name settableforXpeople2)(=>(^(o#cup c e0 :0.0)(g#objectAt c ps e0 :0.0)(o#loc_placesetting ps e0 :0.0)(r# e0 n :0.0))(^(set-v e0 agent u t)(table-n e1 t)(for-p e2 t per)(card e4 per n))))
 
 (B (name settableFORALL)(=>(^(q#forallK LOC_PLACESETTING :0.0)(o#cup c e0 :0.0)(g#objectAt c LOC_PLACESETTING e0 :0.0))(^(set-v e0 agent u t)(table-n e1 t))))
 
 ; put things on something: ROBOT
-(B (name putonR)(=>(^(g#objectAt obj loc u :0.9)(loc loc :0.0))(^(put-v e0 R u obj)(on-p e1 e0 loc)(!= R H))))
-(B (name putonNR)(=>((g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(put-v e1 R u obj)(on-p e2 e0 loc)(card e3 obj n)(!= R H))))
+(B (name putv)(=>(a#put e1 agent u obj :0.9)(put-v e1 agent u obj)))
+(B (name layv)(=>(a#put e1 agent u obj :0.9)(lay-v e1 agent u obj)))
+(B (name placev)(=>(a#put e1 agent u obj :0.9)(place-v e1 agent u obj)))
+
+
+(B (name putonR)(=>(^(g#objectAt obj loc u :0.9)(loc loc :0.0))(^(a#put e0 R u obj)(on-p e1 e0 loc)(!= R H))))
+(B (name putonNR)(=>((g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(a#put e1 R u obj)(on-p e2 e0 loc)(card e3 obj n)(!= R H))))
 
 ; fix wrong parse
 (B (name puton2R)(=>(^(g#objectAt obj loc u :0.9)(loc loc :0.0))(^(put-a e0 obj)(on-p e1 e0 loc))))
 (B (name putonN2R)(=>(^(g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(put-a e1 obj)(on-p e2 e0 loc)(card e3 obj n))))
 
-(B (name puton3R)(=>(^(g#objectAt obj loc u :0.9)(loc loc :0.0))(^(put-v e0 R u obj)(on-p e1 obj loc)(!= R H))))
-(B (name putonNR)(=>((g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(put-v e1 R u obj)(on-p e2 obj loc)(card e3 obj n)(!= R H))))
+(B (name puton3R)(=>(^(g#objectAt obj loc u :0.9)(loc loc :0.0))(^(a#put e0 R u obj)(on-p e1 obj loc)(!= R H))))
+(B (name putonNR)(=>((g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(a#put e1 R u obj)(on-p e2 obj loc)(card e3 obj n)(!= R H))))
 
 ; put things on something: HUMAN
-(B (name putonH)(=>(^(a#grasp H hand loc1 obj :0.9)(a#putdown H hand loc obj :0.0)(hand-n ee hand :0.0)(loc loc :0.0))(^(put-v e0 H u obj)(on-p e1 e0 loc)(!= R H))))
-(B (name putonNH)(=>((a#grasp H hand loc1 obj :0.0)(a#putdown H hand loc obj :0.ß)(hand-n ee hand :0.0)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(put-v e1 H u obj)(on-p e2 e0 loc)(card e3 obj n)(!= R H))))
+(B (name putonH)(=>(^(a#grasp H hand loc1 obj :0.9)(a#putdown H hand loc obj :0.0)(hand-n ee hand :0.0)(loc loc :0.0))(^(a#put e0 H u obj)(on-p e1 e0 loc)(!= R H))))
+(B (name putonNH)(=>((a#grasp H hand loc1 obj :0.0)(a#putdown H hand loc obj :0.ß)(hand-n ee hand :0.0)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(a#put e1 H u obj)(on-p e2 e0 loc)(card e3 obj n)(!= R H))))
 
 ; fix wrong parse
-(B (name puton3H)(=>(^(a#grasp H hand loc1 obj :0.9)(a#putdown H hand loc obj :0.0)(hand-n ee hand :0.0)(loc loc :0.0))(^(put-v e0 H u obj)(on-p e1 obj loc)(!= R H))))
-(B (name putonNH)(=>((a#grasp H hand loc1 obj :0.9)(a#putdown H hand loc obj :0.0)(hand-n ee hand :0.0)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(put-v e1 H u obj)(on-p e2 obj loc)(card e3 obj n)(!= R H))))
+(B (name puton3H)(=>(^(a#grasp H hand loc1 obj :0.9)(a#putdown H hand loc obj :0.0)(hand-n ee hand :0.0)(loc loc :0.0))(^(a#put e0 H u obj)(on-p e1 obj loc)(!= R H))))
+(B (name putonNH)(=>((a#grasp H hand loc1 obj :0.9)(a#putdown H hand loc obj :0.0)(hand-n ee hand :0.0)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(a#put e1 H u obj)(on-p e2 obj loc)(card e3 obj n)(!= R H))))
 
 ; bring things
 (B (name bringv)(=>(a#give e1 agent obj req :0.9)(bring-v e1 agent req obj)))
@@ -310,4 +309,70 @@
 
 (B (name cleana)(=>(s#clean e0 x u :0.9)(clean-a e0 x)))
 (B (name dirtya)(=>(s#n#clean e0 x u :0.9)(dirty-a e0 x)))
-(B (name dirtyn)(=>(s#n#clean e0 y u :0.9)(^(dirty-n e0 y)(equal e1 x y))))
+(B (name dirtyn)(=>(s#n#clean e0 x u :0.9)(^(dirty-n e0 y)(equal e1 x y))))
+
+; INCOMPATIBILITY
+
+(B (_|_ (left-a e1 x) (right-a e2 x)))
+
+(B (_|_ (first-a e1 x) (second-a e2 x)))
+(B (_|_ (first-a e1 x) (third-a e2 x)))
+(B (_|_ (second-a e1 x) (third-a e2 x)))
+
+(B (_|_ (red-a e1 x) (blue-a e2 x)))
+(B (_|_ (red-a e1 x) (green-a e2 x)))
+(B (_|_ (red-a e1 x) (yellow-a e2 x)))
+(B (_|_ (red-a e1 x) (white-a e2 x)))
+(B (_|_ (red-a e1 x) (black-a e2 x)))
+(B (_|_ (red-a e1 x) (braun-a e2 x)))
+
+(B (_|_ (blue-a e1 x) (green-a e2 x)))
+(B (_|_ (blue-a e1 x) (yellow-a e2 x)))
+(B (_|_ (blue-a e1 x) (white-a e2 x)))
+(B (_|_ (blue-a e1 x) (black-a e2 x)))
+(B (_|_ (blue-a e1 x) (braun-a e2 x)))
+
+(B (_|_ (green-a e1 x) (yellow-a e2 x)))
+(B (_|_ (green-a e1 x) (white-a e2 x)))
+(B (_|_ (green-a e1 x) (black-a e2 x)))
+(B (_|_ (green-a e1 x) (braun-a e2 x)))
+
+(B (_|_ (yellow-a e1 x) (white-a e2 x)))
+(B (_|_ (yellow-a e1 x) (black-a e2 x)))
+(B (_|_ (yellow-a e1 x) (braun-a e2 x)))
+
+(B (_|_ (white-a e1 x) (black-a e2 x)))
+(B (_|_ (white-a e1 x) (braun-a e2 x)))
+
+(B (_|_ (black-a e1 x) (braun-a e2 x)))
+
+; FEEDBACK
+
+; know
+
+(B (name donotknow)(=>(f#know e1 :0.9)(know-v e1 H u1 u2)))
+(B (name havenoidea)(=>(f#know e1 :0.9)(^(have-v e1 H u1 i)(idea-n e2 i))))
+(B (name noidea)(=>(f#know e1 :0.9)(^(idea-n e1 i)(topic i u))))
+
+; agree
+
+(B (name yes)(=>(f#agree e1 :0.9)(^(yes e1 i)(topic i u))))
+(B (name yesr)(=>(f#agree e1 :0.9)(^(yes-r e1 i)(topic i u))))
+(B (name no)(=>(^(not uu e1 :0)(f#agree e1 :0.9))(^(no e1 i)(topic i u))))
+
+(B (name ok)(=>(f#agree e1 :0.9)(^(ok-n e1 i)(topic i u))))
+(B (name fine)(=>(f#agree e1 :0.9)(^(fine-n e1 i)(topic i u))))
+(B (name greata)(=>(f#agree e1 :0.9)(^(great-a e1 i)(topic i u))))
+(B (name greatn)(=>(f#agree e1 :0.9)(^(great-n e1 i)(topic i u))))
+(B (name perfect)(=>(f#agree e1 :0.9)(^(perfect-n e1 i)(topic i u))))
+
+(B (name itsok)(=>(f#agree x1 :0.9)(^(ok-n e1 x1)(thing e1 x2)(equal e3 x2 x1))))
+(B (name itsfine)(=>(f#agree x1 :0.9)(^(fine-a e1 x1)(thing e1 x1))))
+(B (name itsgreat)(=>(f#agree x1 :0.9)(^(great-a e1 x1)(thing e1 x1))))
+(B (name itsperfect)(=>(f#agree x1 :0.9)(^(perfect-a e1 x1)(thing e1 x1))))
+
+(B (name noproblem)(=>(f#agree x1 :0.9)(^(not e0 e1)(problem-n e1 x1)(topic x1 u))))
+
+(B (name agree)(=>(f#agree e1 :0.9)(agree-v e1 H u1 u2)))
+
+(B (name doit)(=>(f#agree e1 :0.9)(^(do-v e1 R u x1)(thing e1 x1))))

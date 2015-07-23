@@ -24,6 +24,7 @@ class HenryWriter(object):
 			pos2var = {}
 			verb_prep_ineq = {}
 			verb_prep_ineq_counter = 0
+			var2noun = {}
 			noun_vars = []
 
 			Ostr+="(O (name %s)(^" % text.id
@@ -41,19 +42,21 @@ class HenryWriter(object):
 				Ostr+=" :1)"
 
 				# add propositions for the inequality constraints for predicates with the same name: 
-				# verbs, adverbs, preps and props without postfix
-				# if not (p_name.endswith('-n') or p_name.endswith('-a')):
-				if (not p_name in name2ind): name2ind[p_name] = []
-				name2ind[p_name].append(args[0])
+				# verbs, adverbs, preps, adjectives, and props without postfix
+				if not (p_name.endswith('-n')):
+					if (not p_name in name2ind): name2ind[p_name] = []
+					name2ind[p_name].append(args[0])
+				# all nouns that are with different names are different
+				else:
+					if (not args[1] in var2noun): var2noun[args[1]] = []
+					var2noun[args[1]].append(p_name)
+					noun_vars.append(args[1])
 
 				# arguments of verbs and prepositions are different
 				if (p_name.endswith('-v') or p_name.endswith('-p')):
 					verb_prep_ineq_counter+=1
 					verb_prep_ineq[verb_prep_ineq_counter]=args
-
-				# all nouns are different
-				if (p_name.endswith('-n')):
-					noun_vars.append(args[1])
+					
 
 			# add inequality constraints for same preds
 			for n in name2ind.keys():
@@ -71,12 +74,13 @@ class HenryWriter(object):
 						y = verb_prep_ineq[c][j]
 						if (x!=y): Ostr+=" (!= %s %s)" % (x, y)
 
-			# add inequality constraints for all nouns
+			# add inequality constraints for all nouns with different names
 			for i in range(0,len(noun_vars)):
 				for j in range((i+1),len(noun_vars)):
 						x = noun_vars[i]
 						y = noun_vars[j]
-						if (x!=y): Ostr+=" (!= %s %s)" % (x, y) 
+						if (x!=y) and (not (set(var2noun[x]) & set(var2noun[y]))): 
+							Ostr+=" (!= %s %s)" % (x, y) 
 
 			Ostr+="))\n"
 			
