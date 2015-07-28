@@ -13,10 +13,10 @@ intrans_verbs = {
 }
 
 class HenryWriter(object):
-	def __init__(self, texts):
-		self.Hobs= self.createHenryOutput(texts)
+	def __init__(self, texts, appendix_obs):
+		self.Hobs= self.createHenryOutput(texts,appendix_obs)
 
-	def createHenryOutput(self, texts):
+	def createHenryOutput(self, texts, appendix_obs):
 		Ostr = ""
 
 		for text in texts:
@@ -28,6 +28,7 @@ class HenryWriter(object):
 			noun_vars = []
 
 			Ostr+="(O (name %s)(^" % text.id
+			Ostr+=appendix_obs
 			for prop in text.props:
 				p_name = prop[0]
 				args = prop[1]

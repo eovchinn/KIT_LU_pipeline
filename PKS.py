@@ -49,7 +49,7 @@ class PKSGenerator(object):
 				if arg=="H": pred_str += "human, "
 				elif arg=="R": pred_str += "agent, "
 				elif arg in quantifiers: pred_str += quantifiers[arg]+", "
-				elif arg[0].isupper():	pred_str += arg+", "
+				elif arg[0].isupper():	pred_str += arg.lower()+", "
 				elif arg.startswith('_'): 
 					pred_str += "?xx"+arg[1:]+", "
 					linked_arg = "?xx"+arg[1:]
@@ -186,7 +186,7 @@ class PKSGenerator(object):
 
 			sargs = []
 			for a in args[1:-1]:
-				if a[0].isupper(): result += ","+a
+				if a[0].isupper(): result += ","+a.lower()
 				elif a in objects:
 					sargs.append(objects[a][0])
 			state_struc["args"] = sargs
@@ -209,7 +209,7 @@ class PKSGenerator(object):
 
 			largs = []
 			for a in args[1:-1]:
-				if a[0].isupper(): result += ","+a
+				if a[0].isupper(): result += ","+a.lower()
 				elif a in objects:
 					largs.append(objects[a][0])
 			loc_struc["args"] = largs
@@ -223,7 +223,7 @@ class PKSGenerator(object):
 
 		for a in objects:
 			(name,args) = objects[a]
-			if not ((name == "list")|(name.startswith("loc_"))):
+			if not ((name == "list")|(name.startswith("loc_")|(name.startswith("obj_")))):
 				if a in loc_objs:
 					real_objects[a] = ("loc_"+name,args)
 				else: 
@@ -336,10 +336,16 @@ class PKSGenerator(object):
 					if (int(args[1]))>1: repeats[args[0]] = int(args[1])
 				# nouns
 				elif name.endswith('-n'):
-					objects[args[1]] = (name[:-2],[args[1],""])
+					if args[1] not in objects:
+						objects[args[1]] = (name[:-2],[args[1],""])
+				# things
+				elif name=="thing":
+					if args[1] not in objects:
+						objects[args[1]] = ("all",[args[1],""])
 				# objects added via inference
 				elif name.startswith('o#'):
-					objects[args[0]] = (name[2:],args)
+					if args[1] not in objects:
+						objects[args[0]] = (name[2:],args)
 				# locations
 				elif name.startswith('l#'):
 					locations.append((name[2:],args))
