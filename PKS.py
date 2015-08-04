@@ -300,6 +300,7 @@ class PKSGenerator(object):
 		commands_pks = []
 		human_actions_pks = []
 		all_goal_types = []
+		all_types = []
 
 		full_goals=[]
 		full_world=[]
@@ -371,6 +372,9 @@ class PKSGenerator(object):
 				elif name.startswith('f#'):
 					feedback = (name[2:],args[0])
 
+			for v in objects:
+				if objects[v][0] not in all_types: all_types.append(objects[v][0]+'-n')
+
 			objects = self.assign_prefixes(objects,loc_objs)
 
 			# Correct generation of the goal
@@ -398,6 +402,7 @@ class PKSGenerator(object):
 		data["human_actions"] = human_actions_pks
 		data["recognize_plan"] = recplan
 		data["goal_types"] = all_goal_types
+		data["objects_talked_about"] = all_types
 
 		if len(feedback)>0:
 			if feedback[1] in negations: data["feedback"] = (feedback[0],False)

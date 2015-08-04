@@ -383,9 +383,9 @@
 
 ; HIERARCHY
 
-(B (name redcupn)(=>(cup-n e1 x :1.2)(obj_redcup-n e1 x)))
-(B (name greencupn)(=>(cup-n e1 x :1.2)(obj_greencup-n e1 x)))
-(B (name bluecupn)(=>(cup-n e1 x :1.2)(obj_bluecup-n e1 x)))
-(B (name yellowcupn)(=>(cup-n e1 x :1.2)(obj_yellowcup-n e1 x)))
+(B (name redcupn)(=>(cup-n e1 x :1.2)(redcup-n e1 x)))
+(B (name greencupn)(=>(cup-n e1 x :1.2)(greencup-n e1 x)))
+(B (name bluecupn)(=>(cup-n e1 x :1.2)(bluecup-n e1 x)))
+(B (name yellowcupn)(=>(cup-n e1 x :1.2)(yellowcup-n e1 x)))
 
 (B (name cupisthing)(=>(thing e1 x :1.2)(cup-n e1 x)))
