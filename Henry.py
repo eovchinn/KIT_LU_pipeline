@@ -75,6 +75,7 @@ class HenryWriter(object):
 						y = verb_prep_ineq[c][j]
 						if (x!=y): Ostr+=" (!= %s %s)" % (x, y)
 
+
 			# add inequality constraints for all nouns with different names
 			for i in range(0,len(noun_vars)):
 				for j in range((i+1),len(noun_vars)):

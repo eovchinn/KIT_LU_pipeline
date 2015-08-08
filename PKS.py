@@ -237,7 +237,6 @@ class PKSGenerator(object):
 		commands = []
 		states_actions = self.multiply_preds_with_lists(objects,states_actions)
 
-
 		for (name,args) in states_actions:
 			command = {}
 			cargs = []
@@ -327,11 +326,14 @@ class PKSGenerator(object):
 			repeats = {}
 			objects = {}
 			negations = []
+			types = {}
+			relvars = []
 
 			for (name,args) in Hypo[h]:
 				# goals
 				if name.startswith('g#'):
 					goals.append((name[2:],args))
+					relvars += args
 				# repeats
 				elif name.startswith('r#'):
 					if (int(args[1]))>1: repeats[args[0]] = int(args[1])
@@ -339,22 +341,31 @@ class PKSGenerator(object):
 				elif name.endswith('-n'):
 					if args[1] not in objects:
 						objects[args[1]] = (name[:-2],[args[1],""])
+						types[args[1]] = name
 				# things
 				elif name=="thing":
 					if args[1] not in objects:
 						objects[args[1]] = ("all",[args[1],""])
+				# lists
+				elif name == "o#list":
+					objects[args[0]] = (name[2:],args)
+					relvars += args[1:]
 				# objects added via inference
 				elif name.startswith('o#'):
 					if args[1] not in objects:
 						objects[args[0]] = (name[2:],args)
+						types[args[0]] = name
 				# locations
 				elif name.startswith('l#'):
+					relvars += args
 					locations.append((name[2:],args))
 				# states
 				elif name.startswith('s#'):
+					relvars += args
 					states.append((name[2:],args))
 				# commands
 				elif name.startswith('a#'):
+					relvars += args
 					if args[0]=="R": commands.append((name[2:],args))
 					elif args[0]=="H": human_actions.append((name[2:],args))
 				# quantifiers
@@ -372,8 +383,10 @@ class PKSGenerator(object):
 				elif name.startswith('f#'):
 					feedback = (name[2:],args[0])
 
-			for v in objects:
-				if objects[v][0] not in all_types: all_types.append(objects[v][0]+'-n')
+			# collect only relevant types
+			for v in types:
+				if types[v] not in all_types and v in relvars:
+					all_types.append(types[v])
 
 			objects = self.assign_prefixes(objects,loc_objs)
 

@@ -17,18 +17,6 @@
 
 ; objects
 
-;(B (name bottle-n)(=>(o#obj_bottle x u :0.9)(bottle-n e x)))
-;(B (name chair-n)(=>(o#obj_chair x u :0.9)(chair-n e x)))
-;(B (name container-n)(=>(o#obj_container x u :0.9)(container-n e x)))
-;(B (name cup-n)(=>(o#obj_cup x u :0.9)(cup-n e x)))
-;(B (name dishwasher-n)(=>(o#obj_dishwasher x u :0.9)(dishwasher-n e x)))
-;(B (name fridge-n)(=>(o#obj_fridge x u :0.9)(fridge-n e x)))
-;(B (name hand-n)(=>(o#obj_hand x u :0.9)(hand-n e x)))
-;(B (name plate-n)(=>(o#obj_plate x u :0.9)(plate-n e x)))
-;(B (name sink-n)(=>(o#obj_sink x u :0.9)(sink-n e x)))
-;(B (name sponge-n)(=>(o#obj_sponge x u :0.9)(sponge-n e x)))
-;(B (name juice-n)(=>(o#obj_orangejuice x u :0.9)(juice-n e x)))
-
 (B (name coffeefilter-n)(=>(o#coffeefilters x u :0.3)(^(of-p e1 x x1)(filter-n e2 x)(coffee-n e3 x1))))
 
 (B (name vitaliscereal-n)(=>(o#vitaliscereal x u :0.3)(^(of-p e1 x x1)(cereal-n e2 x)(vitali-n e3 x1))))
@@ -42,7 +30,7 @@
 (B (name multi-vitaminjuice-n2)(=>(o#multivitaminjuice x u :0.2)(^(juice-n e1 x)(multi-a e2 x)(vitamin-n e3 x1)(of-p e4 x x1))))
 
 (B (name redplate)(=>(o#redplate x u :0.45)(^(red-a e1 x)(plate-n e2 x))))
-(B (name greenplate)(=>(o#greenplatex u :0.45)(^(green-a e1 x)(plate-n e2 x))))
+(B (name greenplate)(=>(o#greenplate x u :0.45)(^(green-a e1 x)(plate-n e2 x))))
 (B (name blueplate)(=>(o#blueplate x u :0.45)(^(blue-a e1 x)(plate-n e2 x))))
 
 (B (name redcup)(=>(o#redcup x u :0.45)(^(red-a e1 x)(cup-n e2 x))))
@@ -66,10 +54,12 @@
 (B (name tablesetting-n)(=>(o#placesetting-n x u :0.2)(^(of-p e1 x x1)(setting-n e2 x)(table-n e3 x1))))
 
 ; fix wrong parse
-(B (name placesettingfix)(=>(o#placesetting x u :0.9)(^(setting-n e2 x)(place-n e3 x1))))
-(B (name tablesettingfix)(=>(o#placesetting x u :0.9)(^(setting-n e2 x)(table-n e3 x1))))
-(B (name placesettingfix)(=>(o#placesetting x u :0.9)(^(set-v e1 x u1 u2)(place-n e2 x))))
-(B (name tablesettingfix)(=>(o#placesetting x u :0.9)(^(set-v e1 x u1 u2)(table-n e2 x))))
+(B (name placesettingfix1)(=>(o#placesetting x u :0.9)(^(setting-n e2 x1)(place-n e3 x))))
+(B (name tablesettingfix1)(=>(o#placesetting x u :0.9)(^(setting-n e2 x1)(table-n e3 x))))
+(B (name placesettingfix2)(=>(o#placesetting x u :0.9)(^(set-v e1 x u1 u2)(place-n e2 x))))
+(B (name tablesettingfix2)(=>(o#placesetting x u :0.9)(^(set-v e1 x u1 u2)(table-n e2 x))))
+(B (name placesettingfix3)(=>(o#placesetting x u :0.9)(^(setting-n e2 x1)(place-n e3 x)(in-p e4 e5 x1))))
+(B (name tablesettingfix3)(=>(o#placesetting x u :0.9)(^(setting-n e2 x1)(table-n e3 x)(in-p e4 e5 x1))))
 
 (B (name firstfork)(=>(fork-n e FORK1 :0.9)(^(first-a e1 x)(fork-n e x))))
 (B (name secondfork)(=>(fork-n e FORK2 :0.9)(^(second-a e1 x)(fork-n e x))))
@@ -97,6 +87,7 @@
 (B (name in-p)(=>(^(l#objectIn e1 e0 l u :0.8)(loc l :0.1))(in-p e1 e0 l)))
 (B (name at-p)(=>(^(l#objectAt e1 e0 l u :0.8)(loc l :0.1))(at-p e1 e0 l)))
 (B (name on-p)(=>(^(l#objectOn e1 e0 l u :0.8)(loc l :0.1))(on-p e1 e0 l)))
+(B (name by-p)(=>(^(l#objectAt e1 e0 l u :0.8)(loc l :0.1))(by-p e1 e0 l)))
 
 (B (name from-p)(=>(loc l :0.9)(from-p e1 e0 l)))
 (B (name to-p)(=>(loc l :0.9)(to-p e1 e0 l)))
@@ -212,12 +203,11 @@
 
 (B (name settableFORALL)(=>(^(q#forallK LOC_PLACESETTING :0.0)(o#cup c e0 :0.0)(g#objectAt c LOC_PLACESETTING e0 :0.0))(^(set-v e0 agent u t)(table-n e1 t))))
 
-; put things on something: ROBOT
 (B (name putv)(=>(a#put e1 agent u obj :0.9)(put-v e1 agent u obj)))
 (B (name layv)(=>(a#put e1 agent u obj :0.9)(lay-v e1 agent u obj)))
 (B (name placev)(=>(a#put e1 agent u obj :0.9)(place-v e1 agent u obj)))
 
-
+; put things on something: ROBOT
 (B (name putonR)(=>(^(g#objectAt obj loc u :0.9)(loc loc :0.0))(^(a#put e0 R u obj)(on-p e1 e0 loc)(!= R H))))
 (B (name putonNR)(=>((g#objectAt obj loc e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(a#put e1 R u obj)(on-p e2 e0 loc)(card e3 obj n)(!= R H))))
 
@@ -263,53 +253,53 @@
 (B (name carryn)(=>(move c agent c)(carry-n e1 c)))
 
 
-; move chair to table
-(B (name moveto)(=>(^(g#objectAt c cdl u1 :0.1)(o#loc_chairdropofflocation cdl u :0.1))(^(move e1 agent c)(chair-n e2 c)(to-p e3 e1 loc)(table-n e4 t))))
-(B (name movetoN)(=>(^(g#objectAt c cdl e1 :0.0)(o#loc_chairdropofflocation cdl e1 :0.0)(r# e1 n :0.0))(^(move e1 agent c)(chair-n e2 c)(to-p e3 e1 loc)(table-n e4 t)(card e5 obj n))))
+; move chair to table (ROBOT)
+(B (name moveto)(=>(^(g#objectAt c cdl u1 :0.1)(o#loc_chairdropofflocation cdl u :0.1))(^(move e1 R c)(chair-n e2 c)(to-p e3 e1 loc)(table-n e4 t)(!= R H))))
+(B (name movetoN)(=>(^(g#objectAt c cdl e1 :0.0)(o#loc_chairdropofflocation cdl e1 :0.0)(r# e1 n :0.0))(^(move e1 R c)(chair-n e2 c)(to-p e3 e1 loc)(table-n e4 t)(card e5 obj n)(!= R H))))
 
-(B (name moveto)(=>(g#objectAt obj loc u1 :0.45)(^(move e1 agent obj)(to-p e2 e1 loc))))
-(B (name movetoN)(=>(^(g#objectAt obj loc e0 :0.3)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(move e1 agent obj)(to-p e2 e1 loc)(card e3 obj n))))
+(B (name moveto)(=>(^(g#objectAt obj loc u1 :0.45)(loc loc :0.0))(^(move e1 R obj)(to-p e2 e1 loc)(!= R H))))
+(B (name movetoN)(=>(^(g#objectAt obj loc e0 :0.3)(r# e0 n :0.0)(r# obj n :0.0)(loc loc :0.0))(^(move e1 R obj)(to-p e2 e1 loc)(card e3 obj n)(!= R H))))
 
 ; fix wrong argument binding for move obj to table
-(B (name movetotable)(=>(^(g#objectAt obj t u1 :0.45)(loc t :0.0))(^(move-v e1 agent u obj)(to-p e2 e1 t)(table-n e3 t)(!= obj t))))
-(B (name moveNtotable)(=>(^(g#objectAt obj t e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0)(loc t :0.0))(^(move e1 agent obj)(to-p e2 e1 t)(card e3 obj n)(table-n e4 t)(!= obj t))))
+(B (name movetotable)(=>(^(g#objectAt obj t u1 :0.45)(loc t :0.0))(^(move-v e1 R u obj)(to-p e2 e1 t)(table-n e3 t)(!= obj t)(!= R H))))
+(B (name moveNtotable)(=>(^(g#objectAt obj t e0 :0.1)(r# e0 n :0.0)(r# obj n :0.0)(loc t :0.0))(^(move e1 R obj)(to-p e2 e1 t)(card e3 obj n)(table-n e4 t)(!= obj t)(!= R H))))
 
-(B (name movetable)(=>(^(g#objectAt t tdl u0 :0.4)(o#loc_tabledropofflocation tdl :0.0))(^(move e1 agent t)(table-n e2 t))))
+(B (name movetable)(=>(^(g#objectAt t tdl u0 :0.4)(o#loc_tabledropofflocation tdl u :0.0))(^(move e1 R t)(table-n e2 t)(!= R H))))
 
-(B (name movetableto)(=>(^(g#objectAt t loc u1 :0.1)(loc loc :0.0))(^(move e1 agent t)(table-n e2 t)(to-p e2 e1 loc)(!= loc t))))
+(B (name movetableto)(=>(^(g#objectAt t loc u1 :0.1)(loc loc :0.0))(^(move e1 R t)(table-n e2 t)(to-p e2 e1 loc)(!= loc t)(!= R H))))
 
 ; arrange chairs
-(B (name arrangechair)(=>(^(g#objectAt c ts u :0.2)(o#loc_chairdropofflocation ts u :0.0))(^(arrange-v e0 agent u c)(chair-n e1 c))))
-(B (name arrangeNchairs)(=>(^(g#objectAt c ts e0 :0.1)(o#loc_chairdropofflocation ts e0 :0.0)(r# e0 n :0.0)(r# c n :0.0))(^(arrange-v e0 agent u c)(chair-n e1 c)(card e2 c n))))
+(B (name arrangechair)(=>(^(g#objectAt c ts u :0.2)(o#loc_chairdropofflocation ts u :0.0))(^(arrange-v e0 R u c)(chair-n e1 c)(!= R H))))
+(B (name arrangeNchairs)(=>(^(g#objectAt c ts e0 :0.1)(o#loc_chairdropofflocation ts e0 :0.0)(r# e0 n :0.0)(r# c n :0.0))(^(arrange-v e0 R u c)(chair-n e1 c)(card e2 c n)(!= R H))))
 
 ; fix wrong parse
 (B (name arrangechairfix1)(=>(^(g#objectAt c ts u :0.2)(o#loc_chairdropofflocation ts u :0.0))(^(arrange-n e0 c)(chair-n e1 c))))
 (B (name arrangechairfix2)(=>(^(g#objectAt c ts u :0.2)(o#loc_chairdropofflocation ts u :0.0))(^(arrange-n e0 a)(of-p e2 c a)(chair-n e1 c))))
 (B (name arrangeNchairsfix3)(=>(^(g#objectAt c ts e0 :0.1)(o#loc_chairdropofflocation ts e0 :0.0)(r# e0 n :0.0)(r# c n :0.0))(^(arrange-n e0 c)(chair-n e1 c)(card e2 c n))))
 
-(B (name arrangechairfix4)(=>(^(g#objectAt c ts u :0.4)(o#loc_chairdropofflocation ts u :0.0))(^(arrange-v e0 agent u1 u2)(chair-n e1 c))))
-(B (name arrangeNchairsfix)(=>(^(g#objectAt c ts e0 :0.1)(o#loc_chairdropofflocation ts e0 :0.0)(r# e0 n :0.0)(r# c n :0.0))(^(arrange-v e0 agent u1 u2)(chair-n e1 c)(card e2 c n))))
+(B (name arrangechairfix4)(=>(^(g#objectAt c ts u :0.4)(o#loc_chairdropofflocation ts u :0.0))(^(arrange-v e0 R u1 u2)(chair-n e1 c)(!= R H))))
+(B (name arrangeNchairsfix)(=>(^(g#objectAt c ts e0 :0.1)(o#loc_chairdropofflocation ts e0 :0.0)(r# e0 n :0.0)(r# c n :0.0))(^(arrange-v e0 R u1 u2)(chair-n e1 c)(card e2 c n)(!= R H))))
 
 ;(B (name arrangechairs)(=>(^(q#forallK LOC_CHAIRDROPOFFLOCATION :0.0)(g#objectAt c LOC_CHAIRDROPOFFLOCATION e0 :0.9))(^(arrange-v e0 agent u c)(chair-n e1 c))))
 
 ; wipe the table
 
-(B (name wipetable)(=>(g#clean t u :0.9)(^(wipe-v e0 agent u t)(table-n e1 t))))
+(B (name wipetable)(=>(g#clean t u :0.9)(^(wipe-v e0 R u t)(table-n e1 t)(!= R H))))
 
 ; close and open
 
-(B (name closev)(=>(g#n#open obj u :0.9)(close-v e0 agent u obj)))
+(B (name closev)(=>(g#n#open obj u :0.9)(^(close-v e0 R u obj)(!= R H))))
 
 (B (name closeda)(=>(s#n#open e0 obj u :0.9)(closed-a e0 obj)))
 
-(B (name openv)(=>(g#open obj u :0.9)(open-v e0 agent u obj)))
+(B (name openv)(=>(g#open obj u :0.9)(^(open-v e0 R u obj)(!= R H))))
 
 (B (name opena)(=>(s#open e0 obj u :0.9)(open-a e0 obj)))
 
 
 ; clean and dirty
 
-(B (name cleanv)(=>(g#clean t u :0.9)(clean-v e0 agent u t)))
+(B (name cleanv)(=>(g#clean t u :0.9)(^(clean-v e0 R u t)(!= R H))))
 
 (B (name cleana)(=>(s#clean e0 x u :0.9)(clean-a e0 x)))
 (B (name dirtya)(=>(s#n#clean e0 x u :0.9)(dirty-a e0 x)))
@@ -354,8 +344,8 @@
 
 ; know
 
-(B (name donotknow)(=>(f#know e1 :0.9)(know-v e1 H u1 u2)))
-(B (name havenoidea)(=>(f#know e1 :0.9)(^(have-v e1 H u1 i)(idea-n e2 i))))
+(B (name donotknow)(=>(f#know e1 :0.9)(^(know-v e1 H u1 u2)(!= R H))))
+(B (name havenoidea)(=>(f#know e1 :0.9)(^(have-v e1 H u1 i)(idea-n e2 i)(!= R H))))
 (B (name noidea)(=>(f#know e1 :0.9)(^(idea-n e1 i)(topic i u))))
 
 ; agree
@@ -377,15 +367,14 @@
 
 (B (name noproblem)(=>(f#agree x1 :0.9)(^(not e0 e1)(problem-n e1 x1)(topic x1 u))))
 
-(B (name agree)(=>(f#agree e1 :0.9)(agree-v e1 H u1 u2)))
+(B (name agree)(=>(f#agree e1 :0.9)(^(agree-v e1 H u1 u2)(!= R H))))
 
-(B (name doit)(=>(f#agree e1 :0.9)(^(do-v e1 R u x1)(thing e1 x1))))
+(B (name doit)(=>(f#agree e1 :0.9)(^(do-v e1 R u x1)(thing e1 x1)(!= R H))))
 
 ; HIERARCHY
 
-(B (name redcupn)(=>(cup-n e1 x :1.2)(redcup-n e1 x)))
-(B (name greencupn)(=>(cup-n e1 x :1.2)(greencup-n e1 x)))
-(B (name bluecupn)(=>(cup-n e1 x :1.2)(bluecup-n e1 x)))
-(B (name yellowcupn)(=>(cup-n e1 x :1.2)(yellowcup-n e1 x)))
+(B (name oredcup)(=>(o#redcup x e1 :1.2)(cup-n e1 x)))
+(B (name obluecup)(=>(o#bluecup x e1 :1.2)(cup-n e1 x)))
+(B (name ogreencup)(=>(o#greencup x e1 :1.2)(cup-n e1 x)))
 
-(B (name cupisthing)(=>(thing e1 x :1.2)(cup-n e1 x)))
+(B (name cupisthing)(=>(cup-n e1 x :1.2)(thing e1 x)))
