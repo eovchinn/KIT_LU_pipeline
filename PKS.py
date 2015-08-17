@@ -12,7 +12,7 @@ class PKSGenerator(object):
 	def __init__(self, Hypo):
 		self.cached = []
 
-		self.data = self.generatePKS(Hypo)
+		self.data = self.generateOutputStruc(Hypo)
 
 	def printPKS_separate(self,goal_array,quantifiers):
 		if len(goal_array) == 0: return ("",[])
@@ -290,7 +290,7 @@ class PKSGenerator(object):
 
 		return commands
 
-	def generatePKS(self, Hypo):
+	def generateOutputStruc(self, Hypo):
 
 		data = defaultdict(dict)
 
@@ -300,6 +300,7 @@ class PKSGenerator(object):
 		human_actions_pks = []
 		all_goal_types = []
 		all_types = []
+		all_action_names = []
 
 		full_goals=[]
 		full_world=[]
@@ -368,6 +369,10 @@ class PKSGenerator(object):
 					relvars += args
 					if args[0]=="R": commands.append((name[2:],args))
 					elif args[0]=="H": human_actions.append((name[2:],args))
+				# verbs
+				elif name.endswith('-v'):
+					if not name[:-2] in all_action_names:
+						all_action_names.append(name[:-2])
 				# quantifiers
 				elif name.startswith('q#'):
 					qcount += 1
@@ -416,6 +421,7 @@ class PKSGenerator(object):
 		data["recognize_plan"] = recplan
 		data["goal_types"] = all_goal_types
 		data["objects_talked_about"] = all_types
+		data["context_words"] = all_action_names
 
 		if len(feedback)>0:
 			if feedback[1] in negations: data["feedback"] = (feedback[0],False)
