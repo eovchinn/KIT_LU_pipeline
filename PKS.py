@@ -19,15 +19,13 @@ class PKSGenerator(object):
 
 		all_goals = []
 		all_goal_types = {}
-		counter = 0
 		for goal_struc in goal_array:
-			(goal_pks,goal_types) = self.printPKS(goal_struc,quantifiers,counter)
+			(goal_pks,goal_types) = self.printPKS(goal_struc,quantifiers)
 			all_goals.append(goal_pks)
 			all_goal_types.update(goal_types)
-			counter+=1
 		return (all_goals,all_goal_types)
 
-	def printPKS(self,goal_struc,quantifiers,var_add):
+	def printPKS(self,goal_struc,quantifiers):
 		(states_actions,objects,inequalities) = goal_struc
 
 		if len(states_actions)==0: return ""
@@ -61,8 +59,8 @@ class PKSGenerator(object):
 				if len(linked_arg)>0 and (arg not in done_vars):
 					for (name,oarg) in objects:
 						if oarg == arg:
-							obj_str += linked_arg + "A" + str(var_add) + " : " + name + ", "
-							goal_types[linked_arg + "A" + str(var_add)] = name
+							obj_str += linked_arg + " : " + name + ", "
+							goal_types[linked_arg] = name
 					done_vars.append(arg)
 			pred_str = pred_str[:-2] + ")"
 
@@ -79,7 +77,7 @@ class PKSGenerator(object):
 				for j in range(i+1,len(ineq)):
 					if ineq[j].startswith('_'): a2 = "?xx"+ineq[j][1:]
 					else: a2 = ineq[j]
-					ineqstr += "K("+a1+"A"+str(var_add)+" != "+a2+"A"+str(var_add)+") & "	
+					ineqstr += "K("+a1+" != "+a2+") & "	
 		output_str += ineqstr
 
 		output_str = output_str[:-3]
@@ -92,7 +90,7 @@ class PKSGenerator(object):
 			qstr = ""
 			qstr+="(forallK("
 			for a in quantifiers:
-				qvar = quantifiers[a] + "A" + str(var_add)
+				qvar = quantifiers[a]
 				qstr+= qvar + " : "+a.lower()+", "
 				goal_types[qvar] = a.lower()
 			qstr = qstr[:-2]+")"
