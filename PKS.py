@@ -18,15 +18,16 @@ class PKSGenerator(object):
 		if len(goal_array) == 0: return ("",[])
 
 		all_goals = []
-		all_goal_types = []
+		all_goal_types = {}
+		counter = 0
 		for goal_struc in goal_array:
-			(goal_pks,goal_types) = self.printPKS(goal_struc,quantifiers)
+			(goal_pks,goal_types) = self.printPKS(goal_struc,quantifiers,counter)
 			all_goals.append(goal_pks)
-			for gt in goal_types: 
-				if not gt in all_goal_types: all_goal_types.append(gt)
+			all_goal_types.update(goal_types)
+			counter+=1
 		return (all_goals,all_goal_types)
 
-	def printPKS(self,goal_struc,quantifiers):
+	def printPKS(self,goal_struc,quantifiers,var_add):
 		(states_actions,objects,inequalities) = goal_struc
 
 		if len(states_actions)==0: return ""
@@ -34,7 +35,7 @@ class PKSGenerator(object):
 		output_str = ""
 		exist_counter = 0
 		done_vars = []
-		goal_types = []
+		goal_types = {}
 
 		for (name,args) in states_actions:
 			pred_str = ""
@@ -51,17 +52,17 @@ class PKSGenerator(object):
 				elif arg in quantifiers: pred_str += quantifiers[arg]+", "
 				elif arg[0].isupper():	pred_str += arg.lower()+", "
 				elif arg.startswith('_'): 
-					pred_str += "?xx"+arg[1:]+", "
 					linked_arg = "?xx"+arg[1:]
+					pred_str += linked_arg+", "
 				else: 
-					pred_str += "?"+arg+", "
 					linked_arg = "?"+arg
+					pred_str += linked_arg+", "
 
 				if len(linked_arg)>0 and (arg not in done_vars):
 					for (name,oarg) in objects:
 						if oarg == arg:
-							obj_str += linked_arg + " : " + name + ", "
-							goal_types.append(name)
+							obj_str += linked_arg + "A" + str(var_add) + " : " + name + ", "
+							goal_types[linked_arg + "A" + str(var_add)] = name
 					done_vars.append(arg)
 			pred_str = pred_str[:-2] + ")"
 
@@ -74,11 +75,11 @@ class PKSGenerator(object):
 		for ineq in inequalities:
 			for i in range(0,len(ineq)):
 				if ineq[i].startswith('_'): a1 = "?xx"+ineq[i][1:]
-				else: a1 = ineq[i]
+				else: a1 = ineq[i]+str(var_add)
 				for j in range(i+1,len(ineq)):
 					if ineq[j].startswith('_'): a2 = "?xx"+ineq[j][1:]
 					else: a2 = ineq[j]
-					ineqstr += "K("+a1+" != "+a2+") & "	
+					ineqstr += "K("+a1+"A"+str(var_add)+" != "+a2+"A"+str(var_add)+") & "	
 		output_str += ineqstr
 
 		output_str = output_str[:-3]
@@ -91,8 +92,9 @@ class PKSGenerator(object):
 			qstr = ""
 			qstr+="(forallK("
 			for a in quantifiers:
-				goal_types.append(a.lower())
-				qstr+=quantifiers[a]+" : "+a.lower()+", "
+				qvar = quantifiers[a] + "A" + str(var_add)
+				qstr+= qvar + " : "+a.lower()+", "
+				goal_types[qvar] = a.lower()
 			qstr = qstr[:-2]+")"
 			
 			output_str = qstr + output_str + ")"
@@ -298,7 +300,7 @@ class PKSGenerator(object):
 		sows_pks = []
 		commands_pks = []
 		human_actions_pks = []
-		all_goal_types = []
+		all_goal_types = {}
 		all_types = []
 		all_action_names = []
 
@@ -402,7 +404,7 @@ class PKSGenerator(object):
 			# separate goals for fixing long planning
 			(goal_pks,goal_types) = self.printPKS_separate(self.separate_multuply_link_preds_objs(objects,goals,repeats),quantifiers)
 			if len(goal_pks)>0:	goals_pks += goal_pks
-			all_goal_types+=goal_types
+			all_goal_types.update(goal_types)
 
 			sow_pks = self.generate_SOW(objects,locations,states,negations)
 			if len(sow_pks)>0: sows_pks += sow_pks
