@@ -23,6 +23,7 @@ b) Obtain Gurobi license key
 - Go to DOWNLOADS->LICENSES->UNIVERSITY LICENSE
 - Accept license conditions and push REQUEST LICENSE
 - run `grbgetkey LICENSE_KEY` (shown on the Gurobi web page) in terminal, make sure that you store the key (gurobi.lic) in KIT_LU_pipeline/gurobi/
+- Note that each license is bound to specific account and host
 
 c) Add to your .bashrc (if you didn't allow the installation script to do it for you): 
 - `source PATH_TO_KIT_LU_pipeline/lupipeline.setenv.sh`
