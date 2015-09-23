@@ -203,6 +203,29 @@
 
 (B (name settableFORALL)(=>(^(q#forallK LOC_PLACESETTING :0.0)(cup-n e2 c :0.0)(g#objectAt c LOC_PLACESETTING e0 :0.0))(^(set-v e0 agent u t)(table-n e1 t))))
 
+; make a salad
+
+(B (name makesalad)(=>(a#makesalad e0 agent s :0.9)(^(make-v e0 agent u s)(salad-n e1 s))))
+(B (name preparesalad)(=>(a#makesalad e0 agent s :0.9)(^(prepare-v e0 agent u s)(salad-n e1 s))))
+(B (name mixsalad)(=>(a#makesalad e0 agent s :0.9)(^(mix-v e0 agent u s)(salad-n e1 s))))
+
+(B (name makesaladwith)(=>(^(g#substanceIn i c e0 :0.1)(container-n e2 c :0.3)(g#stirred c e0 :0.1))(^(a#makesalad e0 agent s)(with-p e1 e0 i))))
+(B (name makesaladwith2)(=>(^(g#substanceIn i c e0 :0.1)(container-n e2 c :0.3)(g#stirred c e0 :0.1))(^(a#makesalad e0 agent s)(with-p e1 s i))))
+
+(B (name makesaladin)(=>(^(g#substanceIn i c e0 :0.1)(container-n e2 c :0.1)(g#stirred c e0 :0.1))(^(a#makesalad e0 agent s)(in-p e1 e0 c))))
+(B (name makesaladin2)(=>(^(g#substanceIn i c e0 :0.1)(container-n e2 c :0.1)(g#stirred c e0 :0.1))(^(a#makesalad e0 agent s)(in-p e1 s c))))
+
+(B (name mixv)(=>(a#mix e0 agent obj :0.9)(mix-v e0 agent u obj)))
+(B (name stirv)(=>(a#mix e0 agent obj :0.9)(stir-v e0 agent u obj)))
+(B (name mixn)(=>(a#mix e0 agent obj :0.9)(mix-n e1 x)))
+(B (name stirn)(=>(a#mix e0 agent obj :0.9)(stir-n e1 x)))
+
+(B (name mixin)(=>(^(g#substanceIn i c e0 :0.1)(container-n e2 c :0.1)(g#stirred c e0 :0.1))(^(a#mix e0 agent i)(in-p e1 e0 c))))
+(B (name mixin2)(=>(^(g#substanceIn i c e0 :0.1)(container-n e2 c :0.1)(g#stirred c e0 :0.1))(^(a#mix e0 agent i)(in-p e1 i c))))
+(B (name mixa)(=>(^(g#substanceIn i c e0 :0.3)(container-n e2 c :0.3)(g#stirred c e0 :0.3))(a#mix e0 agent i)))
+
+; put things
+
 (B (name putv)(=>(a#put e1 agent u obj :0.9)(put-v e1 agent u obj)))
 (B (name layv)(=>(a#put e1 agent u obj :0.9)(lay-v e1 agent u obj)))
 (B (name placev)(=>(a#put e1 agent u obj :0.9)(place-v e1 agent u obj)))
@@ -241,8 +264,8 @@
 (B (name bringfrom)(=>(^(a#give e1 agent obj req :0.2)(l#objectAt e1 obj loc e0 :0.2)(loc loc :0.0))(^(bring-v e0 agent req obj)(from-p e1 obj loc))))
 (B (name givefrom)(=>(^(a#give e1 agent obj req :0.2)(l#objectAt e1 obj loc e0 :0.2)(loc loc :0.0))(^(give-v e0 agent req obj)(from-p e1 obj loc))))
 
-(B (name giveN)(=>(^(g#inHand obj hand e0 :0.3)(hand-n e1 hand :0.0)(g#handOf hand req u :0.3)(r# e0 n :0.0)(r# obj n :0.0))(^(a#give e0 R obj req)(card e1 obj n)(!= R H))))
-(B (name give)(=>(^(g#inHand obj hand e0 :0.3)(hand-n e1 hand :0.3)(g#handOf hand req u :0.3))(^(a#give e0 R obj req)(!= R H))))
+(B (name giveN)(=>(^(g#inHandOfHuman obj e0 :0.6)(r# e0 n :0.0)(r# obj n :0.0))(^(a#give e0 R obj req)(card e1 obj n)(!= R H))))
+(B (name give)(=>(g#inHandOfHuman obj e0 :0.9)(^(a#give e0 R obj req)(!= R H))))
 
 ; move things to locations
 
