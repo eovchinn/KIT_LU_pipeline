@@ -252,14 +252,14 @@
 (B (name giveto)(=>(a#give e1 agent obj req :0.9)(^(a#give *e1 agent obj u)(to-p e2 *e1 req))))
 
 ; give from
-(B (name giveNfrom)(=>(^(g#inHandOfHuman ha *obj *e0 :0.1)(human_agent-n e5 ha :0.0)(l#objectAt e2 *obj loc *e0 :0.1)(loc loc :0)(r# *e0 n :0.0)(r# *obj n :0.0))(^(a#give *e0 agent *obj req)(from-p e2 *e0 loc)(card e2 *obj n))))
-(B (name giveNfrom2)(=>(^(g#inHandOfHuman ha *obj *e0 :0.1)(human_agent-n e5 ha :0.0)(l#objectAt e2 *obj loc *e0 :0.1)(loc loc :0)(r# *e0 n :0.0)(r# *obj n :0.0))(^(a#give *e0 agent *obj req)(from-p e2 *obj loc)(card e2 *obj n))))
+(B (name giveNfrom)(=>(^(g#inHandOfHuman ha *obj *e0 :0.1)(agent_human-n e5 ha :0.0)(l#objectAt e2 *obj loc *e0 :0.1)(loc loc :0)(r# *e0 n :0.0)(r# *obj n :0.0))(^(a#give *e0 agent *obj req)(from-p e2 *e0 loc)(card e2 *obj n))))
+(B (name giveNfrom2)(=>(^(g#inHandOfHuman ha *obj *e0 :0.1)(agent_human-n e5 ha :0.0)(l#objectAt e2 *obj loc *e0 :0.1)(loc loc :0)(r# *e0 n :0.0)(r# *obj n :0.0))(^(a#give *e0 agent *obj req)(from-p e2 *obj loc)(card e2 *obj n))))
 
-(B (name givefrom)(=>(^(g#inHandOfHuman ha *obj *e0 :0.1)(human_agent-n e5 ha :0.0)(l#objectAt e2 *obj loc u2 :0.1)(loc loc :0))(^(a#give *e0 agent *obj req)(from-p e2 *e0 loc))))
-(B (name givefrom2)(=>(^(g#inHandOfHuman ha *obj *e0 :0.1)(human_agent-n e5 ha :0.0)(l#objectAt e2 *obj loc u2 :0.1)(loc loc :0))(^(a#give *e0 agent *obj req)(from-p e2 *obj loc))))
+(B (name givefrom)(=>(^(g#inHandOfHuman ha *obj *e0 :0.1)(agent_human-n e5 ha :0.0)(l#objectAt e2 *obj loc u2 :0.1)(loc loc :0))(^(a#give *e0 agent *obj req)(from-p e2 *e0 loc))))
+(B (name givefrom2)(=>(^(g#inHandOfHuman ha *obj *e0 :0.1)(agent_human-n e5 ha :0.0)(l#objectAt e2 *obj loc u2 :0.1)(loc loc :0))(^(a#give *e0 agent *obj req)(from-p e2 *obj loc))))
 
-(B (name giveN)(=>(^(g#inHandOfHuman ha *obj e0 :0.9)(human_agent-n e5 ha :0.0)(r# e0 n :0.0)(r# *obj n :0.0))(^(a#give e0 R *obj req)(card e1 *obj n))))
-(B (name give)(=>(^(g#inHandOfHuman ha obj e0 :0.9)(human_agent-n e5 ha :0.0))(^(a#give e0 R obj req))))
+(B (name giveN)(=>(^(g#inHandOfHuman ha *obj e0 :0.9)(agent_human-n e5 ha :0.0)(r# e0 n :0.0)(r# *obj n :0.0))(^(a#give e0 R *obj req)(card e1 *obj n))))
+(B (name give)(=>(^(g#inHandOfHuman ha obj e0 :0.9)(agent_human-n e5 ha :0.0))(^(a#give e0 R obj req))))
 
 ; move things to locations
 
