@@ -5,8 +5,8 @@ echo -e "#!/bin/bash\n" > lupipeline.setenv.sh
 export KIT_LU_DIR=${PWD}
 echo "export KIT_LU_DIR=${PWD}" >> lupipeline.setenv.sh
 
-export BOXER_DIR=/usr/share/boxer/bin/boxer
-echo "export BOXER_DIR=/usr/share/boxer/bin/boxer" >> lupipeline.setenv.sh
+export BOXER_DIR=/usr/share/boxer
+echo "export BOXER_DIR=/usr/share/boxer" >> lupipeline.setenv.sh
 
 export BOXER_SOAP_SERVER=localhost:38900
 echo "export BOXER_SOAP_SERVER=localhost:38900" >> lupipeline.setenv.sh
