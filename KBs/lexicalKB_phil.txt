@@ -102,7 +102,7 @@
 (B (name graspv)(=>(grasp e0 agent obj :0.9)(take-v e0 agent u obj)))
 
 (B (name graspwith)(=>(a#grasp agent *hand loc obj :0.1)(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(hand-n e2 *hand))))
-(B (name graspfrom)(=>(^(a#grasp agent hand loc obj :0.1)(loc loc :0.0))(^(grasp *e0 agent obj)(from-p e1 *e0 loc))))
+(B (name graspfrom)(=>(^(a#grasp agent hand loc obj :0.1)(l#objectAt u1 obj loc u2 :0.1)(loc loc :0.0))(^(grasp *e0 agent obj)(from-p e1 *e0 loc))))
 (B (name grasp)(=>(a#grasp agent hand loc obj :0.9)(grasp e0 agent obj)))
 
 ; fix wrong parse
@@ -195,9 +195,11 @@
 
 (B (name settableforXpeople1)(=>(^(cup-n ec c :0.0)(g#objectAt c ps *e0 :0.0)(placesetting-n eu ps :0.0)(loc ps :0)(r# ps n :0.0)(r# *e0 n :0.0)(r# c n :0.0))(^(set-v *e0 agent u *t)(table-n e1 *t)(for-p e2 *e0 *per)(card e4 *per n))))
 
+(B (name settableforXpeople2)(=>(^(cup-n ec c :0.0)(g#objectAt c ps *e0 :0.0)(placesetting-n eu ps :0.0)(loc ps :0)(r# ps n :0.0)(r# *e0 n :0.0)(r# c n :0.0))(^(set-v *e0 agent u *t)(table-n e1 *t)(for-p e2 *t *per)(card e4 *per n))))
+
 (B (name settableFORALL)(=>(^(q#forallK LOC_PLACESETTING :0.9)(cup-n e2 c :0.0)(g#objectAt c LOC_PLACESETTING e0 :0.0))(^(set-v e0 agent u *t)(table-n e1 *t))))
 
-; make a salat
+; make a salad
 
 (B (name makesalad)(=>(a#makesalad e0 agent *s :0.9)(^(make-v e0 agent u *s)(salad-n e1 *s))))
 (B (name preparesalad)(=>(a#makesalad e0 agent *s :0.9)(^(prepare-v e0 agent u *s)(salad-n e1 *s))))
@@ -208,6 +210,15 @@
 
 (B (name makesaladin)(=>(^(g#substanceIn i c *e0 :0.1)(container-n e2 c :0.1)(g#stirred c *e0 :0.1))(^(a#makesalad *e0 agent *s)(in-p e1 *e0 c))))
 (B (name makesaladin2)(=>(^(g#substanceIn i c *e0 :0.1)(container-n e2 c :0.1)(g#stirred c *e0 :0.1))(^(a#makesalad *e0 agent *s)(in-p e1 *s c))))
+
+(B (name mixv)(=>(a#mix e0 agent obj :0.9)(mix-v e0 agent u obj)))
+(B (name stirv)(=>(a#mix e0 agent obj :0.9)(stir-v e0 agent u obj)))
+(B (name mixn)(=>(a#mix e0 agent obj :0.9)(mix-n e1 x)))
+(B (name stirn)(=>(a#mix e0 agent obj :0.9)(stir-n e1 x)))
+
+(B (name mixin)(=>(^(g#substanceIn i c *e0 :0.1)(container-n e2 c :0.1)(g#stirred c *e0 :0.1))(^(a#mix *e0 agent i)(in-p e1 *e0 c))))
+(B (name mixin2)(=>(^(g#substanceIn *i c e0 :0.1)(container-n e2 c :0.1)(g#stirred c e0 :0.1))(^(a#mix e0 agent *i)(in-p e1 *i c))))
+(B (name mixa)(=>(^(g#substanceIn i c e0 :0.3)(container-n e2 c :0.3)(g#stirred c e0 :0.3))(a#mix e0 agent i)))
 
 ; put things
 

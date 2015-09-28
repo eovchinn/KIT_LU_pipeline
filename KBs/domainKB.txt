@@ -950,4 +950,4 @@
 (B (name cupisthing)(=>(cup-n e1 x :1.2)(thing e1 x)))
 
 (B (name bowl)(=>(bowl-n e1 x  :1.2)(container-n e1 x)))
-(B (name bowlisthing)(=>(bowl-n e1 x :1.2)(thing e1 x)))
+(B (name containeristhing)(=>(container-n e1 x :1.2)(thing e1 x)))
