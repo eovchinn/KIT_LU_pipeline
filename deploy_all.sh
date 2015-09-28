@@ -14,8 +14,8 @@ echo "export BOXER_SOAP_SERVER=localhost:38900" >> lupipeline.setenv.sh
 export HENRY_DIR=/usr/share/henry
 echo "export HENRY_DIR=/usr/share/henry" >> lupipeline.setenv.sh
 
-export PHILLIP_DIR=/usr/share/phil
-echo "export PHILLIP_DIR=/usr/share/phil" >> lupipeline.setenv.sh
+export PHILLIP_DIR=/usr
+echo "export PHILLIP_DIR=/usr" >> lupipeline.setenv.sh
 
 export GRB_LICENSE_FILE=$KIT_LU_DIR/gurobi/gurobi.lic
 echo "export GRB_LICENSE_FILE=$KIT_LU_DIR/gurobi/gurobi.lic" >> lupipeline.setenv.sh
