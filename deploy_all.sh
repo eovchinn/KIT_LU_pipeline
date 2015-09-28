@@ -5,14 +5,17 @@ echo -e "#!/bin/bash\n" > lupipeline.setenv.sh
 export KIT_LU_DIR=${PWD}
 echo "export KIT_LU_DIR=${PWD}" >> lupipeline.setenv.sh
 
-export BOXER_DIR=$KIT_LU_DIR/boxer
-echo "export BOXER_DIR=$KIT_LU_DIR/boxer" >> lupipeline.setenv.sh
+export BOXER_DIR=/usr/share/boxer/bin/boxer
+echo "export BOXER_DIR=/usr/share/boxer/bin/boxer" >> lupipeline.setenv.sh
 
 export BOXER_SOAP_SERVER=localhost:38900
 echo "export BOXER_SOAP_SERVER=localhost:38900" >> lupipeline.setenv.sh
 
 export HENRY_DIR=/usr/share/henry
 echo "export HENRY_DIR=/usr/share/henry" >> lupipeline.setenv.sh
+
+export PHILLIP_DIR=/usr/share/phil
+echo "export PHILLIP_DIR=/usr/share/phil" >> lupipeline.setenv.sh
 
 export GRB_LICENSE_FILE=$KIT_LU_DIR/gurobi/gurobi.lic
 echo "export GRB_LICENSE_FILE=$KIT_LU_DIR/gurobi/gurobi.lic" >> lupipeline.setenv.sh
@@ -23,5 +26,3 @@ if [[ $answer = y ]] ; then
 fi
 
 chmod 755 *.sh
-
-source ./boxer/installation/install_boxer.sh
