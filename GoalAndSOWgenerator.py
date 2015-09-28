@@ -19,13 +19,16 @@ def main():
 	parser = argparse.ArgumentParser(description="Henry output classifier.")
 	parser.add_argument("-i", help="The input Henry file to be processed. Default is stdin.", default=None)
 	parser.add_argument("-o", help="Output file. Default is stdout.", default=None)
-	
+	parser.add_argument("-m", help="Processing mode. Default is h.", default="h")
+
+
 	pa = parser.parse_args()
 
 	ifile = open(pa.i, "r") if pa.i else sys.stdin
 	ofile = open(pa.o, "w") if pa.o else sys.stdout
+	mode = pa.m if pa.m else "h"
 
-	hr = HenryReader(ifile)
+	hr = HenryReader(ifile,pa.m)
 	pks = PKSGenerator(hr.Hypo)
 
 	# write classifier output into stdout or output file

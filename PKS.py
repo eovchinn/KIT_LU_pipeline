@@ -48,7 +48,7 @@ class PKSGenerator(object):
 				if arg=="H": pred_str += "human, "
 				elif arg=="R": pred_str += "agent, "
 				elif arg in quantifiers: pred_str += quantifiers[arg]+", "
-				elif arg[0].isupper():	pred_str += arg.lower()+", "
+				elif arg[0].isupper(): pred_str += arg.lower()+", "
 				elif arg.startswith('_'): 
 					linked_arg = "?xx"+arg[1:]
 					pred_str += linked_arg+", "
@@ -67,13 +67,15 @@ class PKSGenerator(object):
 			if len(obj_str)>0:
 				exist_counter += 1
 				output_str += "(existsK(" + obj_str[:-2] + ") " + pred_str + ") & "
+			else:
+				output_str += pred_str + ") & "
 
 		# Generate inequalities
 		ineqstr = ""
 		for ineq in inequalities:
 			for i in range(0,len(ineq)):
 				if ineq[i].startswith('_'): a1 = "?xx"+ineq[i][1:]
-				else: a1 = ineq[i]+str(var_add)
+				else: a1 = ineq[i]
 				for j in range(i+1,len(ineq)):
 					if ineq[j].startswith('_'): a2 = "?xx"+ineq[j][1:]
 					else: a2 = ineq[j]
@@ -143,7 +145,6 @@ class PKSGenerator(object):
 			else:
 				full_states_actions.append((name,args[:-1]))
 
-
 			# find corresponding objects
 			for a in args[:-1]:
 				if (not (a in done_vars)):
@@ -186,7 +187,7 @@ class PKSGenerator(object):
 
 			sargs = []
 			for a in args[1:-1]:
-				if a[0].isupper(): result += ","+a.lower()
+				if a[0].isupper(): sargs.append(a.lower())
 				elif a in objects:
 					sargs.append(objects[a][0])
 			state_struc["args"] = sargs
@@ -209,7 +210,7 @@ class PKSGenerator(object):
 
 			largs = []
 			for a in args[1:-1]:
-				if a[0].isupper(): result += ","+a.lower()
+				if a[0].isupper(): largs.append(a.lower())
 				elif a in objects:
 					largs.append(objects[a][0])
 			loc_struc["args"] = largs
@@ -302,14 +303,6 @@ class PKSGenerator(object):
 		all_types = []
 		all_action_names = []
 
-		full_goals=[]
-		full_world=[]
-		full_commands=[]
-
-		goal_types=[]
-		world_objects=[]
-		command_objects=[]
-
 		quantifiers={}
 		qcount = 0
 
@@ -340,26 +333,29 @@ class PKSGenerator(object):
 					if (int(args[1]))>1: repeats[args[0]] = int(args[1])
 				# nouns
 				elif name.endswith('-n'):
-					if args[1] not in objects:
-						objects[args[1]] = (name[:-2],[args[1],""])
+					#if args[1] not in objects:
+					objects[args[1]] = (name[:-2],[args[1],""])
+					if args[0][0] != 'o':
 						types[args[1]] = name
 				# things
 				elif name=="thing":
 					if args[1] not in objects:
 						objects[args[1]] = ("all",[args[1],""])
 				# lists
-				elif name == "o#list":
-					objects[args[0]] = (name[2:],args)
+				elif name == "list":
+					objects[args[0]] = (name,args)
 					relvars += args[1:]
 				# objects added via inference
 				elif name.startswith('o#'):
 					if args[1] not in objects:
 						objects[args[0]] = (name[2:],args)
-						types[args[0]] = name
+						if args[0][0] != 'o':
+							types[args[0]] = name
 				# locations
 				elif name.startswith('l#'):
-					relvars += args
-					locations.append((name[2:],args))
+					if args[0][0] != 'o':
+						relvars += args
+						locations.append((name[2:],args))
 				# states
 				elif name.startswith('s#'):
 					relvars += args
@@ -390,7 +386,7 @@ class PKSGenerator(object):
 
 			# collect only relevant types
 			for v in types:
-				if types[v] not in all_types and v in relvars:
+				if (types[v] not in all_types) and (v in relvars):
 					all_types.append(types[v])
 
 			objects = self.assign_prefixes(objects,loc_objs)

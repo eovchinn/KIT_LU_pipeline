@@ -8,9 +8,7 @@ import json
 import re
 
 # English intransitive verb list 
-intrans_verbs = {
-	"move-v": 1
-}
+intrans_verbs = ["move-v"]
 
 class HenryWriter(object):
 	def __init__(self, texts, appendix_obs):
@@ -28,7 +26,7 @@ class HenryWriter(object):
 			noun_vars = []
 
 			Ostr+="(O (name %s)(^" % text.id
-			Ostr+=appendix_obs
+			#Ostr+=appendix_obs
 			for prop in text.props:
 				p_name = prop[0]
 				args = prop[1]
@@ -84,37 +82,36 @@ class HenryWriter(object):
 						if (x!=y) and (not (set(var2noun[x]) & set(var2noun[y]))): 
 							Ostr+=" (!= %s %s)" % (x, y) 
 
-			Ostr+="))\n"
+			Ostr+=appendix_obs + "))\n"
 			
 		return Ostr
 
 class HenryReader(object):
-	def __init__(self, ifile):
-		self.Hypo= self.extractHypotheses(ifile)
+	def __init__(self, ifile,mode):
+		self.Hypo= self.extractHypotheses(ifile,mode)
 
-	def buildEqClasses(self,equals):
+	# build dict, such that every var is mapped
+	# to a representitive var of the equality class
+	def buildEqClasses(self,un_classes):
 		eqS = {}
-		for el in equals:
-			vflag = False
+
+		for uc in un_classes:
 			rv = ""
-			for e in equals[el]:
-				if e[0].isupper():
-					rv = e
+			for v in uc:
+				if v.isupper():
+					rv = v
 					break
-				# 'e' is here to fix the wrong parse, when prep phrases are attached to nouns
-				elif (not e.startswith('_'))&(not e.startswith('e')):
-					rv = e
-					vflag = True
-				elif (not vflag):
-					rv = e 
-			
-			for e in equals[el]:
-				# 'e' is here to fix the wrong parse, when prep phrases are attached to nouns
-				if (e != rv)&(not e.startswith('e')):
-					eqS[e]=rv
+				elif (not v.startswith('_'))& (not v.startswith('e')):
+					rv = v
+			if len(rv)==0: rv = uc[0]
+
+			for v in uc:
+				if (v != rv)&(not v.startswith('e')):
+					eqS[v]=rv
 
 		return eqS
 
+	# replace vars with representitive vars
 	def replaceVars(self,eqS,props):
 		rprops = []
 		for (name,args) in props:
@@ -123,44 +120,81 @@ class HenryReader(object):
 				if a in eqS:
 					rargs.append(eqS[a])
 				else: rargs.append(a)
-			if (not ((name,rargs) in rprops)):
-				rprops.append((name,rargs))
+			#if (not ((name,rargs) in rprops)):
+			rprops.append((name,rargs))
 
 		return rprops
 
-	def parseHypotheses(self,line):
+
+	def parseHypothesesHenry(self,line):
 		props = []
-		equals = {}
+		un_classes = []
+		split_prop = " ^ "
+		split_args = ","
 		prop_args_pattern = re.compile('([^\[\(]+)(\((.+)\))?')
-		for p in line.split(' ^ '):
+
+		for p in line.split(split_prop):
 			PROPmatchObj = prop_args_pattern.match(p)
 			if PROPmatchObj:
 				if PROPmatchObj.group(1):
 					p_name = PROPmatchObj.group(1)
-					if PROPmatchObj.group(3): args = PROPmatchObj.group(3).split(',')
+					if PROPmatchObj.group(3): args = PROPmatchObj.group(3).split(split_args)
 					else: args = []
 
 					if (p_name == '='): 
-						for a in args:
-							if not a in equals.keys(): equals[a] = []
-							equals[a] += args
+						un_classes.append(args)
 					elif (p_name != '!='): props.append((p_name,args))
 
 				else: print 'Strange prop: ' + p
 			else: print 'Strange prop: ' + p
 
-		props = self.replaceVars(self.buildEqClasses(equals),props)	
+		props = self.replaceVars(self.buildEqClasses(un_classes),props)
 
 		return props
 
-	def extractHypotheses(self, ifile):
+	def parseHypothesesPhillip(self,literals,unifications):
+		props = []
+		for p_data in literals:
+			p_name = p_data[0]
+			if len(p_data)>1: args = p_data[1:]
+			else: args = []
+
+			props.append((p_name,args))
+
+		un_classes = []
+		for [v1,v2] in unifications:
+			found = False
+			for uc in un_classes:
+				if v1 in uc:
+					if v2 not in uc: uc.append(v2)
+					found = True
+					break
+				elif v2 in uc:
+					if v1 not in uc: uc.append(v1)
+					found = True
+					break
+			if not found: un_classes.append([v1,v2])
+
+		props = self.replaceVars(self.buildEqClasses(un_classes),props)
+
+		return props
+
+	# remove literals that have been unified
+	def remove_unified_literals(self, literalid, toremove):
+		literals = []
+
+		for (literal,id) in literalid:
+			if id not in toremove: literals.append(literal.split())
+		return literals
+
+	def extractHypothesesHenry(self, ifile):
 		id = ""
 		Hypo =  {}
 		h_flag = False
 		id_pattern = re.compile('.+target="([^"]+)"')
-
+		id_line_start = "<result-inference"
 		for line in ifile:
-			if line.startswith("<result-inference"):
+			if line.startswith(id_line_start):
 				IDmatchObj = id_pattern.match(line)
 				if IDmatchObj: id = IDmatchObj.group(1)
 			elif line.startswith("<hypothesis"):
@@ -168,6 +202,64 @@ class HenryReader(object):
 			elif line.startswith("</hypothesis>"):
 				h_flag = False
 			elif h_flag:
-				Hypo[id] = self.parseHypotheses(line)
+					Hypo[id] = self.parseHypothesesHenry(line)
+		return Hypo
+
+	def extractHypothesesPhillip(self, ifile):
+		id = ""
+		Hypo =  {}
+		id_pattern = re.compile('.+name="([^"]+)"')
+		un_pattern = re.compile('.+unifier="([^"]+)"')
+
+		id_line_start = "<proofgraph"
+		# list of pairs (literal,id)
+		literalid = []
+		# list of lists of unified vars
+		unifications = []
+		# literal ids to be removed (because of unification)
+		toremove = []
+
+		active_line = 'active="yes"'
+		for line in ifile:
+			if line.startswith(id_line_start):
+				if len(id)>0:
+					Hypo[id] = self.parseHypothesesPhillip(self.remove_unified_literals(literalid,toremove),unifications)
+				IDmatchObj = id_pattern.match(line)
+				if IDmatchObj: id = IDmatchObj.group(1)
+				literals = []
+				unifications = []
+				toremove = []
+			elif line.startswith("<literal") and active_line in line:
+				literal_str = line.partition('>')[-1].rpartition('<')[0]
+				lit_data = literal_str.split('):')
+				# equality of variables, 
+				# is equal to a unification
+				if lit_data[0].startswith("(#="):
+					v_data = lit_data[0].split()
+					unifications.append([v_data[1],v_data[2]])
+				else: literalid.append((lit_data[0][1:],lit_data[1]))
+			elif line.startswith("<unification") and active_line in line:
+				UNmatchObj = un_pattern.match(line)
+				if UNmatchObj: 
+					un_strings = UNmatchObj.group(1).split(', ')
+					for u in un_strings:
+						data = u.split('=')
+						v1 = data[0]
+						v2 = data[1]
+						unifications.append([v1,v2])
+					# extract literal id
+					istart = line.find('):') + 2
+					iend = line.find(' ^',istart)
+					toremove.append(line[istart:iend])
+
+
+		if len(id)>0:
+			Hypo[id] = self.parseHypothesesPhillip(self.remove_unified_literals(literalid,toremove),unifications)
 
 		return Hypo
+
+	def extractHypotheses(self, ifile, mode):
+		if mode == "h": Hypo = self.extractHypothesesHenry(ifile)
+		elif mode == "p": Hypo = self.extractHypothesesPhillip(ifile)	
+
+		return Hypo	
