@@ -264,8 +264,8 @@
 (B (name bringfrom)(=>(^(a#give e1 agent obj req :0.2)(l#objectAt e1 obj loc e0 :0.2)(loc loc :0.0))(^(bring-v e0 agent req obj)(from-p e1 obj loc))))
 (B (name givefrom)(=>(^(a#give e1 agent obj req :0.2)(l#objectAt e1 obj loc e0 :0.2)(loc loc :0.0))(^(give-v e0 agent req obj)(from-p e1 obj loc))))
 
-(B (name giveN)(=>(^(g#inHandOfHuman obj e0 :0.6)(r# e0 n :0.0)(r# obj n :0.0))(^(a#give e0 R obj req)(card e1 obj n)(!= R H))))
-(B (name give)(=>(g#inHandOfHuman obj e0 :0.9)(^(a#give e0 R obj req)(!= R H))))
+(B (name giveN)(=>(^(g#inHandOfHuman ha obj e0 :0.6)(human_agent-n e5 ha :0.0)(r# e0 n :0.0)(r# obj n :0.0))(^(a#give e0 R obj req)(card e1 obj n)(!= R H))))
+(B (name give)(=>(g#inHandOfHuman ha obj e0 :0.9)(human_agent-n e5 ha :0.0)(^(a#give e0 R obj req)(!= R H))))
 
 ; move things to locations
 
