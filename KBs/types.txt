@@ -1,0 +1,142 @@
+    types:
+        agent,
+        loc_besideDishwasher,
+        loc_centerkitchenback,
+        loc_chairdropofflocation,
+        loc_chairpickuplocation,
+        loc_controltable,
+        loc_countertop,
+        loc_pickup,
+        loc_placesetting,
+        loc_placesetting1,
+        loc_placesetting2,
+        loc_sink,
+        loc_stove,
+        loc_table,
+        loc_tabledropofflocation,
+        loc_tablenivagationlocation,
+        loc_tablepickuplocation,
+        loc_tableservinglocation1,
+        loc_tableservinglocation2,
+        location,
+        obj_all,
+        obj_bluecup,
+        obj_blueplate,
+        obj_chair,
+        obj_controltable,
+        obj_cup,
+        obj_dishwasher,
+        obj_fridge,
+        obj_graspable,
+        obj_greencup,
+        obj_hand,
+        obj_handleft3a,
+        obj_handright3a,
+        obj_lefthand,
+        obj_lighttable,
+        obj_lowersideboard,
+        obj_lowersink,
+        obj_multivitaminjuice,
+        obj_object,
+        obj_oven,
+        obj_plate,
+        obj_redplate,
+        obj_righthand,
+        obj_table,
+        obj_uppersideboard,
+        obj_uppersink,
+        obj_vitaliscereal,
+        obj_wallsink,
+        obj_windows;
+
+    predicates:
+        grasped/3,
+        handEmpty/1,
+        leftgraspable/1,
+        objectAt/2,
+        rightgraspable/1;
+
+    constants:
+        obj_lighttable lighttable__1;
+        obj_table lighttable__1;
+        obj_all lighttable__1;
+        obj_uppersideboard uppersideboard__10;
+        obj_uppersink uppersink__11;
+        obj_wallsink wallsink__12;
+        obj_windows windows__13;
+        obj_vitaliscereal vitaliscereal__19;
+        obj_object vitaliscereal__19;
+        obj_graspable vitaliscereal__19;
+        obj_controltable controltable__2;
+        obj_dishwasher dishwasher__20;
+        obj_redplate redplate__21;
+        obj_plate redplate__21;
+        obj_object redplate__21;
+        obj_graspable redplate__21;
+        obj_blueplate blueplate__22;
+        obj_plate blueplate__22;
+        obj_object blueplate__22;
+        obj_graspable blueplate__22;
+        obj_greencup greencup__23;
+        obj_object greencup__23;
+        obj_graspable greencup__23;
+        obj_cup greencup__23;
+        obj_bluecup bluecup__24;
+        obj_object bluecup__24;
+        obj_graspable bluecup__24;
+        obj_cup bluecup__24;
+        obj_lighttable lighttable2__27;
+        obj_table lighttable2__27;
+        obj_all lighttable2__27;
+        obj_handright3a handright3a__28;
+        obj_righthand handright3a__28;
+        obj_hand handright3a__28;
+        obj_all handright3a__28;
+        obj_handleft3a handleft3a__29;
+        obj_lefthand handleft3a__29;
+        obj_hand handleft3a__29;
+        obj_all handleft3a__29;
+        obj_fridge fridge__3;
+        obj_multivitaminjuice multivitaminjuice__30;
+        obj_object multivitaminjuice__30;
+        obj_graspable multivitaminjuice__30;
+        obj_lowersideboard lowersideboard__4;
+        obj_lowersink lowersink__5;
+        obj_oven oven__6;
+        loc_centerkitchenback centerkitchenback__3f83;
+        location centerkitchenback__3f83;
+        loc_countertop countertop__3f84;
+        location countertop__3f84;
+        loc_stove stove__3f85;
+        location stove__3f85;
+        loc_sink sink__3f86;
+        location sink__3f86;
+        loc_besideDishwasher besideDishwasher__3f87;
+        location besideDishwasher__3f87;
+        loc_tablenivagationlocation tablenivagationlocation__3f88;
+        location tablenivagationlocation__3f88;
+        loc_tabledropofflocation tabledropofflocation__3f89;
+        location tabledropofflocation__3f89;
+        loc_tableservinglocation1 tableservinglocation1__3f8a;
+        location tableservinglocation1__3f8a;
+        loc_tableservinglocation2 tableservinglocation2__3f8b;
+        location tableservinglocation2__3f8b;
+        loc_tablepickuplocation tablepickuplocation__3f8c;
+        location tablepickuplocation__3f8c;
+        loc_chairpickuplocation chairpickuplocation__3f8d;
+        location chairpickuplocation__3f8d;
+        loc_chairdropofflocation chairdropofflocation__3f8e;
+        location chairdropofflocation__3f8e;
+        loc_controltable controltable__3f8f;
+        location controltable__3f8f;
+        loc_placesetting1 placesetting1__3f90;
+        loc_placesetting placesetting1__3f90;
+        location placesetting1__3f90;
+        loc_placesetting2 placesetting2__3f91;
+        loc_placesetting placesetting2__3f91;
+        location placesetting2__3f91;
+        loc_table table__3f92;
+        location table__3f92;
+        loc_pickup pickup__3f93;
+        location pickup__3f93;
+        agent testAgent__1;
