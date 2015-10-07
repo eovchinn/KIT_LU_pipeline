@@ -1,6 +1,8 @@
 #!/bin/bash
 
-export BOXER_DIR=$KIT_LU_DIR/boxer
-export BOXER_SOAP_SERVER=localhost:9000
+export KIT_LU_DIR=/home/SMBAD/waechter/home/projects/KIT_LU_pipeline
+export BOXER_DIR=/usr/share/boxer
+export BOXER_SOAP_SERVER=ip6-localhost:38900
 export HENRY_DIR=/usr/share/henry
-export GRB_LICENSE_FILE=$KIT_LU_DIR/gurobi/gurobi.lic
+export PHILLIP_DIR=/usr
+export GRB_LICENSE_FILE=/home/SMBAD/waechter/home/projects/KIT_LU_pipeline/gurobi/gurobi.lic

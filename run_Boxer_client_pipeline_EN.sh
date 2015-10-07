@@ -8,7 +8,7 @@
 # $ ./run_client_pipeline_EN.sh
 
 TOKENIZER_BIN=$BOXER_DIR/bin/tokkie
-CANDC_CLIENT_BIN=$BOXER_DIR/bin/soap_client
+CANDC_CLIENT_BIN=/usr/share/boxer/bin/soap_client
 BOXER_BIN=$BOXER_DIR/bin/boxer
 
 TOKENIZER_OPT="--stdin"
