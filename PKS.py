@@ -103,22 +103,32 @@ class PKSGenerator(object):
 
 
 	def multiply_preds_with_lists(self,objects,states_actions):
-		for i in xrange(len(states_actions) - 1, -1, -1):
-			(name, args) = states_actions[i]
+		result = []
+
+		for (name, args) in states_actions:
+			multiplied = False
 			for j in range(0,len(args)):
 				a=args[j]
 				if (a in objects) and (objects[a][0]=="list"):
-					del states_actions[i]
+					multiplied = True
 					for la in objects[a][1][1:]:
 						gargs=list(args)
 						gargs[j]=la
-						states_actions.append((name,gargs))
-		return states_actions
+						result.append((name,gargs))
+			if not multiplied:
+				result.append((name,args))
+
+		return result
 
 	def separate_multuply_link_preds_objs(self,objects,states_actions,repeats):
 		result = []
+
+		# treat lists: multiply predicates having lists as args
+		states_actions = self.multiply_preds_with_lists(objects,states_actions)
+
 		for sa in states_actions:
 			result.append(self.multuply_link_preds_objs(objects,[sa],repeats))
+
 		return result
 
 
@@ -128,8 +138,6 @@ class PKSGenerator(object):
 		rel_objs=[]
 		inequalities = []
 
-		# treat lists: multiply predicates having lists as args
-		states_actions = self.multiply_preds_with_lists(objects,states_actions)
 
 		for (name,args) in states_actions:
 			# multiply preds if needed

@@ -213,10 +213,10 @@
 
 (B (name mixv)(=>(a#mix e0 agent obj :0.9)(mix-v e0 agent u obj)))
 (B (name stirv)(=>(a#mix e0 agent obj :0.9)(stir-v e0 agent u obj)))
-(B (name mixn)(=>(a#mix e0 agent obj :0.9)(mix-n e1 x)))
-(B (name stirn)(=>(a#mix e0 agent obj :0.9)(stir-n e1 x)))
+(B (name mixn)(=>(a#mix e0 agent x :0.9)(mix-n e1 x)))
+(B (name stirn)(=>(a#mix e0 agent x :0.9)(stir-n e1 x)))
 
-(B (name mixsalad)(=>(^(container-n e2 c :0.1)(g#stirred c *e0 :0.1))(^(a#mix *e0 agent *s)(salad-n e1 *s))))
+(B (name mixsalad)(=>(^(container-n e2 c :0.1)(g#stirred c e0 :0.1))(^(a#mix e0 agent *s)(salad-n e1 *s))))
 (B (name mixin)(=>(^(g#substanceIn i c *e0 :0.1)(container-n e2 c :0.1)(g#stirred c *e0 :0.1))(^(a#mix *e0 agent i)(in-p e1 *e0 c))))
 (B (name mixin2)(=>(^(g#substanceIn *i c e0 :0.1)(container-n e2 c :0.1)(g#stirred c e0 :0.1))(^(a#mix e0 agent *i)(in-p e1 *i c))))
 (B (name mixa)(=>(^(g#substanceIn i c e0 :0.3)(container-n e2 c :0.3)(g#stirred c e0 :0.3))(a#mix e0 agent i)))
