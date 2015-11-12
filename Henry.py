@@ -224,6 +224,9 @@ class HenryReader(object):
 			if line.startswith(id_line_start):
 				if len(id)>0:
 					Hypo[id] = self.parseHypothesesPhillip(self.remove_unified_literals(literalid,toremove),unifications)
+					literalid = []
+					unifications = []
+					toremove = []
 				IDmatchObj = id_pattern.match(line)
 				if IDmatchObj: id = IDmatchObj.group(1)
 				literals = []
