@@ -75,10 +75,10 @@ class PKSGenerator(object):
 		for ineq in inequalities:
 			for i in range(0,len(ineq)):
 				if ineq[i].startswith('_'): a1 = "?xx"+ineq[i][1:]
-				else: a1 = ineq[i]
+				else: a1 = "?"+ineq[i]
 				for j in range(i+1,len(ineq)):
 					if ineq[j].startswith('_'): a2 = "?xx"+ineq[j][1:]
-					else: a2 = ineq[j]
+					else: a2 = "?"+ineq[j]
 					ineqstr += "K("+a1+" != "+a2+") & "	
 		output_str += ineqstr
 
