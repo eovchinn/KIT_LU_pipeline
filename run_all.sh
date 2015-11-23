@@ -6,6 +6,9 @@
 LEX_KB=$KIT_LU_DIR/KBs/lexicalKB.txt
 LEX_KB_COMPILED=$KIT_LU_DIR/KBs/phil_kb/kitchen
 
+if [ $# -eq 3 ]; then
+	LEX_KB_COMPILED=$KIT_LU_DIR/KBs/phil_kb/kitchen_atomic
+fi
 
 if [ $# -eq 0 ]; then
 	echo "No input string provided."
