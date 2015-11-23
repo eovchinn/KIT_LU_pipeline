@@ -1,44 +1,53 @@
-Armar please help me to carry the table to the dining location.
-{"recognize_plan": false, "commands": [], "goal_types": {"?x4": "loc_tabledropofflocation", "?x3": "obj_table"}, "objects_talked_about": ["table-n", "tabledropofflocation-n"], "context_words": ["please", "help", "carry"], "goals": ["(existsK(?x3 : obj_table, ?x4 : loc_tabledropofflocation) K(objectAt(?x3, ?x4)))"], "SOW": [], "human_actions": [], "feedback": []}
-
-Armar please help me to set the table for two people!
+Armar please help me to set the table for two people
 {"recognize_plan": false, "commands": [], "goal_types": {"?xxu21": "obj_cup", "?xxu22": "obj_cup", "?xxu32": "loc_placesetting", "?xxu31": "loc_placesetting"}, "objects_talked_about": ["placesetting-n", "cup-n"], "context_words": ["please", "help", "set"], "goals": ["(existsK(?xxu21 : obj_cup, ?xxu31 : loc_placesetting) K(objectAt(?xxu21, ?xxu31)) & (existsK(?xxu22 : obj_cup, ?xxu32 : loc_placesetting) K(objectAt(?xxu22, ?xxu32)) & K(?xxu21 != ?xxu22) & K(?xxu31 != ?xxu32)))"], "SOW": [], "human_actions": [], "feedback": []}
 
-Armar please arrange one chair.
-{"recognize_plan": false, "commands": [], "goal_types": {"?xxu5": "loc_chairdropofflocation", "?x2": "obj_chair"}, "objects_talked_about": ["chair-n", "chairdropofflocation-n"], "context_words": ["please", "arrange"], "goals": ["(existsK(?x2 : obj_chair, ?xxu5 : loc_chairdropofflocation) K(objectAt(?x2, ?xxu5)))"], "SOW": [], "human_actions": [], "feedback": []}
-
-Please arrange one chair.
-{"recognize_plan": false, "commands": [], "goal_types": {"?xxu5": "loc_chairdropofflocation", "?x2": "obj_chair"}, "objects_talked_about": ["chair-n", "chairdropofflocation-n"], "context_words": ["please", "arrange"], "goals": ["(existsK(?x2 : obj_chair, ?xxu5 : loc_chairdropofflocation) K(objectAt(?x2, ?xxu5)))"], "SOW": [], "human_actions": [], "feedback": []}
-
-Set the table.
+Set the table
 {"recognize_plan": false, "commands": [], "goal_types": {"?q1": "loc_placesetting", "?xxu2": "obj_cup"}, "objects_talked_about": ["cup-n"], "context_words": ["set"], "goals": ["(forallK(?q1 : loc_placesetting)(existsK(?xxu2 : obj_cup) K(objectAt(?xxu2, ?q1))))"], "SOW": [], "human_actions": [], "feedback": []}
 
-I'd like to drink something
-{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": [], "context_words": ["like", "drink"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+Set the table for two
+{"recognize_plan": false, "commands": [], "goal_types": {"?xxu21": "obj_cup", "?xxu22": "obj_cup", "?xxu32": "loc_placesetting", "?xxu31": "loc_placesetting"}, "objects_talked_about": ["cup-n", "placesetting-n"], "context_words": ["set"], "goals": ["(existsK(?xxu21 : obj_cup, ?xxu31 : loc_placesetting) K(objectAt(?xxu21, ?xxu31)) & (existsK(?xxu22 : obj_cup, ?xxu32 : loc_placesetting) K(objectAt(?xxu22, ?xxu32)) & K(?xxu21 != ?xxu22) & K(?xxu31 != ?xxu32)))"], "SOW": [], "human_actions": [], "feedback": []}
 
-Please bring me some milk
-{"recognize_plan": false, "commands": [], "goal_types": {"?x2": "obj_milk"}, "objects_talked_about": ["milk-n"], "context_words": ["please", "bring"], "goals": ["(existsK(?x2 : obj_milk) K(inHandOfHuman(?x2)))"], "SOW": [], "human_actions": [], "feedback": []}
+Armar please arrange one chair
+{"recognize_plan": false, "commands": [], "goal_types": {"?xxu5": "loc_chairdropofflocation", "?x2": "obj_chair"}, "objects_talked_about": ["chair-n", "chairdropofflocation-n"], "context_words": ["please", "arrange"], "goals": ["(existsK(?x2 : obj_chair, ?xxu5 : loc_chairdropofflocation) K(objectAt(?x2, ?xxu5)))"], "SOW": [], "human_actions": [], "feedback": []}
 
-I'm fine with it
-{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": [], "context_words": [], "goals": [], "SOW": [], "human_actions": [], "feedback": ["agree", true]}
+Please arrange one chair
+{"recognize_plan": false, "commands": [], "goal_types": {"?xxu5": "loc_chairdropofflocation", "?x2": "obj_chair"}, "objects_talked_about": ["chair-n", "chairdropofflocation-n"], "context_words": ["please", "arrange"], "goals": ["(existsK(?x2 : obj_chair, ?xxu5 : loc_chairdropofflocation) K(objectAt(?x2, ?xxu5)))"], "SOW": [], "human_actions": [], "feedback": []}
+
+Put the salad bowl on the sideboard
+{"recognize_plan": false, "commands": [], "goal_types": {"?x4": "loc_sideboard", "?x2": "obj_bowl"}, "objects_talked_about": ["bowl-n", "sideboard-n"], "context_words": ["put"], "goals": ["(existsK(?x2 : obj_bowl, ?x4 : loc_sideboard) K(objectAt(?x2, ?x4)))"], "SOW": [], "human_actions": [], "feedback": []}
+
+Help me to prepare a salad with tomatoes and corn and vinegar
+{"recognize_plan": false, "commands": [], "goal_types": {"?x5": "obj_tomato", "?x7": "obj_corn", "?xxu1": "obj_container", "?x8": "obj_vinegar"}, "objects_talked_about": ["salad-n", "vinegar-n", "container-n", "corn-n", "tomato-n"], "context_words": ["help", "prepare"], "goals": ["(existsK(?x5 : obj_tomato, ?xxu1 : obj_container) K(substanceIn(?x5, ?xxu1)))", "(existsK(?x7 : obj_corn, ?xxu1 : obj_container) K(substanceIn(?x7, ?xxu1)))", "(existsK(?x8 : obj_vinegar, ?xxu1 : obj_container) K(substanceIn(?x8, ?xxu1)))", "(existsK(?xxu1 : obj_container) K(stirred(?xxu1)))"], "SOW": [], "human_actions": [], "feedback": []}
+
+Help me to make a salad with tomatoes and corn in a bowl
+{"recognize_plan": false, "commands": [], "goal_types": {"?x5": "obj_tomato", "?x6": "obj_corn", "?x7": "obj_bowl"}, "objects_talked_about": ["salad-n", "corn-n", "bowl-n", "tomato-n"], "context_words": ["help", "make"], "goals": ["(existsK(?x5 : obj_tomato, ?x7 : obj_bowl) K(substanceIn(?x5, ?x7)))", "(existsK(?x6 : obj_corn, ?x7 : obj_bowl) K(substanceIn(?x6, ?x7)))", "(existsK(?x7 : obj_bowl) K(stirred(?x7)))"], "SOW": [], "human_actions": [], "feedback": []}
+
+Stir the salad
+{"recognize_plan": false, "commands": [], "goal_types": {"?xxu4": "obj_container"}, "objects_talked_about": ["salad-n", "container-n"], "context_words": [], "goals": ["(existsK(?xxu4 : obj_container) K(stirred(?xxu4)))"], "SOW": [], "human_actions": [], "feedback": []}
 
 Put the salad bowl on the table
 {"recognize_plan": false, "commands": [], "goal_types": {"?x4": "loc_table", "?x2": "obj_bowl"}, "objects_talked_about": ["bowl-n", "table-n"], "context_words": ["put"], "goals": ["(existsK(?x2 : obj_bowl, ?x4 : loc_table) K(objectAt(?x2, ?x4)))"], "SOW": [], "human_actions": [], "feedback": []}
 
-Help me to prepare a salad with tomatoes and corn
-{"recognize_plan": false, "commands": [], "goal_types": {"?x5": "obj_tomato", "?x6": "obj_corn", "?xxu1": "obj_container"}, "objects_talked_about": ["salad-n", "container-n", "corn-n", "tomato-n"], "context_words": ["help", "prepare"], "goals": ["(existsK(?x5 : obj_tomato, ?xxu1 : obj_container) K(substanceIn(?x5, ?xxu1)) & (existsK(?x6 : obj_corn) K(substanceIn(?x6, ?xxu1))))", "(existsK(?xxu1 : obj_container) K(stirred(?xxu1)))"], "SOW": [], "human_actions": [], "feedback": []}
+Please clean the sideboard
+{"recognize_plan": false, "commands": [], "goal_types": {"?x2": "loc_sideboard"}, "objects_talked_about": ["sideboard-n"], "context_words": ["please", "clean"], "goals": ["(existsK(?x2 : loc_sideboard) K(cleaned(?x2)))"], "SOW": [], "human_actions": [], "feedback": []}
 
-Help me to make a salad with tomatoes and corn in a bowl
-{"recognize_plan": false, "commands": [], "goal_types": {"?x5": "obj_tomato", "?x6": "obj_corn", "?x7": "obj_bowl"}, "objects_talked_about": ["salad-n", "corn-n", "bowl-n", "tomato-n"], "context_words": ["help", "make"], "goals": ["(existsK(?x6 : obj_corn, ?x7 : obj_bowl) K(substanceIn(?x6, ?x7)) & (existsK(?x5 : obj_tomato) K(substanceIn(?x5, ?x7))))", "(existsK(?x7 : obj_bowl) K(stirred(?x7)))"], "SOW": [], "human_actions": [], "feedback": []}
+I'd like to drink something
+{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": [], "context_words": ["like", "drink"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
-Stir it
-{"recognize_plan": false, "commands": [], "goal_types": {"?x1": "obj_container"}, "objects_talked_about": ["container-n"], "context_words": [], "goals": ["(existsK(?x1 : obj_container) K(substanceIn(?xxu3, ?x1)))", "(existsK(?x1 : obj_container) K(stirred(?x1)))"], "SOW": [], "human_actions": [], "feedback": []}
+Please bring us some coke
+{"recognize_plan": false, "commands": [], "goal_types": {"?xxu1": "obj_agent_human", "?x2": "obj_coke"}, "objects_talked_about": ["coke-n", "agent_human-n"], "context_words": ["please", "bring"], "goals": ["(existsK(?xxu1 : obj_agent_human, ?x2 : obj_coke) K(inHandOfHuman(?xxu1, ?x2)))"], "SOW": [], "human_actions": [], "feedback": []}
+
+I'm fine with it
+{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": [], "context_words": [], "goals": [], "SOW": [], "human_actions": [], "feedback": ["agree", true]}
+
+Armar please help me to carry the table to the dining location
+{"recognize_plan": false, "commands": [], "goal_types": {"?x4": "loc_tabledropofflocation", "?x3": "obj_table"}, "objects_talked_about": ["table-n", "tabledropofflocation-n"], "context_words": ["please", "help", "carry"], "goals": ["(existsK(?x3 : obj_table, ?x4 : loc_tabledropofflocation) K(objectAt(?x3, ?x4)))"], "SOW": [], "human_actions": [], "feedback": []}
 
 Help me to move the table!
 {"recognize_plan": false, "commands": [], "goal_types": {"?xxu1": "loc_tabledropofflocation", "?x3": "obj_table"}, "objects_talked_about": ["table-n", "tabledropofflocation-n"], "context_words": ["help", "move"], "goals": ["(existsK(?x3 : obj_table, ?xxu1 : loc_tabledropofflocation) K(objectAt(?x3, ?xxu1)))"], "SOW": [], "human_actions": [], "feedback": []}
 
 Wipe the table!
-{"recognize_plan": false, "commands": [], "goal_types": {"?x2": "obj_table"}, "objects_talked_about": ["table-n"], "context_words": ["wipe"], "goals": ["(existsK(?x2 : obj_table) K(clean(?x2)))"], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [], "goal_types": {"?x2": "loc_table"}, "objects_talked_about": ["table-n"], "context_words": ["wipe"], "goals": ["(existsK(?x2 : loc_table) K(cleaned(?x2)))"], "SOW": [], "human_actions": [], "feedback": []}
 
 Put the coffee filter on the table!
 {"recognize_plan": false, "commands": [], "goal_types": {"?x4": "loc_table", "?x2": "obj_coffeefilters"}, "objects_talked_about": ["coffeefilters-n", "table-n"], "context_words": ["put"], "goals": ["(existsK(?x2 : obj_coffeefilters, ?x4 : loc_table) K(objectAt(?x2, ?x4)))"], "SOW": [], "human_actions": [], "feedback": []}
@@ -47,52 +56,52 @@ Help me to arrange the chairs!
 {"recognize_plan": false, "commands": [], "goal_types": {"?xxu1": "loc_chairdropofflocation", "?x3": "obj_chair"}, "objects_talked_about": ["chair-n", "chairdropofflocation-n"], "context_words": ["help", "arrange"], "goals": ["(existsK(?x3 : obj_chair, ?xxu1 : loc_chairdropofflocation) K(objectAt(?x3, ?xxu1)))"], "SOW": [], "human_actions": [], "feedback": []}
 
 Help me to arrange three chairs!
-{"recognize_plan": false, "commands": [], "goal_types": {"?x31": "obj_chair", "?x32": "obj_chair", "?x33": "obj_chair", "?xxu51": "loc_chairdropofflocation", "?xxu53": "loc_chairdropofflocation", "?xxu52": "loc_chairdropofflocation"}, "objects_talked_about": ["chair-n", "chairdropofflocation-n"], "context_words": ["help", "arrange"], "goals": ["(existsK(?x31 : obj_chair, ?xxu51 : loc_chairdropofflocation) K(objectAt(?x31, ?xxu51)) & (existsK(?x32 : obj_chair, ?xxu52 : loc_chairdropofflocation) K(objectAt(?x32, ?xxu52)) & (existsK(?x33 : obj_chair, ?xxu53 : loc_chairdropofflocation) K(objectAt(?x33, ?xxu53)) & K(x31 != x32) & K(x31 != x33) & K(x32 != x33) & K(?xxu51 != ?xxu52) & K(?xxu51 != ?xxu53) & K(?xxu52 != ?xxu53))))"], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [], "goal_types": {"?x31": "obj_chair", "?x32": "obj_chair", "?x33": "obj_chair", "?xxu51": "loc_chairdropofflocation", "?xxu53": "loc_chairdropofflocation", "?xxu52": "loc_chairdropofflocation"}, "objects_talked_about": ["chair-n", "chairdropofflocation-n"], "context_words": ["help", "arrange"], "goals": ["(existsK(?x31 : obj_chair, ?xxu51 : loc_chairdropofflocation) K(objectAt(?x31, ?xxu51)) & (existsK(?x32 : obj_chair, ?xxu52 : loc_chairdropofflocation) K(objectAt(?x32, ?xxu52)) & (existsK(?x33 : obj_chair, ?xxu53 : loc_chairdropofflocation) K(objectAt(?x33, ?xxu53)) & K(?x31 != ?x32) & K(?x31 != ?x33) & K(?x32 != ?x33) & K(?xxu51 != ?xxu52) & K(?xxu51 != ?xxu53) & K(?xxu52 != ?xxu53))))"], "SOW": [], "human_actions": [], "feedback": []}
 
 Put the cups on the table!
 {"recognize_plan": false, "commands": [], "goal_types": {"?x2": "obj_cup", "?x3": "loc_table"}, "objects_talked_about": ["cup-n", "table-n"], "context_words": ["put"], "goals": ["(existsK(?x2 : obj_cup, ?x3 : loc_table) K(objectAt(?x2, ?x3)))"], "SOW": [], "human_actions": [], "feedback": []}
 
 Put the cups and plates on the table!
-{"recognize_plan": false, "commands": [], "goal_types": {"?x4": "obj_plate", "?x5": "loc_table", "?x3": "obj_cup"}, "objects_talked_about": ["cup-n", "plate-n", "table-n"], "context_words": ["put"], "goals": ["(existsK(?x4 : obj_plate, ?x5 : loc_table) K(objectAt(?x4, ?x5)) & (existsK(?x3 : obj_cup) K(objectAt(?x3, ?x5))))"], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [], "goal_types": {"?x4": "obj_plate", "?x5": "loc_table", "?x3": "obj_cup"}, "objects_talked_about": ["cup-n", "plate-n", "table-n"], "context_words": ["put"], "goals": ["(existsK(?x3 : obj_cup, ?x5 : loc_table) K(objectAt(?x3, ?x5)))", "(existsK(?x4 : obj_plate, ?x5 : loc_table) K(objectAt(?x4, ?x5)))"], "SOW": [], "human_actions": [], "feedback": []}
 
 Put three cups on the table!
-{"recognize_plan": false, "commands": [], "goal_types": {"?x12": "obj_cup", "?x13": "obj_cup", "?x2": "loc_table", "?x11": "obj_cup"}, "objects_talked_about": ["table-n", "cup-n"], "context_words": [], "goals": ["(existsK(?x11 : obj_cup, ?x2 : loc_table) K(objectAt(?x11, ?x2)) & (existsK(?x12 : obj_cup) K(objectAt(?x12, ?x2)) & (existsK(?x13 : obj_cup) K(objectAt(?x13, ?x2)) & K(x11 != x12) & K(x11 != x13) & K(x12 != x13))))"], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [], "goal_types": {"?x12": "obj_cup", "?x13": "obj_cup", "?x2": "loc_table", "?x11": "obj_cup"}, "objects_talked_about": ["table-n", "cup-n"], "context_words": [], "goals": ["(existsK(?x11 : obj_cup, ?x2 : loc_table) K(objectAt(?x11, ?x2)) & (existsK(?x12 : obj_cup) K(objectAt(?x12, ?x2)) & (existsK(?x13 : obj_cup) K(objectAt(?x13, ?x2)) & K(?x11 != ?x12) & K(?x11 != ?x13) & K(?x12 != ?x13))))"], "SOW": [], "human_actions": [], "feedback": []}
 
 Bring me the juice from the fridge!
-{"recognize_plan": false, "commands": [], "goal_types": {"?x2": "obj_juice"}, "objects_talked_about": ["juice-n", "fridge-n"], "context_words": ["bring"], "goals": ["(existsK(?x2 : obj_juice) K(inHandOfHuman(?x2)))", "(existsK(?x2 : obj_juice) K(inHandOfHuman(?x2)))"], "SOW": [{"args": ["obj_juice", "loc_fridge"], "type": "loc", "name": "objectAt", "sign": true}], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [], "goal_types": {"?xxu1": "obj_agent_human", "?x2": "obj_juice"}, "objects_talked_about": ["juice-n", "fridge-n", "agent_human-n"], "context_words": ["bring"], "goals": ["(existsK(?xxu1 : obj_agent_human, ?x2 : obj_juice) K(inHandOfHuman(?xxu1, ?x2)))"], "SOW": [{"args": ["obj_juice", "loc_fridge"], "type": "loc", "name": "objectAt", "sign": true}], "human_actions": [], "feedback": []}
 
 The juice is in the fridge.
 {"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": ["fridge-n", "juice-n"], "context_words": [], "goals": [], "SOW": [{"args": ["obj_juice", "loc_fridge"], "type": "loc", "name": "objectIn", "sign": true}], "human_actions": [], "feedback": []}
 
 Give me two eggs from the fridge!
-{"recognize_plan": false, "commands": [], "goal_types": {"?x22": "obj_egg", "?x21": "obj_egg"}, "objects_talked_about": ["egg-n", "fridge-n"], "context_words": ["give"], "goals": ["(existsK(?x21 : obj_egg) K(inHandOfHuman(?x21)) & (existsK(?x22 : obj_egg) K(inHandOfHuman(?x22)) & K(x21 != x22)))", "(existsK(?x21 : obj_egg) K(inHandOfHuman(?x21)) & (existsK(?x22 : obj_egg) K(inHandOfHuman(?x22)) & K(x21 != x22)))", "(existsK(?x21 : obj_egg) K(inHandOfHuman(?x21)) & (existsK(?x22 : obj_egg) K(inHandOfHuman(?x22)) & K(x21 != x22)))"], "SOW": [{"args": ["obj_egg", "loc_fridge"], "type": "loc", "name": "objectAt", "sign": true}], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [], "goal_types": {"?x22": "obj_egg", "?x21": "obj_egg", "?xxu1": "obj_agent_human"}, "objects_talked_about": ["egg-n", "agent_human-n", "fridge-n"], "context_words": ["give"], "goals": ["(existsK(?xxu1 : obj_agent_human, ?x21 : obj_egg) K(inHandOfHuman(?xxu1, ?x21)) & (existsK(?x22 : obj_egg) K(inHandOfHuman(?xxu1, ?x22)) & K(?x21 != ?x22)))"], "SOW": [{"args": ["obj_egg", "loc_fridge"], "type": "loc", "name": "objectAt", "sign": true}], "human_actions": [], "feedback": []}
 
 Open the fridge.
-{"recognize_plan": false, "commands": [], "goal_types": {"?x2": "obj_fridge"}, "objects_talked_about": ["fridge-n"], "context_words": ["open"], "goals": ["(existsK(?x2 : obj_fridge) K(open(?x2)))"], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [], "goal_types": {"?x2": "loc_fridge"}, "objects_talked_about": ["fridge-n"], "context_words": ["open"], "goals": ["(existsK(?x2 : loc_fridge) K(open(?x2)))"], "SOW": [], "human_actions": [], "feedback": []}
 
 Close the dishwasher.
-{"recognize_plan": false, "commands": [], "goal_types": {"?x2": "obj_dishwasher"}, "objects_talked_about": ["dishwasher-n"], "context_words": ["close"], "goals": ["(existsK(?x2 : obj_dishwasher) !K(open(?x2)))"], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [], "goal_types": {"?x2": "loc_dishwasher"}, "objects_talked_about": ["dishwasher-n"], "context_words": ["close"], "goals": ["(existsK(?x2 : loc_dishwasher) !K(open(?x2)))"], "SOW": [], "human_actions": [], "feedback": []}
 
 Please clean the table.
-{"recognize_plan": false, "commands": [], "goal_types": {"?x2": "obj_table"}, "objects_talked_about": ["table-n"], "context_words": ["please", "clean"], "goals": ["(existsK(?x2 : obj_table) K(clean(?x2)))"], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [], "goal_types": {"?x2": "loc_table"}, "objects_talked_about": ["table-n"], "context_words": ["please", "clean"], "goals": ["(existsK(?x2 : loc_table) K(cleaned(?x2)))"], "SOW": [], "human_actions": [], "feedback": []}
 
 Move three chairs to the table.
-{"recognize_plan": false, "commands": [], "goal_types": {"?x23": "obj_chair", "?x22": "obj_chair", "?x21": "obj_chair", "?x3": "loc_table"}, "objects_talked_about": ["chair-n", "table-n"], "context_words": ["move"], "goals": ["(existsK(?x21 : obj_chair, ?x3 : loc_table) K(objectAt(?x21, ?x3)) & (existsK(?x22 : obj_chair) K(objectAt(?x22, ?x3)) & (existsK(?x23 : obj_chair) K(objectAt(?x23, ?x3)) & K(x21 != x22) & K(x21 != x23) & K(x22 != x23))))"], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [], "goal_types": {"?x23": "obj_chair", "?x22": "obj_chair", "?x21": "obj_chair", "?x3": "loc_table"}, "objects_talked_about": ["chair-n", "table-n"], "context_words": ["move"], "goals": ["(existsK(?x21 : obj_chair, ?x3 : loc_table) K(objectAt(?x21, ?x3)) & (existsK(?x22 : obj_chair) K(objectAt(?x22, ?x3)) & (existsK(?x23 : obj_chair) K(objectAt(?x23, ?x3)) & K(?x21 != ?x22) & K(?x21 != ?x23) & K(?x22 != ?x23))))"], "SOW": [], "human_actions": [], "feedback": []}
 
 Move a chair to the table.
 {"recognize_plan": false, "commands": [], "goal_types": {"?x2": "obj_chair", "?x3": "loc_table"}, "objects_talked_about": ["chair-n", "table-n"], "context_words": ["move"], "goals": ["(existsK(?x2 : obj_chair, ?x3 : loc_table) K(objectAt(?x2, ?x3)))"], "SOW": [], "human_actions": [], "feedback": []}
 
 The fridge is open.
-{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": ["fridge-n"], "context_words": [], "goals": [], "SOW": [{"args": ["obj_fridge"], "type": "state", "name": "open", "sign": true}], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": ["fridge-n"], "context_words": [], "goals": [], "SOW": [{"args": ["loc_fridge"], "type": "state", "name": "open", "sign": true}], "human_actions": [], "feedback": []}
 
 The dishwasher is closed.
-{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": ["dishwasher-n"], "context_words": ["close"], "goals": [], "SOW": [{"args": ["obj_dishwasher"], "type": "state", "name": "open", "sign": false}], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": ["dishwasher-n"], "context_words": ["close"], "goals": [], "SOW": [{"args": ["loc_dishwasher"], "type": "state", "name": "open", "sign": false}], "human_actions": [], "feedback": []}
 
 The table is clean.
-{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": ["table-n"], "context_words": [], "goals": [], "SOW": [{"args": ["obj_table"], "type": "state", "name": "clean", "sign": true}], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": ["table-n"], "context_words": [], "goals": [], "SOW": [{"args": ["loc_table"], "type": "state", "name": "dirty", "sign": false}], "human_actions": [], "feedback": []}
 
 The table is dirty.
-{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": ["table-n"], "context_words": [], "goals": [], "SOW": [{"args": ["obj_table"], "type": "state", "name": "clean", "sign": false}], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": ["table-n"], "context_words": [], "goals": [], "SOW": [{"args": ["loc_table"], "type": "state", "name": "dirty", "sign": true}], "human_actions": [], "feedback": []}
 
 The cup is on the table.
 {"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": ["table-n", "cup-n"], "context_words": [], "goals": [], "SOW": [{"args": ["obj_cup", "loc_table"], "type": "loc", "name": "objectOn", "sign": true}], "human_actions": [], "feedback": []}
@@ -134,10 +143,10 @@ I'm grasping the green cup from the table with my right hand.
 {"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": ["greencup-n", "table-n", "righthand-n"], "context_words": ["grasp"], "goals": [], "SOW": [], "human_actions": [{"args": ["human", "obj_righthand", "loc_table", "obj_greencup"], "name": "grasp"}], "feedback": []}
 
 I'm putting the red plate down on the table with my left hand.
-{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": ["redplate-n", "lefthand-n", "table-n"], "context_words": ["put"], "goals": [], "SOW": [], "human_actions": [{"args": ["human", "obj_lefthand", "loc_table", "obj_redplate"], "name": "putdown"}], "feedback": []}
+{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": ["redplate-n", "lefthand-n", "table-n"], "context_words": ["put"], "goals": [], "SOW": [], "human_actions": [{"args": ["human", "obj_lefthand", "loc_table", "obj_redplate"], "name": "putdown"}, {"args": ["human", "obj_lefthand", "loc_table", "obj_redplate"], "name": "putdown"}], "feedback": []}
 
 I'm moving from the fridge to the table.
-{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": ["fridge-n", "table-n"], "context_words": ["move"], "goals": [], "SOW": [], "human_actions": [{"args": ["human", "obj_fridge", "loc_table"], "name": "move"}], "feedback": []}
+{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": ["fridge-n", "table-n"], "context_words": ["move"], "goals": [], "SOW": [], "human_actions": [{"args": ["human", "loc_fridge", "loc_table"], "name": "move"}], "feedback": []}
 
 I'm putting the first fork on the table.
 {"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": ["fork-n", "table-n", "hand-n"], "context_words": ["put"], "goals": [], "SOW": [], "human_actions": [{"args": ["human", "obj_hand", "location", "fork1"], "name": "graspFork1"}, {"args": ["human", "obj_hand", "loc_table", "fork1"], "name": "putdownFork1"}], "feedback": []}

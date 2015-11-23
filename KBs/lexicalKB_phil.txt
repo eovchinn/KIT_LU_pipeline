@@ -87,6 +87,15 @@
 (B (name by-p)(=>(^(l#objectAt e1 e0 l u :0.9)(loc l :0.0))(by-p e1 e0 l)))
 ;(B (name from-p)(=>(^(l#objectAt e1 e0 l u :0.9)(loc l :0.0))(from-p e1 e0 l)))
 
+;;;;;;;;;;;
+;DESTINATION;
+;;;;;;;;;;;
+
+(B (name in-p)(=>(^(destin e1 e0 l :1)(loc l :0.0))(in-p e1 e0 l)))
+(B (name on-p)(=>(^(destin e1 e0 l :1)(loc l :0.0))(on-p e1 e0 l)))
+(B (name into-p)(=>(^(destin e1 e0 l :1)(loc l :0.0))(into-p e1 e0 l)))
+(B (name onto-p)(=>(^(destin e1 e0 l :1)(loc l :0.0))(onto-p e1 e0 l)))
+
 ;;;;;;;;;;;;;;;;;;
 ; DIRECT COMMANDS;
 ;;;;;;;;;;;;;;;;;;
@@ -112,13 +121,13 @@
 
 ; PUT DOWN
 
-(B (name putdownon)(=>(^(a#putdown agent hand loc obj :0.1)(loc loc :0.0))(^(a#put *e0 agent u obj)(down-r e1 *e0)(on-p e2 *e0 loc))))
+(B (name putdownon)(=>(a#putdown agent hand loc obj :0.1)(^(a#put *e0 agent u obj)(down-r e1 *e0)(destin e2 *e0 loc))))
 (B (name putdownwith)(=>(a#putdown agent *hand loc obj :0.1)(^(a#put *e0 agent u obj)(down-r e1 *e0)(with-p e2 *e0 *hand)(hand-n e3 *hand))))
 (B (name putdown)(=>(a#putdown agent hand loc obj :0.3)(^(a#put *e0 agent u obj)(down-r e1 *e0))))
 
 ; fix wrong parse
 
-(B (name putdownonfix)(=>(^(a#putdown agent hand loc obj :0.2)(loc loc :0.0))(^(a#put *e0 agent u1 obj)(down-r e1 *e0)(on-p e2 u2 loc))))
+(B (name putdownonfix)(=>(a#putdown agent hand loc obj :0.2)(^(a#put *e0 agent u1 obj)(down-r e1 *e0)(destin e2 u2 loc))))
 (B (name putdownwithfix)(=>(a#putdown agent *hand loc obj :0.2)(^(a#put *e0 agent u1 obj)(down-r e1 *e0)(with-p e2 u2 *hand)(hand-n e3 *hand))))
 
 ; MOVE
@@ -231,19 +240,19 @@
 (B (name puta)(=>(a#put x1 R u x1 :0.9)(put-a e0 x1)))
 
 ; put things on something: ROBOT
-(B (name putonR)(=>(^(g#objectAt obj loc u :0.9)(loc loc :0.0))(^(a#put *e0 R u obj)(on-p e1 *e0 loc))))
-(B (name putonNR)(=>(^(g#objectAt *obj loc *e0 :0.1)(r# *e0 n :0.0)(r# *obj n :0.0)(loc loc :0.0))(^(a#put *e0 R u *obj)(on-p e2 *e0 loc)(card e1 *obj n))))
+(B (name putonR)(=>(g#objectAt obj loc u :0.9)(^(a#put *e0 R u obj)(destin e1 *e0 loc))))
+(B (name putonNR)(=>(^(g#objectAt *obj loc *e0 :0.1)(r# *e0 n :0.0)(r# *obj n :0.0))(^(a#put *e0 R u *obj)(destin e2 *e0 loc)(card e1 *obj n))))
 
-(B (name putonR2)(=>(^(g#objectAt *obj loc u :0.9)(loc loc :0.0))(^(a#put e0 R u *obj)(on-p e1 *obj loc))))
-(B (name putonNR2)(=>(^(g#objectAt *obj loc *e0 :0.1)(r# *e0 n :0.0)(r# *obj n :0.0)(loc loc :0.0))(^(a#put e0 R u *obj)(on-p e2 *obj loc)(card e3 *obj n))))
+(B (name putonR2)(=>(^(g#objectAt *obj loc u :0.9))(^(a#put e0 R u *obj)(destin e1 *obj loc))))
+(B (name putonNR2)(=>(^(g#objectAt *obj loc *e0 :0.1)(r# *e0 n :0.0)(r# *obj n :0.0))(^(a#put e0 R u *obj)(destin e2 *obj loc)(card e3 *obj n))))
 
 ; put things on something: HUMAN
-(B (name putonH)(=>(^(a#grasp H hand loc1 obj :0.9)(a#putdown H hand loc obj :0.0)(hand-n ee *hand :0.0)(loc loc :0.0))(^(a#put *e0 H u obj)(on-p e1 *e0 loc))))
-(B (name putonNH)(=>(^(a#grasp H hand loc1 *obj :0.0)(a#putdown H hand loc *obj :0.ß)(hand-n ee hand :0.0)(r# e0 n :0.0)(r# *obj n :0.0)(loc loc :0.0))(^(a#put e1 H u *obj)(on-p e2 e0 loc)(card e3 *obj n))))
+(B (name putonH)(=>(^(a#grasp H hand loc1 obj :0.9)(a#putdown H hand loc obj :0.0)(hand-n ee *hand :0.0))(^(a#put *e0 H u obj)(destin e1 *e0 loc))))
+(B (name putonNH)(=>(^(a#grasp H hand loc1 *obj :0.0)(a#putdown H hand loc *obj :0.ß)(hand-n ee hand :0.0)(r# e0 n :0.0)(r# *obj n :0.0))(^(a#put e1 H u *obj)(destin e2 e0 loc)(card e3 *obj n))))
 
 ; fix wrong parse
-(B (name puton3H)(=>(^(a#grasp H hand loc1 obj :0.9)(a#putdown H hand loc obj :0.0)(hand-n ee hand :0.0)(loc loc :0.0))(^(a#put e0 H u obj)(on-p e1 obj loc))))
-(B (name putonNH)(=>(^(a#grasp H hand loc1 obj :0.9)(a#putdown H hand loc *obj :0.0)(hand-n ee hand :0.0)(r# e0 n :0.0)(r# *obj n :0.0)(loc loc :0.0))(^(a#put e1 H u *obj)(on-p e2 *obj loc)(card e3 *obj n))))
+(B (name puton3H)(=>(^(a#grasp H hand loc1 obj :0.9)(a#putdown H hand loc obj :0.0)(hand-n ee hand :0.0))(^(a#put e0 H u obj)(destin e1 obj loc))))
+(B (name putonNH)(=>(^(a#grasp H hand loc1 obj :0.9)(a#putdown H hand loc *obj :0.0)(hand-n ee hand :0.0)(r# e0 n :0.0)(r# *obj n :0.0))(^(a#put e1 H u *obj)(destin e2 *obj loc)(card e3 *obj n))))
 
 ; bring things
 (B (name bringv)(=>(a#give e1 agent obj req :0.9)(bring-v e1 agent req obj)))
@@ -301,31 +310,30 @@
 
 ; wipe the table
 
-(B (name wipetable)(=>(g#clean t u :0.9)(wipe-v e0 R u t)))
-(B (name wipetable)(=>(g#clean t u :0.9)(clean-v e0 R u t)))
-
+(B (name wipev)(=>(^(g#cleaned t u :0.9)(s#n#cleaned e0 t u1 :0))(wipe-v e0 R u t)))
+(B (name cleanv)(=>(^(g#cleaned t u :0.6)(s#n#cleaned e0 t u1 :0))(clean-v e0 R u t)))
 
 ; close and open
 
-(B (name closevR)(=>(g#n#open obj u :0.7)(close-v e0 R u obj)))
+(B (name closevR)(=>(^(g#n#open obj u :0.7)(loc obj :0.0))(close-v e0 R u obj)))
+(B (name closevR)(=>(^(g#n#open obj u :0.7)(loc obj :0.0))(close-r e0 obj)))
 
-(B (name closev)(=>(s#n#open e0 obj u1 :0.9)(close-v e0 a u2 obj)))
-(B (name closeda)(=>(s#n#open e0 obj u :0.9)(closed-a e0 obj)))
+(B (name closev)(=>(^(s#n#open e0 obj u1 :0.9)(loc obj :0.0))(close-v e0 a u2 obj)))
+(B (name closeda)(=>(^(s#n#open e0 obj u :0.9)(loc obj :0.0))(closed-a e0 obj)))
 
-(B (name openvR)(=>(g#open obj u1 :0.7)(open-v e0 R u2 obj)))
+(B (name openvR)(=>(^(g#open obj u1 :0.7)(loc obj :0.0))(open-v e0 R u2 obj)))
+(B (name openvR)(=>(^(g#open obj u1 :0.4)(loc obj :0.0))(^(open-a e0 obj)(the e2 obj))))
 
-(B (name openv)(=>(s#open e0 obj u1 :0.9)(open-v e0 a u2 obj)))
-(B (name opena)(=>(s#open e0 obj u :0.9)(open-a e0 obj)))
+(B (name openv)(=>(^(s#open e0 obj u1 :0.9)(loc obj :0.0))(open-v e0 a u2 obj)))
+(B (name opena)(=>(^(s#open e0 obj u :0.9)(loc obj :0.0))(open-a e0 obj)))
 
 
 ; clean and dirty
 
-(B (name cleanvR)(=>(g#clean t u :0.7)(clean-v e0 R u t)))
-
-(B (name cleanv)(=>(s#clean e0 t u1 :0.9)(clean-v e0 a u2 t)))
-(B (name cleana)(=>(s#clean e0 x u :0.9)(clean-a e0 x)))
-(B (name dirtya)(=>(s#n#clean e0 x u :0.9)(dirty-a e0 x)))
-(B (name dirtyn)(=>(s#n#clean e0 x u :0.9)(^(dirty-n e0 *y)(equal e1 x *y))))
+(B (name cleanv)(=>(s#n#dirty e0 t u1 :0.9)(clean-v e0 a u2 t)))
+(B (name cleana)(=>(s#n#dirty e0 x u :0.9)(clean-a e0 x)))
+(B (name dirtya)(=>(s#dirty e0 x u :0.9)(dirty-a e0 x)))
+(B (name dirtyn)(=>(s#dirty e0 x u :0.9)(^(dirty-n e0 *y)(equal e1 x *y))))
 
 ; INCOMPATIBILITY
 

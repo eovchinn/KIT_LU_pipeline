@@ -943,6 +943,13 @@
 (B (xor (vitaliscereal-n e1 x) (windows-n e2 x)))
 (B (xor (wallsink-n e1 x) (windows-n e2 x)))
 
+; LOCATION TYPES
+
+(B (name sideboard)(=>(^(etcS x :0.9)(loc x  :0))(sideboard-n e1 x)))
+(B (name table)(=>(^(etcT x :0.9)(loc x  :0))(table-n e1 x)))
+(B (name fridge)(=>(^(etcF x :0.9)(loc x  :0))(fridge-n e1 x)))
+(B (name sink)(=>(^(etcSi x :0.9)(loc x  :0))(sink-n e1 x)))
+
 ; HIERARCHY
 
 (B (name bluecup)(=>(bluecup-n e1 x  :1.2)(cup-n e1 x)))
