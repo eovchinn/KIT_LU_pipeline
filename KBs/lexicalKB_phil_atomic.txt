@@ -136,9 +136,9 @@
 ; fix wrong parse
 (B (name puta)(=>(a#put x1 R u x1 :0.9)(put-a e0 x1)))
 
-(B (name putwith)(=>(a#putdownBothHands agent LEFTHAND RIGHTHAND loc obj :0.01)(^(put *e0 agent u obj)(with-p e2 *e0 *hand)(bothhands-n e3 *hand)(destin e2 *e0 loc))))
-(B (name putwith)(=>(a#putdownBothHands agent LEFTHAND RIGHTHAND loc *obj :0.01)(^(put *e0 agent u *obj)(with-p e2 *e0 *hand)(bothhands-n e3 *hand)(destin e2 *obj loc))))
-(B (name putwith)(=>(a#putdownBothHands agent LEFTHAND RIGHTHAND loc obj :0.01)(^(put *e0 agent u obj)(with-p e2 *e0 *hand)(bothhands-n e3 *hand)(down-r e4 *e0))))
+(B (name putwithbothon)(=>(a#putdownBothHands agent LEFTHAND RIGHTHAND loc obj :0.01)(^(put *e0 agent u obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(destin e3 *e0 loc))))
+(B (name putwithbothon2)(=>(a#putdownBothHands agent LEFTHAND RIGHTHAND loc *obj :0.01)(^(put *e0 agent u *obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(destin e3 *obj loc))))
+(B (name putwithboth)(=>(a#putdownBothHands agent LEFTHAND RIGHTHAND loc obj :0.01)(^(put *e0 agent u obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(down-r e3 *e0))))
 
 (B (name puton)(=>(a#putdown agent hand loc obj :0.4)(^(put *e0 agent u obj)(destin e2 *e0 loc))))
 (B (name putwith)(=>(a#putdown agent *hand loc obj :0.4)(^(put *e0 agent u obj)(with-p e2 *e0 *hand)(hand-n e3 *hand))))
@@ -146,8 +146,8 @@
 
 ; fix wrong parse
 
-(B (name putonfix)(=>(a#putdown agent hand loc obj :0.2)(^(put *e0 agent u1 obj)(destin e2 u2 loc))))
-(B (name putwithfix)(=>(a#putdown agent *hand loc obj :0.2)(^(put *e0 agent u1 obj)(with-p e2 u2 *hand)(hand-n e3 *hand))))
+;(B (name putonfix)(=>(a#putdown agent hand loc obj :0.9)(^(put *e0 agent u1 obj)(destin e2 u2 loc))))
+;(B (name putwithfix)(=>(a#putdown agent *hand loc obj :0.9)(^(put *e0 agent u1 obj)(with-p e2 u2 *hand)(hand-n e3 *hand))))
 
 ; MOVE
 
