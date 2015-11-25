@@ -37,6 +37,8 @@
 (B (name greencup)(=>(greencup-n e2 *x :0.45)(^(green-a e1 *x)(cup-n e2 *x))))
 (B (name bluecup)(=>(bluecup-n e2 *x :0.45)(^(blue-a e1 *x)(cup-n e2 *x))))
 
+(B (name orangebowl)(=>(orangebowl-n e2 *y :0.3)(^(orange-n e1 *x)(bowl-n e2 *y)(of-p e3 *y *x))))
+
 (B (name left-hand)(=>(lefthand-n e1 *x :0.45)(^(hand-n e1 *x)(left-a e2 *x))))
 (B (name right-hand)(=>(righthand-n e1 *x :0.45)(^(hand-n e1 *x)(right-a e2 *x))))
 
