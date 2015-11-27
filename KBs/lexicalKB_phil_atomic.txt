@@ -116,7 +116,7 @@
 (B (name graspwithbothhandsfrom)(=>(a#graspBothHands agent LEFTHAND RIGHTHAND loc obj :0.01)(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(from-p e3 *e0 loc))))
 (B (name graspwithbothhandsfrom2)(=>(a#graspBothHands agent LEFTHAND RIGHTHAND *loc obj :0.01)(^(grasp *e0 agent obj)(with-p e1 *loc *hand)(bothhands-n e2 *hand)(from-p e3 *e0 *loc))))
 
-(B (name graspwithbothhands)(=>(^(a#graspBothHands agent LEFTHAND RIGHTHAND loc obj :0.02)(location-n e3 loc :0))(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand))))
+(B (name graspwithbothhands)(=>(^(a#graspBothHands agent LEFTHAND RIGHTHAND LOCATION obj :0.02))(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand))))
 
 (B (name graspwithbothhands2)(=>(a#graspBothHands agent LEFTHAND RIGHTHAND loc *obj :0.02)(^(grasp *e0 agent *obj)(with-p e1 *obj *hand)(bothhands-n e2 *hand))))
 
