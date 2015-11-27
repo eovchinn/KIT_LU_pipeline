@@ -35,7 +35,7 @@ Give me the juice with your right hand
 {"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_agent_human", "obj_righthand", "location", "obj_juice"], "name": "handToHuman"}], "goal_types": {}, "objects_talked_about": ["juice-n", "righthand-n"], "context_words": ["give"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Stir the salad in the bowl with your left hand
-{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_tool", "location", "obj_bowl"], "name": "stir"}], "goal_types": {}, "objects_talked_about": ["bowl-n", "tool-n", "lefthand-n"], "context_words": ["stir"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_stirrer", "location", "obj_bowl"], "name": "stir"}], "goal_types": {}, "objects_talked_about": ["bowl-n", "lefthand-n"], "context_words": ["stir"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Wipe the sideboard with your right hand
 {"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_righthand", "loc_sideboard", "obj_tool"], "name": "wipe"}], "goal_types": {}, "objects_talked_about": ["sideboard-n", "tool-n", "righthand-n"], "context_words": ["wipe"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}

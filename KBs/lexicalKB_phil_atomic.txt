@@ -204,15 +204,15 @@
 ; fix wrong parse
 (B (name stirn)(=>(stir-v e0 R u2 e0 :1.0)(stir-n e1 e0)))
 
-(B (name stirinwithv)(=>(^(a#stir R hand tool LOCATION *cont :0.1)(tool-n e3 tool :0.1))(^(stir-v *e0 R u obj)(in-p e1 *e0 *cont)(with-p e2 *cont hand))))
+(B (name stirinwithv)(=>(a#stir R hand OBJ_STIRRER LOCATION *cont :0.1)(^(stir-v *e0 R u obj)(in-p e1 *e0 *cont)(with-p e2 *cont hand))))
 
-(B (name stirinv)(=>(^(a#stir R hand tool LOCATION cont :0.3)(tool-n e3 tool :0.1))(^(stir-v *e0 R u obj)(in-p e1 *e0 cont))))
+(B (name stirinv)(=>(a#stir R hand OBJ_STIRRER LOCATION cont :0.3)(^(stir-v *e0 R u obj)(in-p e1 *e0 cont))))
 
-(B (name stirwithv)(=>(^(a#stir R hand tool LOCATION cont :0.2)(tool-n e3 tool :0.1)(container-n e4 con :0.1))(^(stir-v *e0 R u obj)(with-p e1 *e0 hand))))
+(B (name stirwithv)(=>(^(a#stir R hand OBJ_STIRRER LOCATION cont :0.2)(container-n e4 con :0.1))(^(stir-v *e0 R u obj)(with-p e1 *e0 hand))))
 
-(B (name stirwithv)(=>(^(a#stir R hand tool LOCATION cont :0.2)(tool-n e3 tool :0.1)(container-n e4 con :0.1))(^(stir-v *e0 R u *obj)(with-p e1 *obj hand))))
+(B (name stirwithv)(=>(^(a#stir R hand OBJ_STIRRER LOCATION cont :0.2)(container-n e4 con :0.1))(^(stir-v *e0 R u *obj)(with-p e1 *obj hand))))
 
-;(B (name stirv)(=>(^(a#stir R hand tool LOCATION cont :0.7)(tool-n e3 tool :0.1)(hand-n e4 hand :0.1)(container-n e5 con :0.0))(stir-v *e0 R u obj)))
+;(B (name stirv)(=>(^(a#stir R hand OBJ_STIRRER LOCATION cont :0.7)(tool-n e3 tool :0.1)(hand-n e4 hand :0.1)(container-n e5 con :0.0))(stir-v *e0 R u obj)))
 
 ; POUR
 
