@@ -1,39 +1,42 @@
 Grasp the green cup with your right hand
-{"recognize_plan": false, "commands": [{"args": ["agent", "obj_righthand", "location", "obj_greencup"], "name": "grasp"}], "goal_types": {}, "objects_talked_about": ["greencup-n", "righthand-n"], "context_words": ["grasp"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_righthand", "location", "obj_greencup"], "name": "grasp"}], "goal_types": {}, "objects_talked_about": ["greencup-n", "righthand-n"], "context_words": ["grasp"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Put the red cup down on the table with your left hand
-{"recognize_plan": false, "commands": [{"args": ["agent", "obj_lefthand", "loc_table", "obj_redcup"], "name": "putdown"}, {"args": ["agent", "obj_lefthand", "loc_table", "obj_redcup"], "name": "putdown"}], "goal_types": {}, "objects_talked_about": ["redcup-n", "lefthand-n", "table-n"], "context_words": ["put"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "loc_table", "obj_redcup"], "name": "putdown"}, {"args": ["obj_agent_robot", "obj_lefthand", "loc_table", "obj_redcup"], "name": "putdown"}], "goal_types": {}, "objects_talked_about": ["redcup-n", "lefthand-n", "table-n"], "context_words": ["put"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Move to the sideboard
-{"recognize_plan": false, "commands": [{"args": ["agent", "location", "loc_sideboard"], "name": "move"}], "goal_types": {}, "objects_talked_about": ["sideboard-n"], "context_words": ["move"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "location", "loc_sideboard"], "name": "move"}], "goal_types": {}, "objects_talked_about": ["sideboard-n"], "context_words": ["move"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Stop
-{"recognize_plan": false, "commands": [{"args": ["agent"], "name": "stop"}], "goal_types": {}, "objects_talked_about": [], "context_words": [], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot"], "name": "stop"}], "goal_types": {}, "objects_talked_about": [], "context_words": [], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
-Grasp the bowl from the table with your both hands
-{"recognize_plan": false, "commands": [{"args": ["agent", "lefthand", "righthand", "loc_table", "obj_bowl"], "name": "graspBothHands"}], "goal_types": {}, "objects_talked_about": ["bowl-n", "table-n"], "context_words": ["grasp"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+Grasp the orange bowl from the table with your both hands
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_righthand", "loc_table", "obj_orangebowl"], "name": "graspBothHands"}], "goal_types": {}, "objects_talked_about": ["orangebowl-n", "table-n"], "context_words": ["grasp"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Put the bowl down on the table with your both hands
-{"recognize_plan": false, "commands": [{"args": ["agent", "obj_bothhands", "loc_table", "obj_bowl"], "name": "putdown"}, {"args": ["agent", "lefthand", "righthand", "obj_bowl"], "name": "putdownBothHands"}], "goal_types": {}, "objects_talked_about": ["bowl-n", "bothhands-n", "table-n"], "context_words": ["put"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_righthand", "loc_table", "obj_bowl"], "name": "putdownBothHands"}, {"args": ["obj_agent_robot", "obj_lefthand", "obj_righthand", "loc_table", "obj_bowl"], "name": "putdownBothHands"}], "goal_types": {}, "objects_talked_about": ["bowl-n", "table-n"], "context_words": ["put"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+
+Put the bowl on the table with your both hands
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_righthand", "loc_table", "obj_bowl"], "name": "putdownBothHands"}], "goal_types": {}, "objects_talked_about": ["bowl-n", "table-n"], "context_words": ["put"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Request for the sponge in your right hand
-{"recognize_plan": false, "commands": [{"args": ["agent", "obj_righthand", "location", "obj_sponge"], "name": "requestFromHuman"}], "goal_types": {}, "objects_talked_about": ["righthand-n", "sponge-n"], "context_words": [], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_righthand", "location", "obj_sponge"], "name": "requestFromHuman"}], "goal_types": {}, "objects_talked_about": ["righthand-n", "sponge-n"], "context_words": [], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Open the fridge with your right hand
-{"recognize_plan": false, "commands": [{"args": ["agent", "obj_righthand", "loc_fridge"], "name": "open"}], "goal_types": {}, "objects_talked_about": ["fridge-n", "righthand-n"], "context_words": ["open"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_righthand", "loc_fridge"], "name": "open"}], "goal_types": {}, "objects_talked_about": ["fridge-n", "righthand-n"], "context_words": ["open"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Close the fridge with your left hand
-{"recognize_plan": false, "commands": [{"args": ["agent", "obj_lefthand", "loc_fridge"], "name": "close"}], "goal_types": {}, "objects_talked_about": ["fridge-n", "lefthand-n"], "context_words": ["close"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "loc_fridge"], "name": "close"}], "goal_types": {}, "objects_talked_about": ["fridge-n", "lefthand-n"], "context_words": ["close"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Pour the corn into the bowl with your left hand
-{"recognize_plan": false, "commands": [{"args": ["agent", "obj_lefthand", "location", "obj_bowl", "obj_corn"], "name": "pour"}], "goal_types": {}, "objects_talked_about": ["bowl-n", "corn-n", "lefthand-n"], "context_words": ["pour"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "location", "obj_bowl", "obj_corn"], "name": "pour"}], "goal_types": {}, "objects_talked_about": ["bowl-n", "corn-n", "lefthand-n"], "context_words": ["pour"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Give me the juice with your right hand
-{"recognize_plan": false, "commands": [{"args": ["agent", "human", "obj_righthand", "location", "obj_juice"], "name": "handToHuman"}], "goal_types": {}, "objects_talked_about": ["juice-n", "righthand-n"], "context_words": ["give"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_agent_human", "obj_righthand", "location", "obj_juice"], "name": "handToHuman"}], "goal_types": {}, "objects_talked_about": ["juice-n", "righthand-n"], "context_words": ["give"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Stir the salad in the bowl with your left hand
-{"recognize_plan": false, "commands": [{"args": ["agent", "obj_lefthand", "obj_tool", "location", "obj_bowl"], "name": "stir"}], "goal_types": {}, "objects_talked_about": ["bowl-n", "tool-n", "lefthand-n"], "context_words": ["stir"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_tool", "location", "obj_bowl"], "name": "stir"}], "goal_types": {}, "objects_talked_about": ["bowl-n", "tool-n", "lefthand-n"], "context_words": ["stir"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Wipe the sideboard with your right hand
-{"recognize_plan": false, "commands": [{"args": ["agent", "obj_righthand", "loc_sideboard", "obj_tool"], "name": "wipe"}], "goal_types": {}, "objects_talked_about": ["sideboard-n", "tool-n", "righthand-n"], "context_words": ["wipe"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_righthand", "loc_sideboard", "obj_tool"], "name": "wipe"}], "goal_types": {}, "objects_talked_about": ["sideboard-n", "tool-n", "righthand-n"], "context_words": ["wipe"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 

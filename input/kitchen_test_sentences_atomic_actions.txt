@@ -2,8 +2,9 @@ Grasp the green cup with your right hand
 Put the red cup down on the table with your left hand
 Move to the sideboard
 Stop
-Grasp the bowl from the table with your both hands
+Grasp the orange bowl from the table with your both hands
 Put the bowl down on the table with your both hands
+Put the bowl on the table with your both hands
 Request for the sponge in your right hand
 Open the fridge with your right hand
 Close the fridge with your left hand

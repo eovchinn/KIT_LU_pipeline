@@ -255,8 +255,8 @@ class PKSGenerator(object):
 
 			for a in args:
 				argind+=1
-				if a=="H": cargs.append("human")
-				elif a=="R": cargs.append("agent")
+				if a=="H": cargs.append("obj_agent_human")
+				elif a=="R": cargs.append("obj_agent_robot")
 				elif a.isdigit(): cargs.append(a)
 				elif a[0].isupper(): 
 					cargs.append(a.lower())
@@ -269,28 +269,28 @@ class PKSGenerator(object):
 					# there is no related object
 					else:
 						if name=="grasp":
-							if argind==1: cargs.append("agent")
+							if argind==1: cargs.append("obj_agent_robot")
 							elif argind==2: cargs.append("obj_hand")
 							elif argind==3: cargs.append("location")
 							elif argind==4: cargs.append("obj_all")
 						elif name=="putdown":
-							if argind==1: cargs.append("agent")
+							if argind==1: cargs.append("obj_agent_robot")
 							elif argind==2: cargs.append("obj_hand")
 							elif argind==3: cargs.append("location")
 							elif argind==4: cargs.append("obj_all")
 						elif name=="move":
-							if argind==1: cargs.append("agent")
+							if argind==1: cargs.append("obj_agent_robot")
 							elif argind==2: cargs.append("location")
 							elif argind==3: cargs.append("location")
 						elif name=="moveRelative":
-							if argind==1: cargs.append("agent")
+							if argind==1: cargs.append("obj_agent_robot")
 							elif argind==2: cargs.append("1")
 							elif argind==3: cargs.append("direction")
 						elif name=="relaxArms":
-							if argind==1: cargs.append("agent")
+							if argind==1: cargs.append("obj_agent_robot")
 							elif argind==2: cargs.append("obj_arm")
 						elif name=="moveArmsToHomePosition":
-							if argind==1: cargs.append("agent")
+							if argind==1: cargs.append("obj_agent_robot")
 							elif argind==2: cargs.append("obj_arm")
 
 			command["name"] = name + app 
