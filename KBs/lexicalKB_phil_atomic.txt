@@ -195,9 +195,9 @@
 
 ; WIPE
 
-(B (name wipewithv)(=>(^(a#wipe R hand loc tool :0.1)(tool-n e3 tool :0))(^(wipe-v *e0 R u loc)(with-p e1 *e0 hand))))
-(B (name wipewithv)(=>(^(a#wipe R hand *loc tool :0.1)(tool-n e3 tool :0))(^(wipe-v *e0 R u *loc)(with-p e1 *loc hand))))
-(B (name wipev)(=>(^(a#wipe R hand loc tool :0.7)(hand-n e4 hand :0.1)(tool-n e3 tool :0.1))(wipe-v *e0 R u obj)))
+(B (name wipewithv)(=>(a#wipe R hand loc OBJ_SPONGE :0.1)(^(wipe-v *e0 R u loc)(with-p e1 *e0 hand))))
+(B (name wipewithv)(=>(a#wipe R hand *loc OBJ_SPONGE :0.1)(^(wipe-v *e0 R u *loc)(with-p e1 *loc hand))))
+(B (name wipev)(=>(a#wipe R hand loc OBJ_SPONGE :0.7)(hand-n e4 hand :0.2)(wipe-v *e0 R u obj)))
 
 ; STIR
 
