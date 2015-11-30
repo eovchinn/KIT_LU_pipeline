@@ -37,6 +37,8 @@
 (B (name greencup)(=>(o#greencup x u :0.45)(^(green-a e1 x)(cup-n e2 x))))
 (B (name bluecup)(=>(o#bluecup x u :0.45)(^(blue-a e1 x)(cup-n e2 x))))
 
+(B (name orangebowl)(=>(o#orangebowl x u :0.3)(^(orange-n e1 x)(bowl-n e2 y)(of-p e3 y x))))
+
 (B (name left-hand)(=>(o#lefthand x u :0.45)(^(hand-n e1 x)(left-a e2 x))))
 (B (name right-hand)(=>(o#righthand x u :0.45)(^(hand-n e1 x)(right-a e2 x))))
 
@@ -308,7 +310,7 @@
 
 ; wipe the table
 
-(B (name wipetable)(=>(g#clean t u :0.9)(^(wipe-v e0 R u t)(table-n e1 t)(!= R H))))
+(B (name wipetable)(=>(^(g#clean t u :0.9))(^(wipe-v e0 R u t)(table-n e1 t)(!= R H))))
 
 ; close and open
 
@@ -402,3 +404,8 @@
 (B (name ogreencup)(=>(o#greencup x e1 :1.2)(cup-n e1 x)))
 
 (B (name cupisthing)(=>(cup-n e1 x :1.2)(thing e1 x)))
+
+(B (name oorangebowl)(=>(o#orangebowl x e1 :1.2)(bowl-n e1 x)))
+
+(B (name bowlisthing)(=>(bowl-n e1 x :1.2)(thing e1 x)))
+
