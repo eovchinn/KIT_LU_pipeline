@@ -138,8 +138,10 @@
 ; fix wrong parse
 (B (name puta)(=>(a#put x1 R u x1 :0.9)(put-a e0 x1)))
 
-(B (name putwithbothon)(=>(a#putdownBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND loc obj :0.02)(^(put *e0 agent u obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(destin e3 *e0 loc))))
 (B (name putwithbothondown)(=>(a#putdownBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND loc obj :0.01)(^(put *e0 agent u obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(destin e3 *e0 loc)(down-r e4 *e0))))
+(B (name putwithbothondown2)(=>(a#putdownBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND *loc obj :0.01)(^(put *e0 agent u obj)(with-p e1 *loc *hand)(bothhands-n e2 *hand)(destin e3 *e0 *loc)(down-r e4 *e0))))
+
+(B (name putwithbothon)(=>(a#putdownBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND loc obj :0.02)(^(put *e0 agent u obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(destin e3 *e0 loc))))
 (B (name putwithbothon2)(=>(a#putdownBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND loc *obj :0.02)(^(put *e0 agent u *obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(destin e3 *obj loc))))
 (B (name putwithbothon2down)(=>(a#putdownBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND loc *obj :0.01)(^(put *e0 agent u *obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(destin e3 *obj loc)(down-r e4 *e0))))
 (B (name putwithbothdown)(=>(a#putdownBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND LOCATION obj :0.3)(^(put *e0 agent u obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(down-r e3 *e0))))
@@ -147,8 +149,8 @@
 
 (B (name putwithhon)(=>(a#putdown agent *hand loc obj :0.2)(^(put *e0 agent u obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(destin e3 *e0 loc))))
 (B (name putwithondown)(=>(a#putdown agent *hand loc obj :0.1)(^(put *e0 agent u obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(destin e3 *e0 loc)(down-r e4 *e0))))
-(B (name putwithon2)(=>(a#putdownBothHands agent *hand loc *obj :0.2)(^(put *e0 agent u *obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(destin e3 *obj loc))))
-(B (name putwithon2down)(=>(a#putdownBothHands agent *hand loc *obj :0.1)(^(put *e0 agent u *obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(destin e3 *obj loc)(down-r e4 *e0))))
+(B (name putwithon2)(=>(a#putdown agent *hand loc *obj :0.2)(^(put *e0 agent u *obj)(with-p e1 *e0 *hand)(bothhand-n e2 *hand)(destin e3 *obj loc))))
+(B (name putwithon2down)(=>(a#putdown agent *hand loc *obj :0.1)(^(put *e0 agent u *obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(destin e3 *obj loc)(down-r e4 *e0))))
 (B (name putwithdown)(=>(a#putdown agent *hand LOCATION obj :0.3)(^(put *e0 agent u obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(down-r e3 *e0))))
 (B (name putwithdown2)(=>(a#putdown agent *hand LOCATION *obj :0.3)(^(put *e0 agent u *obj)(with-p e1 *obj *hand)(hand-n e2 *hand)(down-r e3 *e0))))
 
