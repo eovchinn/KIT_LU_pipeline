@@ -1,15 +1,48 @@
-Grasp the green cup with your right hand
-Put the red cup down on the table with your left hand
 Move to the sideboard
-Stop
-Grasp the orange bowl from the table with your both hands
-Put the bowl down on the table with your both hands
-Put the bowl on the table with your both hands
-Request for the sponge in your right hand
-Open the fridge with your right hand
-Close the fridge with your left hand
-Pour the corn into the bowl with your left hand
-Give me the juice with your right hand
-Stir the salad in the bowl with your left hand
-Wipe the sideboard with your right hand
+move to the sideboard
 Move the chair to the sideboard
+move the chair to the sideboard
+Stop
+stop
+Request for the sponge in your right hand
+request for the sponge in your right hand
+Open the fridge with your right hand
+open the fridge with your right hand
+Close the fridge with your left hand
+close the fridge with your left hand
+Pour the corn into the bowl with your left hand
+pour the corn into the bowl with your left hand
+Pour the corn with your left hand
+pour the corn with your left hand
+Give me the juice with your right hand
+give me the juice with your right hand
+Give me the juice
+give me the juice
+Stir the salad in the bowl with your left hand
+stir the salad in the bowl with your left hand
+Stir the salad with your left hand
+stir the salad with your left hand
+Wipe the sideboard with your right hand
+wipe the sideboard with your right hand
+Wipe the sideboard
+wipe the sideboard
+Put the orange bowl down on the table with your both hands
+put the orange bowl down on the table with your both hands
+Put the orange bowl on the table with your both hands
+put the orange bowl on the table with your both hands
+Put the orange bowl down with your both hands
+put the orange bowl down with your both hands
+Put the vinegar down on the table with your left hand
+put the vinegar down on the table with your right hand
+Put the vinegar on the table with your left hand
+put the vinegar on the table with your right hand
+Put the vinegar down with your left hand
+put the vinegar down with your right hand
+Grasp the orange bowl from the table with your both hands
+grasp the orange bowl from the table with your both hands
+Grasp the orange bowl with your both hands
+grasp the orange bowl with your both hands
+Grasp the vinegar from the table with your right hand
+grasp the vinegar from the table with your left hand
+Grasp the vinegar with your right hand
+grasp the vinegar with your left hand

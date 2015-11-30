@@ -114,20 +114,29 @@
 (B (name graspv)(=>(grasp e0 agent obj :0.9)(take-v e0 agent u obj)))
 
 (B (name graspwithbothhandsfrom)(=>(a#graspBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND loc obj :0.01)(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(from-p e3 *e0 loc))))
+; loc with hands
 (B (name graspwithbothhandsfrom2)(=>(a#graspBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND *loc obj :0.01)(^(grasp *e0 agent obj)(with-p e1 *loc *hand)(bothhands-n e2 *hand)(from-p e3 *e0 *loc))))
+; obj with hands
+(B (name graspwithbothhandsfrom3)(=>(a#graspBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND *loc *obj :0.01)(^(grasp *e0 agent *obj)(with-p e1 *obj *hand)(bothhands-n e2 *hand)(from-p e3 *e0 *loc))))
+; obj from loc
+(B (name graspwithbothhandsfrom4)(=>(a#graspBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND *loc *obj :0.01)(^(grasp *e0 agent *obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(from-p e3 *obj *loc))))
 
 (B (name graspwithbothhands)(=>(^(a#graspBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND LOCATION obj :0.02))(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand))))
+; obj with hands
+(B (name graspwithbothhands2)(=>(a#graspBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND LOCATION *obj :0.02)(^(grasp *e0 agent *obj)(with-p e1 *obj *hand)(bothhands-n e2 *hand))))
 
-(B (name graspwithbothhands2)(=>(a#graspBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND loc *obj :0.02)(^(grasp *e0 agent *obj)(with-p e1 *obj *hand)(bothhands-n e2 *hand))))
+; grasp with one hand
+(B (name graspwithfrom)(=>(a#grasp agent *hand loc obj :0.1)(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(from-p e3 *e0 loc))))
+; obj with hands
+(B (name graspwithfrom2)(=>(a#grasp agent *hand loc *obj :0.1)(^(grasp *e0 agent *obj)(with-p e1 *obj *hand)(hand-n e2 *hand)(from-p e3 *e0 loc))))
+; loc with hands
+(B (name graspwithfrom3)(=>(a#grasp agent *hand *loc *obj :0.1)(^(grasp *e0 agent *obj)(with-p e1 *loc *hand)(hand-n e2 *hand)(from-p e3 *e0 *loc))))
+; obj from loc
+(B (name graspwithfrom4)(=>(a#grasp agent *hand *loc *obj :0.1)(^(grasp *e0 agent *obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(from-p e3 *obj *loc))))
 
-(B (name graspwith)(=>(a#grasp agent *hand LOCATION obj :0.1)(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(hand-n e2 *hand))))
-(B (name graspfrom)(=>(a#grasp agent hand loc obj :0.1)(^(grasp *e0 agent obj)(from-p e1 *e0 loc))))
-(B (name grasp)(=>(a#grasp agent hand LOCATION obj :0.9)(grasp e0 agent obj)))
-
-; fix wrong parse
-
-(B (name graspwithfix)(=>(a#grasp agent *hand LOCATION obj :0.45)(^(grasp e0 agent obj)(with-p e1 u1 *hand)(hand-n e2 *hand))))
-(B (name graspfromfix)(=>(a#grasp agent hand LOCATION obj :0.9)(^(grasp e0 agent obj)(from-p e1 u1 loc))))
+(B (name graspwith)(=>(a#grasp agent *hand LOCATION obj :0.2)(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(hand-n e2 *hand))))
+; obj with hands
+(B (name graspwith2)(=>(a#grasp agent *hand LOCATION *obj :0.2)(^(grasp *e0 agent *obj)(with-p e1 *obj *hand)(hand-n e2 *hand))))
 
 ; PUT DOWN
 
@@ -138,30 +147,44 @@
 ; fix wrong parse
 (B (name puta)(=>(a#put x1 R u x1 :0.9)(put-a e0 x1)))
 
+; put down both hands
 (B (name putwithbothondown)(=>(a#putdownBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND loc obj :0.01)(^(put *e0 agent u obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(destin e3 *e0 loc)(down-r e4 *e0))))
+; loc with hand
 (B (name putwithbothondown2)(=>(a#putdownBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND *loc obj :0.01)(^(put *e0 agent u obj)(with-p e1 *loc *hand)(bothhands-n e2 *hand)(destin e3 *e0 *loc)(down-r e4 *e0))))
 
 (B (name putwithbothon)(=>(a#putdownBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND loc obj :0.02)(^(put *e0 agent u obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(destin e3 *e0 loc))))
-(B (name putwithbothon2)(=>(a#putdownBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND loc *obj :0.02)(^(put *e0 agent u *obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(destin e3 *obj loc))))
-(B (name putwithbothon2down)(=>(a#putdownBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND loc *obj :0.01)(^(put *e0 agent u *obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(destin e3 *obj loc)(down-r e4 *e0))))
+; loc with hand
+(B (name putwithbothon2)(=>(a#putdownBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND *loc *obj :0.02)(^(put *e0 agent u *obj)(with-p e1 *loc *hand)(bothhands-n e2 *hand)(destin e3 *e0 *loc))))
+; obj with hand
+(B (name putwithbothon3)(=>(a#putdownBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND *loc *obj :0.02)(^(put *e0 agent u *obj)(with-p e1 *obj *hand)(bothhands-n e2 *hand)(destin e3 *e0 *loc))))
+; obj on loc
+(B (name putwithbothon3)(=>(a#putdownBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND *loc *obj :0.02)(^(put *e0 agent u *obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(destin e3 *obj *loc))))
+
 (B (name putwithbothdown)(=>(a#putdownBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND LOCATION obj :0.3)(^(put *e0 agent u obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(down-r e3 *e0))))
+; obj with hand
 (B (name putwithbothdown2)(=>(a#putdownBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND LOCATION *obj :0.3)(^(put *e0 agent u *obj)(with-p e1 *obj *hand)(bothhands-n e2 *hand)(down-r e3 *e0))))
 
-(B (name putwithhon)(=>(a#putdown agent *hand loc obj :0.2)(^(put *e0 agent u obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(destin e3 *e0 loc))))
+; putdown one hand
 (B (name putwithondown)(=>(a#putdown agent *hand loc obj :0.1)(^(put *e0 agent u obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(destin e3 *e0 loc)(down-r e4 *e0))))
-(B (name putwithon2)(=>(a#putdown agent *hand loc *obj :0.2)(^(put *e0 agent u *obj)(with-p e1 *e0 *hand)(bothhand-n e2 *hand)(destin e3 *obj loc))))
-(B (name putwithon2down)(=>(a#putdown agent *hand loc *obj :0.1)(^(put *e0 agent u *obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(destin e3 *obj loc)(down-r e4 *e0))))
+; loc with hand
+(B (name putwithondown2)(=>(a#putdown agent *hand *loc obj :0.1)(^(put *e0 agent u obj)(with-p e1 *loc *hand)(hand-n e2 *hand)(destin e3 *e0 *loc)(down-r e4 *e0))))
+
+(B (name putwithhon)(=>(a#putdown agent *hand loc obj :0.2)(^(put *e0 agent u obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(destin e3 *e0 loc))))
+; loc with hand
+(B (name putwithon2)(=>(a#putdown agent *hand loc *obj :0.2)(^(put *e0 agent u *obj)(with-p e1 *loc *hand)(hand-n e2 *hand)(destin e3 *e0 *loc))))
+; obj with hand
+(B (name putwithon3)(=>(a#putdown agent *hand loc *obj :0.2)(^(put *e0 agent u *obj)(with-p e1 *obj *hand)(hand-n e2 *hand)(destin e3 *e0 loc))))
+; obj on loc
+(B (name putwithon3)(=>(a#putdown agent *hand loc *obj :0.2)(^(put *e0 agent u *obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(destin e3 *obj loc))))
+
 (B (name putwithdown)(=>(a#putdown agent *hand LOCATION obj :0.3)(^(put *e0 agent u obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(down-r e3 *e0))))
+; obj with hand
 (B (name putwithdown2)(=>(a#putdown agent *hand LOCATION *obj :0.3)(^(put *e0 agent u *obj)(with-p e1 *obj *hand)(hand-n e2 *hand)(down-r e3 *e0))))
-
-; fix wrong parse
-
-;(B (name putonfix)(=>(a#putdown agent hand loc obj :0.9)(^(put *e0 agent u1 obj)(destin e2 u2 loc))))
-;(B (name putwithfix)(=>(a#putdown agent *hand LOCATION obj :0.9)(^(put *e0 agent u1 obj)(with-p e2 u2 *hand)(hand-n e3 *hand))))
 
 ; MOVE
 
 (B (name moveagentto)(=>(^(a#move agent LOCATION loc2 :0.45)(loc loc2 :0.0))(^(move-v *e0 agent)(to-p e1 *e0 loc2))))
+(B (name moveNagentto)(=>(^(a#move OBJ_AGENT_ROBOT LOCATION loc2 :0.45)(loc loc2 :0.0))(^(move-n u *e0)(to-p e1 *e0 loc2))))
 ;(B (name moveagentfrom)(=>(^(a#move agent loc1 LOCATION :0.45)(loc loc1 :0.0))(^(move-v *e0 agent)(from-p e1 *e0 loc1))))
 
 ; MOVE TO DIRECTION
