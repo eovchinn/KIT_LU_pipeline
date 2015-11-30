@@ -184,7 +184,7 @@
 ; MOVE
 
 (B (name moveagentto)(=>(^(a#move agent LOCATION loc2 :0.45)(loc loc2 :0.0))(^(move-v *e0 agent)(to-p e1 *e0 loc2))))
-(B (name moveNagentto)(=>(^(a#move OBJ_AGENT_ROBOT LOCATION loc2 :0.45)(loc loc2 :0.0))(^(move-n u *e0)(to-p e1 *e0 loc2))))
+(B (name moveNagentto)(=>(^(a#move R LOCATION loc2 :0.45)(loc loc2 :0.0))(^(move-n u *e0)(to-p e1 *e0 loc2))))
 ;(B (name moveagentfrom)(=>(^(a#move agent loc1 LOCATION :0.45)(loc loc1 :0.0))(^(move-v *e0 agent)(from-p e1 *e0 loc1))))
 
 ; MOVE TO DIRECTION
@@ -222,7 +222,7 @@
 
 (B (name wipewithv)(=>(a#wipe R hand loc OBJ_SPONGE :0.1)(^(wipe-v *e0 R u loc)(with-p e1 *e0 hand))))
 (B (name wipewithv)(=>(a#wipe R hand *loc OBJ_SPONGE :0.1)(^(wipe-v *e0 R u *loc)(with-p e1 *loc hand))))
-(B (name wipev)(=>(a#wipe R hand loc OBJ_SPONGE :0.7)(hand-n e4 hand :0.2)(wipe-v *e0 R u obj)))
+(B (name wipev)(=>(^(a#wipe R hand loc OBJ_SPONGE :0.7)(hand-n e4 hand :0.2))(wipe-v *e0 R u loc)))
 
 ; STIR
 
@@ -233,11 +233,11 @@
 
 (B (name stirinv)(=>(a#stir R hand OBJ_STIRRER LOCATION cont :0.3)(^(stir-v *e0 R u obj)(in-p e1 *e0 cont))))
 
-(B (name stirwithv)(=>(^(a#stir R hand OBJ_STIRRER LOCATION cont :0.2)(container-n e4 con :0.1))(^(stir-v *e0 R u obj)(with-p e1 *e0 hand))))
+(B (name stirwithv)(=>(^(a#stir R hand OBJ_STIRRER LOCATION cont :0.2)(container-n e4 cont :0.1))(^(stir-v *e0 R u obj)(with-p e1 *e0 hand))))
 
-(B (name stirwithv)(=>(^(a#stir R hand OBJ_STIRRER LOCATION cont :0.2)(container-n e4 con :0.1))(^(stir-v *e0 R u *obj)(with-p e1 *obj hand))))
+(B (name stirwithv2)(=>(^(a#stir R hand OBJ_STIRRER LOCATION cont :0.2)(container-n e4 cont :0.1))(^(stir-v *e0 R u *obj)(with-p e1 *obj hand))))
 
-;(B (name stirv)(=>(^(a#stir R hand OBJ_STIRRER LOCATION cont :0.7)(tool-n e3 tool :0.1)(hand-n e4 hand :0.1)(container-n e5 con :0.0))(stir-v *e0 R u obj)))
+;(B (name stirv)(=>(^(a#stir R hand OBJ_STIRRER LOCATION cont :0.7)(tool-n e3 tool :0.1)(hand-n e4 hand :0.1)(container-n e5 cont :0.0))(stir-v *e0 R u obj)))
 
 ; POUR
 
@@ -246,8 +246,8 @@
 (B (name pourintowithv)(=>(a#pour R hand LOCATION cont obj :0.1)(^(pour-v *e0 R u obj)(into-p e1 *e0 *cont)(with-p e2 *cont hand))))
 
 (B (name pourwithv)(=>(^(a#pour R hand LOCATION cont obj :0.1)(container-n e4 con :0))(^(pour-v *e0 R u obj)(with-p e1 *e0 hand))))
-(B (name pourwithv)(=>(^(a#pour R hand LOCATION cont obj :0.1)(container-n e4 con :0))(^(pour-v *e0 R u *obj)(with-p e1 *obj hand))))
-(B (name pourintpv)(=>(a#pour R hand LOCATION cont obj :0.1)(^(pour-v *e0 R u obj)(into-p e1 *e0 cont))))
+(B (name pourwithv2)(=>(^(a#pour R hand LOCATION cont *obj :0.1)(container-n e4 con :0))(^(pour-v *e0 R u *obj)(with-p e1 *obj hand))))
+(B (name pourintov)(=>(a#pour R hand LOCATION cont obj :0.1)(^(pour-v *e0 R u obj)(into-p e1 *e0 cont))))
 ;(B (name pourv)(=>(^(a#pour R hand LOCATION cont obj :0.8)(container-n e5 con :0.1))(pour-v *e0 R u obj)))
 
 ; HAND TO HUMAN
@@ -256,8 +256,18 @@
 (B (name handn)(=>(hand e0 R u obj :0.9)(hand-n e0 agent u obj)))
 (B (name givev)(=>(hand e0 R u obj :0.9)(give-v e0 R u obj)))
 
-(B (name givewithv)(=>(a#handToHuman R H hand LOCATION obj :0.4)(^(hand *e0 R u obj)(with-p e1 *e0 hand))))
-(B (name givewithv)(=>(a#handToHuman R H hand LOCATION *obj :0.4)(^(hand *e0 R u *obj)(with-p e1 *obj hand))))
+(B (name givewithfromv)(=>(a#handToHuman R H hand loc obj :0.1)(^(hand *e0 R u obj)(with-p e1 *e0 hand)(from-p e2 *e0 loc))))
+; obj with hand
+(B (name givewithfromv2)(=>(a#handToHuman R H hand loc *obj :0.1)(^(hand *e0 R u *obj)(with-p e1 *e0 hand)(from-p e2 *obj loc))))
+; loc with hand
+(B (name givewithfromv3)(=>(a#handToHuman R H hand *loc *obj :0.1)(^(hand *e0 R u *obj)(with-p e1 *loc hand)(from-p e2 *e0 *loc))))
+; obj from loc, loc with hand
+(B (name givewithfromv4)(=>(a#handToHuman R H hand *loc *obj :0.1)(^(hand *e0 R u *obj)(with-p e1 *loc hand)(from-p e2 *obj *loc))))
+
+(B (name givewithv)(=>(a#handToHuman R H hand LOCATION obj :0.2)(^(hand *e0 R u obj)(with-p e1 *e0 hand))))
+; obj with hand
+(B (name givewithv)(=>(a#handToHuman R H hand LOCATION *obj :0.2)(^(hand *e0 R u *obj)(with-p e1 *obj hand))))
+(B (name givev)(=>(^(a#handToHuman R H hand LOCATION *obj :0.8)(hand-n e1 hand :0.1))(hand *e0 R u *obj)))
 
 ; CLOSE
 

@@ -2,7 +2,7 @@ Move to the sideboard
 {"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "location", "loc_sideboard"], "name": "move"}], "goal_types": {}, "objects_talked_about": ["sideboard-n"], "context_words": ["move"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 move to the sideboard
-{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": ["sideboard-n"], "context_words": [], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "location", "loc_sideboard"], "name": "move"}], "goal_types": {}, "objects_talked_about": ["sideboard-n"], "context_words": [], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Move the chair to the sideboard
 {"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "location", "loc_sideboard", "obj_chair"], "name": "moveChair"}], "goal_types": {}, "objects_talked_about": ["chair-n", "sideboard-n"], "context_words": ["move"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
@@ -44,7 +44,13 @@ Pour the corn with your left hand
 {"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "location", "obj_corn"], "name": "pour"}], "goal_types": {}, "objects_talked_about": ["lefthand-n", "corn-n"], "context_words": ["pour"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 pour the corn with your left hand
-{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "location"], "name": "pour"}], "goal_types": {}, "objects_talked_about": ["lefthand-n"], "context_words": ["pour"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "location", "obj_corn"], "name": "pour"}], "goal_types": {}, "objects_talked_about": ["corn-n", "lefthand-n"], "context_words": ["pour"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+
+Give me the juice from the table with your right hand
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_agent_human", "obj_righthand", "loc_table", "obj_juice"], "name": "handToHuman"}], "goal_types": {}, "objects_talked_about": ["juice-n", "righthand-n", "table-n"], "context_words": ["give"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+
+give me the juice from the fridge with your left hand
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_agent_human", "obj_lefthand", "loc_fridge", "obj_juice"], "name": "handToHuman"}], "goal_types": {}, "objects_talked_about": ["juice-n", "fridge-n", "lefthand-n"], "context_words": ["give"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Give me the juice with your right hand
 {"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_agent_human", "obj_righthand", "location", "obj_juice"], "name": "handToHuman"}], "goal_types": {}, "objects_talked_about": ["juice-n", "righthand-n"], "context_words": ["give"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
@@ -53,10 +59,10 @@ give me the juice with your right hand
 {"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_agent_human", "obj_righthand", "location", "obj_juice"], "name": "handToHuman"}], "goal_types": {}, "objects_talked_about": ["juice-n", "righthand-n"], "context_words": ["give"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Give me the juice
-{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": [], "context_words": ["give"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_agent_human", "obj_hand", "location", "obj_juice"], "name": "handToHuman"}], "goal_types": {}, "objects_talked_about": ["juice-n", "hand-n"], "context_words": ["give"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 give me the juice
-{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": [], "context_words": ["give"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_agent_human", "obj_hand", "location", "obj_juice"], "name": "handToHuman"}], "goal_types": {}, "objects_talked_about": ["juice-n", "hand-n"], "context_words": ["give"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Stir the salad in the bowl with your left hand
 {"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_stirrer", "location", "obj_bowl"], "name": "stir"}], "goal_types": {}, "objects_talked_about": ["bowl-n", "lefthand-n"], "context_words": ["stir"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
@@ -65,10 +71,10 @@ stir the salad in the bowl with your left hand
 {"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_stirrer", "location", "obj_bowl"], "name": "stir"}], "goal_types": {}, "objects_talked_about": ["bowl-n", "lefthand-n"], "context_words": ["stir"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Stir the salad with your left hand
-{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_stirrer", "location"], "name": "stir"}], "goal_types": {}, "objects_talked_about": ["lefthand-n"], "context_words": ["stir"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_stirrer", "location", "obj_container"], "name": "stir"}], "goal_types": {}, "objects_talked_about": ["lefthand-n", "container-n"], "context_words": ["stir"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 stir the salad with your left hand
-{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_stirrer", "location"], "name": "stir"}], "goal_types": {}, "objects_talked_about": ["lefthand-n"], "context_words": ["stir"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_stirrer", "location", "obj_container"], "name": "stir"}], "goal_types": {}, "objects_talked_about": ["container-n", "lefthand-n"], "context_words": ["stir"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Wipe the sideboard with your right hand
 {"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_righthand", "loc_sideboard", "obj_sponge"], "name": "wipe"}], "goal_types": {}, "objects_talked_about": ["sideboard-n", "righthand-n"], "context_words": ["wipe"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
@@ -77,16 +83,16 @@ wipe the sideboard with your right hand
 {"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_righthand", "loc_sideboard", "obj_sponge"], "name": "wipe"}], "goal_types": {}, "objects_talked_about": ["sideboard-n", "righthand-n"], "context_words": ["wipe"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Wipe the sideboard
-{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": [], "context_words": ["wipe"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_hand", "loc_sideboard", "obj_sponge"], "name": "wipe"}], "goal_types": {}, "objects_talked_about": ["sideboard-n", "hand-n"], "context_words": ["wipe"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 wipe the sideboard
-{"recognize_plan": false, "commands": [], "goal_types": {}, "objects_talked_about": [], "context_words": ["wipe"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_hand", "loc_sideboard", "obj_sponge"], "name": "wipe"}], "goal_types": {}, "objects_talked_about": ["sideboard-n", "hand-n"], "context_words": ["wipe"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Put the orange bowl down on the table with your both hands
-{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_righthand", "loc_table", "obj_orangebowl"], "name": "putdownBothHands"}, {"args": ["obj_agent_robot", "obj_lefthand", "obj_righthand", "loc_table", "obj_orangebowl"], "name": "putdownBothHands"}], "goal_types": {}, "objects_talked_about": ["orangebowl-n", "table-n"], "context_words": ["put"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_righthand", "loc_table", "obj_orangebowl"], "name": "putdownBothHands"}], "goal_types": {}, "objects_talked_about": ["orangebowl-n", "table-n"], "context_words": ["put"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 put the orange bowl down on the table with your both hands
-{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_righthand", "loc_table", "obj_orangebowl"], "name": "putdownBothHands"}, {"args": ["obj_agent_robot", "obj_lefthand", "obj_righthand", "loc_table", "obj_orangebowl"], "name": "putdownBothHands"}], "goal_types": {}, "objects_talked_about": ["orangebowl-n", "table-n"], "context_words": ["put"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_righthand", "loc_table", "obj_orangebowl"], "name": "putdownBothHands"}], "goal_types": {}, "objects_talked_about": ["orangebowl-n", "table-n"], "context_words": ["put"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Put the orange bowl on the table with your both hands
 {"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_righthand", "loc_table", "obj_orangebowl"], "name": "putdownBothHands"}], "goal_types": {}, "objects_talked_about": ["orangebowl-n", "table-n"], "context_words": ["put"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
