@@ -6,7 +6,7 @@
 
 (B (name 3els)(=> (list *l0 el1 el3 el2 :0.2)(^(subset_of e1 el1 *l0)(subset_of e2 *l1 *l0)(subset_of e3 el2 *l1)(subset_of e4 el3 *l1))))
 
-(B (name 2els)(=> (list *l0 el1 el2 :0.45)(^(subset_of e1 el1 *l0)(subset_of e2 el2 *l0))))
+(B (name 2els)(=> (list *l0 el2 el1 :0.45)(^(subset_of e1 el1 *l0)(subset_of e2 el2 *l0))))
 
 ; people
 
