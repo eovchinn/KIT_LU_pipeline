@@ -945,11 +945,11 @@
 
 ; LOCATION TYPES
 
-(B (name sideboard)(=>(^(etcS x :0.9)(loc x  :0))(sideboard-n e1 x)))
-(B (name table)(=>(^(etcT x :0.9)(loc x  :0))(table-n e1 x)))
-(B (name fridge)(=>(^(etcF x :0.9)(loc x  :0))(fridge-n e1 x)))
-(B (name sink)(=>(^(etcSi x :0.9)(loc x  :0))(sink-n e1 x)))
-(B (name sink)(=>(^(etcCT x :0.9)(loc x  :0))(countertop-n e1 x)))
+;(B (name sideboard)(=>(^(etcS x :0.9)(loc x  :0))(sideboard-n e1 x)))
+;(B (name table)(=>(^(etcT x :0.9)(loc x  :0))(table-n e1 x)))
+;(B (name fridge)(=>(^(etcF x :0.9)(loc x  :0))(fridge-n e1 x)))
+;(B (name sink)(=>(^(etcSi x :0.9)(loc x  :0))(sink-n e1 x)))
+;(B (name sink)(=>(^(etcCT x :0.9)(loc x  :0))(countertop-n e1 x)))
 
 
 ; HIERARCHY
