@@ -113,26 +113,26 @@
 (B (name graspv)(=>(grasp e0 agent obj :0.9)(grasp-v e0 agent u obj)))
 (B (name graspv)(=>(grasp e0 agent obj :0.9)(take-v e0 agent u obj)))
 
-(B (name graspwithbothhandsfrom)(=>(a#graspBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND loc obj :0.01)(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(from-p e3 *e0 loc))))
+(B (name graspwithbothhandsfrom)(=>(^(a#graspBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND loc obj :0.01)(loc loc :0.0))(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(from-p e3 *e0 loc))))
 ; loc with hands
-(B (name graspwithbothhandsfrom2)(=>(a#graspBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND *loc obj :0.01)(^(grasp *e0 agent obj)(with-p e1 *loc *hand)(bothhands-n e2 *hand)(from-p e3 *e0 *loc))))
+(B (name graspwithbothhandsfrom2)(=>(^(a#graspBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND *loc obj :0.01)(loc loc :0.0))(^(grasp *e0 agent obj)(with-p e1 *loc *hand)(bothhands-n e2 *hand)(from-p e3 *e0 *loc))))
 ; obj with hands
-(B (name graspwithbothhandsfrom3)(=>(a#graspBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND *loc *obj :0.01)(^(grasp *e0 agent *obj)(with-p e1 *obj *hand)(bothhands-n e2 *hand)(from-p e3 *e0 *loc))))
+(B (name graspwithbothhandsfrom3)(=>(^(a#graspBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND *loc *obj :0.01)(loc loc :0.0))(^(grasp *e0 agent *obj)(with-p e1 *obj *hand)(bothhands-n e2 *hand)(from-p e3 *e0 *loc))))
 ; obj from loc
-(B (name graspwithbothhandsfrom4)(=>(a#graspBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND *loc *obj :0.01)(^(grasp *e0 agent *obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(from-p e3 *obj *loc))))
+(B (name graspwithbothhandsfrom4)(=>(^(a#graspBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND *loc *obj :0.01)(loc loc :0.0))(^(grasp *e0 agent *obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand)(from-p e3 *obj *loc))))
 
 (B (name graspwithbothhands)(=>(^(a#graspBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND LOCATION obj :0.02))(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand))))
 ; obj with hands
 (B (name graspwithbothhands2)(=>(a#graspBothHands agent OBJ_LEFTHAND OBJ_RIGHTHAND LOCATION *obj :0.02)(^(grasp *e0 agent *obj)(with-p e1 *obj *hand)(bothhands-n e2 *hand))))
 
 ; grasp with one hand
-(B (name graspwithfrom)(=>(a#grasp agent *hand loc obj :0.1)(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(from-p e3 *e0 loc))))
+(B (name graspwithfrom)(=>(^(a#grasp agent *hand loc obj :0.1)(loc loc :0.0))(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(from-p e3 *e0 loc))))
 ; obj with hands
-(B (name graspwithfrom2)(=>(a#grasp agent *hand loc *obj :0.1)(^(grasp *e0 agent *obj)(with-p e1 *obj *hand)(hand-n e2 *hand)(from-p e3 *e0 loc))))
+(B (name graspwithfrom2)(=>(^(a#grasp agent *hand loc *obj :0.1)(loc loc :0.0))(^(grasp *e0 agent *obj)(with-p e1 *obj *hand)(hand-n e2 *hand)(from-p e3 *e0 loc))))
 ; loc with hands
-(B (name graspwithfrom3)(=>(a#grasp agent *hand *loc *obj :0.1)(^(grasp *e0 agent *obj)(with-p e1 *loc *hand)(hand-n e2 *hand)(from-p e3 *e0 *loc))))
+(B (name graspwithfrom3)(=>(^(a#grasp agent *hand *loc *obj :0.1)(loc loc :0.0))(^(grasp *e0 agent *obj)(with-p e1 *loc *hand)(hand-n e2 *hand)(from-p e3 *e0 *loc))))
 ; obj from loc
-(B (name graspwithfrom4)(=>(a#grasp agent *hand *loc *obj :0.1)(^(grasp *e0 agent *obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(from-p e3 *obj *loc))))
+(B (name graspwithfrom4)(=>(^(a#grasp agent *hand *loc *obj :0.1)(loc loc :0.0))(^(grasp *e0 agent *obj)(with-p e1 *e0 *hand)(hand-n e2 *hand)(from-p e3 *obj *loc))))
 
 (B (name graspwith)(=>(a#grasp agent *hand LOCATION obj :0.2)(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(hand-n e2 *hand))))
 ; obj with hands
@@ -220,9 +220,9 @@
 
 ; WIPE
 
-(B (name wipewithv)(=>(a#wipe R hand loc OBJ_SPONGE :0.1)(^(wipe-v *e0 R u loc)(with-p e1 *e0 hand))))
-(B (name wipewithv)(=>(a#wipe R hand *loc OBJ_SPONGE :0.1)(^(wipe-v *e0 R u *loc)(with-p e1 *loc hand))))
-(B (name wipev)(=>(^(a#wipe R hand loc OBJ_SPONGE :0.7)(hand-n e4 hand :0.2))(wipe-v *e0 R u loc)))
+(B (name wipewithv)(=>(^(a#wipe R hand loc OBJ_SPONGE :0.1)(loc loc :0))(^(wipe-v *e0 R u loc)(with-p e1 *e0 hand))))
+(B (name wipewithv)(=>(^(a#wipe R hand *loc OBJ_SPONGE :0.1)(loc loc :0))(^(wipe-v *e0 R u *loc)(with-p e1 *loc hand))))
+(B (name wipev)(=>(^(a#wipe R hand loc OBJ_SPONGE :0.7)(hand-n e4 hand :0.2)(loc loc :0))(wipe-v *e0 R u loc)))
 
 ; STIR
 
@@ -256,13 +256,13 @@
 (B (name handn)(=>(hand e0 R u obj :0.9)(hand-n e0 agent u obj)))
 (B (name givev)(=>(hand e0 R u obj :0.9)(give-v e0 R u obj)))
 
-(B (name givewithfromv)(=>(a#handToHuman R H hand loc obj :0.1)(^(hand *e0 R u obj)(with-p e1 *e0 hand)(from-p e2 *e0 loc))))
+(B (name givewithfromv)(=>(^(a#handToHuman R H hand loc obj :0.1)(loc loc :0.0))(^(hand *e0 R u obj)(with-p e1 *e0 hand)(from-p e2 *e0 loc))))
 ; obj with hand
-(B (name givewithfromv2)(=>(a#handToHuman R H hand loc *obj :0.1)(^(hand *e0 R u *obj)(with-p e1 *e0 hand)(from-p e2 *obj loc))))
+(B (name givewithfromv2)(=>(^(a#handToHuman R H hand loc *obj :0.1)(loc loc :0.0))(^(hand *e0 R u *obj)(with-p e1 *e0 hand)(from-p e2 *obj loc))))
 ; loc with hand
-(B (name givewithfromv3)(=>(a#handToHuman R H hand *loc *obj :0.1)(^(hand *e0 R u *obj)(with-p e1 *loc hand)(from-p e2 *e0 *loc))))
+(B (name givewithfromv3)(=>(^(a#handToHuman R H hand *loc *obj :0.1)(loc loc :0.0))(^(hand *e0 R u *obj)(with-p e1 *loc hand)(from-p e2 *e0 *loc))))
 ; obj from loc, loc with hand
-(B (name givewithfromv4)(=>(a#handToHuman R H hand *loc *obj :0.1)(^(hand *e0 R u *obj)(with-p e1 *loc hand)(from-p e2 *obj *loc))))
+(B (name givewithfromv4)(=>(^(a#handToHuman R H hand *loc *obj :0.1)(loc loc :0.0))(^(hand *e0 R u *obj)(with-p e1 *loc hand)(from-p e2 *obj *loc))))
 
 (B (name givewithv)(=>(a#handToHuman R H hand LOCATION obj :0.2)(^(hand *e0 R u obj)(with-p e1 *e0 hand))))
 ; obj with hand
