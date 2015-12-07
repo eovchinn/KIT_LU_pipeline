@@ -72,13 +72,15 @@
 
 ; directions
 
-(B (name toleft)(=>(^(direc x :0.9)(loc x :0.0))(left-n e2 x)))
-(B (name toright)(=>(^(direc x :0.9)(loc x :0.0))(right-n e2 x)))
-(B (name backwardsn)(=>(^(direc x :0.9)(loc x :0.0))(backward-n e2 x)))
-(B (name forwardsn)(=>(^(direc x :0.9)(loc x :0.0))(forward-n e2 x)))
+(B (name toleft)(=>(^(direc x :1)(loc x :0.0))(left-n e2 x)))
+(B (name toright)(=>(^(direc x :1)(loc x :0.0))(right-n e2 x)))
+(B (name backwardsn)(=>(^(direc x :1)(loc x :0.0))(backward-n e2 x)))
+(B (name forwardsn)(=>(^(direc x :1)(loc x :0.0))(forward-n e2 x)))
 
-(B (name backwardsr)(=>(^(direc x :0.9)(backwards-n e2 x :0.0)(loc x :0.0))(backwards-r e2 x)))
-(B (name forwardsr)(=>(^(direc x :0.9)(forwards-n e2 x :0.0)(loc x :0.0))(forwards-r e2 x)))
+(B (name backwardsr)(=>(^(direc x :1)(backward-n e2 x :0.0)(loc x :0.0))(backwards-r e2 x)))
+(B (name backwardsr)(=>(^(direc x :1)(backward-n e2 x :0.0)(loc x :0.0))(backward-r e2 x)))
+(B (name forwardsr)(=>(^(direc x :1)(forward-n e2 x :0.0)(loc x :0.0))(forwards-r e2 x)))
+(B (name forwardsr)(=>(^(direc x :1)(forward-n e2 x :0.0)(loc x :0.0))(forward-r e2 x)))
 
 ;;;;;;;;;;;
 ;LOCATIONS;
@@ -183,24 +185,30 @@
 
 ; MOVE
 
-(B (name moveagentto)(=>(^(a#move agent LOCATION loc2 :0.45)(loc loc2 :0.0))(^(move-v *e0 agent)(to-p e1 *e0 loc2))))
+(B (name movev)(=>(move e0 agent :0.9)(move-v e0 agent)))
+(B (name gov)(=>(move e0 agent :0.9)(go-v e0 agent u1 u2)))
+
+(B (name moveagentto)(=>(^(a#move agent LOCATION loc2 :0.45)(loc loc2 :0.0))(^(move *e0 agent)(to-p e1 *e0 loc2))))
 (B (name moveNagentto)(=>(^(a#move R LOCATION loc2 :0.45)(loc loc2 :0.0))(^(move-n u *e0)(to-p e1 *e0 loc2))))
-;(B (name moveagentfrom)(=>(^(a#move agent loc1 LOCATION :0.45)(loc loc1 :0.0))(^(move-v *e0 agent)(from-p e1 *e0 loc1))))
+;(B (name moveagentfrom)(=>(^(a#move agent loc1 LOCATION :0.45)(loc loc1 :0.0))(^(move *e0 agent)(from-p e1 *e0 loc1))))
 
 ; MOVE TO DIRECTION
 
-(B (name moverobottodir)(=>(a#moveRelative agent u *dir :0.1)(^(move-v *e0 agent)(to-p e1 *e0 *dir)(direc *dir))))
-(B (name moverobotdir)(=>(a#moveRelative R u *dir :0.4)(^(move-n e0 *dir)(direc *dir))))
+(B (name moverobottodir)(=>(a#moveRelative agent u *dir :0.1)(^(move *e0 agent)(to-p e1 *e0 *dir)(direc *dir))))
+(B (name moverobotdirn1)(=>(a#moveRelative R u *dir :0.4)(^(move-n e0 *dir)(direc *dir))))
+(B (name moverobotdirnof)(=>(a#moveRelative R u *dir :0.3)(^(move-n e0 *m)(direc *dir)(of-p e3 *m *dir))))
 
-(B (name moverobotsteptodir)(=>(a#moveRelative agent n *dir :0.1)(^(move-v e0 agent u *s)(step-n e1 *s)(card e2 *s n)(to-p e3 *s *dir)(direc *dir))))
-(B (name moverobotsteptodir2)(=>(a#moveRelative agent n *dir :0.1)(^(move-v e0 agent u *s)(step-n e1 *s)(card e2 *s n)(to-p e3 e1 *dir)(direc *dir))))
-(B (name moverobotsteptodir2)(=>(a#moveRelative R n *dir :0.1)(^(move-n e0 m)(step-n e1 *s)(card e2 *s n)(to-p e3 *s *dir)(direc *dir))))
-(B (name moverobotstepdirn)(=>(a#moveRelative R n dir :0.1)(^(move-n e0 m)(step-n e1 *s)(card e2 *s n)(direc dir))))
+(B (name movestepv)(=>(movestep e0 agent *s :0.9)(^(move-v e0 agent u *s)(step-n e1 *s))))
+(B (name movestepn)(=>(movestep m R s :0.9)(^(move-n e0 m)(step-n e1 s))))
+(B (name gostepv)(=>(movestep e0 agent *s :0.9)(^(go-v e0 agent u *s)(step-n e1 *s))))
 
-(B (name moverobotstepindir)(=>(a#moveRelative agent n *dir :0.1)(^(move-v e0 agent u *s)(step-n e1 *s)(card e2 *s n)(in-p e3 *s *dir)(direc *dir))))
-(B (name moverobotstepindir2)(=>(a#moveRelative agent n *dir :0.1)(^(move-v e0 agent u *s)(step-n e1 *s)(card e2 *s n)(in-p e3 e1 *dir)(direc *dir))))
+(B (name moverobotsteptodir)(=>(a#moveRelative agent n *dir :0.1)(^(movestep e0 agent *s)(card e2 *s n)(to-p e3 *s *dir)(direc *dir))))
+(B (name moverobotsteptodir2)(=>(a#moveRelative agent n *dir :0.1)(^(movestep e0 agent *s)(card e2 *s n)(to-p e3 e0 *dir)(direc *dir))))
+(B (name moverobotstepdirn)(=>(a#moveRelative R n dir :0.4)(^(movestep e0 agent *s)(card e2 *s n)(direc dir))))
 
-(B (name moverobotstepdirv)(=>(a#moveRelative agent n *e0 :0.2)(^(move-v *e0 agent u *s)(step-n e1 *s)(card e2 *s n)(direc *e0))))
+(B (name moverobotstepindir)(=>(a#moveRelative agent n *dir :0.1)(^(movestep e0 agent *s)(card e2 *s n)(in-p e3 *s *dir)(direc *dir))))
+(B (name moverobotstepindir2)(=>(a#moveRelative agent n *dir :0.1)(^(movestep e0 agent *s)(card e2 *s n)(in-p e3 e1 *dir)(direc *dir))))
+(B (name moverobotstepdirv)(=>(a#moveRelative agent n *e0 :0.3)(^(movestep e0 agent *s)(card e2 *s n)(direc *e0))))
 
 ; MOVE CHAIR
 
