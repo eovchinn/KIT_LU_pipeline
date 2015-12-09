@@ -319,11 +319,18 @@
 (B (name arrangechairfix4)(=>(^(g#objectAt c cl u :0.4)(infrontof_chairdropofflocation-n eu cl :0.0)(loc cl :0.0))(^(arrange-v e0 agent u1 u2)(chair-n e1 c))))
 (B (name arrangeNchairsfix)(=>(^(g#objectAt *c ts e0 :0.1)(infrontof_chairdropofflocation-n eu cl :0.0)(loc cl :0.0)(r# cl n :0.0)(r# e0 n :0.0)(r# c n :0.0))(^(arrange-v e0 agent u1 u2)(chair-n e1 *c)(card e2 *c n))))
 
-; wipe the table
+; wipe
 
-(B (name wipev)(=>(^(g#cleaned t u :0.9)(s#n#cleaned e0 t u1 :0))(wipe-v e0 R u t)))
-(B (name cleanv)(=>(^(g#cleaned t u :0.6)(s#n#cleaned e0 t u1 :0))(clean-v e0 R u t)))
-(B (name cleanv)(=>(^(g#cleaned x e0 :0.6)(s#n#cleaned e0 x u1 :0))(clean-n e0 x)))
+(B (name wipev)(=>(^(g#cleaned x u :0.9)(s#n#cleaned e0 x u1 :0)(loc x :0))(wipe-v e0 R u x)))
+(B (name cleanv)(=>(^(g#cleaned x u :0.6)(s#n#cleaned e0 x u1 :0)(loc x :0))(clean-v e0 R u x)))
+(B (name cleanv)(=>(^(g#cleaned x e0 :0.6)(s#n#cleaned e0 x u1 :0)(loc x :0))(clean-n e0 x)))
+
+; clean and dirty
+
+(B (name cleanvu)(=>(s#n#dirty e0 t u1 :0.9)(clean-v e0 a u2 t)))
+(B (name cleana)(=>(s#n#dirty e0 x u :0.9)(clean-a e0 x)))
+(B (name dirtya)(=>(s#dirty e0 x u :0.9)(dirty-a e0 x)))
+(B (name dirtyn)(=>(s#dirty e0 x u :0.9)(^(dirty-n e0 *y)(equal e1 x *y))))
 
 ; close and open
 
@@ -338,14 +345,6 @@
 
 (B (name openv)(=>(^(s#open e0 obj u1 :0.9)(loc obj :0.0))(open-v e0 a u2 obj)))
 (B (name opena)(=>(^(s#open e0 obj u :0.9)(loc obj :0.0))(open-a e0 obj)))
-
-
-; clean and dirty
-
-(B (name cleanv)(=>(s#n#dirty e0 t u1 :0.9)(clean-v e0 a u2 t)))
-(B (name cleana)(=>(s#n#dirty e0 x u :0.9)(clean-a e0 x)))
-(B (name dirtya)(=>(s#dirty e0 x u :0.9)(dirty-a e0 x)))
-(B (name dirtyn)(=>(s#dirty e0 x u :0.9)(^(dirty-n e0 *y)(equal e1 x *y))))
 
 ; INCOMPATIBILITY
 
