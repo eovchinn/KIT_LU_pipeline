@@ -306,18 +306,18 @@
 (B (name movetable)(=>(^(g#objectAt *t tdl u0 :0.9)(tabledropofflocation-n eu tdl :0.0)(loc tdl :0.0))(^(move e1 agent *t)(table-n e2 *t))))
 
 ; arrange chairs
-(B (name arrangechair)(=>(^(g#objectAt *c cl u :0.2)(infrontof_chairdropofflocation-n eu cl :0.0)(loc cl :0.0))(^(arrange-v e0 agent u1 *c)(chair-n e1 *c))))
-(B (name arrangeNchairs)(=>(^(g#objectAt *c cl e0 :0.1)(infrontof_chairdropofflocation-n eu cl :0.0)(loc cl :0.0)(r# cl n :0.0)(r# e0 n :0.0)(r# *c n :0.0))(^(arrange-v e0 agent u1 *c)(chair-n e1 *c)(card e2 *c n))))
+(B (name arrangechair)(=>(^(g#objectAt *c cl u :0.2)(chairdropofflocation-n eu cl :0.0)(loc cl :0.0))(^(arrange-v e0 agent u1 *c)(chair-n e1 *c))))
+(B (name arrangeNchairs)(=>(^(g#objectAt *c cl e0 :0.1)(chairdropofflocation-n eu cl :0.0)(loc cl :0.0)(r# cl n :0.0)(r# e0 n :0.0)(r# *c n :0.0))(^(arrange-v e0 agent u1 *c)(chair-n e1 *c)(card e2 *c n))))
 
 ; fix wrong parse
-(B (name arrangechairfix1)(=>(^(g#objectAt *c cl u :0.2)(infrontof_chairdropofflocation-n eu cl :0.0)(loc cl :0.0))(^(arrange-n e0 *c)(chair-n e1 *c))))
-(B (name arrangechairfix2)(=>(^(g#objectAt *c cl u :0.2)(infrontof_chairdropofflocation-n eu ts :0.0)(loc cl :0.0))(^(arrange-n e0 *a)(of-p e2 *c *a)(chair-n e1 *c))))
-(B (name arrangeNchairsfix3)(=>(^(g#objectAt *c cl e0 :0.1)(infrontof_chairdropofflocation-n eu cl :0.0)(loc cl :0.0)(r# cl n :0.0)(r# e0 n :0.0)(r# c n :0.0))(^(arrange-n e0 *c)(chair-n e1 *c)(card e2 *c n))))
+(B (name arrangechairfix1)(=>(^(g#objectAt *c cl u :0.2)(chairdropofflocation-n eu cl :0.0)(loc cl :0.0))(^(arrange-n e0 *c)(chair-n e1 *c))))
+(B (name arrangechairfix2)(=>(^(g#objectAt *c cl u :0.2)(chairdropofflocation-n eu ts :0.0)(loc cl :0.0))(^(arrange-n e0 *a)(of-p e2 *c *a)(chair-n e1 *c))))
+(B (name arrangeNchairsfix3)(=>(^(g#objectAt *c cl e0 :0.1)(chairdropofflocation-n eu cl :0.0)(loc cl :0.0)(r# cl n :0.0)(r# e0 n :0.0)(r# c n :0.0))(^(arrange-n e0 *c)(chair-n e1 *c)(card e2 *c n))))
 
-(B (name arrangechairfix31)(=>(^(g#objectAt *c cl u :0.2)(infrontof_chairdropofflocation-n eu cl :0.0)(loc cl :0.0))(^(arrange-p e0 u *c)(chair-n e1 *c))))
+(B (name arrangechairfix31)(=>(^(g#objectAt *c cl u :0.2)(chairdropofflocation-n eu cl :0.0)(loc cl :0.0))(^(arrange-p e0 u *c)(chair-n e1 *c))))
 
-(B (name arrangechairfix4)(=>(^(g#objectAt c cl u :0.4)(infrontof_chairdropofflocation-n eu cl :0.0)(loc cl :0.0))(^(arrange-v e0 agent u1 u2)(chair-n e1 c))))
-(B (name arrangeNchairsfix)(=>(^(g#objectAt *c ts e0 :0.1)(infrontof_chairdropofflocation-n eu cl :0.0)(loc cl :0.0)(r# cl n :0.0)(r# e0 n :0.0)(r# c n :0.0))(^(arrange-v e0 agent u1 u2)(chair-n e1 *c)(card e2 *c n))))
+(B (name arrangechairfix4)(=>(^(g#objectAt c cl u :0.4)(chairdropofflocation-n eu cl :0.0)(loc cl :0.0))(^(arrange-v e0 agent u1 u2)(chair-n e1 c))))
+(B (name arrangeNchairsfix)(=>(^(g#objectAt *c ts e0 :0.1)(chairdropofflocation-n eu cl :0.0)(loc cl :0.0)(r# cl n :0.0)(r# e0 n :0.0)(r# c n :0.0))(^(arrange-v e0 agent u1 u2)(chair-n e1 *c)(card e2 *c n))))
 
 ; wipe
 
