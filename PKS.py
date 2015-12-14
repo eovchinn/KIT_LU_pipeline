@@ -278,6 +278,12 @@ class PKSGenerator(object):
 							elif argind==2: cargs.append("obj_hand")
 							elif argind==3: cargs.append("location")
 							elif argind==4: cargs.append("obj_all")
+						elif name=="putdownBothHands":
+							if argind==1: cargs.append("obj_agent_robot")
+							elif argind==2: cargs.append("obj_lefthand")
+							elif argind==3: cargs.append("obj_righthand")
+							elif argind==4: cargs.append("location")
+							elif argind==5: cargs.append("obj_all")
 						elif name=="move":
 							if argind==1: cargs.append("obj_agent_robot")
 							elif argind==2: cargs.append("location")

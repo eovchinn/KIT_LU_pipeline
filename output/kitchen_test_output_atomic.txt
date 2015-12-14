@@ -107,7 +107,7 @@ put the orange bowl down with your both hands
 {"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "obj_righthand", "location", "obj_orangebowl"], "name": "putdownBothHands"}], "goal_types": {}, "objects_talked_about": ["orangebowl-n"], "context_words": ["put"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 Put the vinegar down on the table with your left hand
-{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "loc_table", "obj_vinegar"], "name": "putdown"}, {"args": ["obj_agent_robot", "obj_lefthand", "loc_table", "obj_vinegar"], "name": "putdown"}], "goal_types": {}, "objects_talked_about": ["vinegar-n", "table-n", "lefthand-n"], "context_words": ["put"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
+{"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_lefthand", "loc_table", "obj_vinegar"], "name": "putdown"}], "goal_types": {}, "objects_talked_about": ["vinegar-n", "table-n", "lefthand-n"], "context_words": ["put"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
 
 put the vinegar down on the table with your right hand
 {"recognize_plan": false, "commands": [{"args": ["obj_agent_robot", "obj_righthand", "loc_table", "obj_vinegar"], "name": "putdown"}], "goal_types": {}, "objects_talked_about": ["vinegar-n", "table-n", "righthand-n"], "context_words": ["put"], "goals": [], "SOW": [], "human_actions": [], "feedback": []}
