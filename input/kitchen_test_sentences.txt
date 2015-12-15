@@ -1,18 +1,20 @@
-Armar please help me to carry the table to the dining location.
-Armar please help me to set the table for two people!
-Armar please arrange one chair.
-Please arrange one chair.
-Set the table.
-I'd like to drink something
-Please bring me some milk
-I'm fine with it
-Put the salad bowl on the table
-Help me to prepare a salad with tomatoes and corn
+Armar please help me to set the table for two people
+Set the table
+Set the table for two
+Armar please arrange one chair
+Please arrange one chair
+Put the salad bowl on the sideboard
+Help me to prepare a salad with tomatoes and corn and oil
 Help me to make a salad with tomatoes and corn in a bowl
-Stir it
+Stir the salad
+Put the salad bowl on the table
+Please clean the sideboard
+I'd like to drink something
+Please bring us some coke
+I'm fine with it
+Armar please help me to carry the table to the dining location
 Help me to move the table!
 Wipe the table!
-Put the coffee filter on the table!
 Help me to arrange the chairs!
 Help me to arrange three chairs!
 Put the cups on the table!
@@ -36,12 +38,13 @@ Stop!
 Grasp the cup!
 Grasp the cup with the left hand!
 Move to the table!
-Put the vitalis cereal on the table!
 Put the orange juice on the table!
 Put the multi vitamin juice on the table!
 Put the milk on the table!
 Put the cup down!
 Put the cup down and move to the table!
+Grasp the blue cup with your left hand
+Grasp the red cup
 I'm grasping the green cup from the table with my right hand.
 I'm putting the red plate down on the table with my left hand.
 I'm moving from the fridge to the table.

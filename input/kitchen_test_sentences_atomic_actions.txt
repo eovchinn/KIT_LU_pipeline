@@ -8,8 +8,14 @@ Request for the sponge in your right hand
 request for the sponge in your right hand
 Open the fridge with your right hand
 open the fridge with your right hand
+Open the fridge
+open the fridge
+The fridge is open
 Close the fridge with your left hand
 close the fridge with your left hand
+Close the fridge
+close the fridge
+The fridge is closed
 Pour the corn into the bowl with your left hand
 pour the corn into the bowl with your left hand
 Pour the corn with your left hand

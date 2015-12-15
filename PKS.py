@@ -272,18 +272,24 @@ class PKSGenerator(object):
 							if argind==1: cargs.append("obj_agent_robot")
 							elif argind==2: cargs.append("obj_hand")
 							elif argind==3: cargs.append("location")
-							elif argind==4: cargs.append("obj_all")
+							elif argind==4: cargs.append("obj_graspable")
+						elif name=="graspBothHands":
+							if argind==1: cargs.append("obj_agent_robot")
+							elif argind==2: cargs.append("obj_lefthand")
+							elif argind==3: cargs.append("obj_righthand")
+							elif argind==4: cargs.append("location")
+							elif argind==5: cargs.append("obj_graspable")
 						elif name=="putdown":
 							if argind==1: cargs.append("obj_agent_robot")
 							elif argind==2: cargs.append("obj_hand")
 							elif argind==3: cargs.append("location")
-							elif argind==4: cargs.append("obj_all")
+							elif argind==4: cargs.append("obj_graspable")
 						elif name=="putdownBothHands":
 							if argind==1: cargs.append("obj_agent_robot")
 							elif argind==2: cargs.append("obj_lefthand")
 							elif argind==3: cargs.append("obj_righthand")
 							elif argind==4: cargs.append("location")
-							elif argind==5: cargs.append("obj_all")
+							elif argind==5: cargs.append("obj_graspable")
 						elif name=="move":
 							if argind==1: cargs.append("obj_agent_robot")
 							elif argind==2: cargs.append("location")
@@ -298,6 +304,35 @@ class PKSGenerator(object):
 						elif name=="moveArmsToHomePosition":
 							if argind==1: cargs.append("obj_agent_robot")
 							elif argind==2: cargs.append("obj_arm")
+						elif name=="stir":
+							if argind==1: cargs.append("obj_agent_robot")
+							elif argind==2: cargs.append("obj_hand")
+							elif argind==3: cargs.append("obj_stirrer")
+							elif argind==4: cargs.append("location")
+							elif argind==5: cargs.append("obj_container")
+						elif name=="wipe":
+							if argind==1: cargs.append("obj_agent_robot")
+							elif argind==2: cargs.append("obj_hand")
+							elif argind==3: cargs.append("location")
+							elif argind==4: cargs.append("obj_sponge")
+						elif name=="pour":
+							if argind==1: cargs.append("obj_agent_robot")
+							elif argind==2: cargs.append("obj_hand")
+							elif argind==3: cargs.append("location")
+							elif argind==4: cargs.append("obj_container")
+							elif argind==5: cargs.append("obj_pourable")
+						elif name=="handToHuman":
+							if argind==1: cargs.append("obj_agent_robot")
+							elif argind==2: cargs.append("obj_agent_human")
+							elif argind==3: cargs.append("obj_hand")
+							elif argind==4: cargs.append("location")
+							elif argind==5: cargs.append("obj_graspable")
+						elif name=="open" or name=="close":
+							if argind==1: cargs.append("obj_agent_robot")
+							elif argind==2: cargs.append("obj_hand")
+							elif argind==3: cargs.append("location")
+
+
 
 			command["name"] = name + app 
 			command["args"] = cargs

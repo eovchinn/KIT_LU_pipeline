@@ -113,7 +113,8 @@
 ; GRASP
 
 (B (name graspv)(=>(grasp e0 agent obj :0.9)(grasp-v e0 agent u obj)))
-(B (name graspv)(=>(grasp e0 agent obj :0.9)(take-v e0 agent u obj)))
+(B (name takev)(=>(grasp e0 agent obj :0.9)(take-v e0 agent u obj)))
+(B (name pickv)(=>(grasp e0 agent obj :0.9)(pick-v e0 agent u obj)))
 
 (B (name graspwith)(=>(a#grasp agent *hand loc obj :0.1)(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(hand-n e2 *hand))))
 (B (name graspfrom)(=>(^(a#grasp agent hand loc obj :0.1)(l#objectAt u1 obj loc u2 :0.1)(loc loc :0.0))(^(grasp *e0 agent obj)(from-p e1 *e0 loc))))
@@ -126,9 +127,13 @@
 
 ; PUT DOWN
 
-(B (name putdownon)(=>(a#putdown agent hand loc obj :0.1)(^(a#put *e0 agent u obj)(down-r e1 *e0)(destin e2 *e0 loc))))
-(B (name putdownwith)(=>(a#putdown agent *hand loc obj :0.1)(^(a#put *e0 agent u obj)(down-r e1 *e0)(with-p e2 *e0 *hand)(hand-n e3 *hand))))
-(B (name putdown)(=>(a#putdown agent hand loc obj :0.3)(^(a#put *e0 agent u obj)(down-r e1 *e0))))
+(B (name downp)(=>(down e1 e2 :0.9)(down-p e1 e2)))
+(B (name downr)(=>(down e1 e2 :0.9)(down-r e1 e2)))
+
+
+(B (name putdownon)(=>(a#putdown agent hand loc obj :0.1)(^(a#put *e0 agent u obj)(down e1 *e0)(destin e2 *e0 loc))))
+(B (name putdownwith)(=>(a#putdown agent *hand loc obj :0.1)(^(a#put *e0 agent u obj)(down e1 *e0)(with-p e2 *e0 *hand)(hand-n e3 *hand))))
+(B (name putdown)(=>(a#putdown agent hand loc obj :0.3)(^(a#put *e0 agent u obj)(down e1 *e0))))
 
 ; fix wrong parse
 
