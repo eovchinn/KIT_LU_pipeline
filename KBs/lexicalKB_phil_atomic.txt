@@ -371,14 +371,8 @@
 
 ; SWITCH MODE
 
-(B (name commandmode-n)(=>(commandmode e2 *x :0.9)(^(of-p e1 *x *x1)(mode-n e2 *x)(command-n e3 *x1))))
-(B (name commandmode-v)(=>(commandmode e2 *x :0.9)(^(mode-n e2 *x)(command-v e3 u1 u2 *x))))
+(B (name commandmode-n)(=>(m#noplan u :0.9)(^(of-p e1 *x *x1)(mode-n e2 *x)(command-n e3 *x1))))
+(B (name commandmode-v)(=>(m#noplan u :0.9)(^(mode-n e2 *x)(command-v e3 u1 u2 *x))))
 
-(B (name planmode-n)(=>(planmode e2 *x :0.9)(^(of-p e1 *x *x1)(mode-n e2 *x)(plan-n e3 *x1))))
-(B (name planmode-v)(=>(planmode e2 *x :0.9)(^(mode-n e2 *x)(plan-v e3 u1 u2 *x))))
-
-(B (name switchcommandmoden)(=>(m#noplan m :0.9)(^(switch-n e1 e2)(commandmode e3 m))))
-(B (name switchcommandmodev)(=>(m#noplan m :0.9)(^(switch-v e1 x1 x2 u)(commandmode e3 m))))
-
-(B (name switchplanmoden)(=>(m#plan m :0.9)(^(switch-n e1 e2)(planmode e3 m))))
-(B (name switchplanmodev)(=>(m#plan m :0.9)(^(switch-v e1 x1 x2 u)(planmode e3 m))))
+(B (name planmode-n)(=>(m#plan u :0.9)(^(of-p e1 *x *x1)(mode-n e2 *x)(plan-n e3 *x1))))
+(B (name planmode-v)(=>(m#plan u :0.9)(^(mode-n e2 *x)(plan-v e3 u1 u2 *x))))
