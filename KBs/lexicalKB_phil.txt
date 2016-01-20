@@ -425,8 +425,8 @@
 
 ; SWITCH MODE
 
-(B (name commandmode-n)(=>(m#noplan u :0.9)(^(of-p e1 *x *x1)(mode-n e2 *x)(command-n e3 *x1))))
-(B (name commandmode-v)(=>(m#noplan u :0.9)(^(mode-n e2 *x)(command-v e3 u1 u2 *x))))
+(B (name commandmode-n)(=>(m#nogoal u :0.9)(^(of-p e1 *x *x1)(mode-n e2 *x)(command-n e3 *x1))))
+(B (name commandmode-v)(=>(m#nogoal u :0.9)(^(mode-n e2 *x)(command-v e3 u1 u2 *x))))
 
-(B (name planmode-n)(=>(m#plan u :0.9)(^(of-p e1 *x *x1)(mode-n e2 *x)(plan-n e3 *x1))))
-(B (name planmode-v)(=>(m#plan u :0.9)(^(mode-n e2 *x)(plan-v e3 u1 u2 *x))))
+(B (name planmode-n)(=>(m#goal u :0.9)(^(of-p e1 *x *x1)(mode-n e2 *x)(plan-n e3 *x1))))
+(B (name planmode-v)(=>(m#goal u :0.9)(^(mode-n e2 *x)(plan-v e3 u1 u2 *x))))
