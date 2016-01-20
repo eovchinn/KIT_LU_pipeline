@@ -357,6 +357,7 @@ class PKSGenerator(object):
 
 		recplan = False
 		feedback = []
+		mode = []
 
 		for h in Hypo:
 			goals = []
@@ -432,6 +433,8 @@ class PKSGenerator(object):
 					recplan = True
 				elif name.startswith('f#'):
 					feedback = (name[2:],args[0])
+				elif name.startswith('m#'):
+					mode = (name[2:],args[0])
 
 			# collect only relevant types
 			for v in types:
@@ -473,5 +476,10 @@ class PKSGenerator(object):
 			else: data["feedback"] = (feedback[0],True)
 		else:
 			data["feedback"] = []
+
+		if len(mode)>0:
+			data["mode"] = mode[0]
+		else:
+			data["mode"] = []
 
 		return data

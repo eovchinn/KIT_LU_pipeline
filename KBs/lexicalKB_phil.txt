@@ -246,6 +246,8 @@
 (B (name mixin2)(=>(^(g#substanceIn *i c e0 :0.1)(container-n e2 c :0.1)(g#stirred c e0 :0.1))(^(a#mix e0 agent *i)(in-p e1 *i c))))
 (B (name mixa)(=>(^(g#substanceIn i c e0 :0.3)(container-n e2 c :0.3)(g#stirred c e0 :0.3))(a#mix e0 agent i)))
 
+;(B (name mixwith)(=>(g#objectAt instr u e0 :0.1)(^(a#mix *e0 agent i)(with-p e1 *e0 instr))))
+
 ; put things
 
 (B (name putv)(=>(a#put e1 agent u obj :0.9)(put-v e1 agent u obj)))
@@ -317,7 +319,7 @@
 ; fix wrong parse
 (B (name arrangechairfix1)(=>(^(g#objectAt *c cl u :0.2)(chairdropofflocation-n eu cl :0.0)(loc cl :0.0))(^(arrange-n e0 *c)(chair-n e1 *c))))
 (B (name arrangechairfix2)(=>(^(g#objectAt *c cl u :0.2)(chairdropofflocation-n eu cl :0.0)(loc cl :0.0))(^(arrange-n e0 *a)(of-p e2 *c *a)(chair-n e1 *c))))
-(B (name arrangeNchairsfix3)(=>(^(g#objectAt *c cl e0 :0.1)(chairdropofflocation-n eu cl :0.0)(loc cl :0.0)(r# cl n :0.0)(r# e0 n :0.0)(r# c n :0.0))(^(arrange-n e0 *c)(chair-n e1 *c)(card e2 *c n))))
+(B (name arrangeNchairsfix3)(=>(^(g#objectAt chair*c cl e0 :0.1)(chairdropofflocation-n eu cl :0.0)(loc cl :0.0)(r# cl n :0.0)(r# e0 n :0.0)(r# c n :0.0))(^(arrange-n e0 *c)(chair-n e1 *c)(card e2 *c n))))
 
 (B (name arrangechairfix31)(=>(^(g#objectAt *c cl u :0.2)(chairdropofflocation-n eu cl :0.0)(loc cl :0.0))(^(arrange-p e0 u *c)(chair-n e1 *c))))
 
@@ -420,3 +422,17 @@
 (B (name doite)(=>(f#agree e1 :0.9)(^(event e1 *x1 u1 u2)(thing e2 *x1))))
 
 (B (name no)(=>(^(not uu e1 :0)(f#agree e1 :0.9))(^(no e1 *i)(topic *i u))))
+
+; SWITCH MODE
+
+(B (name commandmode-n)(=>(commandmode e2 *x :0.9)(^(of-p e1 *x *x1)(mode-n e2 *x)(command-n e3 *x1))))
+(B (name commandmode-v)(=>(commandmode e2 *x :0.9)(^(mode-n e2 *x)(command-v e3 u1 u2 *x))))
+
+(B (name planmode-n)(=>(planmode e2 *x :0.9)(^(of-p e1 *x *x1)(mode-n e2 *x)(plan-n e3 *x1))))
+(B (name planmode-v)(=>(planmode e2 *x :0.9)(^(mode-n e2 *x)(plan-v e3 u1 u2 *x))))
+
+(B (name switchcommandmoden)(=>(m#noplan m :0.9)(^(switch-n e1 e2)(commandmode e3 m))))
+(B (name switchcommandmodev)(=>(m#noplan m :0.9)(^(switch-v e1 x1 x2 u)(commandmode e3 m))))
+
+(B (name switchplanmoden)(=>(m#plan m :0.9)(^(switch-n e1 e2)(planmode e3 m))))
+(B (name switchplanmodev)(=>(m#plan m :0.9)(^(switch-v e1 x1 x2 u)(planmode e3 m))))
