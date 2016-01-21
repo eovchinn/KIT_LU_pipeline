@@ -130,7 +130,7 @@
 (B (name graspfromfix)(=>(^(a#grasp agent *hand loc obj :0.45)(loc loc :0.0))(^(grasp *e0 agent obj)(from-p e3 u2 loc))))
 (B (name graspwithfix)(=>(^(a#grasp agent *hand loc obj :0.45)(loc loc :0.0))(^(grasp *e0 agent obj)(with-p e1 u2 *hand)(hand-n e2 *hand))))
 
-(B (name grasp)(=>(^(a#grasp agent *hand loc obj :0.1)(loc loc :0.0))(grasp *e0 agent obj)))
+(B (name grasp)(=>(^(a#grasp agent *hand loc obj :0.9)(loc loc :0.0))(grasp *e0 agent obj)))
 
 
 ; PUT DOWN
