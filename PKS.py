@@ -307,7 +307,7 @@ class PKSGenerator(object):
 						elif name=="stir":
 							if argind==1: cargs.append("obj_agent_robot")
 							elif argind==2: cargs.append("obj_hand")
-							elif argind==3: cargs.append("obj_stirrer")
+							elif argind==3: cargs.append("obj_whisk")
 							elif argind==4: cargs.append("location")
 							elif argind==5: cargs.append("obj_container")
 						elif name=="wipe":
@@ -480,6 +480,6 @@ class PKSGenerator(object):
 		if len(mode)>0:
 			data["mode"] = mode[0]
 		else:
-			data["mode"] = []
+			data["mode"] = ""
 
 		return data
