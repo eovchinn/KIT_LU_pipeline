@@ -143,6 +143,7 @@
 ; MOVE
 
 (B (name movev)(=>(move e0 agent :0.9)(move-v e0 agent)))
+(B (name movev)(=>(move e0 R :0.9)(move-n e1 e0)))
 (B (name gov)(=>(move e0 agent :0.9)(go-v e0 agent u1 u2)))
 
 (B (name moveagentto)(=>(^(a#move agent loc1 loc2 :0.45)(loc loc2 :0.0))(^(move *e0 agent)(to-p e1 *e0 loc2))))
@@ -228,25 +229,19 @@
 
 (B (name makesalad)(=>(a#makesalad e0 agent *s :0.9)(^(make-v e0 agent u *s)(salad-n e1 *s))))
 (B (name preparesalad)(=>(a#makesalad e0 agent *s :0.9)(^(prepare-v e0 agent u *s)(salad-n e1 *s))))
-(B (name mixsalad)(=>(a#makesalad e0 agent *s :0.9)(^(mix-v e0 agent u *s)(salad-n e1 *s))))
 
-(B (name makesaladwith)(=>(^(g#substanceIn i c *e0 :0.1)(container-n e2 c :0.3)(g#stirred c *e0 :0.1))(^(a#makesalad *e0 agent s)(with-p e1 *e0 i))))
-(B (name makesaladwith2)(=>(^(g#substanceIn i c *e0 :0.1)(container-n e2 c :0.3)(g#stirred c *e0 :0.1))(^(a#makesalad *e0 agent *s)(with-p e1 *s i))))
+(B (name makesaladwith)(=>(^(g#substanceIn i c *e0 :0.1)(container-n e2 c :0.3)(g#stirred c *e0 :0.1))(^(a#makesalad *e0 agent s)(with-p e1 u i))))
 
-(B (name makesaladin)(=>(^(g#substanceIn i c *e0 :0.1)(container-n e2 c :0.1)(g#stirred c *e0 :0.1))(^(a#makesalad *e0 agent *s)(in-p e1 *e0 c))))
-(B (name makesaladin2)(=>(^(g#substanceIn i c *e0 :0.1)(container-n e2 c :0.1)(g#stirred c *e0 :0.1))(^(a#makesalad *e0 agent *s)(in-p e1 *s c))))
+(B (name makesaladin)(=>(^(g#substanceIn i c *e0 :0.1)(container-n e2 c :0.1)(g#stirred c *e0 :0.1))(^(a#makesalad *e0 agent *s)(in-p e1 u c))))
 
 (B (name mixv)(=>(a#mix e0 agent obj :0.9)(mix-v e0 agent u obj)))
 (B (name stirv)(=>(a#mix e0 agent obj :0.9)(stir-v e0 agent u obj)))
-(B (name mixn)(=>(a#mix e0 agent x :0.9)(mix-n e1 x)))
-(B (name stirn)(=>(a#mix e0 agent x :0.9)(stir-n e1 x)))
+(B (name mixsaladn)(=>(a#mix e1 R s :0.9)(^(mix-n e0 e1)(salad-n e2 s))))
+(B (name stirsaladn)(=>(a#mix e1 R s :0.9)(^(stir-n e0 e1)(salad-n e2 s))))
 
-(B (name mixsalad)(=>(^(container-n e2 c :0.1)(g#stirred c e0 :0.1))(^(a#mix e0 agent *s)(salad-n e1 *s))))
-(B (name mixin)(=>(^(g#substanceIn i c *e0 :0.1)(container-n e2 c :0.1)(g#stirred c *e0 :0.1))(^(a#mix *e0 agent i)(in-p e1 *e0 c))))
-(B (name mixin2)(=>(^(g#substanceIn *i c e0 :0.1)(container-n e2 c :0.1)(g#stirred c e0 :0.1))(^(a#mix e0 agent *i)(in-p e1 *i c))))
-(B (name mixa)(=>(^(g#substanceIn i c e0 :0.3)(container-n e2 c :0.3)(g#stirred c e0 :0.3))(a#mix e0 agent i)))
-
-;(B (name mixwith)(=>(g#objectAt instr u e0 :0.1)(^(a#mix *e0 agent i)(with-p e1 *e0 instr))))
+(B (name mixin)(=>(^(container-n e2 c :0.1)(g#stirred c *e0 :0.1))(^(a#mix *e0 agent i)(in-p e1 *e0 c))))
+(B (name mixin2)(=>(^(container-n e2 c :0.1)(g#stirred c e0 :0.1))(^(a#mix e0 agent *i)(in-p e1 *i c))))
+(B (name mixa)(=>(^(container-n e2 c :0.3)(g#stirred c e0 :0.3))(a#mix e0 agent i)))
 
 ; put things
 

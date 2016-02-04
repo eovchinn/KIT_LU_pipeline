@@ -214,13 +214,8 @@
 (B (name mixv)(=>(stir e0 agent u obj :0.9)(mix-v e0 agent u obj)))
 (B (name mixn)(=>(stir e0 R u e0 :0.9)(mix-n e1 e0)))
 
-(B (name stirin)(=>(a#stir R hand stirrer loc cont :0.1)(^(stir *e0 R u obj)(in-p e1 *e0 cont))))
-(B (name stirwith)(=>(a#stir R hand stirrer loc cont :0.1)(^(stir *e0 R u obj)(with-p e1 *e0 hand))))
-
-; fix parse
-
-(B (name stirinfix)(=>(a#stir R hand stirrer loc cont :0.45)(^(stir e0 R u obj)(in-p e1 u2 cont))))
-(B (name stirwithfix)(=>(a#stir R hand stirrer loc cont :0.45)(^(stir e0 R u obj)(with-p e1 u2 hand))))
+(B (name stirin)(=>(a#stir R hand stirrer loc cont :0.1)(^(stir *e0 R u obj)(in-p e1 u1 cont))))
+(B (name stirwith)(=>(a#stir R hand stirrer loc cont :0.1)(^(stir *e0 R u obj)(with-p e1 u1 hand))))
 
 (B (name stir)(=>(a#stir R hand stirrer loc cont :0.99)(stir e0 R u obj)))
 
