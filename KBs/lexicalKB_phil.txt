@@ -86,6 +86,8 @@
 ;LOCATIONS;
 ;;;;;;;;;;;
 
+(B (name in-p)(=>(l#substanceIn e1 e0 *l u :0.1)(^(in-p e1 e0 *l)(bowl-n e2 *l))))
+
 (B (name in-p)(=>(^(l#objectIn e1 e0 l u :0.9)(loc l :0.0))(in-p e1 e0 l)))
 (B (name at-p)(=>(^(l#objectAt e1 e0 l u :0.9)(loc l :0.0))(at-p e1 e0 l)))
 (B (name on-p)(=>(^(l#objectOn e1 e0 l u :0.9)(loc l :0.0))(on-p e1 e0 l)))
@@ -320,6 +322,12 @@
 
 (B (name arrangechairfix4)(=>(^(g#objectAt c cl u :0.4)(infrontof_roundtable2-n eu cl :0.0)(loc cl :0.0))(^(arrange-v e0 agent u1 u2)(chair-n e1 c))))
 (B (name arrangeNchairsfix)(=>(^(g#objectAt *c cl e0 :0.1)(infrontof_roundtable2-n eu cl :0.0)(loc cl :0.0)(r# cl n :0.0)(r# e0 n :0.0)(r# c n :0.0))(^(arrange-v e0 agent u1 u2)(chair-n e1 *c)(card e2 *c n))))
+
+; POUR
+
+(B (name pourn)(=>(pour-v x R u x :1)(pour-n e0 x)))
+
+(B (name pourintov)(=>(g#substanceIn obj cont e0 :0.0)(^(pour-v e0 R u obj)(into-p e1 u2 cont))))
 
 ; wipe
 
