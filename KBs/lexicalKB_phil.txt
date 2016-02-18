@@ -231,21 +231,21 @@
 
 ; make a salad
 
-(B (name makesalad)(=>(a#makesalad e0 agent *s :0.9)(^(make-v e0 agent u *s)(salad-n e1 *s))))
-(B (name preparesalad)(=>(a#makesalad e0 agent *s :0.9)(^(prepare-v e0 agent u *s)(salad-n e1 *s))))
+(B (name makesalad)(=>(makesalad e0 agent *s :0.9)(^(make-v e0 agent u *s)(salad-n e1 *s))))
+(B (name preparesalad)(=>(makesalad e0 agent *s :0.9)(^(prepare-v e0 agent u *s)(salad-n e1 *s))))
 
-(B (name makesaladwith)(=>(^(g#substanceIn i c *e0 :0.1)(container-n e2 c :0.3)(g#stirred c *e0 :0.1))(^(a#makesalad *e0 agent s)(with-p e1 u i))))
+(B (name makesaladwith)(=>(^(g#substanceIn i c *e0 :0.1)(container-n e2 c :0.3)(g#stirred c *e0 :0.1))(^(makesalad *e0 agent s)(with-p e1 u i))))
 
-(B (name makesaladin)(=>(^(g#substanceIn i c *e0 :0.1)(container-n e2 c :0.1)(g#stirred c *e0 :0.1))(^(a#makesalad *e0 agent *s)(in-p e1 u c))))
+(B (name makesaladin)(=>(^(g#substanceIn i c *e0 :0.1)(container-n e2 c :0.1)(g#stirred c *e0 :0.1))(^(makesalad *e0 agent *s)(in-p e1 u c))))
 
-(B (name mixv)(=>(a#mix e0 agent obj :0.9)(mix-v e0 agent u obj)))
-(B (name stirv)(=>(a#mix e0 agent obj :0.9)(stir-v e0 agent u obj)))
-(B (name mixsaladn)(=>(a#mix e1 R s :0.9)(^(mix-n e0 e1)(salad-n e2 s))))
-(B (name stirsaladn)(=>(a#mix e1 R s :0.9)(^(stir-n e0 e1)(salad-n e2 s))))
+(B (name mixv)(=>(mix e0 agent obj :0.9)(mix-v e0 agent u obj)))
+(B (name stirv)(=>(mix e0 agent obj :0.9)(stir-v e0 agent u obj)))
+(B (name mixsaladn)(=>(mix e1 R s :0.9)(^(mix-n e0 e1)(salad-n e2 s))))
+(B (name stirsaladn)(=>(mix e1 R s :0.9)(^(stir-n e0 e1)(salad-n e2 s))))
 
-(B (name mixin)(=>(^(container-n e2 c :0.1)(g#stirred c *e0 :0.1)(s#n#stirred *e0 c u1 :0))(^(a#mix *e0 agent i)(in-p e1 *e0 c))))
-(B (name mixin2)(=>(^(container-n e2 c :0.1)(g#stirred c e0 :0.1)(s#n#stirred e0 c u1 :0))(^(a#mix e0 agent *i)(in-p e1 *i c))))
-(B (name mixa)(=>(^(container-n e2 c :0.3)(g#stirred c e0 :0.3)(s#n#stirred e0 c u1 :0))(a#mix e0 agent i)))
+;(B (name mixin)(=>(^(container-n e2 c :0.1)(g#stirred c *e0 :0.1)(s#n#stirred *e0 c u1 :0))(^(mix *e0 agent i)(in-p e1 *e0 c))))
+;(B (name mixin2)(=>(^(container-n e2 c :0.1)(g#stirred c e0 :0.1)(s#n#stirred e0 c u1 :0))(^(mix e0 agent *i)(in-p e1 *i c))))
+(B (name mixa)(=>(^(container-n e2 c :0.3)(g#stirred c e0 :0.3)(s#n#stirred e0 c u1 :0))(mix e0 agent i)))
 
 ; put things
 
