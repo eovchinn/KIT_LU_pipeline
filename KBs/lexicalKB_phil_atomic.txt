@@ -64,6 +64,8 @@
 (B (name placesettingfix3)(=>(placesetting-n e2 *x :0.9)(^(setting-n e2 *x1)(place-n e3 *x)(in-p e4 e5 *x1))))
 (B (name tablesettingfix3)(=>(placesetting-n e2 *x :0.9)(^(setting-n e2 *x1)(table-n e3 *x)(in-p e4 e5 *x1))))
 
+(B (name roomcenter-n)(=>(roomcenter-n e2 *x :0.2)(^(of-p e1 *x *x1)(center-n e2 *x)(room-n e3 *x1))))
+
 (B (name firstfork)(=>(#= FORK1 *x :0.0)(^(first-a e1 *x)(fork-n e *x))))
 (B (name secondfork)(=>(#= FORK2 *x :0.0)(^(second-a e1 *x)(fork-n e *x))))
 
