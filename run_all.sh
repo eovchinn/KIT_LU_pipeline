@@ -15,7 +15,7 @@ if [ $# -eq 0 ]; then
 else
 	if [ $# -eq 1 ]; then
 		echo $1 |
-		python filter.py |
+		python $KIT_LU_DIR/filter.py |
 		$KIT_LU_DIR/run_Boxer_client_pipeline_EN.sh |
 		python $KIT_LU_DIR/Boxer_output_parsing.py|
 		#$KIT_LU_DIR/run_Henry.sh $LEX_KB |
@@ -24,7 +24,7 @@ else
 		python $KIT_LU_DIR/GoalAndSOWgenerator.py -m p > /dev/stdout 
 	else
 		echo $1 |
-		python filter.py |
+		python $KIT_LU_DIR/filter.py |
 		$KIT_LU_DIR/run_Boxer_client_pipeline_EN.sh |
 		python $KIT_LU_DIR/Boxer_output_parsing.py -a "$2" |
 		#$KIT_LU_DIR/run_Henry.sh $LEX_KB |
