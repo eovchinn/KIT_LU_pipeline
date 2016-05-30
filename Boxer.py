@@ -205,7 +205,7 @@ class BoxerReader(object):
 						elif prop_name == 'thing' and prop_ids == [1000]:
 							text.robot_vars.append(prop_args[1])
 							h_r = True
-						elif prop_name == 'armar-n':
+						elif prop_name == 'armar-n' or prop_name == 'robot-n':
 							text.robot_vars.append(prop_args[1])
 							h_r = True
 

@@ -46,7 +46,7 @@ class PKSGenerator(object):
 			pred_str += "K("+name+"("
 			for arg in args:
 				if arg=="H": pred_str += "human, "
-				elif arg=="R": pred_str += "agent, "
+				elif arg=="R": pred_str += "robot, "
 				elif arg in quantifiers: pred_str += quantifiers[arg]+", "
 				elif arg[0].isupper(): pred_str += arg.lower()+", "
 				elif arg.startswith('_'): 
@@ -390,7 +390,7 @@ class PKSGenerator(object):
 				# things
 				elif name=="thing":
 					if args[1] not in objects:
-						objects[args[1]] = ("all",[args[1],""])
+						objects[args[1]] = ("allgraspable",[args[1],""])
 				# lists
 				elif name == "list":
 					objects[args[0]] = (name,args)
