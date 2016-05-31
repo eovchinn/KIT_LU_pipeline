@@ -94,6 +94,7 @@
 (B (name at-p)(=>(^(l#objectAt e1 e0 l u :0.9)(loc l :0.0))(at-p e1 e0 l)))
 (B (name on-p)(=>(^(l#objectOn e1 e0 l u :0.9)(loc l :0.0))(on-p e1 e0 l)))
 (B (name by-p)(=>(^(l#objectAt e1 e0 l u :0.9)(loc l :0.0))(by-p e1 e0 l)))
+(B (name inside-p)(=>(^(l#objectIn e1 e0 l u :0.9)(loc l :0.0))(inside-p e1 e0 l)))
 
 ;;;;;;;;
 ;SOURCE;
@@ -128,21 +129,21 @@
 (B (name getv)(=>(grasp e0 agent obj :0.9)(gwt-v e0 agent u obj)))
 
 
-(B (name graspwithboth)(=>(^(g#graspedBoth ra obj *e0 :0.1)(agent_robot-n e5 ra :0.0))(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand))))
-(B (name graspwith)(=>(^(g#grasped ra *hand obj *e0 :0.2)(agent_robot-n e5 ra :0.0))(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(hand-n e2 *hand))))
+(B (name graspwithboth)(=>(^(g#graspedBoth ra obj *e0 :0.01)(agent_robot-n e5 ra :0.0))(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(bothhands-n e2 *hand))))
+(B (name graspwith)(=>(^(g#grasped ra *hand obj *e0 :0.02)(agent_robot-n e5 ra :0.0))(^(grasp *e0 agent obj)(with-p e1 *e0 *hand)(hand-n e2 *hand))))
 
-(B (name graspfrom)(=>(^(g#grasped ra hand obj :*e0 0.35)(agent_robot-n e5 ra :0.0)(hand-n u1 hand :0.1)(l#objectAt u3 obj loc *e0 :0.1)(loc loc :0.0))(^(grasp *e0 agent obj)(source e1 *e0 loc))))
-(B (name graspfrom2)(=>(^(g#grasped ra hand *obj :*e0 0.35)(agent_robot-n e5 ra :0.0)(hand-n u1 hand :0.1)(l#objectAt u3 *obj loc *e0 :0.1)(loc loc :0.0))(^(grasp *e0 agent *obj)(source e1 *obj loc))))
+(B (name graspfrom)(=>(^(g#grasped ra hand obj :*e0 0.03)(agent_robot-n e5 ra :0.0)(hand-n u1 hand :0.01)(l#objectAt u3 obj loc *e0 :0.1)(loc loc :0.0))(^(grasp *e0 agent obj)(source e1 *e0 loc))))
+(B (name graspfrom2)(=>(^(g#grasped ra hand *obj :*e0 0.03)(agent_robot-n e5 ra :0.0)(hand-n u1 hand :0.01)(l#objectAt u3 *obj loc *e0 :0.1)(loc loc :0.0))(^(grasp *e0 agent *obj)(source e1 *obj loc))))
 
-(B (name grasp)(=>(^(g#grasped ra hand obj :*e0 0.8)(agent_robot-n e5 ra :0.0)(hand-n u1 hand :0.1))(grasp e0 agent obj)))
+(B (name grasp)(=>(^(g#grasped ra hand obj *e0 :0.8)(agent_robot-n e5 ra :0.0)(hand-n u1 hand :0.1))(grasp e0 agent obj)))
 
 
 ; fix wrong parse
 
-(B (name graspwithbothfix)(=>(^(g#graspedBoth ra *hand obj *e0 :0.44)(agent_robot-n e5 ra :0.0))(^(grasp e0 agent obj)(with-p e1 u1 *hand)(bothhands-n e2 *hand))))
-(B (name graspwithfix)(=>(^(g#grasped ra *hand obj *e0 :0.45)(agent_robot-n e5 ra :0.0))(^(grasp e0 agent obj)(with-p e1 u1 *hand)(hand-n e2 *hand))))
+(B (name graspwithbothfix)(=>(^(g#graspedBoth ra *hand obj *e0 :0.1)(agent_robot-n e5 ra :0.0))(^(grasp e0 agent obj)(with-p e1 u1 *hand)(bothhands-n e2 *hand))))
+(B (name graspwithfix)(=>(^(g#grasped ra *hand obj *e0 :0.2)(agent_robot-n e5 ra :0.0))(^(grasp e0 agent obj)(with-p e1 u1 *hand)(hand-n e2 *hand))))
 
-(B (name graspfromfix)(=>(^(g#grasped ra hand obj :*e0 0.45)(hand-n u1 hand :0.1)(agent_robot-n e5 ra :0.0)(l#objectAt u3 obj loc u1 :0.1)(loc loc :0.0))(^(grasp u1 agent obj)(source e1 u1 loc))))
+(B (name graspfromfix)(=>(^(g#grasped ra hand obj :*e0 0.1)(hand-n u1 hand :0.1)(agent_robot-n e5 ra :0.0)(l#objectAt u3 obj loc u1 :0.1)(loc loc :0.0))(^(grasp u1 agent obj)(source e1 u1 loc))))
 
 
 
